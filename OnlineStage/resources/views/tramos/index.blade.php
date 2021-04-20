@@ -10,7 +10,6 @@
         <div class="p-6 bg-white border-b border-gray-200">    
             <button type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
-        <!-- formualrio para añadir tramos -->
         <div class="p-6 bg-white border-b border-gray-200">
             <!-- control de errores del formulario -->
             @if (count($errors) > 0)
@@ -26,6 +25,7 @@
                 </div>
             </div>
             @endif
+            <!-- formulario para añadir tramos -->
             <form class="" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="form-group row">

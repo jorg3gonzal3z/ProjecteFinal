@@ -15,7 +15,8 @@ class UserSeeder extends Seeder
     {
         $users =[
             ['Jorge','jorgegzgc@gmail.com','$2y$10$d5SX5jsG3uSYfvKkhHieQ.7vhd60EC3AMiXZu9ev7kLotao1k6hkq','admin'],
-            ['Juli','juli@gmail.com','$2y$10$d5SX5jsG3uSYfvKkhHieQ.7vhd60EC3AMiXZu9ev7kLotao1k6hkq','admin']
+            ['Juli','juli@gmail.com','$2y$10$d5SX5jsG3uSYfvKkhHieQ.7vhd60EC3AMiXZu9ev7kLotao1k6hkq','admin'],
+            ['Aleix','aleix@gmail.com','$2y$10$d5SX5jsG3uSYfvKkhHieQ.7vhd60EC3AMiXZu9ev7kLotao1k6hkq']
         ];
         foreach($users as $user){
             \App\Models\User::create([

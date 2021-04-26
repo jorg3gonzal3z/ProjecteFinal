@@ -29,6 +29,9 @@
             <form class="" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" >
                 @csrf
                 <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Añadir Tramo</label>
+                </div>
+                <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Imagenes</label>
                     <div class="col-sm-10">
                         <input type="file" name="fotos[]" multiple>
@@ -106,6 +109,9 @@
                         <form class="" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                             @csrf
                             {{ method_field('PUT') }}
+                            <div class="form-group row">
+                                <label class="col-sm-2 col-form-label">Editar Tramo</label>
+                            </div>
                             <!-- fotografia del tramo a editar -->
                             @foreach ($fotos_tramos as $foto_tramo)
                                 @if ($foto_tramo->id_trams == $tramo->id)

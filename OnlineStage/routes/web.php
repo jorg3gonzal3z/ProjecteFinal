@@ -31,6 +31,7 @@ Route::get('/home', function () {
 /* USUARIO */
 Route::get('/user', [UsuarioController::class, 'index'])->middleware(['auth'])->name('user.index');
 Route::post('/user/add_car/{id}', [UsuarioController::class, 'add_car'])->middleware(['auth'])->name('user.add_car');
+Route::put('/user/update_user/{id}', [UsuarioController::class, 'update'])->middleware(['auth'])->name('user.update_user');
 /* TRAMOS */
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');

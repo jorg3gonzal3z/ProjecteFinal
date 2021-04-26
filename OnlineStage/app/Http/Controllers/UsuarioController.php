@@ -12,6 +12,7 @@ use App\Models\FotosTrams;
 use App\Models\Trams;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
+use App\Models\User;
 
 class UsuarioController extends Controller
 {
@@ -66,5 +67,20 @@ class UsuarioController extends Controller
         }
 
         return redirect()->route('user.index');
+    }
+
+    public function update($id){
+
+        $user = User::find($id);
+
+        $data = request()->validate([
+            'name' => 'required',
+            'email' => 'required|email',
+        ]);
+
+        $user->update([
+            'name' => $data['name'],
+            'email' => $data['email'],
+        ]);
     }
 }

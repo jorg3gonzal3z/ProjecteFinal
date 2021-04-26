@@ -9,18 +9,40 @@
     @if (Auth::user())
         <!-- si el user esta logueado se mostraran sus datos -->
         <h4>Datos de la Cuenta</h4><br>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Nombre</label>
-            <div class="col-sm-10">
-                <input type="text" value="{{$auth_user->name}}" style="border-radius:10px" disabled>
+        <!-- control de errores del formulario -->
+        @if (count($errors) > 0)
+        <div class="p-6 bg-white border-b border-gray-200"> 
+            <div class="alert alert-danger">
+                <p>Corrige los siguientes errores:</p>
+                <br>
+                <ul>
+                    @foreach ($errors->all() as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
             </div>
-        </div>
-        <div class="form-group row">
-            <label class="col-sm-2 col-form-label">Email</label>
-            <div class="col-sm-10">
-                <input type="text" value="{{$auth_user->email}}" style="border-radius:10px" disabled>
+        </div><br>
+        @endif
+        <form class="" action="{{ route('user.update_user',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            {{ method_field('PUT') }}
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Nombre</label>
+                <div class="col-sm-10">
+                    <input type="text" name="name" value="{{$auth_user->name}}" style="border-radius:10px" disabled>
+                </div>
             </div>
-        </div>
+            <div class="form-group row">
+                <label class="col-sm-2 col-form-label">Email</label>
+                <div class="col-sm-10">
+                    <input type="email" name="email" value="{{$auth_user->email}}" style="border-radius:10px" disabled>
+                </div>
+            </div>
+            <button class="btn btn-danger" hidden>Update</button>
+        </form>
+
+        <button class="btn btn-danger">Editar Cuenta</button><br>
+        
         <!-- coches del usuario -->
         <br><h4>Todos mis coches</h4>
         <div class="p-6 bg-white border-b border-gray-200">

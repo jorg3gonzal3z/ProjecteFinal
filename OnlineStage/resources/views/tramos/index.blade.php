@@ -106,7 +106,7 @@
                         <!-- editar tramo -->
                         <a class="float-right pl-3" style="color:blue;" href="">Editar</a>
                         <!-- formulario para editar tramos -->
-                        <form class="" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                        <form class="" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" >
                             @csrf
                             {{ method_field('PUT') }}
                             <div class="form-group row">
@@ -172,7 +172,7 @@
                                 </div>
                             </div>
 
-                            <button class="btn btn-danger" >Submit</button>
+                            <button class="btn btn-danger" >Update</button>
 
                         </form>
                         

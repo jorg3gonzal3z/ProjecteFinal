@@ -70,8 +70,7 @@ class TramosController extends Controller
         $tramo = Trams::find($id);
 
         $data = request()->validate([
-            'fotos' => 'required',
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'mimes:jpeg,jpg,png,gif',
             'nom' => 'required',
             'distancia' => 'required',
             'sortida' => 'required',
@@ -84,26 +83,28 @@ class TramosController extends Controller
             'distancia' => $data['distancia'],
             'sortida' => $data['sortida'],
             'final' => $data['final'],
-            'id_superficie' => $data['id_superficie'],
-            'id_usuari' => $id,
+            'id_superficie' => $data['id_superficie']
         ]);
-
-        $array_fotos = $data['fotos'];
         
-        foreach($array_fotos as $array_foto){
-
-            $foto=$array_foto->store('public');
-            $url=Storage::url($foto);
-            $url=Str::substr($url,1);
-            $array_foto->update([
-                'binari' => $url,
-            ]);
-            
-            $foto_tramo->update([
-                'id_fotos' => $array_foto->id,
-                'id_trams' => $tramo->id,
-            ]);
+        $array_fotos = request('fotos');
+        
+        //si hi ha alguna imatge nova per afegir
+        if (gettype($array_fotos) == "array"){
+            foreach($array_fotos as $array_foto){
+                $foto=$array_foto->store('public');
+                $url=Storage::url($foto);
+                $url=Str::substr($url,1);
+                $array_foto=Fotos::create([
+                    'binari' => $url,
+                ]);
+                
+                $foto_tramo=FotosTrams::create([
+                    'id_fotos' => $array_foto->id,
+                    'id_trams' => $tramo->id,
+                ]);
+            }
         }
+        
         return redirect()->route('tramos.index');
     }
 

@@ -16,9 +16,9 @@ use App\Http\Controllers\EventosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('/tramos.index');
+// });
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -32,7 +32,11 @@ Route::get('/home', function () {
 Route::get('/user', [UsuarioController::class, 'index'])->middleware(['auth'])->name('user.index');
 Route::post('/user/add_car/{id}', [UsuarioController::class, 'add_car'])->middleware(['auth'])->name('user.add_car');
 /* TRAMOS */
+<<<<<<< Updated upstream
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');
+=======
+Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
+>>>>>>> Stashed changes
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');
 /* RALLYS */
 /* EVENTOS */

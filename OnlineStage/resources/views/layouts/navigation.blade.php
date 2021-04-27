@@ -81,8 +81,8 @@
                     </x-dropdown>
                 @else
                     <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        <div><a style="color:black;" href="{{ route('login') }}">Login</a></div>
-                        <div class="pl-3"><a style="color:black;" href="{{ route('register') }}">Register</a></div>
+                        <div><a style="color:black;" href="{{ route('login') }}">Inicia Sesión</a></div>
+                        <div class="ml-3 btn btn-danger"><a style="color:white;" href="{{ route('register') }}">Únete</a></div>
                     </button>
                 @endif
             </div>
@@ -165,12 +165,12 @@
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('login')">
-                            {{ __('Login') }}
+                            {{ __('Inicia Sesión') }}
                     </x-responsive-nav-link>
                 </div>
                 <div class="mt-3 space-y-1">
                     <x-responsive-nav-link :href="route('register')">
-                            {{ __('Register') }}
+                            {{ __('Únete') }}
                     </x-responsive-nav-link>
                 </div>
             </div>

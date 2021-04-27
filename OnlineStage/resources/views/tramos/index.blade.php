@@ -80,6 +80,114 @@
         </div>
     @endif
     <div class="p-6 bg-white border-b border-gray-200"> 
+<<<<<<< Updated upstream
+=======
+        <!-- control de errores del formulario -->
+        @if (count($errors) > 0)
+        <div class="p-6 bg-white border-b border-gray-200"> 
+            <div class="alert alert-danger">
+                <p>Corrige los siguientes errores:</p>
+                <br>
+                <ul>
+                    @foreach ($errors->all() as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div><br>
+        @endif
+        <section>
+            <table class="table table-hover ">
+                <tbody>
+                    <tr>
+                        <th style="width: 250px; padding: 0;"rowspan="6" colspan="2">
+                        <div id="controlsCarousel" class="carousel slide" data-interval="false" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://www.semana.com/resizer/j42cYUvr34aLn13_CqxlysNH4fM=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/V3EVP6ZUEZFY7AIGESM76I43GE.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://www.semana.com/resizer/j42cYUvr34aLn13_CqxlysNH4fM=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/V3EVP6ZUEZFY7AIGESM76I43GE.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://mario.nintendo.com/static/e402ed3ea161d06bbd6d250f3462e2d4/8c3c2/video-button.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#controlsCarousel" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#controlsCarousel" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                        <tr>
+                            <th rowspan="2">nom</th>
+                        </tr>
+                        <tr>
+                            <td>user</td>
+                        </tr>
+                            <tr>
+                                <th rowspan="2" colspan="1">tramos->sortida}}->tramos->final}}</th>
+                            </tr>
+                                <tr>
+                                    <th>tamos->distancia}}</th>
+                                </tr>
+                                <tr>
+                                    <th>tramos->superficie}}</th>
+                                </tr>
+                </tbody>
+            </table>
+        </section>
+        <!-- mostrar listado de los tramos 
+        <div class="clearfix"></div>
+        <section class="search-box">
+            <div class="container-fluid">
+	            <div class="row">
+		            <div class="col-md-12 listing-block">
+                        <div class="media">
+                            <div id="carouselExampleControls" class="carousel slide" data-interval="false" data-ride="carousel">
+                                <div class="carousel-inner">
+                                    <div class="carousel-item active">
+                                        <img src="https://www.semana.com/resizer/j42cYUvr34aLn13_CqxlysNH4fM=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/V3EVP6ZUEZFY7AIGESM76I43GE.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://www.semana.com/resizer/j42cYUvr34aLn13_CqxlysNH4fM=/1200x675/filters:format(jpg):quality(70)//cloudfront-us-east-1.images.arcpublishing.com/semana/V3EVP6ZUEZFY7AIGESM76I43GE.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                    <div class="carousel-item">
+                                        <img src="https://mario.nintendo.com/static/e402ed3ea161d06bbd6d250f3462e2d4/8c3c2/video-button.jpg" class="d-block w-100" alt="...">
+                                    </div>
+                                </div>
+                                <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                            <div class="media-body pl-3">
+                                <div class="nom"> $tramo->nom}}</div>
+                                <div class="poblacio">
+                                    <span><i class="fa fa-arrows-alt"></i> $tramo->sortida}}</span>
+                                    ->
+                                    <span><i class="fa fa-bath"></i> $tramo->final}}</span>
+                                </div>
+                                <div class="d-flex">
+                                    <div class="address"> $tramo->distancia}}</div>
+                                    <div class="propietari "> $tramo->user}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>-->
+>>>>>>> Stashed changes
         @foreach ($tramos as $tramo)
             <div class="p-6 bg-white border-b border-gray-200">
                 <!-- si el user esta logueado y es el dueño del tramo o tiene el rol de admin podra editar, eliminar... -->

@@ -31,4 +31,6 @@ $(document).ready(function(){
         $("#car_form").attr('hidden',true);
         $("#add_car").attr('hidden',false);
     });
+    //imagenes del carrousel
+    $('.carousel-inner').find('>:first-child').addClass('active');
 });

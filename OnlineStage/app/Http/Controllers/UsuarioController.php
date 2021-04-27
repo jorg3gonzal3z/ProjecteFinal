@@ -11,6 +11,7 @@ use App\Models\Fotos;
 use App\Models\FotosCotxes;
 use App\Models\FotosTrams;
 use App\Models\Trams;
+use App\Models\Superficies;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\User;
@@ -24,8 +25,9 @@ class UsuarioController extends Controller
         $fotos=Fotos::all();
         $fotos_coches=FotosCotxes::all();
         $fotos_tramos=FotosTrams::all();
+        $superficies=Superficies::all();
         $tramos=Trams::where('id_usuari', $auth_user->id)->get();
-        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos']));
+        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies']));
     }
 
     public function add_car($id){

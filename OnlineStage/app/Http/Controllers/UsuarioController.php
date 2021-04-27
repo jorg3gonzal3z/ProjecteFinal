@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -75,12 +76,17 @@ class UsuarioController extends Controller
 
         $data = request()->validate([
             'name' => 'required',
-            'email' => 'required|email',
+            'email' => 'required|unique:users,email,'.$user->id,
+            'pass' => 'nullable|min:8',
+            'rpass' => 'nullable|same:pass|min:8',
         ]);
 
         $user->update([
             'name' => $data['name'],
             'email' => $data['email'],
+            'password' => Hash::make($data['rpass']),
         ]);
+
+        return redirect()->route('user.index');
     }
 }

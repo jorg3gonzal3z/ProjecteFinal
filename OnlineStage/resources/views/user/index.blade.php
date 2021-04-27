@@ -1,4 +1,8 @@
 @extends('layouts.layout')
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 @section('header')
     Mi Cuenta 
@@ -23,25 +27,43 @@
             </div>
         </div><br>
         @endif
+        <!-- formulario edicion de cuenta usuario -->
+        
         <form class="" action="{{ route('user.update_user',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data">
             @csrf
             {{ method_field('PUT') }}
+
+            <a  id="esconder_form" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Nombre</label>
                 <div class="col-sm-10">
-                    <input type="text" name="name" value="{{$auth_user->name}}" style="border-radius:10px" disabled>
+                    <input id="name_user" type="text" name="name" value="{{$auth_user->name}}" style="border-radius:10px" disabled>
                 </div>
             </div>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Email</label>
                 <div class="col-sm-10">
-                    <input type="email" name="email" value="{{$auth_user->email}}" style="border-radius:10px" disabled>
+                    <input id="email_user" type="email" name="email" value="{{$auth_user->email}}" style="border-radius:10px" disabled>
                 </div>
             </div>
-            <button class="btn btn-danger" hidden>Update</button>
+            <!-- solo se muestra si el usuario decide editar la cuenta -->
+            <div class="form-group row" id="pass_user" hidden>
+                <label class="col-sm-2 col-form-label">Contraseña</label>
+                <div class="col-sm-10">
+                    <input type="password" name="pass" style="border-radius:10px" placeholder="12345678CR ...">
+                </div>
+            </div>
+            <div class="form-group row" id="rpass_user" hidden>
+                <label class="col-sm-2 col-form-label">Repite la Contraseña</label>
+                <div class="col-sm-10">
+                    <input type="password" name="rpass" style="border-radius:10px" placeholder="12345678CR ...">
+                </div>
+            </div>
+            <button id="update_cuenta" class="btn btn-danger" hidden>Update</button>
         </form>
 
-        <button class="btn btn-danger">Editar Cuenta</button><br>
+        <button id="editar_cuenta" class="btn btn-danger">Editar Cuenta</button><br>
         
         <!-- coches del usuario -->
         <br><h4>Todos mis coches</h4>
@@ -91,28 +113,17 @@
         </div>
         <!-- añadir coche -->
         <!-- este boton abre el formulario para añadir coches -->
-        <div class="p-6 bg-white border-b border-gray-200">    
+        <div id="add_car" class="p-6 bg-white border-b border-gray-200">    
             <button type="button" class="btn btn-danger">Añadir Coche</button>
         </div>
         <!-- formulario para añadir coches -->
         <div class="p-6 bg-white border-b border-gray-200">
-            <!-- control de errores del formulario -->
-            @if (count($errors) > 0)
-            <div class="p-6 bg-white border-b border-gray-200"> 
-                <div class="alert alert-danger">
-                    <p>Corrige los siguientes errores:</p>
-                    <br>
-                    <ul>
-                        @foreach ($errors->all() as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            </div>
-            @endif
+            
             <!-- formulario para añadir coches -->
-            <form class="" action="{{ route('user.add_car',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data">
+          
+            <form id="car_form" action="{{ route('user.add_car',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                 @csrf
+                <a  id="esconder_form_coche" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Imagenes</label>
                     <div class="col-sm-10">
@@ -207,3 +218,4 @@
         </div>
     @endif
 @stop
+<script src="{{ url('/js/user.js') }}"></script>

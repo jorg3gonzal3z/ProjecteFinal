@@ -1,5 +1,8 @@
 @extends('layouts.layout')
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 @section('header')
     Tramos
 @stop
@@ -8,9 +11,9 @@
     @if (Auth::user())
         <!-- si el usuario esta logueado o es admin puede añadir tramos, este boton abre un formulario -->
         <div class="p-6 bg-white border-b border-gray-200">    
-            <button type="button" class="btn btn-danger">Compartir Tramo</button>
+            <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
-        <div class="p-6 bg-white border-b border-gray-200" hidden>
+        <div class="p-6 bg-white border-b border-gray-200" >
             <!-- control de errores del formulario -->
             @if (count($errors) > 0)
             <div class="p-6 bg-white border-b border-gray-200"> 
@@ -26,8 +29,9 @@
             </div>
             @endif
             <!-- formulario para añadir tramos -->
-            <form class="" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" >
+            <form id="form_add_tramo" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                 @csrf
+                <a  id="esconder_form" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Añadir Tramo</label>
                 </div>
@@ -83,20 +87,6 @@
         </div>
     @endif
     <div class="p-6 bg-white border-b border-gray-200"> 
-        <!-- control de errores del formulario -->
-        @if (count($errors) > 0)
-        <div class="p-6 bg-white border-b border-gray-200"> 
-            <div class="alert alert-danger">
-                <p>Corrige los siguientes errores:</p>
-                <br>
-                <ul>
-                    @foreach ($errors->all() as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div><br>
-        @endif
         <!-- mostrar listado de los tramos -->
         @foreach ($tramos as $tramo)
             <div class="p-6 bg-white border-b border-gray-200">
@@ -104,80 +94,9 @@
                 @if (Auth::user())
                     @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
                         <!-- editar tramo -->
-                        <a class="float-right pl-3" style="color:blue;" href="">Editar</a>
-                        <!-- formulario para editar tramos -->
-                        <form class="" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
-                            @csrf
-                            {{ method_field('PUT') }}
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Editar Tramo</label>
-                            </div>
-                            <!-- fotografia del tramo a editar -->
-                            @foreach ($fotos_tramos as $foto_tramo)
-                                @if ($foto_tramo->id_trams == $tramo->id)
-                                    @foreach ($fotos as $foto)
-                                            @if($foto_tramo->id_fotos == $foto->id)
-                                                <img src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200"><br>
-                                            @endif
-                                    @endforeach
-                                @endif
-                            @endforeach
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Imagenes</label>
-                                <div class="col-sm-10">
-                                    <input type="file" name="fotos[]" multiple>
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Nombre</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
-                                </div>
-                            </div>
-                            
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Distancia km</label>
-                                <div class="col-sm-10">
-                                <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Salida</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" name="sortida" value="{{$tramo->sortida}}">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Final</label>
-                                <div class="col-sm-10">
-                                <input type="text" class="form-control" name="final" value="{{$tramo->final}}">
-                                </div>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="col-sm-2 col-form-label">Superficie</label>
-                                <div class="col-sm-10">
-                                    <select class="form-control" name="id_superficie" style="border-radius:10px">>
-                                        @foreach ($superficies as $superficie)
-                                            @if ($tramo->id_superficie == $superficie->id)
-                                                <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>
-                                            @else
-                                                <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
-                                            @endif
-                                        @endforeach
-                                    </select>
-                                </div>
-                            </div>
-
-                            <button class="btn btn-danger" >Update</button>
-
-                        </form>
-                        
+                        <a id="edit_tramo" class="float-right pl-3" style="color:blue; cursor:pointer;" >Editar</a>
                         <!-- eliminar tramo -->
-                        <form class="float-right" style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id]) }}" method="POST">
+                        <form id="delete_tramo" class="float-right" style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
                             <button>Eliminar</button>
@@ -212,8 +131,80 @@
                     @endif
                 @endforeach
                 
+                <!-- formulario para editar tramos -->
+                <form id="form_edit_tramo" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                    @csrf
+                    {{ method_field('PUT') }}
+                    <a  id="esconder_form_edit" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Editar Tramo</label>
+                    </div>
+                    <!-- fotografia del tramo a editar -->
+                    @foreach ($fotos_tramos as $foto_tramo)
+                        @if ($foto_tramo->id_trams == $tramo->id)
+                            @foreach ($fotos as $foto)
+                                    @if($foto_tramo->id_fotos == $foto->id)
+                                        <img src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200"><br>
+                                    @endif
+                            @endforeach
+                        @endif
+                    @endforeach
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Imagenes</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="fotos[]" multiple>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Distancia km</label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Salida</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="sortida" value="{{$tramo->sortida}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Final</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="final" value="{{$tramo->final}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Superficie</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                                @foreach ($superficies as $superficie)
+                                    @if ($tramo->id_superficie == $superficie->id)
+                                        <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                    @else
+                                        <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-danger" >Update</button>
+
+                </form>
             </div> 
         @endforeach
     </div>
 
 @stop
+<script src="{{ url('/js/tramos.js') }}"></script>

@@ -80,14 +80,22 @@ class UsuarioController extends Controller
             'name' => 'required',
             'email' => 'required|unique:users,email,'.$user->id,
             'pass' => 'nullable|min:8',
-            'rpass' => 'nullable|same:pass|min:8',
+            'rpass' => 'exclude_if:pass,null|required|same:pass|min:8',
         ]);
 
-        $user->update([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['rpass']),
-        ]);
+        if ($data['pass'] != null){
+            $user->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['pass']),
+            ]);
+        }else{
+            $user->update([
+                'name' => $data['name'],
+                'email' => $data['email'],
+            ]);
+        }
+        
 
         return redirect()->route('user.index');
     }

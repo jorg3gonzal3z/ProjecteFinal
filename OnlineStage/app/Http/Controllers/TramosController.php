@@ -104,12 +104,19 @@ class TramosController extends Controller
                 ]);
             }
         }
+
+        //depenent de des d'on es cridi al metode retornara una redireccio o una altra
         if($location == "tramos"){return redirect()->route('tramos.index');}
         elseif($location == "user"){return redirect()->route('user.index');}
     }
 
     public function destroy($id){
         $tramo = Trams::find($id);
+        $foto_tramos = FotosTrams::where('id_trams', $id)->get();
+        foreach ($foto_tramos as $foto_tramo){
+            $foto_tramo->delete();
+        }
+        //eliminar tambien la foto de la tabla fotos !!!!acuerdate
         $tramo->delete();
         return redirect()->route('tramos.index');
     }

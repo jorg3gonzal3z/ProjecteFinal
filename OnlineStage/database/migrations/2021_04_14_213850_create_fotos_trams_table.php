@@ -18,8 +18,8 @@ class CreateFotosTramsTable extends Migration
             $table->bigInteger('id_fotos')->unsigned();
             $table->bigInteger('id_trams')->unsigned();
             $table->timestamps();
-            $table->foreign('id_fotos')->references('id')->on('fotos')->onUpdate('cascade');
-            $table->foreign('id_trams')->references('id')->on('trams')->onUpdate('cascade');
+            $table->foreign('id_fotos')->references('id')->on('fotos')->onUpdate('restrict');
+            $table->foreign('id_trams')->references('id')->on('trams')->onUpdate('restrict');
         });
     }
 

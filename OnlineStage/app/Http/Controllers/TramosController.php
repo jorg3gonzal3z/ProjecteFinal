@@ -115,8 +115,12 @@ class TramosController extends Controller
         $foto_tramos = FotosTrams::where('id_trams', $id)->get();
         foreach ($foto_tramos as $foto_tramo){
             $foto_tramo->delete();
+            //eliminar tambien la foto de la tabla fotos
+            $fotos = Fotos::where('id', $foto_tramo->id_fotos)->get();
+            foreach($fotos as $foto){
+                $foto->delete();
+            }
         }
-        //eliminar tambien la foto de la tabla fotos !!!!acuerdate
         $tramo->delete();
         return redirect()->route('tramos.index');
     }

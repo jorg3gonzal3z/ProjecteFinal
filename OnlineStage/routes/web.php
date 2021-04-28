@@ -16,10 +16,6 @@ use App\Http\Controllers\EventosController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
@@ -33,6 +29,7 @@ Route::get('/user', [UsuarioController::class, 'index'])->middleware(['auth'])->
 Route::post('/user/add_car/{id}', [UsuarioController::class, 'add_car'])->middleware(['auth'])->name('user.add_car');
 Route::put('/user/update_user/{id}', [UsuarioController::class, 'update'])->middleware(['auth'])->name('user.update_user');
 /* TRAMOS */
+Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');
 Route::put('/tramos/update/{id}/{location}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');

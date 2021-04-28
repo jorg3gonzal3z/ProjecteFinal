@@ -2,7 +2,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 @section('header')
     Tramos
 @stop
@@ -94,61 +94,96 @@
                 @if (Auth::user())
                     @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
                         <!-- editar tramo -->
-                        <a id="edit_tramo" class="float-right pl-3" style="color:blue; cursor:pointer;" >Editar</a>
+                        <a id="edit_tramo{{$tramo->id}}" class="float-right pl-3 editButton" style="color:blue; cursor:pointer;" >Editar</a>
                         <!-- eliminar tramo -->
-                        <form id="delete_tramo" class="float-right" style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id]) }}" method="POST">
+                        <form id="delete_tramo{{$tramo->id}}" class="float-right " style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
                             <button>Eliminar</button>
                         </form>
                     @endif
                 @endif
-                <!-- fotografia del tramo -->
-                @foreach ($fotos_tramos as $foto_tramo)
-                    @if ($foto_tramo->id_trams == $tramo->id)
-                        @foreach ($fotos as $foto)
-                                @if($foto_tramo->id_fotos == $foto->id)
-                                    <img src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200"><br>
-                                @endif
+
+
+                <table class="table table-hover ">
+                <tbody>
+                    <tr>
+                        <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">
+                            <div id="controlsCarousel{{$tramo->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
+                                <div class="carousel-inner">
+                                <!-- fotos del tramo -->
+                                @foreach ($fotos_tramos as $foto_tramo)
+                                    @if ($foto_tramo->id_trams == $tramo->id)
+                                    
+                                        @foreach ($fotos as $key => $foto)
+                                            @if($foto_tramo->id_fotos == $foto->id)
+                                            <div class="carousel-item">
+                                                <img src="{{ $foto->binari }}" class="d-block w-100" alt="...">
+                                            </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                                </div>
+                                <a class="carousel-control-prev" href="#controlsCarousel{{$tramo->id}}" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#controlsCarousel{{$tramo->id}}" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
+                        </th>
+                    </tr>
+                    <tr>
+                        <th rowspan="2">{{ $tramo->nom}}</th>
+                    </tr>
+                    <tr>
+                    <!-- usuario que ha compartido el tramo -->
+                    @foreach ($users as $user)
+                        @if ( $tramo->id_usuari == $user->id )
+                        <td>{{ $user->name}}</td>
+                        @endif
+                    @endforeach
+                    </tr>
+                    <tr>
+                        <th rowspan="2" colspan="1">{{ $tramo->sortida}}-{{ $tramo->final}}</th>
+                    </tr>
+                    <tr>
+                        <th>{{ $tramo->distancia}}km</th>
+                    </tr>
+                    <tr>
+                        <!-- informacion sobre la superficie del tramo -->
+                        @foreach ($superficies as $superficie)
+                            @if ( $tramo->id_superficie == $superficie->id )
+                                <th>{{$superficie->tipus}}<th>
+                            @endif
                         @endforeach
-                    @endif
-                @endforeach
-                <!-- informacion sobre el tramo -->
-                {{ $tramo->nom}}<br>
-                {{ $tramo->distancia}}km<br>
-                {{ $tramo->sortida}}<br>
-                {{ $tramo->final}}<br>
-                <!-- informacion sobre la superficie del tramo -->
-                @foreach ($superficies as $superficie)
-                    @if ( $tramo->id_superficie == $superficie->id )
-                        {{$superficie->tipus}}<br>
-                    @endif
-                @endforeach
-                <!-- usuario que ha compartido el tramo -->
-                @foreach ($users as $user)
-                    @if ( $tramo->id_usuari == $user->id )
-                        {{$user->name}}<br>
-                    @endif
-                @endforeach
+                    </tr>
+                </tbody>
+                </table><br>
                 
                 <!-- formulario para editar tramos -->
-                <form id="form_edit_tramo" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     {{ method_field('PUT') }}
-                    <a  id="esconder_form_edit" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                    <a  id="esconder_form_edit{{$tramo->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Editar Tramo</label>
                     </div>
+                    <div class="row">
                     <!-- fotografia del tramo a editar -->
                     @foreach ($fotos_tramos as $foto_tramo)
                         @if ($foto_tramo->id_trams == $tramo->id)
                             @foreach ($fotos as $foto)
                                     @if($foto_tramo->id_fotos == $foto->id)
-                                        <img src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200"><br>
+                                        <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
                                     @endif
                             @endforeach
                         @endif
                     @endforeach
+                    </div><br>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Imagenes</label>
                         <div class="col-sm-10">

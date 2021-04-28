@@ -10,17 +10,23 @@ $(document).ready(function(){
         $('#esconder_form').attr('hidden',true);
     });
     //boton para mostrar formulario editar tramo
-    $("#edit_tramo").click(function() {
-        $("#edit_tramo").attr('hidden',true);
-        $('#esconder_form_edit').removeAttr('hidden');
-        $("#form_edit_tramo").removeAttr('hidden');
-        $("#delete_tramo").attr('hidden',true);
-    });
+    $(".editButton").click(function() {
+        $(this).attr('hidden',true);
+        var thisId = $(this).attr('id');
+        thisId = thisId.substring(thisId.length - 1, thisId.length);
+        $("#esconder_form_edit" + thisId).attr('hidden',false);
+        $("#form_edit_tramo"+ thisId).attr('hidden',false);
+        $("#delete_tramo"+ thisId).attr('hidden',true);
+
     //boton para esconder el formulario de editar tramo
-    $("#esconder_form_edit").click(function() {
-        $("#edit_tramo").removeAttr('hidden');
-        $("#form_edit_tramo").attr('hidden',true);
-        $('#esconder_form_edit').attr('hidden',true);
-        $("#delete_tramo").removeAttr('hidden');
+        $("#esconder_form_edit"+ thisId).click(function() {
+            $("#edit_tramo"+ thisId).attr('hidden',false);
+            $("#form_edit_tramo"+ thisId).attr('hidden',true);
+            $(this).attr('hidden',true);
+            $("#delete_tramo"+ thisId).attr('hidden',false);
+        });
     });
+
+    //imagenes del carrousel
+    $('.carousel-inner').find('>:first-child').addClass('active');
 });

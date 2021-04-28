@@ -18,7 +18,7 @@ $(document).ready(function(){
         $("#form_edit_tramo"+ thisId).attr('hidden',false);
         $("#delete_tramo"+ thisId).attr('hidden',true);
 
-    //boton para esconder el formulario de editar tramo
+        //boton para esconder el formulario de editar tramo
         $("#esconder_form_edit"+ thisId).click(function() {
             $("#edit_tramo"+ thisId).attr('hidden',false);
             $("#form_edit_tramo"+ thisId).attr('hidden',true);

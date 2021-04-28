@@ -65,7 +65,7 @@ class TramosController extends Controller
         return redirect()->route('tramos.index');
     }
 
-    public function update($id){
+    public function update($id,$location){
         
         $tramo = Trams::find($id);
 
@@ -104,8 +104,8 @@ class TramosController extends Controller
                 ]);
             }
         }
-        
-        return redirect()->route('tramos.index');
+        if($location == "tramos"){return redirect()->route('tramos.index');}
+        elseif($location == "user"){return redirect()->route('user.index');}
     }
 
     public function destroy($id){

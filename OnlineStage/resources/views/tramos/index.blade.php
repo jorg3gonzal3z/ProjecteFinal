@@ -165,7 +165,7 @@
                 </table><br>
                 
                 <!-- formulario para editar tramos -->
-                <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',['id' => $tramo->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',[ 'id' => $tramo->id,'location' => 'tramos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     {{ method_field('PUT') }}
                     <a  id="esconder_form_edit{{$tramo->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>

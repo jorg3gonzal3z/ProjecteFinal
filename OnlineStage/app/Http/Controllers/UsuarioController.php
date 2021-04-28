@@ -26,7 +26,7 @@ class UsuarioController extends Controller
         $fotos_coches=FotosCotxes::all();
         $fotos_tramos=FotosTrams::all();
         $superficies=Superficies::all();
-        $tramos=Trams::where('id_usuari', $auth_user->id)->get();
+        $tramos=Trams::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
         return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies']));
     }
 

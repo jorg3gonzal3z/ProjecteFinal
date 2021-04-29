@@ -12,7 +12,7 @@
         <h4>Datos de la Cuenta</h4><br>
         <!-- control de errores del formulario -->
         @if (count($errors) > 0)
-        <div class="p-6 bg-white border-b border-gray-200"> 
+        <div class="p-6 bg-white border-b border-gray-200">
             <div class="alert alert-danger">
                 <p>Corrige los siguientes errores:</p>
                 <br>

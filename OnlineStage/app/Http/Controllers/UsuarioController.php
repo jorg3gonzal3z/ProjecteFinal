@@ -96,7 +96,6 @@ class UsuarioController extends Controller
             ]);
         }
         
-
         return redirect()->route('user.index');
     }
 

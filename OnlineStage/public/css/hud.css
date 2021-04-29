@@ -1,6 +1,22 @@
 .sticky {
-    position: fixed;
-    top: 0;
-    width: 100%;
-    z-index: 10;
-  }
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 10;
+}
+
+/* boton de ir para arriba */
+body {
+  min-height: 1000px;
+}
+
+#back-to-top{
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  display:none;
+}
+#back-to-top img{
+  width: 70%; 
+  float: right;
+}

@@ -20,7 +20,7 @@ class UsuarioController extends Controller
 {
     public function index(){
         $auth_user=Auth::user();
-        $coches=Cotxes::all();
+        $coches=Cotxes::orderBy('id','DESC')->get();
         $categorias=Categories::all();
         $fotos=Fotos::all();
         $fotos_coches=FotosCotxes::all();
@@ -98,5 +98,62 @@ class UsuarioController extends Controller
         
 
         return redirect()->route('user.index');
+    }
+
+    public function destroy_car($id){
+        $coche=Cotxes::find($id);
+        $foto_coches = FotosCotxes::where('id_cotxes', $id)->get();
+        foreach ($foto_coches as $foto_coche){
+            $foto_coche->delete();
+            //eliminar tambien la foto de la tabla fotos
+            $fotos = Fotos::where('id', $foto_coche->id_fotos)->get();
+            foreach($fotos as $foto){
+                $foto->delete();
+            }
+        }
+        $coche->delete();
+        return redirect()->route('user.index');
+    }
+
+    public function update_car($id){
+        $coche=Cotxes::find($id);
+        $data = request()->validate([
+            'fotos.*' => 'mimes:jpeg,jpg,png,gif',
+            'modelo' => 'required',
+            'potencia' => 'required|numeric',
+            'peso' => 'required|numeric',
+            'año' => 'required|numeric',
+            'tren_motriz' => 'required',
+            'id_categoria' => 'required',
+        ]);
+        $coche->update([
+            'model' => $data['modelo'],
+            'potencia' => $data['potencia'],
+            'trenMotriu' => $data['tren_motriz'],
+            'pes' => $data['peso'],
+            'any' => $data['año'],
+            'id_categoria' => $data['id_categoria'],
+        ]);
+
+        $array_fotos = request('fotos');
+        
+        //si hi ha alguna imatge nova per afegir
+        if (gettype($array_fotos) == "array"){
+            foreach($array_fotos as $array_foto){
+                $foto=$array_foto->store('public');
+                $url=Storage::url($foto);
+                $url=Str::substr($url,1);
+                $array_foto=Fotos::create([
+                    'binari' => $url,
+                ]);
+                
+                $foto_tramo=FotosCotxes::create([
+                    'id_fotos' => $array_foto->id,
+                    'id_cotxes' => $coche->id,
+                ]);
+            }
+        }
+        return redirect()->route('user.index');
+
     }
 }

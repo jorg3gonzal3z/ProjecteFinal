@@ -23,8 +23,8 @@ class CreateCotxesTable extends Migration
             $table->bigInteger('id_categoria')->unsigned();
             $table->bigInteger('id_usuari')->unsigned();
             $table->timestamps();
-            $table->foreign('id_categoria')->references('id')->on('categories')->onUpdate('cascade');
-            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('id_categoria')->references('id')->on('categories')->onUpdate('restrict');
+            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('restrict');
         });
     }
 

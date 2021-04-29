@@ -310,7 +310,7 @@
                 <!-- editar tramo -->
                 <a id="edit_tramo{{$tramo->id}}" class="float-right pl-3 editButton" style="color:blue; cursor:pointer;" >Editar</a>
                 <!-- eliminar tramo -->
-                <form id="delete_tramo{{$tramo->id}}" class="float-right " style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id]) }}" method="POST">
+                <form id="delete_tramo{{$tramo->id}}" class="float-right " style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
                     @csrf
                     {{ method_field('DELETE') }}
                     <button>Eliminar</button>

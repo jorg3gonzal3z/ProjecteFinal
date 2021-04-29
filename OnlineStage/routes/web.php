@@ -35,7 +35,7 @@ Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');
 Route::put('/tramos/update/{id}/{location}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');
-Route::delete('/tramos/delete/{id}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');
+Route::delete('/tramos/delete/{id}/{location}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');
 /* RALLYS */
 /* EVENTOS */
 Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index');

@@ -110,7 +110,7 @@ class TramosController extends Controller
         elseif($location == "user"){return redirect()->route('user.index');}
     }
 
-    public function destroy($id){
+    public function destroy($id,$location){
         $tramo = Trams::find($id);
         $foto_tramos = FotosTrams::where('id_trams', $id)->get();
         foreach ($foto_tramos as $foto_tramo){
@@ -122,7 +122,9 @@ class TramosController extends Controller
             }
         }
         $tramo->delete();
-        return redirect()->route('tramos.index');
+        //depenent de des d'on es cridi al metode retornara una redireccio o una altra
+        if($location == "tramos"){return redirect()->route('tramos.index');}
+        elseif($location == "user"){return redirect()->route('user.index');}
     }
 
 }

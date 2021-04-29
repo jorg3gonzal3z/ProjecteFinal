@@ -71,4 +71,5 @@ $(document).ready(function(){
             $("#delete_coche"+ thisId).attr('hidden',false);
         });
     });
+
 });

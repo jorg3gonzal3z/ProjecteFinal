@@ -18,8 +18,8 @@ class CreateFotosCotxesTable extends Migration
             $table->bigInteger('id_fotos')->unsigned();
             $table->bigInteger('id_cotxes')->unsigned();
             $table->timestamps();
-            $table->foreign('id_fotos')->references('id')->on('fotos')->onUpdate('cascade');
-            $table->foreign('id_cotxes')->references('id')->on('cotxes')->onUpdate('cascade');
+            $table->foreign('id_fotos')->references('id')->on('fotos')->onUpdate('restrict');
+            $table->foreign('id_cotxes')->references('id')->on('cotxes')->onUpdate('restrict');
         });
     }
 

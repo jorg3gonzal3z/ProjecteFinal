@@ -28,6 +28,8 @@ Route::get('/home', function () {
 Route::get('/user', [UsuarioController::class, 'index'])->middleware(['auth'])->name('user.index');
 Route::post('/user/add_car/{id}', [UsuarioController::class, 'add_car'])->middleware(['auth'])->name('user.add_car');
 Route::put('/user/update_user/{id}', [UsuarioController::class, 'update'])->middleware(['auth'])->name('user.update_user');
+Route::delete('/user/delete_car/{id}', [UsuarioController::class, 'destroy_car'])->middleware(['auth'])->name('user.destroy_car');
+Route::put('/user/update_car/{id}', [UsuarioController::class, 'update_car'])->middleware(['auth'])->name('user.update_car');
 /* TRAMOS */
 Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica

@@ -90,13 +90,13 @@
                     @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
                         @if ($auth_user->rol == 'admin' || $auth_user->id == $evento->id_usuari)
                         <!-- eliminar evento -->
-                        <form id="delete_evento{{$evento->id}}" class="float-right " style="color:red;" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'eventos' ]) }}" method="POST">
+                        <form id="delete_evento{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'eventos' ]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
                             <button>X</button>
                         </form>
                         <!-- editar tramo -->
-                        <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton" style="color:blue; cursor:pointer;" >Editar</a><br>
+                        <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton btn btn-info" style="color:white; cursor:pointer;" >Editar</a><br>
                         @endif
 
                         <!-- formulario para editar eventos -->

@@ -38,6 +38,9 @@ Route::put('/tramos/update/{id}/{location}', [TramosController::class, 'update']
 Route::delete('/tramos/delete/{id}/{location}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');
 /* RALLYS */
 /* EVENTOS */
-Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index');
+Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index');//ruta publica
+Route::post('/eventos/store/{id}', [EventosController::class, 'store'])->middleware(['auth'])->name('eventos.store');
+Route::put('/eventos/update/{id}/{location}', [EventosController::class, 'update'])->middleware(['auth'])->name('eventos.update');
+Route::delete('/eventos/delete/{id}/{location}', [EventosController::class, 'destroy'])->middleware(['auth'])->name('eventos.destroy');
 
 require __DIR__.'/auth.php';

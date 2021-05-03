@@ -34,8 +34,6 @@ $(document).ready(function(){
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
 
-
-
     //boton para mostrar formulario editar tramo
     $(".editButton").click(function() {
         $(this).attr('hidden',true);
@@ -69,6 +67,24 @@ $(document).ready(function(){
             $("#car_form_edit"+ thisId).attr('hidden',true);
             $(this).attr('hidden',true);
             $("#delete_coche"+ thisId).attr('hidden',false);
+        });
+    });
+
+    //boton para mostrar formulario editar evento
+    $(".editButton").click(function() {
+        $(this).attr('hidden',true);
+        var thisId = $(this).attr('id');
+        thisId = thisId.substring(thisId.length - 1, thisId.length);
+        $("#esconder_form_edit" + thisId).attr('hidden',false);
+        $("#form_edit_evento"+ thisId).attr('hidden',false);
+        $("#delete_evento"+ thisId).attr('hidden',true);
+
+        //boton para esconder el formulario de editar evrnto
+        $("#esconder_form_edit"+ thisId).click(function() {
+            $("#edit_evento"+ thisId).attr('hidden',false);
+            $("#form_edit_evento"+ thisId).attr('hidden',true);
+            $(this).attr('hidden',true);
+            $("#delete_evento"+ thisId).attr('hidden',false);
         });
     });
 

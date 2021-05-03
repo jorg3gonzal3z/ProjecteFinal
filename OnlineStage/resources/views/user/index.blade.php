@@ -6,13 +6,15 @@
 @stop
 
 @section('content')
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/eventos.css') }}" />
+
     <!-- si el user esta logeado -->
     @if (Auth::user())
         <!-- si el user esta logueado se mostraran sus datos -->
         <h4>Datos de la Cuenta</h4><br>
         <!-- control de errores del formulario -->
         @if (count($errors) > 0)
-        <div class="p-6 bg-white border-b border-gray-200"> 
+        <div class="p-6 bg-white border-b border-gray-200">
             <div class="alert alert-danger">
                 <p>Corrige los siguientes errores:</p>
                 <br>
@@ -447,6 +449,114 @@
             </div>
         @endif
         </section>
+
+        @if ($auth_user->rol == 'organitzador')
+            <!-- eventos del usuario -->
+            <a data-toggle="collapse" href="#collapseEvents" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseEvents">
+                <br><h4>Todos mis Eventos</h4>
+            </a><br>
+            @if (count($eventos)>0)
+                <div class="collapse" id="collapseEvents">
+                    @foreach ($eventos as $evento)
+                        <div class="col-6 col-md-4 col-lg-3 ">
+
+                            <!-- eliminar evento -->
+                            <form id="delete_evento{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'user' ]) }}" method="POST">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                                <button>X</button>
+                            </form>
+                            <!-- editar tramo -->
+                            <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton btn btn-info" style="color:white; cursor:pointer;" >Editar</a><br>
+
+                            <!-- formulario para editar eventos -->
+                            <form id="form_edit_evento{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'user' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                                @csrf
+                                {{ method_field('PUT') }}
+                                <a  id="esconder_form_edit{{$evento->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Editar Evento</label>
+                                </div>
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Cartel</label>
+                                    <div class="col-sm-10">
+                                        <input type="file" name="logo">
+                                    </div>
+                                </div>
+
+                                <input name="old_logo" value="{{$evento->logo}}" hidden></input>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Nombre</label>
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="nom" value="{{$evento->nom}}">
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Tipo de Evento</label>
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="tipus" value="{{$evento->tipus}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Numero de plazas</label>
+                                    <div class="col-sm-10">
+                                    <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}">
+                                    </div>
+                                </div>
+
+                                <div class="form-group row">
+                                    <label class="col-sm-2 col-form-label">Localizacion</label>
+                                    <div class="col-sm-10">
+                                    <input type="text" class="form-control" name="localitzacio" value="{{$evento->localitzacio}}">
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-danger" >Submit</button>
+
+                            </form>
+
+                            <!-- fotografia del evento -->
+                            <div class="b-game-card">
+                                <div class="b-game-card__cover" style="background-image: url({{ $evento->logo }});"></div>
+                            </div>
+                            <!-- informacion sobre el tramo -->
+                            <table class="mt-3 table table-hover ">
+                                <tbody>
+                                    <tr>
+                                        <th>
+                                        {{ $evento->nom}}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                        {{ $evento->tipus}}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                        {{ $evento->numPlaces}}
+                                        </th>
+                                    </tr>
+                                    <tr>
+                                        <th>
+                                        {{ $evento->localitzacio}}
+                                        </th>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    @endforeach
+                </div>
+            @else
+                <!-- si el user no ha organizado ningun evento -->
+                <div class="alert alert-danger">
+                    <p>No has añadido ningun evento</p>
+                </div>
+            @endif
+        @endif
 
     @endif
 @stop

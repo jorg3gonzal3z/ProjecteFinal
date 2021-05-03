@@ -34,7 +34,7 @@
         <!-- formulario para añadir eventos -->
         <form id="form_add_event" action="{{ route('eventos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
             @csrf
-            <a  id="esconder_form" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+            <a  id="esconder_form" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Añadir Evento</label>
             </div>
@@ -89,21 +89,23 @@
 
                     @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
                         @if ($auth_user->rol == 'admin' || $auth_user->id == $evento->id_usuari)
+                        
+                        <!-- editar evento -->
+                        <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton btn" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                         <!-- eliminar evento -->
                         <form id="delete_evento{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'eventos' ]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <button>X</button>
-                        </form>
-                        <!-- editar tramo -->
-                        <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton btn btn-info" style="color:white; cursor:pointer;" >Editar</a><br>
+                            <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
+                        </form><br><br>
+                        
                         @endif
 
                         <!-- formulario para editar eventos -->
                         <form id="form_edit_evento{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'eventos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
                             @csrf
                             {{ method_field('PUT') }}
-                            <a  id="esconder_form_edit{{$evento->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                            <a  id="esconder_form_edit{{$evento->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Editar Evento</label>
                             </div>

@@ -66,7 +66,7 @@
         
         <!-- coches del usuario -->
         <a data-toggle="collapse" href="#collapseCars" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseCars">
-            <br><h4>Todos mis coches</h4>
+            <br><h4>Todos mis coches</h4><i class="float-right fas fa-chevron-circle-down"></i>
         </a>
         
         <div class="p-6 bg-white border-b border-gray-200">

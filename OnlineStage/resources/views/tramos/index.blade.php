@@ -238,8 +238,6 @@
                 </form>
             </div> 
         @endforeach
-        <i class="fa fa-spinner fa-spin fa-3x fa-fw"></i>
-<span class="sr-only">Loading...</span>
         <div id='map' style='width: 800px; height: 500px;'></div>
     </div>
 

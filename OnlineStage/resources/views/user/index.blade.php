@@ -32,7 +32,7 @@
             @csrf
             {{ method_field('PUT') }}
 
-            <a  id="esconder_form" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+            <a  id="esconder_form" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></i></a><br><br>
 
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Nombre</label>
@@ -66,9 +66,9 @@
         
         <!-- coches del usuario -->
         <a data-toggle="collapse" href="#collapseCars" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseCars">
-            <br><h4>Todos mis coches</h4><i class="float-right fas fa-chevron-circle-down"></i>
+            <br><div class="d-flex justify-content-between"><h4>Todos mis Coches</h4><i class="fa fa-caret-down fa-2x"></i></div>
         </a>
-        
+
         <div class="p-6 bg-white border-b border-gray-200">
             <!-- variable para controlar si el user ha añadido coches -->
             @php
@@ -85,12 +85,12 @@
                     @endphp
 
                     <!-- editar coche -->
-                    <a id="edit_coche{{$coche->id}}" class="float-right pl-3 editCarButton" style="color:blue; cursor:pointer;" >Editar</a>
+                    <a id="edit_coche{{$coche->id}}" class="btn float-right pl-3 editCarButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                     <!-- eliminar coche -->
-                    <form id="delete_coche{{$coche->id}}" class="float-right " style="color:red;" action="{{ route('user.destroy_car',['id' => $coche->id]) }}" method="POST">
+                    <form id="delete_coche{{$coche->id}}" class="float-right " action="{{ route('user.destroy_car',['id' => $coche->id]) }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
-                        <button>Eliminar</button>
+                        <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
                     </form>
 
                     <!-- informacion sobre el coche -->
@@ -137,7 +137,7 @@
                         @endforeach
                         </div><br>
 
-                        <a  id="esconder_form_edit_coche{{$coche->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                        <a  id="esconder_form_edit_coche{{$coche->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Imagenes</label>
                             <div class="col-sm-10">
@@ -238,7 +238,7 @@
           
             <form id="car_form" action="{{ route('user.add_car',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                 @csrf
-                <a  id="esconder_form_coche" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                <a  id="esconder_form_coche" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Imagenes</label>
                     <div class="col-sm-10">
@@ -303,19 +303,19 @@
 
         <!-- tramos compartidos por el usuario -->
         <a data-toggle="collapse" href="#collapseTramos" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseTramos">
-        <br><h4>Tramos compartidos</h4><br>
+        <br><div class="d-flex justify-content-between"><h4>Tramos Compartidos</h4><i class="fa fa-caret-down fa-2x"></i></div>
         </a>
         <section>
         @if (count($tramos)>0)
             <div class="collapse" id="collapseTramos">
                 @foreach ($tramos as $tramo)
                 <!-- editar tramo -->
-                <a id="edit_tramo{{$tramo->id}}" class="float-right pl-3 editButton" style="color:blue; cursor:pointer;" >Editar</a>
+                <a id="edit_tramo{{$tramo->id}}" class="btn float-right pl-3 editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                 <!-- eliminar tramo -->
-                <form id="delete_tramo{{$tramo->id}}" class="float-right " style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
+                <form id="delete_tramo{{$tramo->id}}" class="mb-3 float-right " action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
                     @csrf
                     {{ method_field('DELETE') }}
-                    <button>Eliminar</button>
+                    <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
                 </form>
                 <table class="table table-hover ">
 
@@ -371,7 +371,7 @@
                 <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',['id' => $tramo->id,'location' => 'user'] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     {{ method_field('PUT') }}
-                    <a  id="esconder_form_edit{{$tramo->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                    <a  id="esconder_form_edit{{$tramo->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Editar Tramo</label>
                     </div>
@@ -453,21 +453,21 @@
         @if ($auth_user->rol == 'organitzador')
             <!-- eventos del usuario -->
             <a data-toggle="collapse" href="#collapseEvents" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseEvents">
-                <br><h4>Todos mis Eventos</h4>
+                <br><div class="d-flex justify-content-between"><h4>Todos mis Eventos</h4><i class="fa fa-caret-down"></i></div>
             </a><br>
             @if (count($eventos)>0)
                 <div class="collapse" id="collapseEvents">
                     @foreach ($eventos as $evento)
                         <div class="col-6 col-md-4 col-lg-3 ">
 
+                            <!-- editar tramo -->
+                            <a id="edit_evento{{$evento->id}}" class="btn float-right pr-3 editButton btn" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                             <!-- eliminar evento -->
                             <form id="delete_evento{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'user' ]) }}" method="POST">
                                 @csrf
                                 {{ method_field('DELETE') }}
-                                <button>X</button>
-                            </form>
-                            <!-- editar tramo -->
-                            <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton btn btn-info" style="color:white; cursor:pointer;" >Editar</a><br>
+                                <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
+                            </form><br><br>
 
                             <!-- formulario para editar eventos -->
                             <form id="form_edit_evento{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'user' ] ) }}" method="POST" enctype="multipart/form-data" hidden>

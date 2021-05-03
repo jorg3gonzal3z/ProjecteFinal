@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Events;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage; 
+use Illuminate\Support\Str;
 
 class EventosController extends Controller
 {
@@ -14,5 +16,83 @@ class EventosController extends Controller
         $auth_user=Auth::user();
         $eventos=Events::orderBy('id','DESC')->paginate(10);
         return view("eventos/index",compact(['auth_user','users','eventos']));
-    } 
+    }
+
+    public function store($id){
+
+        $data = request()->validate([
+            'logo' => 'required|mimes:jpeg,jpg,png,gif',
+            'nom' => 'required',
+            'tipus' => 'required',
+            'numPlaces' => 'required',
+            'localitzacio' => 'required',
+        ]);
+
+        $foto = $data['logo'];
+        $logo=$foto->store('public');
+        $url=Storage::url($logo);
+        $url=Str::substr($url,1);
+
+        $evento = Events::create([
+            'logo' => $url,
+            'nom' => $data['nom'],
+            'tipus' => $data['tipus'],
+            'numPlaces' => $data['numPlaces'],
+            'localitzacio' => $data['localitzacio'],
+            'id_usuari' => $id,
+        ]);
+
+        return redirect()->route('eventos.index');
+    }
+
+    public function update($id,$location){
+
+        $evento = Events::find($id);
+
+        $data = request()->validate([
+            'old_logo' => 'required',
+            'logo' => 'nullable|mimes:jpeg,jpg,png,gif',
+            'nom' => 'required',
+            'tipus' => 'required',
+            'numPlaces' => 'required',
+            'localitzacio' => 'required',
+        ]);
+        
+        if(isset($data['logo'])){
+            $foto = $data['logo'];
+            $logo=$foto->store('public');
+            $url=Storage::url($logo);
+            $url=Str::substr($url,1);
+
+            $evento->update([
+                'logo' => $url,
+                'nom' => $data['nom'],
+                'tipus' => $data['tipus'],
+                'numPlaces' => $data['numPlaces'],
+                'localitzacio' => $data['localitzacio'],
+            ]);
+        }else{
+            $evento->update([
+                'nom' => $data['nom'],
+                'tipus' => $data['tipus'],
+                'numPlaces' => $data['numPlaces'],
+                'localitzacio' => $data['localitzacio'],
+            ]);
+        }
+        
+
+        //depenent de des d'on es cridi al metode retornara una redireccio o una altra
+        if($location == "eventos"){return redirect()->route('eventos.index');}
+        elseif($location == "user"){return redirect()->route('user.index');}
+    }
+
+    public function destroy($id,$location){
+
+        $evento = Events::find($id);
+        $evento->delete();
+
+        //depenent de des d'on es cridi al metode retornara una redireccio o una altra
+        if($location == "eventos"){return redirect()->route('eventos.index');}
+        elseif($location == "user"){return redirect()->route('user.index');}
+    }
 }

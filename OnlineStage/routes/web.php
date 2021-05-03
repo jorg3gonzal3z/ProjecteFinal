@@ -42,5 +42,6 @@ Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index
 Route::post('/eventos/store/{id}', [EventosController::class, 'store'])->middleware(['auth'])->name('eventos.store');
 Route::put('/eventos/update/{id}/{location}', [EventosController::class, 'update'])->middleware(['auth'])->name('eventos.update');
 Route::delete('/eventos/delete/{id}/{location}', [EventosController::class, 'destroy'])->middleware(['auth'])->name('eventos.destroy');
+Route::post('/eventos/signup/{id_user}/{id_event}', [EventosController::class, 'signup'])->middleware(['auth'])->name('evento.signup');
 
 require __DIR__.'/auth.php';

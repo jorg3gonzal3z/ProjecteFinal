@@ -304,7 +304,8 @@
         <!-- tramos compartidos por el usuario -->
         <a data-toggle="collapse" href="#collapseTramos" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseTramos">
         <br><div class="d-flex justify-content-between"><h4>Tramos Compartidos</h4><i class="fa fa-caret-down fa-2x"></i></div>
-        </a>
+        </a><br>
+
         <section>
         @if (count($tramos)>0)
             <div class="collapse" id="collapseTramos">

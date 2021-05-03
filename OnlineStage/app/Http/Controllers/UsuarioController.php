@@ -15,6 +15,7 @@ use App\Models\Superficies;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\User;
+use App\Models\Events;
 
 class UsuarioController extends Controller
 {
@@ -27,7 +28,8 @@ class UsuarioController extends Controller
         $fotos_tramos=FotosTrams::all();
         $superficies=Superficies::all();
         $tramos=Trams::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
-        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies']));
+        $eventos=Events::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
+        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos']));
     }
 
     public function add_car($id){

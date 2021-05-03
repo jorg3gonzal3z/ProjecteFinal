@@ -177,6 +177,7 @@
                                 {{ $evento->localitzacio}}
                                 </th>
                             </tr>
+                            <!-- usuario que ha organizado el evento -->
                             <tr>
                                 <th>
                                 @foreach ($users as $user)
@@ -188,7 +189,7 @@
                             </tr>
                         </tbody>
                     </table>
-                    <!-- usuario que ha organizado el evento -->
+                    
 
                 
                 <!-- si el user esta logueado podrá incribirse al evento siempre que queden plazas... -->

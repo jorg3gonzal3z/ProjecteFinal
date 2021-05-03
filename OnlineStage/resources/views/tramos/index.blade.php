@@ -1,6 +1,5 @@
 @extends('layouts.layout')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 @section('header')
     Tramos
 @stop
@@ -203,6 +202,8 @@
                         </div>
                     </div>
 
+
+
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Salida</label>
                         <div class="col-sm-10">
@@ -237,7 +238,9 @@
                 </form>
             </div> 
         @endforeach
+        <div id='map' style='width: 800px; height: 500px;'></div>
     </div>
 
 @stop
+
 <script src="{{ url('/js/tramos.js') }}"></script>

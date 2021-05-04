@@ -19,12 +19,28 @@ $(document).ready(function(){
         $("#form_edit_evento"+ thisId).attr('hidden',false);
         $("#delete_evento"+ thisId).attr('hidden',true);
 
-        //boton para esconder el formulario de editar evrnto
+        //boton para esconder el formulario de editar evento
         $("#esconder_form_edit"+ thisId).click(function() {
             $("#edit_evento"+ thisId).attr('hidden',false);
             $("#form_edit_evento"+ thisId).attr('hidden',true);
             $(this).attr('hidden',true);
             $("#delete_evento"+ thisId).attr('hidden',false);
+        });
+    });
+
+    //boton para mostrar listado de participantes
+    $(".Participantes").click(function(){
+        $(this).attr('hidden',true);
+        var thisId = $(this).attr('id');
+        thisId = thisId.substring(thisId.length - 1, thisId.length);
+        $("#lista"+ thisId).attr('hidden',false);
+        $("#participantes"+ thisId).attr('hidden',false);
+
+        //boton para esconder el listado de participantes
+        $("#participantes"+ thisId).click(function() {
+            $("#participantes"+ thisId).attr('hidden',true);
+            $("#lista"+ thisId).attr('hidden',true);
+            $("#listadoParticipantes"+ thisId).attr('hidden',false);
         });
     });
 });

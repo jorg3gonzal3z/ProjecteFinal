@@ -16,8 +16,14 @@ class EventosController extends Controller
         $users=User::all();
         $auth_user=Auth::user();
         $eventos=Events::orderBy('id','DESC')->paginate(10);
-        $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
-        return view("eventos/index",compact(['auth_user','users','eventos','inscripciones']));
+        $inscritos_eventos = InscritsEvents::all();
+        if($auth_user){
+            $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
+            return view("eventos/index",compact(['auth_user','users','eventos','inscripciones','inscritos_eventos']));
+        }else{
+            return view("eventos/index",compact(['auth_user','users','eventos','inscritos_eventos']));
+        }
+        
     }
 
     public function store($id){
@@ -114,6 +120,23 @@ class EventosController extends Controller
             ]);
         }else{
             //mensaje de que no hay plazas
+        }
+        return redirect()->route('eventos.index');
+    }
+
+    public function quit($id_user, $id_event){
+
+        $inscripciones = InscritsEvents::where('id_usuari', $id_user)->get();
+        $evento =  Events::find($id_event);
+        $numPlaces = $evento->numPlaces;
+
+        foreach ($inscripciones as $inscripcion){
+            if($inscripcion->id_events == $id_event){
+                $evento->update([
+                    'numPlaces' => $numPlaces +1,
+                ]);
+                $inscripcion->delete();
+            }
         }
         return redirect()->route('eventos.index');
     }

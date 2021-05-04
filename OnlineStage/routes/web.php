@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\TramosController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EventosController;
+use App\Http\Controllers\SobreNosotrosController;
 
 /*
 |--------------------------------------------------------------------------
@@ -44,5 +45,7 @@ Route::put('/eventos/update/{id}/{location}', [EventosController::class, 'update
 Route::delete('/eventos/delete/{id}/{location}', [EventosController::class, 'destroy'])->middleware(['auth'])->name('eventos.destroy');
 Route::post('/eventos/signup/{id_user}/{id_event}', [EventosController::class, 'signup'])->middleware(['auth'])->name('evento.signup');
 Route::post('/eventos/quit/{id_user}/{id_event}', [EventosController::class, 'quit'])->middleware(['auth'])->name('evento.quit');
+//* SOBRE NOSOTROS *//
+Route::get('/sobre_nosotros', [SobreNosotrosController::class, 'index'])->name('sobre_nosotros.index');//ruta publica
 
 require __DIR__.'/auth.php';

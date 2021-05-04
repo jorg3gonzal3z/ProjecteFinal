@@ -31,68 +31,70 @@
                 </div>
             </div>
             @endif
-            <div id='map' style='max-height: 420px; width: 100%'></div>
+            <div id="container_animacion" style="display:none;">
+                <div id='map' style='max-height: 420px; width: 100%' hidden></div>
 
-            <!-- formulario para añadir tramos -->
-            
-            <form id="form_add_tramo" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
-                @csrf
-                <a  id="esconder_form" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Añadir Tramo</label>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Imagenes</label>
-                    <div class="col-sm-10">
-                        <input type="file" name="fotos[]" multiple>
-                    </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Nombre</label>
-                    <div class="col-sm-10">
-                    <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
-                    </div>
-                </div>
+                <!-- formulario para añadir tramos -->
                 
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Distancia km</label>
-                    <div class="col-sm-10">
-                        <input readonly class="form-control" id="distancia" name="distancia" placeholder="25 Km">
+                <form id="form_add_tramo" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                    @csrf
+                    <a  id="esconder_form" style="cursor:pointer; " class="mt-3 float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Añadir Tramo</label>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Salida</label>
-                    <div class="col-sm-10">
-                    <input readonly type="text" class="form-control" id="sortida" name="sortida" placeholder="La Bisbal del Penedès ...">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Imagenes</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="fotos[]" multiple>
+                        </div>
                     </div>
-                </div>
 
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Final</label>
-                    <div class="col-sm-10">
-                    <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
+                        </div>
                     </div>
-                </div>
-
-                <div class="form-group row">
-                </div>
-
-                <div class="form-group row">
-                    <label class="col-sm-2 col-form-label">Superficie</label>
-                    <div class="col-sm-10">
-                        <select class="form-control" name="id_superficie" style="border-radius:10px">>
-                            @foreach ($superficies as $superficie)
-                                <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
-                            @endforeach
-                        </select>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Distancia km</label>
+                        <div class="col-sm-10">
+                            <input readonly class="form-control" id="distancia" name="distancia" placeholder="25 Km">
+                        </div>
                     </div>
-                </div>
 
-                <button class="btn btn-danger" >Submit</button>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Salida</label>
+                        <div class="col-sm-10">
+                        <input readonly type="text" class="form-control" id="sortida" name="sortida" placeholder="La Bisbal del Penedès ...">
+                        </div>
+                    </div>
 
-            </form>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Final</label>
+                        <div class="col-sm-10">
+                        <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Superficie</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                                @foreach ($superficies as $superficie)
+                                    <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-danger" >Submit</button>
+
+                </form>
+            </div>
         </div>
     @endif
     <div class="p-6 bg-white border-b border-gray-200"> 
@@ -103,12 +105,12 @@
                 @if (Auth::user())
                     @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
                         <!-- editar tramo -->
-                        <a id="edit_tramo{{$tramo->id}}" class="float-right pl-3 editButton" style="color:blue; cursor:pointer;" >Editar</a>
+                        <a id="edit_tramo{{$tramo->id}}" class="float-right pl-3 btn editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                         <!-- eliminar tramo -->
-                        <form id="delete_tramo{{$tramo->id}}" class="float-right " style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'tramos' ]) }}" method="POST">
+                        <form id="delete_tramo{{$tramo->id}}" class="float-right" style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'tramos' ]) }}" method="POST">
                             @csrf
                             {{ method_field('DELETE') }}
-                            <button>Eliminar</button>
+                            <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
                         </form>
                     @endif
                 @endif
@@ -173,81 +175,83 @@
                 </tbody>
                 </table><br>
                 
-                <!-- formulario para editar tramos -->
-                <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',[ 'id' => $tramo->id,'location' => 'tramos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
-                    @csrf
-                    {{ method_field('PUT') }}
-                    <a  id="esconder_form_edit{{$tramo->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Editar Tramo</label>
-                    </div>
-                    <div class="row">
-                    <!-- fotografia del tramo a editar -->
-                    @foreach ($fotos_tramos as $foto_tramo)
-                        @if ($foto_tramo->id_trams == $tramo->id)
-                            @foreach ($fotos as $foto)
-                                    @if($foto_tramo->id_fotos == $foto->id)
-                                        <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
-                                    @endif
-                            @endforeach
-                        @endif
-                    @endforeach
-                    </div><br>
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Imagenes</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="fotos[]" multiple>
+                <div id="container_edit{{$tramo->id}}" style="display:none;">
+                    <!-- formulario para editar tramos -->
+                    <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',[ 'id' => $tramo->id,'location' => 'tramos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                        @csrf
+                        {{ method_field('PUT') }}
+                        <a  id="esconder_form_edit{{$tramo->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Editar Tramo</label>
                         </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nombre</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
-                        </div>
-                    </div>
-                    
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Distancia km</label>
-                        <div class="col-sm-10">
-                        <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
-                        </div>
-                    </div>
-
-
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Salida</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" name="sortida" value="{{$tramo->sortida}}">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Final</label>
-                        <div class="col-sm-10">
-                        <input type="text" class="form-control" name="final" value="{{$tramo->final}}">
-                        </div>
-                    </div>
-
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Superficie</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="id_superficie" style="border-radius:10px">>
-                                @foreach ($superficies as $superficie)
-                                    @if ($tramo->id_superficie == $superficie->id)
-                                        <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>
-                                    @else
-                                        <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
-                                    @endif
+                        <div class="row">
+                        <!-- fotografia del tramo a editar -->
+                        @foreach ($fotos_tramos as $foto_tramo)
+                            @if ($foto_tramo->id_trams == $tramo->id)
+                                @foreach ($fotos as $foto)
+                                        @if($foto_tramo->id_fotos == $foto->id)
+                                            <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
+                                        @endif
                                 @endforeach
-                            </select>
+                            @endif
+                        @endforeach
+                        </div><br>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Imagenes</label>
+                            <div class="col-sm-10">
+                                <input type="file" name="fotos[]" multiple>
+                            </div>
                         </div>
-                    </div>
 
-                    <button class="btn btn-danger" >Update</button>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Nombre</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Distancia km</label>
+                            <div class="col-sm-10">
+                            <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
+                            </div>
+                        </div>
 
-                </form>
+
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Salida</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="sortida" value="{{$tramo->sortida}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Final</label>
+                            <div class="col-sm-10">
+                            <input type="text" class="form-control" name="final" value="{{$tramo->final}}">
+                            </div>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label">Superficie</label>
+                            <div class="col-sm-10">
+                                <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                                    @foreach ($superficies as $superficie)
+                                        @if ($tramo->id_superficie == $superficie->id)
+                                            <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                        @else
+                                            <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                        @endif
+                                    @endforeach
+                                </select>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-danger" >Update</button>
+
+                    </form>
+                </div>
             </div> 
         @endforeach
     </div>

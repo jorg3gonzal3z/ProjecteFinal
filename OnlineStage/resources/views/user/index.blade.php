@@ -454,7 +454,7 @@
         @if ($auth_user->rol == 'organitzador')
             <!-- eventos del usuario -->
             <a data-toggle="collapse" href="#collapseEvents" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseEvents">
-                <br><div class="d-flex justify-content-between"><h4>Todos mis Eventos</h4><i class="fa fa-caret-down"></i></div>
+                <br><div class="d-flex justify-content-between"><h4>Todos mis Eventos</h4><i class="fa fa-caret-down fa-2x"></i></div>
             </a><br>
             @if (count($eventos)>0)
                 <div class="collapse" id="collapseEvents">

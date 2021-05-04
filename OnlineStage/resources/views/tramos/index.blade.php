@@ -239,6 +239,7 @@
             </div> 
         @endforeach
         <div id='map' style='width: 800px; height: 500px;'></div>
+
         <div class="mt-2">
             SALIDA: <span readonly id="salidamapa"></span><br>
             FINAL: <span readonly id="finalmapa"></span>
@@ -251,3 +252,4 @@
 @stop
 
 <script src="{{ url('/js/tramos.js') }}"></script>
+<script src="{{ url('/js/mapbox.js') }}"></script>

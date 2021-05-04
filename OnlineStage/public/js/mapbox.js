@@ -7,7 +7,7 @@ $(document).ready(function(){
       container: 'map', // Container ID
       style: 'mapbox://styles/mapbox/outdoors-v11', // Map style to use
       center: [1.69361,41.22972], // Starting position [lng, lat]
-      zoom: 12, // Starting zoom level
+      zoom: 5, // Starting zoom level
     });
 
     // var geocoder = new MapboxGeocoder({ // Initialize the geocoder
@@ -68,19 +68,27 @@ $(document).ready(function(){
     });
 
     map.addControl(directions,'top-left');
+
     map.on('load',  function() {
         directions.setOrigin([1.63104,41.26467]); // can be address in form setOrigin("12, Elm Street, NY")
         directions.setDestination([1.65855,41.25084]); // can be address
-
         var salida = directions.getOrigin().geometry.coordinates.join();
         var llegada = directions.getDestination().geometry.coordinates.join();
-        console.log(directions);
-
-        $('#salidamapa').html(salida);
-        $('#finalmapa').html(llegada);
-    
     })
+    $("#add_tramo").click(function() {
+        map.resize();
+    });
 
+    directions.on("route", e => {
+        let routes = e.route
+        $("#distancia").val((routes.map(r => r.distance) / 1000).toFixed(2));
+
+        salida = directions.getOrigin().geometry.coordinates.join();
+        llegada = directions.getDestination().geometry.coordinates.join();
+        console.log(llegada);
+        $('#sortida').val(salida);
+        $('#final').val(llegada);
+    })
 
 });
     

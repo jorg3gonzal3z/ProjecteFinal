@@ -61,6 +61,7 @@ $(document).ready(function(){
         controls:{
             inputs: true,
             profileSwitcher: false,
+            instructions: false,
         },
         language: "es",
         placeholderOrigin: "De donde sales?",
@@ -72,8 +73,7 @@ $(document).ready(function(){
     map.on('load',  function() {
         directions.setOrigin([1.63104,41.26467]); // can be address in form setOrigin("12, Elm Street, NY")
         directions.setDestination([1.65855,41.25084]); // can be address
-        var salida = directions.getOrigin().geometry.coordinates.join();
-        var llegada = directions.getDestination().geometry.coordinates.join();
+
     })
     $("#add_tramo").click(function() {
         map.resize();
@@ -83,8 +83,8 @@ $(document).ready(function(){
         let routes = e.route
         $("#distancia").val((routes.map(r => r.distance) / 1000).toFixed(2));
 
-        salida = directions.getOrigin().geometry.coordinates.join();
-        llegada = directions.getDestination().geometry.coordinates.join();
+        salida = directions.getOrigin().geometry.coordinates.reverse().join();
+        llegada = directions.getDestination().geometry.coordinates.reverse().join();
         console.log(llegada);
         $('#sortida').val(salida);
         $('#final').val(llegada);

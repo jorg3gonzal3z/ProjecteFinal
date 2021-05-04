@@ -1,5 +1,11 @@
 @extends('layouts.layout')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.css' type='text/css' />
+<link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
+<link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
+<link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
+<link rel="stylesheet" type="text/css" href="{{ url('/css/mapbox.css') }}" /> 
+
 @section('header')
     Tramos
 @stop
@@ -25,7 +31,10 @@
                 </div>
             </div>
             @endif
+            <div id='map' style='max-height: 420px; width: 100%'></div>
+
             <!-- formulario para añadir tramos -->
+            
             <form id="form_add_tramo" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                 @csrf
                 <a  id="esconder_form" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
@@ -49,22 +58,25 @@
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Distancia km</label>
                     <div class="col-sm-10">
-                    <input type="number" class="form-control" name="distancia" placeholder="25 ...">
+                        <input readonly class="form-control" id="distancia" name="distancia" placeholder="25 Km">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Salida</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" name="sortida" placeholder="La Bisbal del Penedès ...">
+                    <input readonly type="text" class="form-control" id="sortida" name="sortida" placeholder="La Bisbal del Penedès ...">
                     </div>
                 </div>
 
                 <div class="form-group row">
                     <label class="col-sm-2 col-form-label">Final</label>
                     <div class="col-sm-10">
-                    <input type="text" class="form-control" name="final" placeholder="El Vendrell ...">
+                    <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
                     </div>
+                </div>
+
+                <div class="form-group row">
                 </div>
 
                 <div class="form-group row">
@@ -238,18 +250,13 @@
                 </form>
             </div> 
         @endforeach
-        <div id='map' style='width: 800px; height: 500px;'></div>
-
-        <div class="mt-2">
-            SALIDA: <span readonly id="salidamapa"></span><br>
-            FINAL: <span readonly id="finalmapa"></span>
-            <pre id="coordinates" class="coordinates"></pre>
-
-        </div>
     </div>
 
 
 @stop
-
+<script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v4.7.0/mapbox-gl-geocoder.min.js'></script>
+<script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.js'></script>
+<script src="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.js"></script>
 <script src="{{ url('/js/tramos.js') }}"></script>
 <script src="{{ url('/js/mapbox.js') }}"></script>

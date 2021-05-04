@@ -21,6 +21,7 @@ $(document).ready(function(){
         $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
         thisId = thisId.substring(thisId.length - 1, thisId.length);
+        $('#tramo'+ thisId).attr('hidden',true);
         $('#container_edit'+ thisId).fadeIn(1000);
         $("#esconder_form_edit" + thisId).attr('hidden',false);
         $("#form_edit_tramo"+ thisId).attr('hidden',false);
@@ -33,6 +34,7 @@ $(document).ready(function(){
                 $("#edit_tramo"+ thisId).attr('hidden',false);
                 $("#form_edit_tramo"+ thisId).attr('hidden',true);
                 $("#delete_tramo"+ thisId).attr('hidden',false);
+                $('#tramo'+ thisId).attr('hidden',false);
             });
         });
     });

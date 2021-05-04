@@ -116,7 +116,7 @@
                 @endif
 
 
-                <table class="table table-hover ">
+                <table id="tramo{{$tramo->id}}" class="table table-hover ">
                 <tbody>
                     <tr>
                         <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">

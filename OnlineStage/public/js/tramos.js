@@ -30,7 +30,7 @@ $(document).ready(function(){
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
 
-
+//tema mapa y tal
     mapboxgl.accessToken = 'pk.eyJ1IjoiamxlY2h1Z2F0IiwiYSI6ImNrbzhwcG52cjBta2cycG11dHA5NHJhNTAifQ.fi_PSZy_IVAgt6Wu3BwKng';
     
     var map = new mapboxgl.Map({
@@ -50,36 +50,38 @@ $(document).ready(function(){
           longitude: 2.029174,
           latitude: 42.406967
         } // Coordina   tes of UC Berkeley
-      });
-      
-      map.on('load', function() {
-        map.addSource('single-point', {
-          type: 'geojson',
-          data: {
-            type: 'FeatureCollection',
-            features: []
-          }
-        });
-      
-        map.addLayer({
-          id: 'point',
-          source: 'single-point',
-          type: 'circle',
-          paint: {
-            'circle-radius': 10,
-            'circle-color': '#448ee4'
-          }
-        });
-      
-        // Listen for the `result` event from the Geocoder
-        // `result` event is triggered when a user makes a selection
-        //  Add a marker at the result's coordinates
-        geocoder.on('result', function(e) {
-          map.getSource('single-point').setData(e.result.geometry);
-        });
-      });
-      
+      });      
       // Add the geocoder to the map
       map.addControl(geocoder);
-    
+      
+      var marker = new mapboxgl.Marker({
+        draggable: true
+        })
+        .setLngLat([1.69361,41.22972])
+        .addTo(map);
+         
+        function onDragEnd() {
+        var lngLat = marker.getLngLat();
+        coordinates.style.display = 'block';
+        coordinates.innerHTML = 'Longitude: ' + lngLat.lng + '<br />Latitude: ' + lngLat.lat;
+        salidamapa.innerHTML = lngLat.lng + "," + lngLat.lat;
+        }
+
+        marker.on('dragend', onDragEnd);
+
+        var marker2 = new mapboxgl.Marker({
+            draggable: true
+            })
+            .setLngLat([1.69361,41.22972])
+            .addTo(map);
+             
+            function onDragEnd2() {
+            var lngLat2 = marker2.getLngLat();
+            coordinates.style.display = 'block';
+            coordinates.innerHTML ='Longitude: ' + lngLat2.lng + '<br />Latitude: ' + lngLat2.lat;
+            finalmapa.innerHTML = lngLat2.lng + "," + lngLat2.lat;
+
+            }
+             
+            marker2.on('dragend', onDragEnd2);
 });

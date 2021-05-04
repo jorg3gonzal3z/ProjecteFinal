@@ -239,7 +239,14 @@
             </div> 
         @endforeach
         <div id='map' style='width: 800px; height: 500px;'></div>
+        <div class="mt-2">
+            SALIDA: <span readonly id="salidamapa"></span><br>
+            FINAL: <span readonly id="finalmapa"></span>
+            <pre id="coordinates" class="coordinates"></pre>
+
+        </div>
     </div>
+
 
 @stop
 

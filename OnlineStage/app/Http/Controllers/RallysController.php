@@ -120,4 +120,21 @@ class RallysController extends Controller
         if($location == "rallys"){return redirect()->route('rallys.index');}
         elseif($location == "user"){return redirect()->route('user.index');}
     }
+
+    public function quit($id_user, $id_rally){
+
+        $inscripciones = InscritsRallys::where('id_usuari', $id_user)->get();
+        $rally =  Rallys::find($id_rally);
+        $numPlaces = $rally->numPlaces;
+
+        foreach ($inscripciones as $inscripcion){
+            if($inscripcion->id_rallys == $id_rally){
+                $rally->update([
+                    'numPlaces' => $numPlaces +1,
+                ]);
+                $inscripcion->delete();
+            }
+        }
+        return redirect()->route('rallys.index');
+    }
 }

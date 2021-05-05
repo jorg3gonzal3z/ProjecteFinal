@@ -249,9 +249,30 @@
             </div>
         </div>
 
-
+        <!-- si el user esta logueado podrá incribirse al rally siempre que queden plazas... -->
         @if (Auth::user())
-            <button class="btn btn-danger"><i class=""></i> Inscribirme</button>
+
+            @php
+                $inscrit = false;
+            @endphp
+
+            @foreach($inscripciones as $inscripcion)
+                @if($inscripcion->id_rallys == $rally->id &&  $inscripcion->id_usuari == $auth_user->id)
+                    @php
+                        $inscrit = true;
+                    @endphp 
+                @endif
+            @endforeach
+
+            <!-- falta inscribirse bro -->
+            @if ($inscrit == false)
+                <button class="btn btn-danger"><i class=""></i> Inscribirme</button>
+            @elseif($inscrit == true)
+                <form action="{{ route('rally.quit',['id_user' => $auth_user->id,'id_rally' => $rally->id ] ) }}" method="POST" >
+                    @csrf
+                    <button class="btn btn-danger">DesInscribirme</button>
+                </form>
+            @endif
         @endif
 
     @endforeach

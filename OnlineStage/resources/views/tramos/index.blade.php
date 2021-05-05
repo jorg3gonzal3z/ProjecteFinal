@@ -17,7 +17,7 @@
             <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
         <div class="p-6 bg-white border-b border-gray-200" >
-            <!-- control de errores del formulario -->
+            <!-- control de errores de los formulario -->
             @if (count($errors) > 0)
             <div class="p-6 bg-white border-b border-gray-200"> 
                 <div class="alert alert-danger">

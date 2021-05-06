@@ -4,7 +4,6 @@
     <!-- Primary Navigation Menu -->
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
-
             <div class="flex-shrink-0 flex items-center">
                 <a href="{{ route('dashboard') }}">
                     <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> -->
@@ -18,7 +17,7 @@
                         </x-nav-link>
                     </div>
                     <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                        <x-nav-link :href="route('rallys.index')" :active="request()->routeIs('dashboard')">
                             {{ __('RALLYS') }}
                         </x-nav-link>
                     </div>
@@ -110,7 +109,7 @@
             </x-responsive-nav-link>
         </div>
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+            <x-responsive-nav-link :href="route('rallys.index')" :active="request()->routeIs('rallys.index')">
                 {{ __('RALLYS') }}
             </x-responsive-nav-link>
         </div>

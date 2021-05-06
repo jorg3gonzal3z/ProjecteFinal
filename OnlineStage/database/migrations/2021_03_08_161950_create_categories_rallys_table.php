@@ -18,8 +18,8 @@ class CreateCategoriesRallysTable extends Migration
             $table->bigInteger('id_categories')->unsigned();
             $table->bigInteger('id_rallys')->unsigned();
             $table->timestamps();
-            $table->foreign('id_categories')->references('id')->on('categories')->onUpdate('restrict');
-            $table->foreign('id_rallys')->references('id')->on('rallys')->onUpdate('restrict');
+            $table->foreign('id_categories')->references('id')->on('categories')->onUpdate('cascade');
+            $table->foreign('id_rallys')->references('id')->on('rallys')->onUpdate('cascade');
         });
     }
 

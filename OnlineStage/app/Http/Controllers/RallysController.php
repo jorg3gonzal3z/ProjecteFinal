@@ -207,4 +207,10 @@ class RallysController extends Controller
         }
         return redirect()->route('rallys.index');
     }
+
+    public function signup($id_user,$id_rally){
+        $rally=Rallys::find($id_rally);
+        $users=User::find($id_user);
+        return view("rallys/signup",compact(['rally','users']));
+    }
 }

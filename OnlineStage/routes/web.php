@@ -44,6 +44,7 @@ Route::post('/rallys/store/{id}', [RallysController::class, 'store'])->middlewar
 Route::delete('/rallys/delete/{id}/{location}', [RallysController::class, 'destroy'])->middleware(['auth'])->name('rallys.destroy');
 Route::post('/rallys/quit/{id_user}/{id_rally}', [RallysController::class, 'quit'])->middleware(['auth'])->name('rally.quit');
 Route::put('/rallys/update/{id}/{location}', [RallysController::class, 'update'])->middleware(['auth'])->name('rally.update');
+Route::get('/rallys/signup/{id_user}/{id_rally}', [RallysController::class, 'signup'])->middleware(['auth'])->name('rally.signup');
 /* EVENTOS */
 Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index');//ruta publica
 Route::post('/eventos/store/{id}', [EventosController::class, 'store'])->middleware(['auth'])->name('eventos.store');

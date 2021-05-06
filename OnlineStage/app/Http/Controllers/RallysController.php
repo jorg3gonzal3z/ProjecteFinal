@@ -14,6 +14,7 @@ use App\Models\CategoriesRallys;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\InscritsRallys;
+use App\Models\Cotxes;
 
 class RallysController extends Controller
 {
@@ -211,6 +212,7 @@ class RallysController extends Controller
     public function signup($id_user,$id_rally){
         $rally=Rallys::find($id_rally);
         $users=User::find($id_user);
-        return view("rallys/signup",compact(['rally','users']));
+        $coches=Cotxes::where('id_usuari', $id_user)->orderBy('id','DESC')->get();
+        return view("rallys/signup",compact(['rally','users','coches']));
     }
 }

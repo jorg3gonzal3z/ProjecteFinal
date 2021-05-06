@@ -16,6 +16,7 @@
         <div class="p-6 bg-white border-b border-gray-200">    
             <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
+
         <div class="borde border-gray-200" >
             <!-- control de errores del formulario -->
             @if (count($errors) > 0)
@@ -112,9 +113,9 @@
             @if (Auth::user())
                 @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
                     <!-- editar tramo -->
-                    <a id="edit_tramo{{$tramo->id}}" class="float-right pl-3 btn editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                    <a id="edit_tramo:{{$tramo->id}}" class="float-right pl-3 btn editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                     <!-- eliminar tramo -->
-                    <form id="delete_tramo{{$tramo->id}}" class="float-right" style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'tramos' ]) }}" method="POST">
+                    <form id="delete_tramo:{{$tramo->id}}" class="float-right" style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'tramos' ]) }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
                         <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
@@ -122,8 +123,7 @@
                 @endif
             @endif
 
-
-            <table id="tramo{{$tramo->id}}" class="text-danger table table-hover ">
+            <table id="tramo:{{$tramo->id}}" class="table table-hover ">
             <tbody>
                 <tr>
                     <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">
@@ -166,9 +166,7 @@
                 @endforeach
                 </tr>
                 <tr>
-                    <th rowspan="2" colspan="1">
-                        {{ $tramo->adressa }}
-                    </th>
+                    <th rowspan="2" colspan="1">{{ $tramo->sortida}}-{{ $tramo->final}}</th>
                 </tr>
                 <tr>
                     <th>{{ $tramo->distancia}}km</th>
@@ -183,13 +181,13 @@
                 </tr>
             </tbody>
             </table><br>
-            
-            <div id="container_edit{{$tramo->id}}" style="display:none;">
+                
+            <div id="container_edit:{{$tramo->id}}" style="display:none;">
                 <!-- formulario para editar tramos -->
-                <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',[ 'id' => $tramo->id,'location' => 'tramos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                <form id="form_edit_tramo:{{$tramo->id}}" action="{{ route('tramos.update',[ 'id' => $tramo->id,'location' => 'tramos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     {{ method_field('PUT') }}
-                    <a  id="esconder_form_edit{{$tramo->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a>
+                    <a  id="esconder_form_edit:{{$tramo->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Editar Tramo</label>
                     </div>

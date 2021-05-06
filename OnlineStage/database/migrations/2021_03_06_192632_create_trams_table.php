@@ -19,6 +19,7 @@ class CreateTramsTable extends Migration
             $table->integer('distancia');
             $table->string('sortida');
             $table->string('final');
+            $table->string('adressa');
             $table->bigInteger('id_superficie')->unsigned();
             $table->bigInteger('id_usuari')->unsigned();
             $table->timestamps();

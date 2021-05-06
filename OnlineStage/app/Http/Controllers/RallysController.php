@@ -93,6 +93,71 @@ class RallysController extends Controller
         return redirect()->route('rallys.index');
     }
 
+    public function update($id,$location){
+
+        $rally=Rallys::find($id);
+
+        $data = request()->validate([
+            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'nom' => 'required',
+            'distancia' => 'required',
+            'numTC' => 'required',
+            'numAssistencies' => 'required',
+            'localitzacio' => 'required',
+            'numPlaces' => 'required',
+            'id_superficie' => 'required',
+            'categorias' => 'required',
+            'categorias.*' => 'required',
+        ]);
+
+        $rally->update([
+            'nom' => $data['nom'],
+            'distancia' => $data['distancia'],
+            'numTC' => $data['numTC'],
+            'numAssistencies' => $data['numAssistencies'],
+            'localitzacio' => $data['localitzacio'],
+            'numPlaces' => $data['numPlaces'],
+            'id_superficie' => $data['id_superficie'],
+        ]);
+
+        $categorias_rally = CategoriesRallys::where('id_rallys', $id)->get();
+        foreach ($categorias_rally as $categoria_rally){
+            $categoria_rally->delete();
+        }
+
+        $array_categorias = $data['categorias'];
+        foreach($array_categorias as $array_categoria){
+            
+            $categoria_rally=CategoriesRallys::create([
+                'id_categories' => $array_categoria,
+                'id_rallys' => $rally->id,
+            ]);
+
+        };
+
+        $array_fotos = request('fotos');
+        //si hi ha alguna imatge nova per afegir
+        if (gettype($array_fotos) == "array"){
+            foreach($array_fotos as $array_foto){
+                $foto=$array_foto->store('public');
+                $url=Storage::url($foto);
+                $url=Str::substr($url,1);
+                $array_foto=Fotos::create([
+                    'binari' => $url,
+                ]);
+                
+                $foto_tramo=FotosRallys::create([
+                    'id_fotos' => $array_foto->id,
+                    'id_rallys' => $rally->id,
+                ]);
+            }
+        }
+
+        //depenent de des d'on es cridi al metode retornara una redireccio o una altra
+        if($location == "rallys"){return redirect()->route('rallys.index');}
+        elseif($location == "user"){return redirect()->route('user.index');}
+    }
+
     public function destroy($id,$location){
 
         $rally=Rallys::find($id);

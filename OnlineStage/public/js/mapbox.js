@@ -102,7 +102,6 @@ $(document).ready(function(){
         $('#final').val(llegada.join());
 
         
-        console.log("enteoria esto primero");
 
         
         respostaSortida = $.ajax(
@@ -110,8 +109,6 @@ $(document).ready(function(){
             type:'GET',
             url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+salida[1]+","+salida[0]+".json?types=address&access_token=pk.eyJ1IjoiamxlY2h1Z2F0IiwiYSI6ImNrbzhwcG52cjBta2cycG11dHA5NHJhNTAifQ.fi_PSZy_IVAgt6Wu3BwKng",
             success: function(data){
-                console.log("enteoria esto segundo");
-                console.log(data.features[0].text);
                 respostaSortida = data.features[0].text;
             }
         }).then(function(){
@@ -120,17 +117,13 @@ $(document).ready(function(){
                 type:'GET',
                 url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+llegada[1]+","+llegada[0]+".json?types=address&access_token=pk.eyJ1IjoiamxlY2h1Z2F0IiwiYSI6ImNrbzhwcG52cjBta2cycG11dHA5NHJhNTAifQ.fi_PSZy_IVAgt6Wu3BwKng",
                 success: function(data){
-                    console.log("enteoria esto tercero");
-                    console.log(data.features[0].text);
                     respostaFinal = data.features[0].text;
                 }
             }).then(function(){
                 $("#adressa").val(respostaSortida+"&&"+respostaFinal);
-                console.log("enteoria esto cuarto");
 
             })
         });
-        
-
     });
+
 });

@@ -16,6 +16,10 @@
                 @yield('content')
             </div>
     </div>
+    
+    <footer>This will always appear at the bottom of the page, but <strong>not fixed</strong>.</footer>
+
+
     <button style="z-index: 10;" id="back-to-top" type="button">
         <img class="img-fluid d-none d-sm-block" src="{{ url('/storage/up-arrow.png')}}">
     </button>

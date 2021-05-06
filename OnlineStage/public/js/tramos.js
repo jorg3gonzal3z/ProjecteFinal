@@ -42,7 +42,7 @@ $(document).ready(function(){
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
 
-    
+    console.log($('.mostraAdressaTrams').text().replace(/([\-\>])+/g, ''));
 });
 
 

@@ -12,7 +12,6 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-        <link rel="stylesheet" href="{{ asset('css/hud.css') }}">
 
 
         <!-- Scripts -->
@@ -34,7 +33,6 @@
                 {{ $slot }}
             </main>
 
-            <footer>This will always appear at the bottom of the page, but <strong>not fixed</strong>.</footer>
 
         </div>
     </body>

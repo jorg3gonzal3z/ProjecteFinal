@@ -5,7 +5,6 @@ use App\Http\Controllers\TramosController;
 use App\Http\Controllers\UsuarioController;
 use App\Http\Controllers\EventosController;
 use App\Http\Controllers\SobreNosotrosController;
-use App\Http\Controllers\RallysController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,11 +38,6 @@ Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middlewar
 Route::put('/tramos/update/{id}/{location}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');
 Route::delete('/tramos/delete/{id}/{location}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');
 /* RALLYS */
-Route::get('/rallys', [RallysController::class, 'index'])->name('rallys.index');//ruta publica
-Route::post('/rallys/store/{id}', [RallysController::class, 'store'])->middleware(['auth'])->name('rallys.store');
-Route::delete('/rallys/delete/{id}/{location}', [RallysController::class, 'destroy'])->middleware(['auth'])->name('rallys.destroy');
-Route::post('/rallys/quit/{id_user}/{id_rally}', [RallysController::class, 'quit'])->middleware(['auth'])->name('rally.quit');
-Route::put('/rallys/update/{id}/{location}', [RallysController::class, 'update'])->middleware(['auth'])->name('rally.update');
 /* EVENTOS */
 Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index');//ruta publica
 Route::post('/eventos/store/{id}', [EventosController::class, 'store'])->middleware(['auth'])->name('eventos.store');

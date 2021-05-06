@@ -14,7 +14,7 @@ class FotosRallysSeeder extends Seeder
     public function run()
     {
         $fotos =[
-            [1,1],
+            [4,1],
         ];
         foreach($fotos as $foto){
             \App\Models\FotosRallys::create([

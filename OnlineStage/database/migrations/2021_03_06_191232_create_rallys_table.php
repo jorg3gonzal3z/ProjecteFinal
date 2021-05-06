@@ -24,8 +24,8 @@ class CreateRallysTable extends Migration
             $table->bigInteger('id_superficie')->unsigned();
             $table->bigInteger('id_usuari')->unsigned();
             $table->timestamps();
-            $table->foreign('id_superficie')->references('id')->on('superficies')->onUpdate('cascade');
-            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('id_superficie')->references('id')->on('superficies')->onUpdate('restrict');
+            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('restrict');
         });
     }
 

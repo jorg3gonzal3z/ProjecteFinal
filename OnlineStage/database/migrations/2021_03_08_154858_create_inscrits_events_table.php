@@ -18,8 +18,8 @@ class CreateInscritsEventsTable extends Migration
             $table->bigInteger('id_events')->unsigned();
             $table->bigInteger('id_usuari')->unsigned();
             $table->timestamps();
-            $table->foreign('id_events')->references('id')->on('events')->onUpdate('cascade');
-            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('id_events')->references('id')->on('events')->onUpdate('restrict');
+            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('restrict');
         });
     }
 

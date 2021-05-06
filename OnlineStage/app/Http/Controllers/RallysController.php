@@ -179,6 +179,11 @@ class RallysController extends Controller
             $categoria_rally->delete();
         }
 
+        $inscripciones = InscritsRallys::where('id_rallys', $id)->get();
+        foreach ($inscripciones as $inscripcion){
+            $inscripcion->delete();
+        }
+        
         $rally->delete();
 
         //depenent de des d'on es cridi al metode retornara una redireccio o una altra

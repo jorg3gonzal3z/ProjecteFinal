@@ -22,7 +22,7 @@ class CreateEventsTable extends Migration
             $table->string('localitzacio');
             $table->bigInteger('id_usuari')->unsigned();
             $table->timestamps();
-            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('cascade');
+            $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('restrict');
         });
     }
 

@@ -97,6 +97,12 @@ class EventosController extends Controller
     public function destroy($id,$location){
 
         $evento = Events::find($id);
+
+        $inscripciones = InscritsEvents::where('id_events', $id)->get();
+        foreach ($inscripciones as $inscripcion){
+            $inscripcion->delete();
+        }
+
         $evento->delete();
 
         //depenent de des d'on es cridi al metode retornara una redireccio o una altra

@@ -18,8 +18,8 @@ class CreateFotosRallysTable extends Migration
             $table->bigInteger('id_fotos')->unsigned();
             $table->bigInteger('id_rallys')->unsigned();
             $table->timestamps();
-            $table->foreign('id_fotos')->references('id')->on('fotos')->onUpdate('cascade');
-            $table->foreign('id_rallys')->references('id')->on('rallys')->onUpdate('cascade');
+            $table->foreign('id_fotos')->references('id')->on('fotos')->onUpdate('restrict');
+            $table->foreign('id_rallys')->references('id')->on('rallys')->onUpdate('restrict');
         });
     }
 

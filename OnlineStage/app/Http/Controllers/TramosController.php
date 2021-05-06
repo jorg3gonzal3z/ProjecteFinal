@@ -33,6 +33,7 @@ class TramosController extends Controller
             'distancia' => 'required',
             'sortida' => 'required',
             'final' => 'required',
+            'adressa' => 'required',
             'id_superficie' => 'required',
         ]);
         
@@ -41,6 +42,7 @@ class TramosController extends Controller
             'distancia' => $data['distancia'],
             'sortida' => $data['sortida'],
             'final' => $data['final'],
+            'adressa' => $data['adressa'],
             'id_superficie' => $data['id_superficie'],
             'id_usuari' => $id,
         ]);
@@ -75,6 +77,7 @@ class TramosController extends Controller
             'distancia' => 'required',
             'sortida' => 'required',
             'final' => 'required',
+            'adressa' => 'required',
             'id_superficie' => 'required',
         ]);
 
@@ -83,6 +86,7 @@ class TramosController extends Controller
             'distancia' => $data['distancia'],
             'sortida' => $data['sortida'],
             'final' => $data['final'],
+            'adressa' => 'required',
             'id_superficie' => $data['id_superficie']
         ]);
         

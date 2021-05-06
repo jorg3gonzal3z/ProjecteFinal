@@ -11,11 +11,9 @@
         </h2>
     </x-slot>
 
-    <div >
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class=" mt-9 bg-white border-b border-gray-200">
-                    @yield('content')
-                </div>
+    <div>
+            <div class="px-5 pt-10 bg-dark overflow-hidden shadow-sm sm:lg">
+                @yield('content')
             </div>
     </div>
     <button style="z-index: 10;" id="back-to-top" type="button">

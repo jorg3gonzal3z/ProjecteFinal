@@ -1,3 +1,6 @@
+var thisSortida;
+var thisFinal;
+
 $(document).ready(function(){
 
     //tema mapa y tal
@@ -9,6 +12,7 @@ $(document).ready(function(){
       center: [1.69361,41.22972], // Starting position [lng, lat]
       zoom: 5, // Starting zoom level
     });
+
 
     // var geocoder = new MapboxGeocoder({ // Initialize the geocoder
     //     accessToken: mapboxgl.accessToken, // Set the access token
@@ -83,12 +87,50 @@ $(document).ready(function(){
         let routes = e.route
         $("#distancia").val((routes.map(r => r.distance) / 1000).toFixed(2));
 
-        salida = directions.getOrigin().geometry.coordinates.reverse().join();
-        llegada = directions.getDestination().geometry.coordinates.reverse().join();
-        console.log(llegada);
-        $('#sortida').val(salida);
-        $('#final').val(llegada);
-    })
+        var salida = directions.getOrigin().geometry.coordinates.reverse();
+        var llegada = directions.getDestination().geometry.coordinates.reverse();
 
+        salida = $.map(salida, function(n){
+            return(n.toFixed(10));
+        });
+
+        llegada = $.map(llegada, function(n){
+            return(n.toFixed(10));
+        });
+
+        $('#sortida').val(salida.join());
+        $('#final').val(llegada.join());
+
+        
+        console.log("enteoria esto primero");
+
+        
+        respostaSortida = $.ajax(
+        {
+            type:'GET',
+            url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+salida[1]+","+salida[0]+".json?types=address&access_token=pk.eyJ1IjoiamxlY2h1Z2F0IiwiYSI6ImNrbzhwcG52cjBta2cycG11dHA5NHJhNTAifQ.fi_PSZy_IVAgt6Wu3BwKng",
+            success: function(data){
+                console.log("enteoria esto segundo");
+                console.log(data.features[0].text);
+                respostaSortida = data.features[0].text;
+            }
+        }).then(function(){
+            respostaFinal = $.ajax(
+            {
+                type:'GET',
+                url: "https://api.mapbox.com/geocoding/v5/mapbox.places/"+llegada[1]+","+llegada[0]+".json?types=address&access_token=pk.eyJ1IjoiamxlY2h1Z2F0IiwiYSI6ImNrbzhwcG52cjBta2cycG11dHA5NHJhNTAifQ.fi_PSZy_IVAgt6Wu3BwKng",
+                success: function(data){
+                    console.log("enteoria esto tercero");
+                    console.log(data.features[0].text);
+                    respostaFinal = data.features[0].text;
+                }
+            }).then(function(){
+                $("#adressa").val(respostaSortida+"&&"+respostaFinal);
+                console.log("enteoria esto cuarto");
+
+            })
+        });
+        
+
+    });
 });
-    

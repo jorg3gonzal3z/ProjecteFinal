@@ -36,7 +36,7 @@ class TramosController extends Controller
             'adressa' => 'required',
             'id_superficie' => 'required',
         ]);
-        
+       
         $tramo=Trams::create([
             'nom' => $data['nom'],
             'distancia' => $data['distancia'],

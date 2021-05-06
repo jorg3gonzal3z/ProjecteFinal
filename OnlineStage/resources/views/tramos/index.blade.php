@@ -166,7 +166,7 @@
                 @endforeach
                 </tr>
                 <tr>
-                    <th rowspan="2" colspan="1">{{ $tramo->sortida}}-{{ $tramo->final}}</th>
+                    <th rowspan="2" colspan="1">{{$tramo->adressa}}</th>
                 </tr>
                 <tr>
                     <th>{{ $tramo->distancia}}km</th>

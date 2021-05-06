@@ -49,7 +49,7 @@
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Nombre</label>
                         <div class="col-sm-10">
-                        <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
+                        <input type="text" class="form-control" name="nom" placeholder="Nombre del Rally ...">
                         </div>
                     </div>
                     

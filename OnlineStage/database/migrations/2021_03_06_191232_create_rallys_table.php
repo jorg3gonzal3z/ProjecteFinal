@@ -16,7 +16,6 @@ class CreateRallysTable extends Migration
         Schema::create('rallys', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('nom');
-            $table->string('logo');
             $table->integer('distancia');
             $table->integer('numTC');
             $table->integer('numAssistencies');

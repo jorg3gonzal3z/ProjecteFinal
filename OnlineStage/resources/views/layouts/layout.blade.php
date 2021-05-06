@@ -16,8 +16,31 @@
                 @yield('content')
             </div>
     </div>
-    
-    <footer>This will always appear at the bottom of the page, but <strong>not fixed</strong>.</footer>
+
+    <footer>
+        <div class="wrapper">
+            <div class="icon facebook">
+                <div class="tooltip">Facebook</div>
+                <span><i class="fa fa-facebook" aria-hidden="true"></i></span>
+            </div>
+            <div class="icon twitter">
+                <div class="tooltip">Twitter</div>
+                <span><i class="fa fa-twitter" aria-hidden="true"></i></span>
+            </div>
+            <div class="icon instagram">
+                <div class="tooltip">Instagram</div>
+                <span><i class="fa fa-instagram" aria-hidden="true"></i></span>
+            </div>
+            <div class="icon github">
+                <div class="tooltip">Github</div>
+                <span><i class="fa fa-github" aria-hidden="true"></i></span>
+            </div>
+            <div class="icon youtube">
+                <div class="tooltip">Youtube</div>
+                <span><i class="fa fa-youtube-play" aria-hidden="true"></i></span>
+            </div>
+        </div>
+    </footer>
 
 
     <button style="z-index: 10;" id="back-to-top" type="button">

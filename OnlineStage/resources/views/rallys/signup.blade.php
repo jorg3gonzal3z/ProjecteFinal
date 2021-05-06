@@ -28,6 +28,7 @@
         <div class="p-6 bg-white border-b border-gray-200">    
             <h1>Inscripcion al Rally {{$rally->nom}}</h1>
         </div>
+        
         @if (count($coches) > 0)
             <div class="form-group row">
                 <label class="col-sm-2 col-form-label">Selecciona el coche con el que quieres correr</label>
@@ -44,6 +45,7 @@
                 <p>No has añadido ningun coche</p>
             </div>
         @endif
+
     @endif
 
 @stop

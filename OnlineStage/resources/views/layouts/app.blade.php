@@ -12,12 +12,14 @@
 
         <!-- Styles -->
         <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+        <link rel="stylesheet" href="{{ asset('css/hud.css') }}">
+
 
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
     <body class="font-sans antialiased">
-        <div class="min-h-screen bg-gray-100">
+        <div class="min-h-screen">
             @include('layouts.navigation')
 
             <!-- Page Heading -->
@@ -31,6 +33,9 @@
             <main>
                 {{ $slot }}
             </main>
+
+            <footer>This will always appear at the bottom of the page, but <strong>not fixed</strong>.</footer>
+
         </div>
     </body>
 </html>

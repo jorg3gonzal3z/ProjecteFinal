@@ -16,8 +16,9 @@
         <div class="p-6 bg-white border-b border-gray-200">    
             <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
-        <div class="p-6 bg-white border-b border-gray-200" >
-            <!-- control de errores de los formulario -->
+
+        <div class="borde border-gray-200" >
+            <!-- control de errores del formulario -->
             @if (count($errors) > 0)
             <div class="p-6 bg-white border-b border-gray-200"> 
                 <div class="alert alert-danger">
@@ -189,9 +190,9 @@
                         @foreach ($fotos_tramos as $foto_tramo)
                             @if ($foto_tramo->id_trams == $tramo->id)
                                 @foreach ($fotos as $foto)
-                                        @if($foto_tramo->id_fotos == $foto->id)
-                                            <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
-                                        @endif
+                                    @if($foto_tramo->id_fotos == $foto->id)
+                                        <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
+                                    @endif
                                 @endforeach
                             @endif
                         @endforeach

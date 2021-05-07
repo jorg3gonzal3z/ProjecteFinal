@@ -30,22 +30,48 @@
         </div>
         
         @if (count($coches) > 0)
-            <div class="form-group row">
-                <label class="col-sm-2 col-form-label">Selecciona el coche con el que quieres correr</label>
-                <div class="col-sm-10">
-                    <select class="form-control" name="id_superficie" style="border-radius:10px">>
-                        @foreach ($coches as $coche)
-                            <option value="{{$coche->id}}">{{$coche->model}}</option>
-                        @endforeach
-                    </select>
+
+            @php
+                $puede_correr = false;
+            @endphp
+
+            <!-- @foreach ($categorias_rally as $categoria_rally)           
+                @foreach ($coches as $coche)
+                    @if ($coche->id_categoria == $categoria_rally->id_categories)                           
+                        @php
+                            $puede_correr = true;
+                        @endphp                       
+                    @endif                           
+                @endforeach       
+            @endforeach -->
+
+            @if ($puede_correr == false)
+
+                <div class="alert alert-danger">
+                    <p>No has añadido ningun coche que pueda correr este rally</p>
                 </div>
-            </div>
+
+                <form action="{{ route('user.index') }}" method="GET" >
+                    @csrf
+                    <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
+                </form>
+
+            @endif
+
         @else
+
             <div class="alert alert-danger">
                 <p>No has añadido ningun coche</p>
             </div>
+
+            <form action="{{ route('user.index') }}" method="GET" >
+                @csrf
+                <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
+            </form>
+
         @endif
 
     @endif
 
 @stop
+<script src="{{ url('/js/signup.js') }}"></script>

@@ -13,14 +13,14 @@
 @section('content')
     @if (Auth::user())
         <!-- si el usuario esta logueado o es admin puede añadir tramos, este boton abre un formulario -->
-        <div class="p-6 bg-white border-b border-gray-200">    
+        <div class="p-6 pt-12 bg-dark border-b border-red-500 text-center">    
             <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
 
-        <div class="borde border-gray-200" >
+        <div class="border border-red-500" >
             <!-- control de errores del formulario -->
             @if (count($errors) > 0)
-            <div class="p-6 bg-white border-b border-gray-200"> 
+            <div class="p-6 bg-dark border-b border-red-500"> 
                 <div class="alert alert-danger">
                     <p>Corrige los siguientes errores:</p>
                     <br>
@@ -40,55 +40,54 @@
                 <form id="form_add_tramo" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     <a  id="esconder_form" style="cursor:pointer; " class="mt-3 float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
-                    <div class="form-group row">
+                    <div class="form-group">
                         <label class="col-sm-2 col-form-label">Añadir Tramo</label>
                     </div>
-                    <div class="form-group row">
+                    <div class="form-group">
                         <label class="col-sm-2 col-form-label">Imagenes</label>
                         <div class="col-sm-10">
                             <input type="file" name="fotos[]" multiple>
                         </div>
                     </div>
 
-                    <div class="form-group row">
-                        <label class="col-sm-2 col-form-label">Nombre</label>
-                        <div class="col-sm-10">
+                    <div class="form-group col-6">
+                        <label class="">Nombre</label>
                         <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
-                        </div>
+                        <small id="nombreHelp" class="form-text text-muted">Describe el tramo en unas pocas palabras.</small>
                     </div>
                     
-                    <div class="form-group row " >
+                    <div class="form-group " >
                         <label class="col-sm-2 col-form-label">Distancia km</label>
                         <div class="col-sm-10">
                             <input readonly class="form-control" id="distancia" name="distancia" placeholder="25 Km">
                         </div>
                     </div>
 
-                    <div class="form-group row" hidden>
+                    <div class="form-group" hidden>
                         <label class="col-sm-2 col-form-label">Salida</label>
                         <div class="col-sm-10">
                         <input readonly type="text" class="form-control" id="sortida" name="sortida" placeholder="La Bisbal del Penedès ...">
                         </div>
                     </div>
 
-                    <div class="form-group row" hidden>
+                    <div class="form-group" hidden>
                         <label class="col-sm-2 col-form-label">Final</label>
                         <div class="col-sm-10">
                         <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group">
                         <label class="col-sm-2 col-form-label">Trayecto</label>
                         <div class="col-sm-10">
                         <input readonly type="text" class="form-control" id="adressa" name="adressa">
                         </div>
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group">
                     </div>
 
-                    <div class="form-group row">
+                    <div class="form-group">
                         <label class="col-sm-2 col-form-label">Superficie</label>
                         <div class="col-sm-10">
                             <select class="form-control" name="id_superficie" style="border-radius:10px">>
@@ -108,7 +107,7 @@
     <!-- mostrar listado de los tramos -->
 
     @foreach ($tramos as $tramo)
-        <div class="tramoContainer p-6 border-b border-gray-200">
+        <div class="tramoContainer p-6 border-b border-red-500">
             <!-- si el user esta logueado y es el dueño del tramo o tiene el rol de admin podra editar, eliminar... -->
             @if (Auth::user())
                 @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")

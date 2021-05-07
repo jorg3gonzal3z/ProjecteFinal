@@ -85,14 +85,14 @@
                     @endphp
 
                     <!-- editar coche -->
-                    <a id="edit_coche{{$coche->id}}" class="btn float-right pl-3 editCarButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                    <a id="edit_coche:{{$coche->id}}" class="btn float-right pl-3 editCarButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                     <!-- eliminar coche -->
-                    <form id="delete_coche{{$coche->id}}" class="float-right " action="{{ route('user.destroy_car',['id' => $coche->id]) }}" method="POST">
+                    <form id="delete_coche:{{$coche->id}}" class="float-right " action="{{ route('user.destroy_car',['id' => $coche->id]) }}" method="POST">
                         @csrf
                         {{ method_field('DELETE') }}
                         <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
                     </form>
-
+                    <div id="coche:{{$coche->id}}">
                     <!-- informacion sobre el coche -->
                     {{ $coche->model}}<br>
                     {{ $coche->potencia}}hp<br>
@@ -116,11 +116,12 @@
                             @endforeach
                         @endif
                     @endforeach
-                    </div><br>
+                    </div>
+                    </div>
 
                     <!-- formulario para editar coches -->
         
-                    <form id="car_form_edit{{$coche->id}}" action="{{ route('user.update_car',['id' => $coche->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                    <form id="car_form_edit:{{$coche->id}}" action="{{ route('user.update_car',['id' => $coche->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                         @csrf
                         {{ method_field('PUT') }}
 
@@ -137,7 +138,7 @@
                         @endforeach
                         </div><br>
 
-                        <a  id="esconder_form_edit_coche{{$coche->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br>
+                        <a  id="esconder_form_edit_coche:{{$coche->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br>
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label">Imagenes</label>
                             <div class="col-sm-10">
@@ -311,14 +312,14 @@
             <div class="collapse" id="collapseTramos">
                 @foreach ($tramos as $tramo)
                 <!-- editar tramo -->
-                <a id="edit_tramo{{$tramo->id}}" class="btn float-right pl-3 editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                <a id="edit_tramo:{{$tramo->id}}" class="btn float-right pl-3 editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                 <!-- eliminar tramo -->
-                <form id="delete_tramo{{$tramo->id}}" class="mb-3 float-right " action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
+                <form id="delete_tramo:{{$tramo->id}}" class="mb-3 float-right " action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
                     @csrf
                     {{ method_field('DELETE') }}
                     <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
                 </form>
-                <table class="table table-hover ">
+                <table id="tramo:{{$tramo->id}}" class="table table-hover ">
 
                     <tbody>
 
@@ -369,10 +370,10 @@
                 </table><br>
 
                 <!-- formulario para editar tramos -->
-                <form id="form_edit_tramo{{$tramo->id}}" action="{{ route('tramos.update',['id' => $tramo->id,'location' => 'user'] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                <form id="form_edit_tramo:{{$tramo->id}}" action="{{ route('tramos.update',['id' => $tramo->id,'location' => 'user'] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     {{ method_field('PUT') }}
-                    <a  id="esconder_form_edit{{$tramo->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
+                    <a  id="esconder_form_edit:{{$tramo->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Editar Tramo</label>
                     </div>
@@ -462,19 +463,19 @@
                         <div class="col-6 col-md-4 col-lg-3 ">
 
                             <!-- editar tramo -->
-                            <a id="edit_evento{{$evento->id}}" class="btn float-right pr-3 editButton btn" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                            <a id="edit_evento:{{$evento->id}}" class="btn float-right pr-3 editButton btn" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                             <!-- eliminar evento -->
-                            <form id="delete_evento{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'user' ]) }}" method="POST">
+                            <form id="delete_evento:{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'user' ]) }}" method="POST">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
                             </form><br><br>
 
                             <!-- formulario para editar eventos -->
-                            <form id="form_edit_evento{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'user' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                            <form id="form_edit_evento:{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'user' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
                                 @csrf
                                 {{ method_field('PUT') }}
-                                <a  id="esconder_form_edit{{$evento->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                                <a  id="esconder_form_edit:{{$evento->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Editar Evento</label>
                                 </div>

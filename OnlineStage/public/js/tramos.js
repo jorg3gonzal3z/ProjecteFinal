@@ -1,3 +1,6 @@
+function GetId(str){
+    return str.split(':')[1];
+}
 $(document).ready(function(){
     //boton para mostrar formulario añadir tramo
     $("#add_tramo").click(function(){
@@ -20,21 +23,21 @@ $(document).ready(function(){
     $(".editButton").click(function() {
         $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
-        thisId = thisId.substring(thisId.length - 1, thisId.length);
-        $('#tramo'+ thisId).attr('hidden',true);
-        $('#container_edit'+ thisId).fadeIn(1000);
-        $("#esconder_form_edit" + thisId).attr('hidden',false);
-        $("#form_edit_tramo"+ thisId).attr('hidden',false);
-        $("#delete_tramo"+ thisId).attr('hidden',true);
+        thisId = GetId(thisId);
+        $('#tramo\\:'+ thisId).attr('hidden',true);
+        $('#container_edit\\:'+ thisId).fadeIn(1000);
+        $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
+        $("#form_edit_tramo\\:"+ thisId).attr('hidden',false);
+        $("#delete_tramo\\:"+ thisId).attr('hidden',true);
     
         //boton para esconder el formulario de editar tramo
-        $("#esconder_form_edit"+ thisId).click(function() {
+        $("#esconder_form_edit\\:"+ thisId).click(function() {
             $(this).attr('hidden',true);
-            $('#container_edit'+ thisId).fadeOut(800, function(){
-                $("#edit_tramo"+ thisId).attr('hidden',false);
-                $("#form_edit_tramo"+ thisId).attr('hidden',true);
-                $("#delete_tramo"+ thisId).attr('hidden',false);
-                $('#tramo'+ thisId).attr('hidden',false);
+            $('#container_edit\\:'+ thisId).fadeOut(800, function(){
+                $("#edit_tramo\\:"+ thisId).attr('hidden',false);
+                $("#form_edit_tramo\\:"+ thisId).attr('hidden',true);
+                $("#delete_tramo\\:"+ thisId).attr('hidden',false);
+                $('#tramo\\:'+ thisId).attr('hidden',false);
             });
         });
     });

@@ -1,3 +1,6 @@
+function GetId(str){
+    return str.split(':')[1];
+}
 $(document).ready(function(){
     //boton para editar datos de la cuenta
     $("#editar_cuenta").click(function() {
@@ -38,17 +41,19 @@ $(document).ready(function(){
     $(".editButton").click(function() {
         $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
-        thisId = thisId.substring(thisId.length - 1, thisId.length);
-        $("#esconder_form_edit" + thisId).attr('hidden',false);
-        $("#form_edit_tramo"+ thisId).attr('hidden',false);
-        $("#delete_tramo"+ thisId).attr('hidden',true);
+        thisId = GetId(thisId);
+        $('#tramo\\:'+ thisId).attr('hidden',true);
+        $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
+        $("#form_edit_tramo\\:"+ thisId).attr('hidden',false);
+        $("#delete_tramo\\:"+ thisId).attr('hidden',true);
 
         //boton para esconder el formulario de editar tramo
-        $("#esconder_form_edit"+ thisId).click(function() {
-            $("#edit_tramo"+ thisId).attr('hidden',false);
-            $("#form_edit_tramo"+ thisId).attr('hidden',true);
+        $("#esconder_form_edit\\:"+ thisId).click(function() {
+            $("#edit_tramo\\:"+ thisId).attr('hidden',false);
+            $("#form_edit_tramo\\:"+ thisId).attr('hidden',true);
             $(this).attr('hidden',true);
-            $("#delete_tramo"+ thisId).attr('hidden',false);
+            $('#tramo\\:'+ thisId).attr('hidden',false);
+            $("#delete_tramo\\:"+ thisId).attr('hidden',false);
         });
     });
 
@@ -56,17 +61,19 @@ $(document).ready(function(){
     $(".editCarButton").click(function() {
         $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
-        thisId = thisId.substring(thisId.length - 1, thisId.length);
-        $("#esconder_form_edit_coche" + thisId).attr('hidden',false);
-        $("#car_form_edit"+ thisId).attr('hidden',false);
-        $("#delete_coche"+ thisId).attr('hidden',true);
+        thisId = GetId(thisId);
+        $('#coche\\:'+ thisId).attr('hidden',true);
+        $("#esconder_form_edit_coche\\:" + thisId).attr('hidden',false);
+        $("#car_form_edit\\:"+ thisId).attr('hidden',false);
+        $("#delete_coche\\:"+ thisId).attr('hidden',true);
 
         //boton para esconder el formulario de editar coche
-        $("#esconder_form_edit_coche"+ thisId).click(function() {
-            $("#edit_coche"+ thisId).attr('hidden',false);
-            $("#car_form_edit"+ thisId).attr('hidden',true);
+        $("#esconder_form_edit_coche\\:"+ thisId).click(function() {
+            $("#edit_coche\\:"+ thisId).attr('hidden',false);
+            $("#car_form_edit\\:"+ thisId).attr('hidden',true);
             $(this).attr('hidden',true);
-            $("#delete_coche"+ thisId).attr('hidden',false);
+            $('#coche\\:'+ thisId).attr('hidden',false);
+            $("#delete_coche\\:"+ thisId).attr('hidden',false);
         });
     });
 
@@ -74,17 +81,17 @@ $(document).ready(function(){
     $(".editButton").click(function() {
         $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
-        thisId = thisId.substring(thisId.length - 1, thisId.length);
-        $("#esconder_form_edit" + thisId).attr('hidden',false);
-        $("#form_edit_evento"+ thisId).attr('hidden',false);
-        $("#delete_evento"+ thisId).attr('hidden',true);
+        thisId = GetId(thisId);
+        $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
+        $("#form_edit_evento\\:"+ thisId).attr('hidden',false);
+        $("#delete_evento\\:"+ thisId).attr('hidden',true);
 
         //boton para esconder el formulario de editar evrnto
-        $("#esconder_form_edit"+ thisId).click(function() {
-            $("#edit_evento"+ thisId).attr('hidden',false);
-            $("#form_edit_evento"+ thisId).attr('hidden',true);
+        $("#esconder_form_edit\\:"+ thisId).click(function() {
+            $("#edit_evento\\:"+ thisId).attr('hidden',false);
+            $("#form_edit_evento\\:"+ thisId).attr('hidden',true);
             $(this).attr('hidden',true);
-            $("#delete_evento"+ thisId).attr('hidden',false);
+            $("#delete_evento\\:"+ thisId).attr('hidden',false);
         });
     });
 

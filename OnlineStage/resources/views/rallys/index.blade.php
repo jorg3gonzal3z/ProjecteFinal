@@ -124,9 +124,9 @@
             <!-- si eres admin o dueño del rally podra eliminar, editar etc... -->
             @if ($auth_user->rol == 'admin' || $auth_user->id == $rally->id_usuari)
                 <!-- editar rally -->
-                <a id="edit_rally{{$rally->id}}" class="float-right pl-3 btn editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                <a id="edit_rally:{{$rally->id}}" class="float-right pl-3 btn editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                 <!-- eliminar rally -->
-                <form id="delete_rally{{$rally->id}}" class="float-right" style="color:red;" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'rallys' ]) }}" method="POST">
+                <form id="delete_rally:{{$rally->id}}" class="float-right" style="color:red;" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'rallys' ]) }}" method="POST">
                     @csrf
                     {{ method_field('DELETE') }}
                     <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
@@ -134,11 +134,11 @@
 
                 
                 <!-- formulario de edicion de rallys si eres el organizador del mismo -->
-                <form id="form_edit_rally{{$rally->id}}" action="{{ route('rally.update',['id' => $rally->id,'location' => 'rallys'] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                <form id="form_edit_rally:{{$rally->id}}" action="{{ route('rally.update',['id' => $rally->id,'location' => 'rallys'] ) }}" method="POST" enctype="multipart/form-data" hidden>
                     @csrf
                     {{ method_field('PUT') }}
 
-                    <a  id="esconder_form_edit{{$rally->id}}" style="cursor:pointer; " class="mt-3 float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
+                    <a  id="esconder_form_edit:{{$rally->id}}" style="cursor:pointer; " class="mt-3 float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
                     <div class="form-group row">
                         <label class="col-sm-2 col-form-label">Editar Rally</label>
                     </div>
@@ -244,7 +244,7 @@
         @endif
 
         <!-- mostrar rallys -->
-        <table id="rally{{$rally->id}}" class="table table-hover">
+        <table id="rally:{{$rally->id}}" class="table table-hover">
             <tbody>
                 <tr>
                     <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">
@@ -322,13 +322,13 @@
 
         <!-- listado de participantes -->
         <div class="d-flex justify-content-center p-0 m-0">
-            <div id="ver_listado{{$rally->id}}">
-                <div id="listadoParticipantes{{$rally->id}}" class="p-6 Participantes" style="cursor:pointer;color:blue;">
+            <div id="ver_listado:{{$rally->id}}">
+                <div id="listadoParticipantes:{{$rally->id}}" class="p-6 Participantes" style="cursor:pointer;color:blue;">
                     <p>Ver listado de participantes</p>
                 </div>
-                <div id="lista{{$rally->id}}" hidden>
+                <div id="lista:{{$rally->id}}" hidden>
                     <ul class="list-group">
-                        <li id="participantes{{$rally->id}}"class="list-group-item"  style="cursor:pointer;" hidden><b>Listado de Participantes:</b></li>
+                        <li id="participantes:{{$rally->id}}"class="list-group-item"  style="cursor:pointer;" hidden><b>Listado de Participantes:</b></li>
 
                         @php
                             $inscritos = false;

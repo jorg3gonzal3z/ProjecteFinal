@@ -93,9 +93,9 @@
                             @if ($auth_user->rol == 'admin' || $auth_user->id == $evento->id_usuari)
                             
                             <!-- editar evento -->
-                            <a id="edit_evento{{$evento->id}}" class="float-right pr-3 editButton btn" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                            <a id="edit_evento:{{$evento->id}}" class="float-right pr-3 editButton btn" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                             <!-- eliminar evento -->
-                            <form id="delete_evento{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'eventos' ]) }}" method="POST">
+                            <form id="delete_evento:{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'eventos' ]) }}" method="POST">
                                 @csrf
                                 {{ method_field('DELETE') }}
                                 <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
@@ -104,10 +104,10 @@
                             @endif
 
                             <!-- formulario para editar eventos -->
-                            <form id="form_edit_evento{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'eventos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                            <form id="form_edit_evento:{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'eventos' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
                                 @csrf
                                 {{ method_field('PUT') }}
-                                <a  id="esconder_form_edit{{$evento->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
+                                <a  id="esconder_form_edit:{{$evento->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Editar Evento</label>
                                 </div>
@@ -197,12 +197,12 @@
                     
                 <!-- listado de participantes -->
                 <div class="d-flex justify-content-center p-0 m-0">
-                    <div id="listadoParticipantes{{$evento->id}}" class="p-6 Participantes" style="cursor:pointer;color:blue;">
+                    <div id="listadoParticipantes:{{$evento->id}}" class="p-6 Participantes" style="cursor:pointer;color:blue;">
                         <p>Ver listado de participantes</p>
                     </div>
-                    <div id="lista{{$evento->id}}" hidden>
+                    <div id="lista:{{$evento->id}}" hidden>
                         <ul class="list-group">
-                            <li id="participantes{{$evento->id}}"class="list-group-item"  style="cursor:pointer;" hidden><b>Listado de Participantes:</b></li>
+                            <li id="participantes:{{$evento->id}}"class="list-group-item"  style="cursor:pointer;" hidden><b>Listado de Participantes:</b></li>
 
                             @php
                                 $inscritos = false;

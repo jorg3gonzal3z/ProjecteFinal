@@ -377,7 +377,10 @@
 
             <!-- falta inscribirse bro -->
             @if ($inscrit == false)
-                <button class="btn btn-danger"><i class=""></i> Inscribirme</button>
+                <form action="{{ route('rally.signup',['id_user' => $auth_user->id,'id_rally' => $rally->id ] ) }}" method="GET" >
+                    @csrf
+                    <button class="btn btn-danger"><i class=""></i> Inscribirme</button>
+                </form>
             @elseif($inscrit == true)
                 <form action="{{ route('rally.quit',['id_user' => $auth_user->id,'id_rally' => $rally->id ] ) }}" method="POST" >
                     @csrf

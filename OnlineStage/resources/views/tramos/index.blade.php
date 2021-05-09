@@ -13,14 +13,13 @@
 @section('content')
     @if (Auth::user())
         <!-- si el usuario esta logueado o es admin puede añadir tramos, este boton abre un formulario -->
-        <div class="p-6 pt-12 bg-dark border-b border-red-500 text-center">    
+        <div class="p-6 bg-dark border-b border-red-500 text-center">    
             <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
         </div>
 
-        <div class="border border-red-500" >
+        <div id="containerErrorsAdd" class="bg-dark" >
             <!-- control de errores del formulario -->
             @if (count($errors) > 0)
-            <div class="p-6 bg-dark border-b border-red-500"> 
                 <div class="alert alert-danger">
                     <p>Corrige los siguientes errores:</p>
                     <br>
@@ -30,84 +29,86 @@
                         @endforeach
                     </ul>
                 </div>
-            </div>
             @endif
-            <div id="container_animacion" style="display:none;">
-                <div id='map' style='max-height: 420px; width: 100%' hidden></div>
+        </div>
 
-                <!-- formulario para añadir tramos -->
+        <div id="container_animacion" class="p-6 d-flex" style="display:none;">
+
+      
+            <div id='map' class="col-12 col-md-6" style='' hidden></div>" 
+
+            <!-- formulario para añadir tramos -->
+            
+            <form id="form_add_tramo" class="text-danger col-12 col-md-6" saction="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                @csrf
+                <a id="esconder_form" style="cursor:pointer;" class="float-right mt-3 mr-3 text-danger" hidden ><i class="fa fa-caret-up fa-2x"></i></a>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Añadir Tramo</label>
+                </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Imagenes</label>
+                    <div class="col-sm-10">
+                        <input type="file" name="fotos[]" multiple>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label class="">Nombre</label>
+                    <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
+                    <small id="nombreHelp" class="form-text text-muted">Describe el tramo en unas pocas palabras.</small>
+                </div>
                 
-                <form id="form_add_tramo" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
-                    @csrf
-                    <a  id="esconder_form" style="cursor:pointer; " class="mt-3 float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-form-label">Añadir Tramo</label>
+                <div class="form-group " >
+                    <label class="col-sm-2 col-form-label">Distancia km</label>
+                    <div class="col-sm-10">
+                        <input readonly class="form-control" id="distancia" name="distancia" placeholder="25 Km">
                     </div>
-                    <div class="form-group">
-                        <label class="col-sm-2 col-form-label">Imagenes</label>
-                        <div class="col-sm-10">
-                            <input type="file" name="fotos[]" multiple>
-                        </div>
-                    </div>
+                </div>
 
-                    <div class="form-group col-6">
-                        <label class="">Nombre</label>
-                        <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
-                        <small id="nombreHelp" class="form-text text-muted">Describe el tramo en unas pocas palabras.</small>
+                <div class="form-group" hidden>
+                    <label class="col-sm-2 col-form-label">Salida</label>
+                    <div class="col-sm-10">
+                    <input readonly type="text" class="form-control" id="sortida" name="sortida" placeholder="La Bisbal del Penedès ...">
                     </div>
-                    
-                    <div class="form-group " >
-                        <label class="col-sm-2 col-form-label">Distancia km</label>
-                        <div class="col-sm-10">
-                            <input readonly class="form-control" id="distancia" name="distancia" placeholder="25 Km">
-                        </div>
+                </div>
+
+                <div class="form-group" hidden>
+                    <label class="col-sm-2 col-form-label">Final</label>
+                    <div class="col-sm-10">
+                    <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
                     </div>
+                </div>
 
-                    <div class="form-group" hidden>
-                        <label class="col-sm-2 col-form-label">Salida</label>
-                        <div class="col-sm-10">
-                        <input readonly type="text" class="form-control" id="sortida" name="sortida" placeholder="La Bisbal del Penedès ...">
-                        </div>
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Trayecto</label>
+                    <div class="col-sm-10">
+                    <input readonly type="text" class="form-control" id="adressa" name="adressa">
                     </div>
+                </div>
 
-                    <div class="form-group" hidden>
-                        <label class="col-sm-2 col-form-label">Final</label>
-                        <div class="col-sm-10">
-                        <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
-                        </div>
+                <div class="form-group">
+                </div>
+
+                <div class="form-group">
+                    <label class="col-sm-2 col-form-label">Superficie</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                            @foreach ($superficies as $superficie)
+                                <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                            @endforeach
+                        </select>
                     </div>
+                </div>
 
-                    <div class="form-group">
-                        <label class="col-sm-2 col-form-label">Trayecto</label>
-                        <div class="col-sm-10">
-                        <input readonly type="text" class="form-control" id="adressa" name="adressa">
-                        </div>
-                    </div>
+                <button class="btn btn-danger" >Submit</button>
 
-                    <div class="form-group">
-                    </div>
-
-                    <div class="form-group">
-                        <label class="col-sm-2 col-form-label">Superficie</label>
-                        <div class="col-sm-10">
-                            <select class="form-control" name="id_superficie" style="border-radius:10px">>
-                                @foreach ($superficies as $superficie)
-                                    <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
-                                @endforeach
-                            </select>
-                        </div>
-                    </div>
-
-                    <button class="btn btn-danger" >Submit</button>
-
-                </form>
-            </div>
+            </form>
         </div>
     @endif
     <!-- mostrar listado de los tramos -->
 
     @foreach ($tramos as $tramo)
-        <div class="tramoContainer p-6 border-b border-red-500">
+        <div class="tramoContainer text-danger p-6 border-b border-red-500">
             <!-- si el user esta logueado y es el dueño del tramo o tiene el rol de admin podra editar, eliminar... -->
             @if (Auth::user())
                 @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
@@ -122,7 +123,7 @@
                 @endif
             @endif
 
-            <table id="tramo:{{$tramo->id}}" class="table table-hover ">
+            <table id="tramo:{{$tramo->id}}" class="text-danger table table-hover ">
             <tbody>
                 <tr>
                     <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">

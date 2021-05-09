@@ -1,8 +1,6 @@
 <x-app-layout>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{ url('/css/hud.css') }}" /> 
-
-
 <link rel="stylesheet" href="{{ url('/fontawesome4/css/font-awesome.min.css') }}">
 
     <x-slot name="header">
@@ -12,7 +10,7 @@
     </x-slot>
 
     <div>
-            <div class="px-5 pt-10 bg-dark overflow-hidden shadow-sm sm:lg">
+            <div class="px-5 bg-dark overflow-hidden shadow-sm sm:lg">
                 @yield('content')
             </div>
     </div>

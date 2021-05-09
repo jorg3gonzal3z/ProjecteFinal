@@ -211,8 +211,17 @@ class RallysController extends Controller
 
     public function signup($id_user,$id_rally){
         $rally=Rallys::find($id_rally);
+        $categorias_rally = CategoriesRallys::where('id_rallys', $id_rally)->get();
         $users=User::find($id_user);
         $coches=Cotxes::where('id_usuari', $id_user)->orderBy('id','DESC')->get();
-        return view("rallys/signup",compact(['rally','users','coches']));
+        $auth_user=Auth::user();
+        return view("rallys/signup",compact(['rally','users','coches','auth_user','categorias_rally']));
+    }
+
+    public function signup_car($id_user,$id_rally,$id_coche){
+        $rally=Rallys::find($id_rally);
+        $users=User::find($id_user);
+        $coche=Cotxes::where('id', $id_coche);
+        dd($coche);
     }
 }

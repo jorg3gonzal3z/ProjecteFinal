@@ -39,7 +39,7 @@
 
             <!-- formulario para añadir tramos -->
             
-            <form id="form_add_tramo" class="text-danger col-12 col-md-6" saction="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
+            <form id="form_add_tramo" class="text-danger col-12 col-md-6" action="{{ route('tramos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>
                 @csrf
                 <a id="esconder_form" style="cursor:pointer;" class="float-right mt-3 mr-3 text-danger" hidden ><i class="fa fa-caret-up fa-2x"></i></a>
                 <div class="form-group">

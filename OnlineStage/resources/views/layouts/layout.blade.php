@@ -42,7 +42,7 @@
 
 
     <button style="z-index: 10;" id="back-to-top" type="button">
-        <img class="img-fluid d-none d-sm-block" src="{{ url('/storage/up-arrow.png')}}">
+        <img class="img-fluid d-none d-md-block" src="{{ url('/storage/up-arrow.png')}}">
     </button>
     
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>

@@ -41,17 +41,6 @@ body {
  * Footer Styles
  */
 
-footer {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  padding: 1rem;
-  background-color: #efefef;
-  text-align: center;
-}
-
-
 *:focus,
 *:active {
   outline: none !important;
@@ -59,12 +48,18 @@ footer {
 }
 
 footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1rem;
+  text-align: center;
   display: grid;
   font-family: "Poppins", sans-serif;
   place-items: center;
-  background: linear-gradient(315deg, #ffffff, #d7e1ec);
+  background: rgb(173,30,30,1);
+  background: linear-gradient(0deg, rgba(173,30,30,1) 0%, rgba(52,58,64,1) 50%);
 }
-
 .wrapper {
   display: inline-flex;
 }
@@ -158,4 +153,9 @@ footer {
 .wrapper .youtube:hover .tooltip::before {
   background-color: #de463b;
   color: #ffffff;
+}
+
+.topvar{
+  background: rgba(52,58,64,1);
+  /* background: linear-gradient(0deg, rgba(52,58,64,1) 0%, rgba(173,30,30,1) 99%); */
 }

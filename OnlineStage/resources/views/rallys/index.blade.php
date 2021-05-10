@@ -256,7 +256,7 @@
                                     @foreach ($fotos as $key => $foto)
                                         @if($foto_rally->id_fotos == $foto->id)
                                         <div class="carousel-item">
-                                            <img src="{{ $foto->binari }}" class="d-block w-100" alt="...">
+                                            <img src="{{ $foto->binari }}" class="d-block img-fluid" alt="...">
                                         </div>
                                         @endif
                                     @endforeach

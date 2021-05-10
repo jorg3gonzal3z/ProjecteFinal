@@ -84,8 +84,8 @@
 
 
     <!-- div para mostrar los eventos -->
-    <div class="p-6 bg-white border-b border-gray-200"> 
-        <div class="l-containerlol row">
+    <div class="p-6"> 
+        <div class="row">
             @foreach ($eventos as $evento)
                 <div class="col-6 col-md-4 col-lg-3 ">
                     @if (Auth::user())
@@ -272,7 +272,6 @@
                 </div>
             @endforeach
         </div>
-        
     </div>
 @stop
 <script src="{{ url('/js/eventos.js') }}"></script>

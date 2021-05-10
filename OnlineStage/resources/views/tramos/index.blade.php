@@ -4,7 +4,8 @@
 <link href='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.css' rel='stylesheet' />
 <link rel='stylesheet' href='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.0/mapbox-gl-draw.css' type='text/css'/>
 <link rel="stylesheet" href="https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-directions/v4.1.0/mapbox-gl-directions.css" type="text/css">
-<link rel="stylesheet" type="text/css" href="{{ url('/css/mapbox.css') }}" /> 
+<link rel="stylesheet" type="text/css" href="{{ url('/css/tramos.css') }}" /> 
+
 
 @section('header')
     Tramos
@@ -32,10 +33,10 @@
             @endif
         </div>
 
-        <div id="container_animacion" class="p-6 d-flex" style="display:none;">
+        <div id="container_animacion" class="d-flex" style="display:none;">
 
       
-            <div id='map' class="col-12 col-md-6" style='' hidden></div>" 
+            <div id='map' class="col-12 col-md-6" style='' hidden></div>
 
             <!-- formulario para añadir tramos -->
             
@@ -105,10 +106,10 @@
             </form>
         </div>
     @endif
-    <!-- mostrar listado de los tramos -->
-    <div class="d-md-flex">
+<!-- mostrar listado de los tramos -->
+    <div class="d-flex flex-wrap" >
         @foreach ($tramos as $tramo)
-            <div class="tramoContainer text-danger border-b border-red-500 col-12 col-md-6 p-6">
+            <div class="tramoContainer text-danger col-12 col-md-6">
                 <!-- si el user esta logueado y es el dueño del tramo o tiene el rol de admin podra editar, eliminar... -->
                 <nav>
                     <div class="nav nav-tabs" id="nav-tab{{$tramo->id}}" role="tablist">
@@ -132,30 +133,30 @@
                 <div  id="tramo:{{$tramo->id}}" class="tab-content text-danger" id="nav-tabContent{{$tramo->id}}">
                     <div class="tab-pane fade show active" id="nav-fotos{{$tramo->id}}" role="tabpanel" aria-labelledby="nav-fotos-tab">
                         <div id="controlsCarousel{{$tramo->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
-                                    <div class="carousel-inner">
-                                    <!-- fotos del tramo -->
-                                    @foreach ($fotos_tramos as $foto_tramo)
-                                        @if ($foto_tramo->id_trams == $tramo->id)
-                                        
-                                            @foreach ($fotos as $key => $foto)
-                                                @if($foto_tramo->id_fotos == $foto->id)
-                                                <div class="carousel-item">
-                                                    <img src="{{ $foto->binari }}" class="d-block w-100" alt="...">
-                                                </div>
-                                                @endif
-                                            @endforeach
-                                        @endif
-                                    @endforeach
-                                    </div>
-                                    <a class="carousel-control-prev" href="#controlsCarousel{{$tramo->id}}" role="button" data-slide="prev">
-                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Previous</span>
-                                    </a>
-                                    <a class="carousel-control-next" href="#controlsCarousel{{$tramo->id}}" role="button" data-slide="next">
-                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                        <span class="sr-only">Next</span>
-                                    </a>
+                            <div class="carousel-inner">
+                                <!-- fotos del tramo -->
+                                @foreach ($fotos_tramos as $foto_tramo)
+                                    @if ($foto_tramo->id_trams == $tramo->id)
+                                    
+                                        @foreach ($fotos as $key => $foto)
+                                            @if($foto_tramo->id_fotos == $foto->id)
+                                            <div class="carousel-item">
+                                                <img src="{{ $foto->binari }}" class="d-block w-100 h-50" alt="...">
+                                            </div>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endforeach
                                 </div>
+                                <a class="carousel-control-prev" href="#controlsCarousel{{$tramo->id}}" role="button" data-slide="prev">
+                                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Previous</span>
+                                </a>
+                                <a class="carousel-control-next" href="#controlsCarousel{{$tramo->id}}" role="button" data-slide="next">
+                                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                    <span class="sr-only">Next</span>
+                                </a>
+                            </div>
                         </div>
                     <div class="tab-pane fade " id="nav-info{{$tramo->id}}" role="tabpanel" aria-labelledby="nav-info-tab">
                             <table class="table text-danger table-hover ">

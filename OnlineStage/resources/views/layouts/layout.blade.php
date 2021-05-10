@@ -10,7 +10,7 @@
     </x-slot>
 
     <div>
-            <div class="px-5 bg-dark overflow-hidden shadow-sm sm:lg">
+            <div class="bg-dark shadow-sm sm:lg">
                 @yield('content')
             </div>
     </div>

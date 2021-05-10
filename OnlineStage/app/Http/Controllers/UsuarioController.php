@@ -19,6 +19,8 @@ use App\Models\User;
 use App\Models\Events;
 use App\Models\Rallys;
 use App\Models\FotosRallys;
+use App\Models\InscritsRallys;
+use App\Models\InscritsEvents;
 
 class UsuarioController extends Controller
 {
@@ -35,7 +37,9 @@ class UsuarioController extends Controller
         $tramos=Trams::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
         $eventos=Events::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
         $rallys=Rallys::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
-        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos','rallys','fotos_rallys','categorias_rallys']));
+        $inscripciones_rallys = InscritsRallys::where('id_usuari', $auth_user->id)->get();
+        $inscripciones_eventos = InscritsEvents::where('id_usuari', $auth_user->id)->get();
+        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos','rallys','fotos_rallys','categorias_rallys','inscripciones_rallys','inscripciones_eventos']));
     }
 
     public function add_car($id){

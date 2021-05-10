@@ -339,12 +339,14 @@
                             @if ($inscrito_rally->id_rallys == $rally->id)
                                 
                                 @foreach ($users as $user)
-                                    @if ( $inscrito_rally->id_usuari == $user->id )
-                                        <li class="list-group-item">{{$user->name}}</li>
+                                @foreach ($coches as $coche)
+                                    @if ( $inscrito_rally->id_usuari == $user->id && $inscrito_rally->id_cotxe == $coche->id)
+                                        <li class="list-group-item">{{$user->name}} <i class="fa fa-arrow-right"></i> {{$coche->model}}</li>
                                         @php
                                             $inscritos = true;
                                         @endphp
                                     @endif
+                                @endforeach
                                 @endforeach
 
                             @endif

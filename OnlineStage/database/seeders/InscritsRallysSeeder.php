@@ -14,12 +14,13 @@ class InscritsRallysSeeder extends Seeder
     public function run()
     {
         $inscrits =[
-            [1,1],
+            [1,1,1],
         ];
         foreach($inscrits as $inscrit){
             \App\Models\InscritsRallys::create([
                 'id_rallys'=>$inscrit[0],
                 'id_usuari'=>$inscrit[1],
+                'id_cotxe'=>$inscrit[2],
             ]);
         }
     }

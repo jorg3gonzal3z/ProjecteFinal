@@ -28,11 +28,12 @@ class RallysController extends Controller
         $users=User::all();
         $auth_user=Auth::user();
         $inscritos_rallys = InscritsRallys::all();
+        $coches = Cotxes::all();
         if($auth_user){
             $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
-            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones']));
+            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
         }else{
-            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys']));
+            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
         }
     }
 
@@ -215,13 +216,46 @@ class RallysController extends Controller
         $users=User::find($id_user);
         $coches=Cotxes::where('id_usuari', $id_user)->orderBy('id','DESC')->get();
         $auth_user=Auth::user();
-        return view("rallys/signup",compact(['rally','users','coches','auth_user','categorias_rally']));
+        
+        $possibles_coches = [];
+
+        foreach ($categorias_rally as $categoria_rally){  
+            foreach ($coches as $coche){
+                if ($coche->id_categoria == $categoria_rally->id_categories){                       
+                    array_push($possibles_coches, $coche);              
+                }
+            }
+        }                         
+        
+        return view("rallys/signup",compact(['rally','users','coches','auth_user','categorias_rally','possibles_coches']));
     }
 
     public function signup_car($id_user,$id_rally,$id_coche){
         $rally=Rallys::find($id_rally);
         $users=User::find($id_user);
         $coche=Cotxes::where('id', $id_coche);
-        dd($coche);
+        
+        $inscripcion = InscritsRallys::create([
+            'id_usuari' => $id_user,
+            'id_rallys' => $id_rally,
+            'id_cotxe' => $id_coche,
+        ]);
+
+        $numPlaces = $rally->numPlaces;
+        
+        if($numPlaces >= 1){
+            $rally->update([
+                'numPlaces' => $numPlaces -1,
+            ]);
+        }else{
+            //mensaje de que no hay plazas
+        }
+
+        return response()->json([
+            'success' => 'yes',
+        ]);
+        
+        
+
     }
 }

@@ -17,9 +17,11 @@ class CreateInscritsRallysTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('id_rallys')->unsigned();
             $table->bigInteger('id_usuari')->unsigned();
+            $table->bigInteger('id_cotxe')->unsigned();
             $table->timestamps();
             $table->foreign('id_rallys')->references('id')->on('rallys')->onUpdate('restrict');
             $table->foreign('id_usuari')->references('id')->on('users')->onUpdate('restrict');
+            $table->foreign('id_cotxe')->references('id')->on('cotxes')->onUpdate('restrict');
         });
     }
 

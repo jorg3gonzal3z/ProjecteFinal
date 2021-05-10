@@ -31,22 +31,23 @@
         
         @if (count($coches) > 0)
 
-            @php
-                $puede_correr = false;
-            @endphp
-
-            <!-- @foreach ($categorias_rally as $categoria_rally)           
-                @foreach ($coches as $coche)
-                    @if ($coche->id_categoria == $categoria_rally->id_categories)                           
-                        @php
-                            $puede_correr = true;
-                        @endphp                       
-                    @endif                           
-                @endforeach       
-            @endforeach -->
-
-            @if ($puede_correr == false)
-
+            @if (count($possibles_coches) > 0)
+                <div class="form-group row">
+                    <label class="col-sm-2 col-form-label">Seleccoiona el coche para participar</label>
+                    <div class="col-sm-10">
+                        <select class="form-control" name="coche" style="border-radius:10px">
+                            @foreach ($possibles_coches as $possible_coche)
+                                <option id="coche" value="{{$possible_coche->id}}">{{$possible_coche->model}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                </div>
+                
+                <div id="id_user" hidden>{{$auth_user->id}}</div>
+                <div id="id_rally" hidden>{{$rally->id}}</div>
+                <button id="inscribirme" class="btn btn-danger"><i class=""></i>Inscribirme</button>
+                
+            @else
                 <div class="alert alert-danger">
                     <p>No has añadido ningun coche que pueda correr este rally</p>
                 </div>
@@ -55,7 +56,6 @@
                     @csrf
                     <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
                 </form>
-
             @endif
 
         @else
@@ -74,4 +74,24 @@
     @endif
 
 @stop
-<script src="{{ url('/js/signup.js') }}"></script>
+<script>
+$(document).ready(function(){
+    $('#inscribirme').click(function(e){
+        let id_rally =  $('#id_rally').html();
+        let coche_id = $('#coche').val();
+        
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $.post( id_rally + '/' + coche_id, function(response) {
+            // handle your response here
+            console.log(response);
+            window.location.href = "{{ route('rallys.index')}}";
+        })
+        e.preventDefault();
+        return false;
+    });
+});
+</script>

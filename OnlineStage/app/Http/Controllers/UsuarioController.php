@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Cotxes;
 use App\Models\Categories;
+use App\Models\CategoriesRallys;
 use App\Models\Fotos;
 use App\Models\FotosCotxes;
 use App\Models\FotosTrams;
@@ -16,6 +17,8 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\Events;
+use App\Models\Rallys;
+use App\Models\FotosRallys;
 
 class UsuarioController extends Controller
 {
@@ -27,9 +30,12 @@ class UsuarioController extends Controller
         $fotos_coches=FotosCotxes::all();
         $fotos_tramos=FotosTrams::all();
         $superficies=Superficies::all();
+        $fotos_rallys = FotosRallys::all();
+        $categorias_rallys = CategoriesRallys::all();
         $tramos=Trams::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
         $eventos=Events::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
-        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos']));
+        $rallys=Rallys::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
+        return view("user/index",compact(['auth_user','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos','rallys','fotos_rallys','categorias_rallys']));
     }
 
     public function add_car($id){

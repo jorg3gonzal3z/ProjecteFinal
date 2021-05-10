@@ -18,6 +18,7 @@ $(document).ready(function(){
         $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
         thisId = GetId(thisId);
+        $("#evento\\:"+ thisId).attr('hidden',true);
         $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
         $("#form_edit_evento\\:"+ thisId).attr('hidden',false);
         $("#delete_evento\\:"+ thisId).attr('hidden',true);
@@ -27,6 +28,7 @@ $(document).ready(function(){
             $("#edit_evento\\:"+ thisId).attr('hidden',false);
             $("#form_edit_evento\\:"+ thisId).attr('hidden',true);
             $(this).attr('hidden',true);
+            $("#evento\\:"+ thisId).attr('hidden',false);
             $("#delete_evento\\:"+ thisId).attr('hidden',false);
         });
     });

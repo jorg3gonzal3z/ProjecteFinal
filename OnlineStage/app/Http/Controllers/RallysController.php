@@ -106,7 +106,6 @@ class RallysController extends Controller
             'numTC' => 'required',
             'numAssistencies' => 'required',
             'localitzacio' => 'required',
-            'numPlaces' => 'required',
             'id_superficie' => 'required',
             'categorias' => 'required',
             'categorias.*' => 'required',
@@ -118,7 +117,6 @@ class RallysController extends Controller
             'numTC' => $data['numTC'],
             'numAssistencies' => $data['numAssistencies'],
             'localitzacio' => $data['localitzacio'],
-            'numPlaces' => $data['numPlaces'],
             'id_superficie' => $data['id_superficie'],
         ]);
 
@@ -235,20 +233,19 @@ class RallysController extends Controller
         $users=User::find($id_user);
         $coche=Cotxes::where('id', $id_coche);
         
-        $inscripcion = InscritsRallys::create([
-            'id_usuari' => $id_user,
-            'id_rallys' => $id_rally,
-            'id_cotxe' => $id_coche,
-        ]);
-
         $numPlaces = $rally->numPlaces;
         
         if($numPlaces >= 1){
             $rally->update([
                 'numPlaces' => $numPlaces -1,
             ]);
+            $inscripcion = InscritsRallys::create([
+                'id_usuari' => $id_user,
+                'id_rallys' => $id_rally,
+                'id_cotxe' => $id_coche,
+            ]);
         }else{
-            //mensaje de que no hay plazas
+            return redirect()->route('rallys.index');
         }
 
         return response()->json([

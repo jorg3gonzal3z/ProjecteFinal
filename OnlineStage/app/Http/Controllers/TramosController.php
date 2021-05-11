@@ -86,7 +86,7 @@ class TramosController extends Controller
             'distancia' => $data['distancia'],
             'sortida' => $data['sortida'],
             'final' => $data['final'],
-            'adressa' => 'required',
+            'adressa' => $data['adressa'],
             'id_superficie' => $data['id_superficie']
         ]);
         

@@ -137,7 +137,7 @@
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Numero de plazas</label>
                                     <div class="col-sm-10">
-                                    <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}">
+                                    <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}" disabled>
                                     </div>
                                 </div>
 
@@ -154,47 +154,47 @@
 
                         @endif
                     @endif
-
-                    <!-- fotografia del evento -->
-                    <div class="b-game-card">
-                        <div class="b-game-card__cover" style="background-image: url({{ $evento->logo }});"></div>
+                    <div id="evento:{{$evento->id}}" >
+                        <!-- fotografia del evento -->
+                        <div class="b-game-card">
+                            <div class="b-game-card__cover" style="background-image: url({{ $evento->logo }});"></div>
+                        </div>
+                        <!-- informacion sobre el tramo -->
+                        <table class="mt-3 table table-hover ">
+                            <tbody>
+                                <tr>
+                                    <th>
+                                    {{ $evento->nom}}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                    {{ $evento->tipus}}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                    {{ $evento->numPlaces}}
+                                    </th>
+                                </tr>
+                                <tr>
+                                    <th>
+                                    {{ $evento->localitzacio}}
+                                    </th>
+                                </tr>
+                                <!-- usuario que ha organizado el evento -->
+                                <tr>
+                                    <th>
+                                    @foreach ($users as $user)
+                                        @if ( $evento->id_usuari == $user->id )
+                                            {{$user->name}}<br>
+                                        @endif
+                                    @endforeach
+                                    </th>
+                                </tr>
+                            </tbody>
+                        </table>
                     </div>
-                    <!-- informacion sobre el tramo -->
-                    <table class="mt-3 table table-hover ">
-                        <tbody>
-                            <tr>
-                                <th>
-                                {{ $evento->nom}}
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                {{ $evento->tipus}}
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                {{ $evento->numPlaces}}
-                                </th>
-                            </tr>
-                            <tr>
-                                <th>
-                                {{ $evento->localitzacio}}
-                                </th>
-                            </tr>
-                            <!-- usuario que ha organizado el evento -->
-                            <tr>
-                                <th>
-                                @foreach ($users as $user)
-                                    @if ( $evento->id_usuari == $user->id )
-                                        {{$user->name}}<br>
-                                    @endif
-                                @endforeach
-                                </th>
-                            </tr>
-                        </tbody>
-                    </table>
-                    
                 <!-- listado de participantes -->
                 <div class="d-flex justify-content-center p-0 m-0">
                     <div id="listadoParticipantes:{{$evento->id}}" class="p-6 Participantes" style="cursor:pointer;color:blue;">
@@ -235,35 +235,39 @@
 
                 <!-- si el user esta logueado podrá incribirse al evento siempre que queden plazas... -->
                 @if (Auth::user())
+                    @if ($evento->numPlaces >= 1)
+                        @php
+                            $inscrit = false;
+                        @endphp
 
-                    @php
-                        $inscrit = false;
-                    @endphp
+                        @foreach($inscripciones as $inscripcion)
+                            @if($inscripcion->id_events == $evento->id &&  $inscripcion->id_usuari == $auth_user->id)
+                                @php
+                                    $inscrit = true;
+                                @endphp 
+                            @endif
+                        @endforeach
 
-                    @foreach($inscripciones as $inscripcion)
-                        @if($inscripcion->id_events == $evento->id &&  $inscripcion->id_usuari == $auth_user->id)
-                            @php
-                                $inscrit = true;
-                            @endphp 
+                        @if ($inscrit == false)
+                            <div class="p-6 d-flex justify-content-center">
+                            <form action="{{ route('evento.signup',['id_user' => $auth_user->id,'id_event' => $evento->id ] ) }}" method="POST" >
+                                @csrf 
+                                <button class="btn btn-danger">Inscribirme</button>
+                            </form>
+                            </div>
+                        @elseif ($inscrit == true)
+                            <div class="p-6 d-flex justify-content-center">
+                            <form action="{{ route('evento.quit',['id_user' => $auth_user->id,'id_event' => $evento->id ] ) }}" method="POST" >
+                                @csrf
+                                <button class="btn btn-danger">DesInscribirme</button>
+                            </form>
+                            </div>
                         @endif
-                    @endforeach
-
-                    @if ($inscrit == false)
+                    @else
                         <div class="p-6 d-flex justify-content-center">
-                        <form action="{{ route('evento.signup',['id_user' => $auth_user->id,'id_event' => $evento->id ] ) }}" method="POST" >
-                            @csrf 
-                            <button class="btn btn-danger">Inscribirme</button>
-                        </form>
-                        </div>
-                    @elseif ($inscrit == true)
-                        <div class="p-6 d-flex justify-content-center">
-                        <form action="{{ route('evento.quit',['id_user' => $auth_user->id,'id_event' => $evento->id ] ) }}" method="POST" >
-                            @csrf
-                            <button class="btn btn-danger">DesInscribirme</button>
-                        </form>
+                            <button class="btn btn-danger" disabled><i class=""></i> No quedan plazas</button>
                         </div>
                     @endif
-
                 @endif
                 </div>
             @endforeach

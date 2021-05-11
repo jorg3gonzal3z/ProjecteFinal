@@ -62,7 +62,6 @@ class EventosController extends Controller
             'logo' => 'nullable|mimes:jpeg,jpg,png,gif',
             'nom' => 'required',
             'tipus' => 'required',
-            'numPlaces' => 'required',
             'localitzacio' => 'required',
         ]);
         
@@ -76,14 +75,12 @@ class EventosController extends Controller
                 'logo' => $url,
                 'nom' => $data['nom'],
                 'tipus' => $data['tipus'],
-                'numPlaces' => $data['numPlaces'],
                 'localitzacio' => $data['localitzacio'],
             ]);
         }else{
             $evento->update([
                 'nom' => $data['nom'],
                 'tipus' => $data['tipus'],
-                'numPlaces' => $data['numPlaces'],
                 'localitzacio' => $data['localitzacio'],
             ]);
         }
@@ -125,7 +122,7 @@ class EventosController extends Controller
                 'numPlaces' => $numPlaces -1,
             ]);
         }else{
-            //mensaje de que no hay plazas
+            return redirect()->route('eventos.index');
         }
         return redirect()->route('eventos.index');
     }

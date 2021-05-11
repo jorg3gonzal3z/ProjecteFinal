@@ -64,6 +64,49 @@
 
         <button id="editar_cuenta" class="btn btn-danger">Editar Cuenta</button><br>
         
+
+        <!-- inscripciones del usuario -->
+        <a data-toggle="collapse" href="#collapseInscrits" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseInscrits">
+            <br><div class="d-flex justify-content-between"><h4>Todas mis Inscripciones</h4><i class="fa fa-caret-down fa-2x"></i></div>
+        </a>
+        
+        @if ( count($inscripciones_rallys)>0 || count($inscripciones_eventos)>0 )
+            <div class="collapse row" id="collapseInscrits">
+            @if (count($inscripciones_rallys)>0)
+            <!-- inscripciones rallys -->
+            <ul class="list-group col-md-2">
+            <li class="list-group-item"  style="cursor:pointer;" ><b>Inscripciones Rallys:</b></li>
+            @foreach($inscripciones_rallys as $inscripcione_rally)
+                @foreach($rallys as $rally)
+                    @if($rally->id == $inscripcione_rally->id_rallys)                       
+                        <li class="list-group-item">{{$rally->nom}}</li>
+                    @endif
+                @endforeach
+            @endforeach
+            </ul>
+            @endif
+            @if (count($inscripciones_eventos)>0)
+            <!-- inscripciones eventos -->
+            <ul class="list-group col-md-2">
+            <li class="list-group-item"  style="cursor:pointer;" ><b>Inscripciones Eventos:</b></li>
+            @foreach($inscripciones_eventos as $inscripcion_evento)
+                @foreach($eventos as $evento)
+                    @if($evento->id == $inscripcion_evento->id_events)                       
+                        <li class="list-group-item">{{$evento->nom}}</li>
+                    @endif
+                @endforeach
+            @endforeach
+            </ul>
+            @endif
+            </div>
+        @else
+            <div class="alert alert-danger">
+                <p>No estas inscrito a ningun evento ni a ningun rally</p>
+            </div>
+        @endif
+       
+        <br><br>
+
         <!-- coches del usuario -->
         <a data-toggle="collapse" href="#collapseCars" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseCars">
             <br><div class="d-flex justify-content-between"><h4>Todos mis Coches</h4><i class="fa fa-caret-down fa-2x"></i></div>
@@ -475,7 +518,7 @@
                             <form id="form_edit_evento:{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'user' ] ) }}" method="POST" enctype="multipart/form-data" hidden>
                                 @csrf
                                 {{ method_field('PUT') }}
-                                <a  id="esconder_form_edit:{{$evento->id}}" style="color:red; cursor:pointer; " class="float-right pl-3" hidden >X</a><br>
+                                <a  id="esconder_form_edit:{{$evento->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br>
                                 <div class="form-group row">
                                     <label class="col-sm-2 col-form-label">Editar Evento</label>
                                 </div>
@@ -519,7 +562,7 @@
                                 <button class="btn btn-danger" >Submit</button>
 
                             </form>
-
+                            <div id="evento:{{$evento->id}}" >
                             <!-- fotografia del evento -->
                             <div class="b-game-card">
                                 <div class="b-game-card__cover" style="background-image: url({{ $evento->logo }});"></div>
@@ -549,6 +592,7 @@
                                     </tr>
                                 </tbody>
                             </table>
+                            </div>
                         </div>
                     @endforeach
                 </div>
@@ -556,6 +600,209 @@
                 <!-- si el user no ha organizado ningun evento -->
                 <div class="alert alert-danger">
                     <p>No has añadido ningun evento</p>
+                </div>
+            @endif
+            
+            <!-- rallys del usuario -->
+            <a data-toggle="collapse" href="#collapseRallys" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseRallys">
+                <br><div class="d-flex justify-content-between"><h4>Todos mis Rallys</h4><i class="fa fa-caret-down fa-2x"></i></div>
+            </a><br>
+            @if (count($rallys)>0)
+                <div class="collapse" id="collapseRallys">
+                @foreach($rallys as $rally)
+                <!-- editar rally -->
+                <a id="edit_rally:{{$rally->id}}" class="float-right pl-3 btn editButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                <!-- eliminar rally -->
+                <form id="delete_rally:{{$rally->id}}" class="float-right" style="color:red;" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'user' ]) }}" method="POST">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
+                </form>
+
+                
+                <!-- formulario de edicion de rallys si eres el organizador del mismo -->
+                <form id="form_edit_rally:{{$rally->id}}" action="{{ route('rally.update',['id' => $rally->id,'location' => 'user'] ) }}" method="POST" enctype="multipart/form-data" hidden>
+                    @csrf
+                    {{ method_field('PUT') }}
+
+                    <a  id="esconder_form_edit:{{$rally->id}}" style="cursor:pointer; " class="mt-3 float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br><br>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Editar Rally</label>
+                    </div>
+                    <div class="row">
+                        <!-- fotografia del rally a editar -->
+                        @foreach ($fotos_rallys as $foto_rally)
+                            @if ($foto_rally->id_rallys == $rally->id)
+                                @foreach ($fotos as $key => $foto)
+                                    @if($foto_rally->id_fotos == $foto->id)
+                                        <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                    </div><br>
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Imagenes</label>
+                        <div class="col-sm-10">
+                            <input type="file" name="fotos[]" multiple>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Nombre</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" name="nom" value="{{$rally->nom}}">
+                        </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Distancia Total en km</label>
+                        <div class="col-sm-10">
+                            <input class="form-control" id="distancia" name="distancia" value="{{$rally->distancia}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Numero Tramos Cronometrados</label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" id="numTC" name="numTC" value="{{$rally->numTC}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Numero de Assistencias</label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" id="numAssistencies" name="numAssistencies" value="{{$rally->numAssistencies}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Localizacion</label>
+                        <div class="col-sm-10">
+                        <input type="text" class="form-control" id="localitzacio" name="localitzacio" value="{{$rally->localitzacio}}">
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Numero de Plazas</label>
+                        <div class="col-sm-10">
+                        <input type="number" class="form-control" id="numPlaces" name="numPlaces" value="{{$rally->numPlaces}}" disabled>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Superficie</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                                @foreach ($superficies as $superficie)
+                                    @if ($rally->id_superficie == $superficie->id)
+                                        <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                    @else
+                                        <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-group row">
+                        <label class="col-sm-2 col-form-label">Categorias de coches que pueden participar</label>
+                        <div class="col-sm-10">
+                            <select class="form-control" name="categorias[]" style="border-radius:10px" multiple>
+                                @foreach ($categorias_rallys as $categoria_rally)
+                                    @if ( $categoria_rally->id_rallys == $rally->id )
+                                        @foreach ($categorias as $categoria)
+                                            @if($categoria->id == $categoria_rally->id_categories)
+                                                <option selected value="{{$categoria->id}}">{{$categoria->nomCategoria}}</option>
+                                            @else
+                                                <option value="{{$categoria->id}}">{{$categoria->nomCategoria}}</option>
+                                            @endif
+                                        @endforeach
+                                    @endif
+                                @endforeach
+                            </select>
+                        </div>
+                    </div>
+
+                    <button class="btn btn-danger" >Submit</button>
+
+                </form>
+                 <!-- mostrar rallys -->
+                <table id="rally:{{$rally->id}}" class="table table-hover">
+                    <tbody>
+                        <tr>
+                            <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">
+                                <div id="controlsCarousel{{$rally->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
+                                    <div class="carousel-inner">
+                                    <!-- fotos del rally -->
+                                    @foreach ($fotos_rallys as $foto_rally)
+                                        @if ($foto_rally->id_rallys == $rally->id)
+                                            @foreach ($fotos as $key => $foto)
+                                                @if($foto_rally->id_fotos == $foto->id)
+                                                <div class="carousel-item">
+                                                    <img src="{{ $foto->binari }}" class="d-block img-fluid" alt="...">
+                                                </div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
+                                    </div>
+                                    <a class="carousel-control-prev" href="#controlsCarousel{{$rally->id}}" role="button" data-slide="prev">
+                                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Previous</span>
+                                    </a>
+                                    <a class="carousel-control-next" href="#controlsCarousel{{$rally->id}}" role="button" data-slide="next">
+                                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                                        <span class="sr-only">Next</span>
+                                    </a>
+                                </div>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2">{{ $rally->nom}}</th>
+                        </tr>
+                        <tr>
+                            <th rowspan="2" colspan="1">{{ $rally->numTC}}-{{ $rally->numAssistencies}}</th>
+                        </tr>
+                        <tr>
+                            <th>{{ $rally->distancia}}km</th>
+                        </tr>
+                        <tr>
+                            <!-- informacion sobre la superficie del rally -->
+                            @foreach ($superficies as $superficie)
+                                @if ( $rally->id_superficie == $superficie->id )
+                                    <th>{{$superficie->tipus}}<th>
+                                @endif
+                            @endforeach
+                        </tr>
+                        <tr>
+                            <th>{{$rally->localitzacio}}<th>    
+                        </tr>
+                        <tr>
+                            <th>{{$rally->numPlaces}}<th>
+                        </tr>
+                        <tr>
+                        <!-- categorias que pueden correr este rally -->
+                        @foreach ($categorias_rallys as $categoria_rally)
+                            @if ( $categoria_rally->id_rallys == $rally->id )
+                                @foreach ($categorias as $categoria)
+                                    @if($categoria->id == $categoria_rally->id_categories)
+                                        <th>{{$categoria->nomCategoria}}<th> 
+                                    @endif
+                                @endforeach
+                            @endif
+                        @endforeach
+                        </tr>
+                    </tbody>
+                </table><br>
+
+                @endforeach
+                </div>
+
+            @else
+                <!-- si el user no ha organizado ningun rally -->
+                <div class="alert alert-danger">
+                    <p>No has añadido ningun rally</p>
                 </div>
             @endif
         @endif

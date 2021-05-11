@@ -7,12 +7,11 @@
         <div class="flex justify-between h-16">
             <div class="flex-shrink-0 flex items-center">
                 <a href="{{ route('tramos.index') }}">
-                    <!-- <x-application-logo class="block h-10 w-auto fill-current text-gray-600" /> -->
                     <img src="{{ url('storage/logo.png') }}" width="100" height="100">
                 </a>
             </div>
             <div class="flex justify-content-between">
-                    <div style="color: red;"  class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
+                    <div class="hidden space-x-8 md:-my-px md:ml-10 md:flex">
                         <x-nav-link :href="route('tramos.index')" :active="request()->routeIs('tramos.index')">
                             {{ __('TRAMOS') }}
                         </x-nav-link>
@@ -40,7 +39,7 @@
                     <x-dropdown align="right" width="48">
                         <x-slot name="trigger">
                         
-                            <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                            <button class="flex items-center text-sm font-medium text-red-500 hover:text-red-700 hover:border-gray-300 focus:outline-none focus:text-red-700 focus:border-gray-300 transition duration-150 ease-in-out">
                                 <div>{{ Auth::user()->name }}</div>
 
                                 <div class="ml-1">
@@ -78,16 +77,16 @@
 
                     </x-dropdown>
                 @else
-                    <button class="flex items-center text-sm font-medium text-gray-500 hover:text-gray-700 hover:border-gray-300 focus:outline-none focus:text-gray-700 focus:border-gray-300 transition duration-150 ease-in-out">
-                        <div><a style="color:black;" href="{{ route('login') }}">Inicia Sesión</a></div>
-                        <div class="ml-3 btn btn-danger"><a style="color:white;" href="{{ route('register') }}">Únete</a></div>
+                    <button class="flex items-center text-sm font-medium hover:text-red-700 hover:border-gray-300 focus:outline-none focus:text-red-700 focus:border-gray-300 transition duration-150 ease-in-out">
+                        <div><a class="text-white font-weight-bold" href="{{ route('login') }}">Inicia Sesión</a></div>
+                        <div class="ml-3 btn btn-danger"><a class="text-decoration-none font-weight-bold" style="color:white;" href="{{ route('register') }}">Únete</a></div>
                     </button>
                 @endif
             </div>
 
             <!-- Hamburger -->
             <div class="col-mr-2 flex items-center md:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-red-400 hover:text-red-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-red-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -130,13 +129,13 @@
             <div class="pt-4 pb-1 border-t border-gray-200">
                 <div class="flex items-center px-4">
                     <div class="flex-shrink-0">
-                        <svg class="h-10 w-10 fill-current text-gray-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <svg class="h-10 w-10 fill-current text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
                         </svg>
                     </div>
                     <div class="ml-3">
-                        <div class="font-medium text-base text-gray-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-gray-500">{{ Auth::user()->email }}</div>
+                        <div class="font-medium text-base text-red-800">{{ Auth::user()->name }}</div>
+                        <div class="font-medium text-sm text-red-500">{{ Auth::user()->email }}</div>
                     </div>
                 </div>
 

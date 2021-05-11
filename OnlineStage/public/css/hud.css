@@ -1,9 +1,26 @@
+@font-face {
+  font-family: UniSans;
+  src: url("../fonts/uni-sans/Uni\ Sans\ Heavy.otf") format("opentype");
+}
 
+@font-face {
+  font-family: UniSans;
+  font-weight: bold;
+  src: url("../fonts/uni-sans/Uni\ Sans\ Heavy\ Italic.otf") format("opentype");
+}
+
+*{ font-family: "UniSans", sans-serif }
 /* boton de ir para arriba */
 body {
   min-height: 1000px;
 }
-
+.text-gray-500{
+  color: #DC3545 !important;
+}
+.text-gray-900{
+  color: #DC3545 !important;
+  font-weight:900;
+}
 #back-to-top{
   position: fixed;
   right: 10px;
@@ -17,7 +34,6 @@ body {
   margin: 0;
   padding-bottom: 6rem;
   min-height: 100%;
-  font-family: "Helvetica Neue", Arial, sans-serif;
 }
 
 .demo {
@@ -49,7 +65,6 @@ footer {
   padding: 1rem;
   text-align: center;
   display: grid;
-  font-family: "Poppins", sans-serif;
   place-items: center;
   background: rgb(173,30,30,1);
   background: linear-gradient(0deg, rgba(173,30,30,1) 0%, rgba(52,58,64,1) 50%);

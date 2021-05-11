@@ -23,7 +23,10 @@
             @if ($foto_rally->id_rallys == $rally->id)
                 @foreach ($fotos as $key => $foto)
                     @if($foto_rally->id_fotos == $foto->id)
-                        <img class="mr-5" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
+                    <div class="container_image_edit">
+                        <img class="mr-5 image_edit" src="{{$foto->binari}}" alt="Foto rally" width="200" height="200">
+                        <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                    </div>
                     @endif
                 @endforeach
             @endif

@@ -9,7 +9,7 @@
                         @foreach ($fotos as $key => $foto)
                             @if($foto_tramo->id_fotos == $foto->id)
                             <div class="carousel-item">
-                                <img src="{{ $foto->binari }}" class="d-block w-100 h-50" alt="...">
+                                <img src="{{ $foto->binari }}" class="d-block w-100" alt="...">
                             </div>
                             @endif
                         @endforeach
@@ -46,7 +46,7 @@
                     @endforeach
                     </tr>
                     <tr>
-                        <th rowspan="2" colspan="1">{{$tramo->adressa}}</th>
+                        <th rowspan="2" colspan="1" class="mostraAdressa">{{$tramo->adressa}}</th>
                     </tr>
                     <tr>
                         <th>{{ $tramo->distancia}}km</th>

@@ -45,7 +45,11 @@ $(document).ready(function(){
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
 
-    console.log($('.mostraAdressaTrams').text().replace(/([\-\>])+/g, ''));
+    var totesAdresses = $('.mostraAdressa');
+
+    totesAdresses.each(function(index, element){
+        $( element ).html($( element ).text().replace(/[&]{2}/g,'<i class="fa fa-arrow-right" aria-hidden="true"></i>'));
+    });
 });
 
 

@@ -109,6 +109,19 @@ class TramosController extends Controller
             }
         }
 
+        //eliminar las imagenes al editar el tramo
+        $imagenes_a_eliminar = request('imagenes_a_eliminar');
+
+        if ($imagenes_a_eliminar != ["null"]) {
+            foreach ($imagenes_a_eliminar as $imagen_a_eliminar){
+                $foto_tramo = FotosTrams::where('id_fotos', $imagen_a_eliminar);
+                $foto_tramo->delete();
+                $foto = Fotos::where('id', $imagen_a_eliminar);
+                $foto->delete();
+            }
+        }
+        
+
         //depenent de des d'on es cridi al metode retornara una redireccio o una altra
         if($location == "tramos"){return redirect()->route('tramos.index');}
         elseif($location == "user"){return redirect()->route('user.index');}

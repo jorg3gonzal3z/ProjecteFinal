@@ -36,9 +36,11 @@
                 @if ($foto_tramo->id_trams == $tramo->id)
                     @foreach ($fotos as $foto)
                             @if($foto_tramo->id_fotos == $foto->id)
-                            <div class="container_image_edit">
+                            <div class="img_edit:{{$foto->id}} container_image_edit">
                                 <img class="mr-5 image_edit" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
                                 <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                                <div id="tramo_id" hidden>{{$tramo->id}}</div>
+                                <div id="foto_id" hidden>{{$foto->id}}</div>
                             </div>
                             @endif
                     @endforeach
@@ -101,6 +103,8 @@
                     </select>
                 </div>
             </div>
+
+            <input type="text" id="imagenes_a_eliminar:{{$tramo->id}}" class="form-control" name="imagenes_a_eliminar[]" value="null" hidden readonly>
 
             <button class="btn btn-danger" >Update</button>
 

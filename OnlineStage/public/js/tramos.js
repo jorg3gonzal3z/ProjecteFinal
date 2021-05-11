@@ -29,6 +29,15 @@ $(document).ready(function(){
         $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
         $("#form_edit_tramo\\:"+ thisId).attr('hidden',false);
         $("#delete_tramo\\:"+ thisId).attr('hidden',true);
+        
+        //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
+        var imagenes_a_eliminar = [];
+        $('*[class^="img_edit"]').click(function(){
+            $(this).fadeOut(800);
+            let id_foto = $(this).find("#foto_id").html();
+            imagenes_a_eliminar.push(id_foto);
+            $("#imagenes_a_eliminar\\:"+ thisId).val(imagenes_a_eliminar);
+        });
     
         //boton para esconder el formulario de editar tramo
         $("#esconder_form_edit\\:"+ thisId).click(function() {

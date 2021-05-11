@@ -36,7 +36,7 @@ Route::put('/user/update_car/{id}', [UsuarioController::class, 'update_car'])->m
 Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');
-Route::put('/tramos/update/{id}/{location}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');
+Route::put('/tramos/update/{id}/{location}/{imagenes_a_eliminar?}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');
 Route::delete('/tramos/delete/{id}/{location}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');
 /* RALLYS */
 Route::get('/rallys', [RallysController::class, 'index'])->name('rallys.index');//ruta publica

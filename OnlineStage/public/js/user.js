@@ -27,6 +27,8 @@ $(document).ready(function(){
         $("#esconder_form_coche").removeAttr('hidden');
         $("#car_form").removeAttr('hidden');
         $("#add_car").attr('hidden',true);
+        //al cambiar los datos del formulario comprueva si corresponde con las restricciones de la categoria y la autoselecciona
+        
     });
     //boton para esconder form añadir coches
     $("#esconder_form_coche").click(function() {

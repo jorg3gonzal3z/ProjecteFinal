@@ -135,12 +135,12 @@ $(document).ready(function(){
     });
 
     $('#car_form').change(function(e){
-        let cat = $('#cat').val();
 
-        let potencia = $('#potencia').val();
-        let peso = $('#peso').val();
-        let ano = $('#año').val();
-        let tr = $('#tr').val();
+        var potencia = $('#potencia').val();
+        var peso = $('#peso').val();
+        var ano = $('#año').val();
+        var tr = $('#tr').val();
+        var cat = $('#cat').val();
 
         // console.log(potencia,peso,ano,tr);
 
@@ -154,8 +154,49 @@ $(document).ready(function(){
             url: 'user/getCat',
             async: false,            
             success: function(data){
-                // GetCategorias(data);
-                data.forEach(element => console.log(element));
+                // console.log(data);
+                data.forEach(function(value,index,array){
+
+                    console.log('///////comprovar categoria: '+value.nomCategoria+'///////')
+                    //año
+                    console.log('--Año--')
+                    if (value.nomCategoria == 'Vehiculos-Historicos' && ano < value.any){
+                        console.log('Es un vehiculo historico, cumple la condicion.')
+                        if (cat == value.id){
+                            console.log("Categoria seleccionada correctamente.")
+                        }else{
+                            console.log("Categoria mal seleccionada.")
+                        }
+                    }
+                    // if (ano < value.any){
+                    //     console.log(value.nomCategoria + ':es de un año superior, cat inorrecta')
+                    // }else{
+                    //     console.log(value.nomCategoria + ':el año esta correcto, cat correcta')
+                    // }
+
+                    //tren motriz
+                    console.log('--Tren Motriz--')
+                    if (tr != value.trenMotriu){
+                        console.log(value.nomCategoria + ':es de un tr diferente, cat incorrecta')
+                    }else{
+                        console.log(value.nomCategoria + ':el tr es igual, cat correcta')
+                    }
+                    //potencia
+                    console.log('--Potencia--')
+                    if (potencia < value.potenciaMax){
+                        console.log(value.nomCategoria + ':es de una potencia superior, cat correcta')
+                    }else{
+                        console.log(value.nomCategoria + ':es de una potencia inferior, cat incorrecta')
+                    }
+                    //peso
+                    console.log('--Peso--')
+                    if (peso > value.pesMin){
+                        console.log(value.nomCategoria + ':es de un peso superior, cat incorrecta')
+                    }else{
+                        console.log(value.nomCategoria + ':es de una peso superior, cat correcta')
+                    }
+
+                })
             }
         })
         e.preventDefault();
@@ -164,7 +205,3 @@ $(document).ready(function(){
     });
 
 });
-
-// function GetCategorias(data){
-//     console.log(data);
-// }

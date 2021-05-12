@@ -1,6 +1,7 @@
 function GetId(str){
     return str.split(':')[1];
 }
+
 $(document).ready(function(){
     //boton para editar datos de la cuenta
     $("#editar_cuenta").click(function() {
@@ -121,5 +122,49 @@ $(document).ready(function(){
         });
     });
 
+    //boton para mostrar las caracteristicas de las categorias
+    $('#ver_categorias').click(function(){
+        $(this).attr('hidden',true);
+        $('#categorias').attr('hidden',false);
+        $('#caracteristicas_categorias').attr('hidden',false);
+        $('#categorias').click(function(){
+            $(this).attr('hidden',true);
+            $('#ver_categorias').attr('hidden',false);
+            $('#caracteristicas_categorias').attr('hidden',true);
+        })
+    });
+
+    $('#car_form').change(function(e){
+        let cat = $('#cat').val();
+
+        let potencia = $('#potencia').val();
+        let peso = $('#peso').val();
+        let ano = $('#año').val();
+        let tr = $('#tr').val();
+
+        // console.log(potencia,peso,ano,tr);
+
+        $.ajaxSetup({
+            headers: {
+              'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        var categorias_rallys = $.ajax({
+            type: "GET",
+            url: 'user/getCat',
+            async: false,            
+            success: function(data){
+                // GetCategorias(data);
+                data.forEach(element => console.log(element));
+            }
+        })
+        e.preventDefault();
+        return false;
+   
+    });
 
 });
+
+// function GetCategorias(data){
+//     console.log(data);
+// }

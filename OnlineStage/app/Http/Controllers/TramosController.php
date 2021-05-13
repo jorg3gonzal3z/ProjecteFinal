@@ -109,7 +109,7 @@ class TramosController extends Controller
             }
         }
 
-        //eliminar las imagenes al editar el tramo
+        //eliminar las imagenes al editar el tramo si se eliminan del formulario
         $imagenes_a_eliminar = request('imagenes_a_eliminar');
 
         if ($imagenes_a_eliminar != ["null"]) {

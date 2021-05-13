@@ -3,6 +3,7 @@
 
 @section('content')
     <link rel="stylesheet" type="text/css" href="{{ url('/css/eventos.css') }}" />
+    <link rel="stylesheet" type="text/css" href="{{ url('/css/user.css') }}" />
 
     <!-- control de errores del formulario -->
     @if (count($errors) > 0)

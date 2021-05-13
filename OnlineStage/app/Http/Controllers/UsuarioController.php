@@ -167,4 +167,10 @@ class UsuarioController extends Controller
         return redirect()->route('user.index');
 
     }
+
+    public function getCat(){
+        $categorias=Categories::all();
+        // return $categorias;
+        return response()->json($categorias);
+    }
 }

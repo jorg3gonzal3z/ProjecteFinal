@@ -1,10 +1,10 @@
 <!-- añadir coche -->
 <!-- este boton abre el formulario para añadir coches -->
-<div id="add_car" class="p-6 bg-white border-b border-gray-200">    
+<div id="add_car" class="p-6 bg-dark border-red-500 text-center">    
     <button type="button" class="btn btn-danger">Añadir Coche</button>
 </div>
 <!-- formulario para añadir coches -->
-<div class="p-6 bg-white border-b border-gray-200">
+<div class="p-6 border-gray-200">
     
     <!-- formulario para añadir coches -->
     

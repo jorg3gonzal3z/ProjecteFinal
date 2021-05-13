@@ -9,22 +9,22 @@
 
 @section('content')
 
-    <div id="containerErrorsAdd" class="m-4 bg-dark border-b" >
-        <!-- control de errores del formulario -->
-        @if (count($errors) > 0)
-            <div class="alert alert-danger">
-                <p>Corrige los siguientes errores:</p>
-                <br>
-                <ul>
-                    @foreach ($errors->all() as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        @endif
-    </div>
-
     @if (Auth::user())
+
+        <div id="containerErrorsAdd" class="m-4 bg-dark" >
+            <!-- control de errores del formulario -->
+            @if (count($errors) > 0)
+                <div class="alert alert-danger">
+                    <p>Corrige los siguientes errores:</p>
+                    <br>
+                    <ul>
+                        @foreach ($errors->all() as $message)
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+        </div>
 
         @include('tramos.components.anadir_tramo')
 

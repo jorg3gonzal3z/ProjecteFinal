@@ -1,6 +1,6 @@
 @foreach ($eventos as $evento)
 
-    <div class="col-6 col-md-4 col-lg-3 ">
+    <div class="col-12 col-md-4 col-lg-3 ">
         @if (Auth::user())
             @include('eventos.components.editar_evento')
         @endif

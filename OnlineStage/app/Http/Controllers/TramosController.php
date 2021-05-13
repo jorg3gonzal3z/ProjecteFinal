@@ -50,19 +50,20 @@ class TramosController extends Controller
 
         $array_fotos = $data['fotos'];
         
-        foreach($array_fotos as $array_foto){
-
+        foreach($array_fotos as $array_foto){            
             $foto=$array_foto->store('public');
+    
             $url=Storage::url($foto);
             $url=Str::substr($url,1);
             $array_foto=Fotos::create([
                 'binari' => $url,
             ]);
-            
+
             $foto_tramo=FotosTrams::create([
                 'id_fotos' => $array_foto->id,
                 'id_trams' => $tramo->id,
             ]);
+            
         }
 
         return redirect()->route('tramos.index');

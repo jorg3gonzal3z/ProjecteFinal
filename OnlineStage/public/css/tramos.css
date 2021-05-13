@@ -36,3 +36,15 @@
         opacity: 0.5;
     }
 }
+
+.carousel-inner {
+    width: 100vw;
+    height: 50vh;
+    align-items: center;
+}
+.carousel-item {
+    height: 100%;
+}
+.carousel-item img{
+    height: 100%;
+}

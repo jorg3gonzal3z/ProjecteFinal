@@ -151,15 +151,27 @@ class EventosController extends Controller
         ]);
         $query=$data['search'];
         $eventos = DB::select("SELECT * FROM `events` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
-
         $users=User::all();
         $auth_user=Auth::user();
         $inscritos_eventos = InscritsEvents::all();
         if($auth_user){
-            $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
-            return view("eventos/index",compact(['auth_user','users','eventos','inscripciones','inscritos_eventos']));
+
+            if(count($eventos)>0){
+                $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
+                return view("eventos/index",compact(['auth_user','users','eventos','inscripciones','inscritos_eventos']));
+            }else{
+                $vacio = true;
+                return view("eventos/index",compact(['vacio','auth_user','users','eventos','inscripciones','inscritos_eventos']));
+            }
+            
         }else{
-            return view("eventos/index",compact(['auth_user','users','eventos','inscritos_eventos']));
+            
+            if(count($eventos)>0){
+                return view("eventos/index",compact(['auth_user','users','eventos','inscritos_eventos']));
+            }else{
+                $vacio = true;
+                return view("eventos/index",compact(['vacio','auth_user','users','eventos','inscritos_eventos']));
+            }
         }
     }
 }

@@ -152,13 +152,20 @@ class TramosController extends Controller
         ]);
         $query=$data['search'];
         $tramos = DB::select("SELECT * FROM `trams` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
-
         $superficies=Superficies::all();
         $users=User::all();
         $auth_user=Auth::user();
         $fotos=Fotos::all();
         $fotos_tramos=FotosTrams::all();
-        return view("tramos/index",compact(['tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+        if(count($tramos) > 0){
+
+            return view("tramos/index",compact(['tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+
+        }else{
+            
+            $vacio = true;
+            return view("tramos/index",compact(['vacio','tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+        }
     }
 
 }

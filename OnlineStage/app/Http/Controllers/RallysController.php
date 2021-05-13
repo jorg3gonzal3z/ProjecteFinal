@@ -261,7 +261,6 @@ class RallysController extends Controller
         ]);
         $query=$data['search'];
         $rallys = DB::select("SELECT * FROM `rallys` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
-
         $categorias = Categories::all();
         $categorias_rallys = CategoriesRallys::all();
         $fotos = Fotos::all();
@@ -272,10 +271,23 @@ class RallysController extends Controller
         $inscritos_rallys = InscritsRallys::all();
         $coches = Cotxes::all();
         if($auth_user){
-            $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
-            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+
+            if (count($rallys) > 0){
+                $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
+                return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+            }else{
+                $vacio = true;
+                return view("rallys/index",compact(['vacio','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+            }
+            
         }else{
-            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+            
+            if (count($rallys) > 0){
+                return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+            }else{
+                $vacio = true;
+                return view("rallys/index",compact(['vacio','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+            }
         }
     }
 }

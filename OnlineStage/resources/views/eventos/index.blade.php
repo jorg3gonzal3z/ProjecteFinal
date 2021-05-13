@@ -4,6 +4,14 @@
 
 @section('content')
 
+    <div class="col-12 mt-2">
+        <form class="float-right" action="{{ route('eventos.search') }}" method="GET">
+            @csrf
+            <input type="text" name="search" placeholder="Search..">
+            <button class="btn btn-danger" >Search</button>
+        </form>
+    </div><br><br>
+
     @if (Auth::user())
 
         <!-- control de errores del formulario -->

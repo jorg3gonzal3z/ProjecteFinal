@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\InscritsEvents;
+use Illuminate\Support\Facades\DB;
 
 class EventosController extends Controller
 {
@@ -142,5 +143,23 @@ class EventosController extends Controller
             }
         }
         return redirect()->route('eventos.index');
+    }
+
+    public function search(){
+        $data= request()->validate([
+            'search' => 'nullable',
+        ]);
+        $query=$data['search'];
+        $eventos = DB::select("SELECT * FROM `events` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+
+        $users=User::all();
+        $auth_user=Auth::user();
+        $inscritos_eventos = InscritsEvents::all();
+        if($auth_user){
+            $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
+            return view("eventos/index",compact(['auth_user','users','eventos','inscripciones','inscritos_eventos']));
+        }else{
+            return view("eventos/index",compact(['auth_user','users','eventos','inscritos_eventos']));
+        }
     }
 }

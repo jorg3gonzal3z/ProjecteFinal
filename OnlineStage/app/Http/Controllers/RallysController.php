@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\InscritsRallys;
 use App\Models\Cotxes;
+use Illuminate\Support\Facades\DB;
 
 class RallysController extends Controller
 {
@@ -252,7 +253,29 @@ class RallysController extends Controller
             'success' => 'yes',
         ]);
         
-        
+    }
 
+    public function search(){
+        $data= request()->validate([
+            'search' => 'nullable',
+        ]);
+        $query=$data['search'];
+        $rallys = DB::select("SELECT * FROM `rallys` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+
+        $categorias = Categories::all();
+        $categorias_rallys = CategoriesRallys::all();
+        $fotos = Fotos::all();
+        $fotos_rallys = FotosRallys::all();
+        $superficies=Superficies::all();
+        $users=User::all();
+        $auth_user=Auth::user();
+        $inscritos_rallys = InscritsRallys::all();
+        $coches = Cotxes::all();
+        if($auth_user){
+            $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
+            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+        }else{
+            return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+        }
     }
 }

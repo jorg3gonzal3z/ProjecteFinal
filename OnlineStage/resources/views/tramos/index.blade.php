@@ -13,7 +13,7 @@
         <form class="float-right" action="{{ route('tramos.search') }}" method="GET">
             @csrf
             <input type="text" name="search" placeholder="Search..">
-            <button class="btn btn-danger" >Submit</button>
+            <button class="btn btn-danger" >Search</button>
         </form>
     </div><br>
     

@@ -78,7 +78,7 @@
         <div id="categorias" style="cursor:pointer;" hidden><b>Categorias:</b></div>
 
         <div id="caracteristicas_categorias" class="row mt-3" hidden>
-            <div class="col-3">
+            <div class="col-md-2 col-sm-12">
                 <div class="nav flex-column nav-pills" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     @foreach ($categorias as $categoria)
                     <a class="nav-link" id="v-pills-{{$categoria->id}}-tab" data-toggle="pill" href="#v-pills-{{$categoria->id}}" role="tab" aria-controls="v-pills-{{$categoria->id}}" aria-selected="true">{{$categoria->nomCategoria}}</a>
@@ -86,7 +86,7 @@
 
                 </div>
             </div>
-            <div class="col-9">
+            <div class="col-md-9 col-sm-12">
                 <div class="tab-content" id="v-pills-tabContent">
                     @foreach ($categorias as $categoria)
                         <div class="tab-pane fade " id="v-pills-{{$categoria->id}}" role="tabpanel" aria-labelledby="v-pills-{{$categoria->id}}-tab">

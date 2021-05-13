@@ -140,10 +140,9 @@ $(document).ready(function(){
         var peso = $('#peso').val();
         var ano = $('#año').val();
         var tr = $('#tr').val();
-        var cat = $('#cat').val();
-
-        // console.log(potencia,peso,ano,tr);
-
+        var cat = $('#cat').find(":selected").attr('name');
+        var controlador_cat;
+        
         $.ajaxSetup({
             headers: {
               'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -154,54 +153,103 @@ $(document).ready(function(){
             url: 'user/getCat',
             async: false,            
             success: function(data){
-                // console.log(data);
+                
                 data.forEach(function(value,index,array){
-
-                    console.log('///////comprovar categoria: '+value.nomCategoria+'///////')
-                    //año
-                    console.log('--Año--')
-                    if (value.nomCategoria == 'Vehiculos-Historicos' && ano < value.any){
-                        console.log('Es un vehiculo historico, cumple la condicion.')
-                        if (cat == value.id){
-                            console.log("Categoria seleccionada correctamente.")
+                   
+                    if (cat == "Vehiculos-Historicos" && value.nomCategoria == "Vehiculos-Historicos"){
+                        if (ano != "" && ano < value.any && (tr == "FWD" || tr == "RWD" ) ){
+                            console.log("categoria correcta");
+                            controlador_cat = true
                         }else{
-                            console.log("Categoria mal seleccionada.")
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
                         }
                     }
-                    // if (ano < value.any){
-                    //     console.log(value.nomCategoria + ':es de un año superior, cat inorrecta')
-                    // }else{
-                    //     console.log(value.nomCategoria + ':el año esta correcto, cat correcta')
-                    // }
 
-                    //tren motriz
-                    console.log('--Tren Motriz--')
-                    if (tr != value.trenMotriu){
-                        console.log(value.nomCategoria + ':es de un tr diferente, cat incorrecta')
-                    }else{
-                        console.log(value.nomCategoria + ':el tr es igual, cat correcta')
-                    }
-                    //potencia
-                    console.log('--Potencia--')
-                    if (potencia < value.potenciaMax){
-                        console.log(value.nomCategoria + ':es de una potencia superior, cat correcta')
-                    }else{
-                        console.log(value.nomCategoria + ':es de una potencia inferior, cat incorrecta')
-                    }
-                    //peso
-                    console.log('--Peso--')
-                    if (peso > value.pesMin){
-                        console.log(value.nomCategoria + ':es de un peso superior, cat incorrecta')
-                    }else{
-                        console.log(value.nomCategoria + ':es de una peso superior, cat correcta')
+                    if (cat == "RGT"  && value.nomCategoria == value.trenMotriu){
+                        if (tr == "RWD" && peso > value.pesMin){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
                     }
 
+                    if (cat == "Grupo-N"  && value.nomCategoria == "Grupo-N"){
+                        if (potencia <= value.potenciaMax && peso >= value.pesMin && ano < value.any && (tr == "FWD" || tr == "RWD" ) ){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
+                    }
+
+                    if (cat == "R1-Rally5" && value.nomCategoria == "R1-Rally5"){
+                        if (potencia <= value.potenciaMax && peso >= value.pesMin && ano >= value.any && tr == value.trenMotriu){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
+                    }
+
+                    if (cat == "R2-R2T-Rally4" && value.nomCategoria == "R2-R2T-Rally4"){
+                        if (potencia <= value.potenciaMax && peso >= value.pesMin && ano >= value.any && tr == value.trenMotriu){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
+                    }
+
+                    if (cat == "Rally3" && value.nomCategoria == "Rally3"){
+                        if (potencia <= value.potenciaMax && peso >= value.pesMin && ano >= value.any && tr == value.trenMotriu){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
+                    }
+
+                    if (cat == "R5-Rally2" && value.nomCategoria == "R5-Rally2"){
+                        if (potencia <= value.potenciaMax && peso >= value.pesMin && ano >= value.any && tr == value.trenMotriu){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
+                    }
+
+                    if (cat == "WRC-Rally1" && value.nomCategoria == "WRC-Rally1"){
+                        if (potencia <= value.potenciaMax && peso >= value.pesMin && ano >= value.any && tr == value.trenMotriu){
+                            console.log("categoria correcta");
+                            controlador_cat = true
+                        }else{
+                            console.log("categoria incorrecta")
+                            controlador_cat = false
+                        }
+                    }
+                    
                 })
             }
         })
         e.preventDefault();
+        if(controlador_cat == false){
+            $('#error_cat').attr('hidden',false);
+            $('#error_cat').effect("shake", {times:3},900);
+            $('#submit_car').prop('disabled', true);
+        }else if(controlador_cat == true){
+            $('#error_cat').attr('hidden',true);
+            $('#submit_car').prop('disabled', false);
+        }
         return false;
-   
+        
     });
 
 });

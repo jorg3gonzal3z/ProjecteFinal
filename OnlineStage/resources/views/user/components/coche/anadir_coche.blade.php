@@ -60,12 +60,13 @@
         <div class="form-group row">
             <label class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-10">
-                <select id="cat" class="form-control" name="id_categoria" style="border-radius:10px">>
+                <select id="cat" class="form-control" name="id_categoria" style="border-radius:10px">
                     @foreach ($categorias as $categoria)
-                        <option value="{{$categoria->id}}">{{$categoria->nomCategoria}}</option>
+                        <option name="{{$categoria->nomCategoria}}" value="{{$categoria->id}}">{{$categoria->nomCategoria}}</option>
                     @endforeach
                 </select>
             </div>
+            <small id="error_cat" class="alert alert-danger" hidden>La categoria seleccionada es incorrecta</small>
         </div>
 
         <!-- boton para mostrar las caraacteristicas de cada categoria -->
@@ -101,7 +102,7 @@
             </div>
         </div>
 
-        <button class="btn btn-danger mt-3" >Submit</button>
+        <button id="submit_car" class="btn btn-danger mt-3" disabled>Submit</button>
 
     </form>
 </div>

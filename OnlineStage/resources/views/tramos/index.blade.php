@@ -9,6 +9,12 @@
 
 @section('content')
 
+    <form  action="{{ route('tramos.search') }}" method="GET">
+        @csrf
+        <input type="text" name="search" placeholder="Search..">
+        <button class="btn btn-danger" >Submit</button>
+    </form>
+    
     @if (Auth::user())
 
         <div id="containerErrorsAdd" class="m-4 bg-dark" >

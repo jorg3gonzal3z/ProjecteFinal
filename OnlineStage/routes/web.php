@@ -36,6 +36,7 @@ Route::get('/user/getCat', [UsuarioController::class, 'getCat'])->middleware(['a
 /* TRAMOS */
 Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
+Route::get('/search/', [TramosController::class, 'search'])->name('tramos.search');//ruta publica
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');
 Route::put('/tramos/update/{id}/{location}/{imagenes_a_eliminar?}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');
 Route::delete('/tramos/delete/{id}/{location}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');

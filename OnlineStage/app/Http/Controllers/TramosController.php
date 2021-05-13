@@ -11,6 +11,7 @@ use App\Models\FotosTrams;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class TramosController extends Controller
 {
@@ -142,6 +143,21 @@ class TramosController extends Controller
         //depenent de des d'on es cridi al metode retornara una redireccio o una altra
         if($location == "tramos"){return redirect()->route('tramos.index');}
         elseif($location == "user"){return redirect()->route('user.index');}
+    }
+
+    public function search(){
+        $data= request()->validate([
+            'search' => 'nullable',
+        ]);
+        $query=$data['search'];
+        $tramos = DB::select("SELECT * FROM `trams` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+
+        $superficies=Superficies::all();
+        $users=User::all();
+        $auth_user=Auth::user();
+        $fotos=Fotos::all();
+        $fotos_tramos=FotosTrams::all();
+        return view("tramos/index",compact(['tramos','superficies','users','auth_user','fotos','fotos_tramos']));
     }
 
 }

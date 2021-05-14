@@ -10,6 +10,8 @@
 @section('content')
 
     @include('tramos.components.search')
+
+    @include('tramos.components.filter')
     
     @if (Auth::user())
 

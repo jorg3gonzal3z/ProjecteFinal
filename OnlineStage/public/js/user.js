@@ -240,6 +240,7 @@ $(document).ready(function(){
             }
         })
         e.preventDefault();
+
         if(controlador_cat == false){
             $('#error_cat').attr('hidden',false);
             $('#error_cat').effect("shake", {times:3},900);
@@ -248,6 +249,7 @@ $(document).ready(function(){
             $('#error_cat').attr('hidden',true);
             $('#submit_car').prop('disabled', false);
         }
+        
         return false;
         
     });

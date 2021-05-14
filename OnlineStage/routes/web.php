@@ -36,11 +36,13 @@ Route::get('/user/getCat', [UsuarioController::class, 'getCat'])->middleware(['a
 /* TRAMOS */
 Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
+Route::get('/searcht', [TramosController::class, 'search'])->name('tramos.search');//ruta publica
 Route::post('/tramos/store/{id}', [TramosController::class, 'store'])->middleware(['auth'])->name('tramos.store');
 Route::put('/tramos/update/{id}/{location}/{imagenes_a_eliminar?}', [TramosController::class, 'update'])->middleware(['auth'])->name('tramos.update');
 Route::delete('/tramos/delete/{id}/{location}', [TramosController::class, 'destroy'])->middleware(['auth'])->name('tramos.destroy');
 /* RALLYS */
 Route::get('/rallys', [RallysController::class, 'index'])->name('rallys.index');//ruta publica
+Route::get('/searchr', [RallysController::class, 'search'])->name('rallys.search');//ruta publica
 Route::post('/rallys/store/{id}', [RallysController::class, 'store'])->middleware(['auth'])->name('rallys.store');
 Route::delete('/rallys/delete/{id}/{location}', [RallysController::class, 'destroy'])->middleware(['auth'])->name('rallys.destroy');
 Route::post('/rallys/quit/{id_user}/{id_rally}', [RallysController::class, 'quit'])->middleware(['auth'])->name('rally.quit');
@@ -49,6 +51,7 @@ Route::get('/rallys/signup/{id_user}/{id_rally}', [RallysController::class, 'sig
 Route::post('/rallys/signup/{id_user}/{id_rally}/{id_coche}', [RallysController::class, 'signup_car'])->middleware(['auth'])->name('rally.signup_car');
 /* EVENTOS */
 Route::get('/eventos', [EventosController::class, 'index'])->name('eventos.index');//ruta publica
+Route::get('/searche', [EventosController::class, 'search'])->name('eventos.search');//ruta publica
 Route::post('/eventos/store/{id}', [EventosController::class, 'store'])->middleware(['auth'])->name('eventos.store');
 Route::put('/eventos/update/{id}/{location}', [EventosController::class, 'update'])->middleware(['auth'])->name('eventos.update');
 Route::delete('/eventos/delete/{id}/{location}', [EventosController::class, 'destroy'])->middleware(['auth'])->name('eventos.destroy');

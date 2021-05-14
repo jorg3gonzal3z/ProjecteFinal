@@ -11,6 +11,7 @@ use App\Models\FotosTrams;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
+use Illuminate\Support\Facades\DB;
 
 class TramosController extends Controller
 {
@@ -50,7 +51,7 @@ class TramosController extends Controller
         $array_fotos = $data['fotos'];
         
         foreach($array_fotos as $array_foto){            
-            $foto=$array_foto->store('public');
+            $foto=$array_foto->store('public/' . $id);
     
             $url=Storage::url($foto);
             $url=Str::substr($url,1);
@@ -96,7 +97,7 @@ class TramosController extends Controller
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
             foreach($array_fotos as $array_foto){
-                $foto=$array_foto->store('public');
+                $foto=$array_foto->store('public/'. $tramo->id_usuari);
                 $url=Storage::url($foto);
                 $url=Str::substr($url,1);
                 $array_foto=Fotos::create([
@@ -149,6 +150,28 @@ class TramosController extends Controller
         //depenent de des d'on es cridi al metode retornara una redireccio o una altra
         if($location == "tramos"){return redirect()->route('tramos.index');}
         elseif($location == "user"){return redirect()->route('user.index');}
+    }
+
+    public function search(){
+        $data= request()->validate([
+            'search' => 'nullable',
+        ]);
+        $query=$data['search'];
+        $tramos = DB::select("SELECT * FROM `trams` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+        $superficies=Superficies::all();
+        $users=User::all();
+        $auth_user=Auth::user();
+        $fotos=Fotos::all();
+        $fotos_tramos=FotosTrams::all();
+        if(count($tramos) > 0){
+
+            return view("tramos/index",compact(['tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+
+        }else{
+            
+            $vacio = true;
+            return view("tramos/index",compact(['vacio','tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+        }
     }
 
 }

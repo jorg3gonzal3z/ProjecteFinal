@@ -1,5 +1,5 @@
 <!-- si el usuario esta logueado o es admin puede añadir tramos, este boton abre un formulario -->
-<div class="p-6 bg-dark border-b border-red-500 text-center">    
+<div class="p-6 bg-dark border-red-500 text-center">    
     <button id="add_tramo" type="button" class="btn btn-danger">Compartir Tramo</button>
 </div>
 

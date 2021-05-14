@@ -1,5 +1,5 @@
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
-    <div class="p-6 bg-white border-b border-gray-200">    
+    <div class="p-6 bg-dark border-red-500 text-center">    
         <button id="add_rally" type="button" class="btn btn-danger">Organizar Rally</button>
     </div>
 

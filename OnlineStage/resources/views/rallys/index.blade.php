@@ -4,23 +4,27 @@
 
 @section('content')
 
-    <!-- control de errores de los formulario -->
-    @if (count($errors) > 0)
-        <div class="p-6 bg-white border-b border-gray-200"> 
-            <div class="alert alert-danger">
-                <p>Corrige los siguientes errores:</p>
-                <br>
-                <ul>
-                    @foreach ($errors->all() as $message)
-                        <li>{{ $message }}</li>
-                    @endforeach
-                </ul>
-            </div>
-        </div>
-    @endif
+    @include('rallys.components.search')
 
-    <!-- si el usuario esta logueado i es organizador o es admin puede añadir rallys -->
     @if (Auth::user())
+
+        <!-- control de errores de los formulario -->
+        @if (count($errors) > 0)
+            <div class="p-6 border-gray-200"> 
+                <div class="alert alert-danger">
+                    <p>Corrige los siguientes errores:</p>
+                    <br>
+                    <ul>
+                        @foreach ($errors->all() as $message)
+                            <li>{{ $message }}</li>
+                        @endforeach
+                    </ul>
+                </div>
+            </div>
+        @endif
+
+        <!-- si el usuario esta logueado i es organizador o es admin puede añadir rallys -->
+    
         
         @include('rallys.components.organizar_rally')
 

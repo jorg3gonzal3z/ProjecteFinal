@@ -3,7 +3,7 @@
     <br><div class="d-flex justify-content-between"><h4>Todos mis Coches</h4><i class="fa fa-caret-down fa-2x"></i></div>
 </a>
 
-<div class="p-6 bg-white border-b border-gray-200">
+<div class="p-6 border-gray-200">
 
     <!-- variable para controlar si el user ha añadido coches -->
     @php

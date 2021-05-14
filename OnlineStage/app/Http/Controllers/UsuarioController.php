@@ -68,7 +68,7 @@ class UsuarioController extends Controller
         
         foreach($array_fotos as $array_foto){
 
-            $foto=$array_foto->store('public');
+            $foto=$array_foto->store('public/'.$id);
             $url=Storage::url($foto);
             $url=Str::substr($url,1);
             $array_foto=Fotos::create([
@@ -151,7 +151,7 @@ class UsuarioController extends Controller
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
             foreach($array_fotos as $array_foto){
-                $foto=$array_foto->store('public');
+                $foto=$array_foto->store('public/'.$coche->id_usuari);
                 $url=Storage::url($foto);
                 $url=Str::substr($url,1);
                 $array_foto=Fotos::create([

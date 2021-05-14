@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\InscritsEvents;
+use Illuminate\Support\Facades\DB;
 
 class EventosController extends Controller
 {
@@ -37,7 +38,7 @@ class EventosController extends Controller
         ]);
 
         $foto = $data['logo'];
-        $logo=$foto->store('public');
+        $logo=$foto->store('public/' . $id);
         $url=Storage::url($logo);
         $url=Str::substr($url,1);
 
@@ -67,7 +68,7 @@ class EventosController extends Controller
         
         if(isset($data['logo'])){
             $foto = $data['logo'];
-            $logo=$foto->store('public');
+            $logo=$foto->store('public/' . $evento->id_usuari);
             $url=Storage::url($logo);
             $url=Str::substr($url,1);
 
@@ -142,5 +143,36 @@ class EventosController extends Controller
             }
         }
         return redirect()->route('eventos.index');
+    }
+
+    public function search(){
+        $data= request()->validate([
+            'search' => 'nullable',
+        ]);
+        $query=$data['search'];
+        $eventos = DB::select("SELECT * FROM `events` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+        $users=User::all();
+        $auth_user=Auth::user();
+        $inscritos_eventos = InscritsEvents::all();
+        if($auth_user){
+
+            if(count($eventos)>0){
+                $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
+                return view("eventos/index",compact(['auth_user','users','eventos','inscripciones','inscritos_eventos']));
+            }else{
+                $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
+                $vacio = true;
+                return view("eventos/index",compact(['vacio','auth_user','users','eventos','inscripciones','inscritos_eventos']));
+            }
+            
+        }else{
+
+            if(count($eventos)>0){
+                return view("eventos/index",compact(['auth_user','users','eventos','inscritos_eventos']));
+            }else{
+                $vacio = true;
+                return view("eventos/index",compact(['vacio','auth_user','users','eventos','inscritos_eventos']));
+            }
+        }
     }
 }

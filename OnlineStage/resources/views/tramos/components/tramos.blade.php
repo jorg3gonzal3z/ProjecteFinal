@@ -1,5 +1,6 @@
 <!-- mostrar listado de los tramos -->
 <div class="d-flex flex-wrap" >
+
     @foreach ($tramos as $tramo)
         <div class="tramoContainer text-danger col-12 col-md-6">
 

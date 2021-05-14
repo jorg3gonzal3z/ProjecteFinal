@@ -1,29 +1,27 @@
 @extends('layouts.layout')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
-@section('header')
-    Eventos
-@stop
-
-@section('content')
 <link rel="stylesheet" type="text/css" href="{{ url('/css/eventos.css') }}" />
 
-    <!-- control de errores del formulario -->
-    @if (count($errors) > 0)
-    <div class="p-6 bg-white border-b border-gray-200"> 
-        <div class="alert alert-danger">
-            <p>Corrige los siguientes errores:</p>
-            <br>
-            <ul>
-                @foreach ($errors->all() as $message)
-                    <li>{{ $message }}</li>
-                @endforeach
-            </ul>
-        </div>
-    </div>
-    @endif
+@section('content')
+
+    @include('eventos.components.search')
 
     @if (Auth::user())
+
+        <!-- control de errores del formulario -->
+        @if (count($errors) > 0)
+        <div class="p-6 border-gray-200"> 
+            <div class="alert alert-danger">
+                <p>Corrige los siguientes errores:</p>
+                <br>
+                <ul>
+                    @foreach ($errors->all() as $message)
+                        <li>{{ $message }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        </div>
+        @endif
         
         @include('eventos.components.organizar_evento')
 

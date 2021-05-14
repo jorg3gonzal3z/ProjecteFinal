@@ -1,10 +1,10 @@
 <!-- si el usuario esta logueado i es organizador o es admin puede añadir eventos, este boton abre un formulario -->
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
-    <div class="p-6 bg-white border-b border-gray-200">    
+    <div class="p-6 bg-dark border-red-500 text-center">    
         <button id="add_event" type="button" class="btn btn-danger">Añadir Evento</button>
     </div>
 
-    <div class="p-6 bg-white border-b border-gray-200"> 
+    <div class="p-6 border-gray-200"> 
 
         <!-- formulario para añadir eventos -->
         <form id="form_add_event" action="{{ route('eventos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" hidden>

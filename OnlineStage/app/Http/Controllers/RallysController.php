@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\InscritsRallys;
 use App\Models\Cotxes;
+use Illuminate\Support\Facades\DB;
 
 class RallysController extends Controller
 {
@@ -68,7 +69,7 @@ class RallysController extends Controller
         
         foreach($array_fotos as $array_foto){
 
-            $foto=$array_foto->store('public');
+            $foto=$array_foto->store('public/' . $id);
             $url=Storage::url($foto);
             $url=Str::substr($url,1);
             $array_foto=Fotos::create([
@@ -139,7 +140,7 @@ class RallysController extends Controller
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
             foreach($array_fotos as $array_foto){
-                $foto=$array_foto->store('public');
+                $foto=$array_foto->store('public/' . $rally->id_usuari);
                 $url=Storage::url($foto);
                 $url=Str::substr($url,1);
                 $array_foto=Fotos::create([
@@ -252,7 +253,42 @@ class RallysController extends Controller
             'success' => 'yes',
         ]);
         
-        
+    }
 
+    public function search(){
+        $data= request()->validate([
+            'search' => 'nullable',
+        ]);
+        $query=$data['search'];
+        $rallys = DB::select("SELECT * FROM `rallys` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+        $categorias = Categories::all();
+        $categorias_rallys = CategoriesRallys::all();
+        $fotos = Fotos::all();
+        $fotos_rallys = FotosRallys::all();
+        $superficies=Superficies::all();
+        $users=User::all();
+        $auth_user=Auth::user();
+        $inscritos_rallys = InscritsRallys::all();
+        $coches = Cotxes::all();
+        if($auth_user){
+
+            if (count($rallys) > 0){
+                $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
+                return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+            }else{
+                $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
+                $vacio = true;
+                return view("rallys/index",compact(['vacio','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+            }
+            
+        }else{
+
+            if (count($rallys) > 0){
+                return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+            }else{
+                $vacio = true;
+                return view("rallys/index",compact(['vacio','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+            }
+        }
     }
 }

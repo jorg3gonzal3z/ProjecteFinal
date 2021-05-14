@@ -14,7 +14,7 @@ class FotosSeeder extends Seeder
     public function run()
     {
         $fotos =[
-            ['storage/villarodona.png'],['storage/plademanlleu.jpg'],['storage/106.jpg'],['storage/rally.jpg'],['storage/5.jpg'],['storage/6.jpg'],['storage/7.jpg'],['storage/8.jpg']
+            ['storage/assets/villarodona.png'],['storage/assets/plademanlleu.jpg'],['storage/assets/106.jpg'],['storage/assets/rally.jpg'],['storage/assets/5.jpg'],['storage/assets/6.jpg'],['storage/assets/7.jpg'],['storage/assets/8.jpg']
         ];
         foreach($fotos as $foto){
             \App\Models\Fotos::create([

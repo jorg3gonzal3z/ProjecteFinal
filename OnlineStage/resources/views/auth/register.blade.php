@@ -3,7 +3,7 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/css/hud.css') }}" /> 
     <x-auth-card>
         <x-slot name="logo">
-            <a href="/">
+            <a href="{{ route('tramos.index') }}">
                 <!-- <x-application-logo class="w-20 h-20 fill-current text-gray-500" /> -->
                 <img src="{{ url('storage/logo.png') }}" width="200" height="200">
             </a>

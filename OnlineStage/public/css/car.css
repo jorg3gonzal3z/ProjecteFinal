@@ -298,9 +298,9 @@ body {
 	right: 12px;
 }
 
-.road-wrap {
+.road-wrap{
 	perspective: 160px;
-    z-index: -100;
+
 }
 .road-wrap .road {
 	margin-top: -360px;

@@ -115,7 +115,7 @@ class TramosController extends Controller
         $imagenes_a_eliminar = array_map("intval", explode(",", $eliminarString));
 
         $all_fotos_tramo=FotosTrams::where('id_fotos', $tramo->id);
-        $count = count($all_fotos_tramo);
+        // $count = count($all_fotos_tramo);
 
         if ($imagenes_a_eliminar != ["null"]) {
             foreach ($imagenes_a_eliminar as $imagen_a_eliminar){

@@ -7,7 +7,7 @@
         <div class="flex justify-between h-16">
             <div class="flex-shrink-0 flex items-center">
                 <a href="{{ route('tramos.index') }}">
-                    <img src="{{ url('storage/logo.png') }}" width="100" height="100">
+                    <img src="{{ url('storage/assets/logo.png') }}" width="100" height="100">
                 </a>
             </div>
             <div class="flex justify-content-between">

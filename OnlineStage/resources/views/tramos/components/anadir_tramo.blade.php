@@ -15,11 +15,10 @@
         <div class="form-group">
             <label class="col-sm-2 col-form-label">Añadir Tramo</label>
         </div>
-        <div class="form-group">
-            <label class="col-sm-2 col-form-label">Imagenes</label>
-            <div class="col-sm-10">
-                <input type="file" name="fotos[]" multiple>
-            </div>
+
+        <div class="box form-group row mt-4">
+            <input type="file" name="fotos[]" id="file-newTramo" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden/>
+            <label for="file-newTramo"><i class="fa fa-upload" aria-hidden="true"></i> <span> Sube tus fotos&hellip;</span></label>
         </div>
 
         <div class="form-group">

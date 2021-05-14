@@ -1,3 +1,5 @@
+@import "upload_file.css";
+
 .container_image_edit{
     position: relative;
 }
@@ -47,4 +49,7 @@
 }
 .carousel-item img{
     height: 100%;
+    margin: auto;
+    padding: 10px;
+
 }

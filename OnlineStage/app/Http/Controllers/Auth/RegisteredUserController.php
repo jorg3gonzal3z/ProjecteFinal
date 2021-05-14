@@ -46,7 +46,7 @@ class RegisteredUserController extends Controller
         ]));
 
         // Create user directory
-        File::MakeDirectory(storage_path($user->id));
+        File::MakeDirectory(storage_path('app/public/'.$user->id));
 
         event(new Registered($user));
 

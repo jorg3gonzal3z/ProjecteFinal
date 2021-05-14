@@ -38,7 +38,7 @@ class EventosController extends Controller
         ]);
 
         $foto = $data['logo'];
-        $logo=$foto->store('public');
+        $logo=$foto->store('public/' . $id);
         $url=Storage::url($logo);
         $url=Str::substr($url,1);
 
@@ -68,7 +68,7 @@ class EventosController extends Controller
         
         if(isset($data['logo'])){
             $foto = $data['logo'];
-            $logo=$foto->store('public');
+            $logo=$foto->store('public/' . $evento->id_usuari);
             $url=Storage::url($logo);
             $url=Str::substr($url,1);
 

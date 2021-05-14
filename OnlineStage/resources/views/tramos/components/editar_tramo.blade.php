@@ -7,7 +7,7 @@
         @if (Auth::user())
             @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
                 <!-- editar tramo -->
-                <a id="edit_tramo:{{$tramo->id}}" class="nav-item nav-link text-danger bg-white editButton" data-toggle="modal" data-target="#exampleModalCenter" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+                <a id="edit_tramo:{{$tramo->id}}" class="nav-item nav-link text-danger bg-white editButton" data-toggle="modal" data-target="#modal{{$tramo->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
                 <!-- eliminar tramo -->
                 <form id="delete_tramo:{{$tramo->id}}" class="nav-item nav-link bg-danger " style="color:red;" action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'tramos' ]) }}" method="POST">
                     @csrf
@@ -21,7 +21,7 @@
 
 @if (Auth::user())
     @if ($tramo->id_usuari == $auth_user->id || $auth_user->rol == "admin")
-    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal fade" id="modal{{$tramo->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$tramo->id}}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark" >
                 <div class="modal-header">
@@ -55,13 +55,11 @@
                                     @endif
                                 @endforeach
                             </div>
-                            <div class="form-group row mt-4">
-                                <label class="col-sm-2 col-form-label">Imagenes</label>
-                                <div class="col-sm-10">
-                                    <input type="file" name="fotos[]" multiple>
-                                </div>
-                            </div>
 
+                            <div class="box form-group row mt-4">
+                                <input type="file" name="fotos[]" id="file-{{ $tramo->id }}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden/>
+                                <label for="file-{{ $tramo->id }}"><i class="fa fa-upload" aria-hidden="true"></i> <span> Sube tus fotos&hellip;</span></label>
+                            </div>
                             <div class="form-group row">
                                 <label class="col-sm-2 col-form-label">Nombre</label>
                                 <div class="col-sm-10">
@@ -112,7 +110,7 @@
                                 </div>
                             </div>
 
-                            <input type="text" id="imagenes_a_eliminar:{{$tramo->id}}" class="form-control" name="imagenes_a_eliminar[]" value="null" hidden readonly>
+                            <input type="text" id="imagenes_a_eliminar:{{$tramo->id}}" class="form-control" name="imagenes_a_eliminar" value="null" hidden readonly>
 
 
                     </div>

@@ -111,11 +111,17 @@ class TramosController extends Controller
         }
 
         //eliminar las imagenes al editar el tramo si se eliminan del formulario
-        $imagenes_a_eliminar = request('imagenes_a_eliminar');
+        $eliminarString = request('imagenes_a_eliminar');
+        $imagenes_a_eliminar = array_map("intval", explode(",", $eliminarString));
+
+        $all_fotos_tramo=FotosTrams::where('id_fotos', $tramo->id);
+        $count = count($all_fotos_tramo);
 
         if ($imagenes_a_eliminar != ["null"]) {
             foreach ($imagenes_a_eliminar as $imagen_a_eliminar){
+
                 $foto_tramo = FotosTrams::where('id_fotos', $imagen_a_eliminar);
+
                 $foto_tramo->delete();
                 $foto = Fotos::where('id', $imagen_a_eliminar);
                 $foto->delete();

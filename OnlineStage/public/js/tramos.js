@@ -38,12 +38,8 @@ $(document).ready(function(){
         currentEdit = thisId;
         currentEditPicArray = [];
 
-        // $('#tramo\\:'+ thisId).attr('hidden',true);
-        // $('#container_edit\\:'+ thisId).fadeIn(1000);
-        // $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
-        // $("#form_edit_tramo\\:"+ thisId).attr('hidden',false);
-        // $("#delete_tramo\\:"+ thisId).attr('hidden',true);
-        
+        //saber cuantas fotos tiene un tramo
+        console.log($("input[name$='"+thisId+"'] img").length);
         //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
         $('*[class^="img_edit"]').unbind().click(function(){
             $(this).off();
@@ -52,6 +48,7 @@ $(document).ready(function(){
             currentEditPicArray.push(id_foto);
             $("#imagenes_a_eliminar\\:"+thisId).val(currentEditPicArray);
             console.log(currentEditPicArray);
+            console.log($("#imagenes_a_eliminar\\:"+thisId).val());
         });
     
         //boton para esconder el formulario de editar tramo
@@ -68,17 +65,51 @@ $(document).ready(function(){
         });
     });
 
-    //imagenes del carrousel
+    //imagenes del carrousel bug fix
     $('.carousel-inner').find('>:first-child').addClass('active');
 
-    var totesAdresses = $('.mostraAdressa');
-
-
-    //reemplaza las dos && guardadas en la bd por icono de flecha 
+    //reemplaza las dos && guardadas en la bd por icono de flecha
+    var totesAdresses = $('.mostraAdressa'); 
     totesAdresses.each(function(index, element){
         $( element ).html($( element ).text().replace(/[&]{2}/g,'<i class="fa fa-arrow-right" aria-hidden="true"></i>'));
     });
+
+    //UPLOAD FILE + 5 IMAGE RESTRINCTION
+    'use strict';
+
+    ;( function ( document, window, index )
+    {
+        var inputs = document.querySelectorAll( '.inputfile' );
+        Array.prototype.forEach.call( inputs, function( input )
+        {
+            var label	 = input.nextElementSibling,
+                labelVal = label.innerHTML;
+    
+            input.addEventListener( 'change', function( e )
+            {
+                if (parseInt($(this)[0].files.length)>5){
+                    $(this).val(undefined);
+                    swal('Oops...', '¡Solo puedes añadir 5 fotos!', 'error');
+
+                }
+                var fileName = '';
+                if( this.files && this.files.length > 1 )
+                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+                else
+                    fileName = e.target.value.split( '\\' ).pop();
+    
+                if( fileName )
+                    label.querySelector( 'span' ).innerHTML = fileName;
+                else
+                    label.innerHTML = labelVal;
+            });
+    
+            // Firefox bug fix
+            input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+            input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+        });
+    }( document, window, 0 ));
+
+ 
 });
-
-
 

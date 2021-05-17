@@ -1,6 +1,7 @@
+<div class="col-md-12">
 <!-- coches del usuario -->
 <a data-toggle="collapse" href="#collapseCars" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseCars">
-    <br><div class="d-flex justify-content-between"><h4>Todos mis Coches</h4><i class="fa fa-caret-down fa-2x"></i></div>
+    <br><div class="text-center"><h4>Todos mis Coches <i class="fa fa-caret-down"></i></h4></div>
 </a>
 
 <div class="p-6 border-gray-200">
@@ -36,6 +37,8 @@
         <p>No has añadido ningun coche</p>
     </div>
     @endif 
+
+</div>
 
 </div>
 

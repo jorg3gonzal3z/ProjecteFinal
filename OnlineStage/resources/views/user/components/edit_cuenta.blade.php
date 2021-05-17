@@ -1,3 +1,4 @@
+<div class="col-md-12">
 <!-- si el user esta logueado se mostraran sus datos -->
 <h4>Datos de la Cuenta</h4><br>
         
@@ -37,4 +38,6 @@
     <button id="update_cuenta" class="btn btn-danger" hidden>Update</button>
 </form>
 
-<button id="editar_cuenta" class="btn btn-danger">Editar Cuenta</button><br>
+<button id="editar_cuenta" class="btn btn-danger">Editar Cuenta</button>
+
+</div>

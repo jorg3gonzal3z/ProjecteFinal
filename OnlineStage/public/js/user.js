@@ -69,6 +69,7 @@ $(document).ready(function(){
         $("#esconder_form_edit_coche\\:" + thisId).attr('hidden',false);
         $("#car_form_edit\\:"+ thisId).attr('hidden',false);
         $("#delete_coche\\:"+ thisId).attr('hidden',true);
+        $('#coche_info\\:'+ thisId).attr('hidden',true);
 
         //boton para esconder el formulario de editar coche
         $("#esconder_form_edit_coche\\:"+ thisId).click(function() {
@@ -77,7 +78,32 @@ $(document).ready(function(){
             $(this).attr('hidden',true);
             $('#coche\\:'+ thisId).attr('hidden',false);
             $("#delete_coche\\:"+ thisId).attr('hidden',false);
+            $('#coche_info\\:'+ thisId).attr('hidden',false);
         });
+    });
+
+    //imagen vacia que abre el formulario de edicion del coche
+    $('.add_image').click(function(){
+        $(".editCarButton").attr('hidden',true);
+        var thisId = $(this).parents("[id^=coche]").attr('id');
+        console.log(thisId);
+        thisId = GetId(thisId);
+        $('#coche\\:'+ thisId).attr('hidden',true);
+        $("#esconder_form_edit_coche\\:" + thisId).attr('hidden',false);
+        $("#car_form_edit\\:"+ thisId).attr('hidden',false);
+        $("#delete_coche\\:"+ thisId).attr('hidden',true);
+        $('#coche_info\\:'+ thisId).attr('hidden',true);
+
+        //boton para esconder el formulario de editar coche
+        $("#esconder_form_edit_coche\\:"+ thisId).click(function() {
+        $("#edit_coche\\:"+ thisId).attr('hidden',false);
+        $("#car_form_edit\\:"+ thisId).attr('hidden',true);
+        $(this).attr('hidden',true);
+        $('#coche\\:'+ thisId).attr('hidden',false);
+        $("#delete_coche\\:"+ thisId).attr('hidden',false);
+        $('#coche_info\\:'+ thisId).attr('hidden',false);
+        });
+
     });
 
     //boton para mostrar formulario editar evento

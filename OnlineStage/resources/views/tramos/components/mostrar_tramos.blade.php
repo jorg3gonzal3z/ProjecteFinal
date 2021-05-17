@@ -1,4 +1,4 @@
-<div  id="tramo:{{$tramo->id}}" class="tab-content text-danger" id="nav-tabContent{{$tramo->id}}">
+<div id="tramo:{{$tramo->id}}" class="tab-content text-danger" id="nav-tabContent{{$tramo->id}}">
     <div class="tab-pane fade show active" id="nav-fotos{{$tramo->id}}" role="tabpanel" aria-labelledby="nav-fotos-tab">
         <div id="controlsCarousel{{$tramo->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
             <div class="carousel-inner">

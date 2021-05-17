@@ -92,21 +92,25 @@ class TramosController extends Controller
         ]);
         
         $array_fotos = request('fotos');
-        
+        $all_fotos_tramo=FotosTrams::where('id_trams', $tramo->id)->count();
+
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
-            foreach($array_fotos as $array_foto){
-                $foto=$array_foto->store('public/'. $tramo->id_usuari);
-                $url=Storage::url($foto);
-                $url=Str::substr($url,1);
-                $array_foto=Fotos::create([
-                    'binari' => $url,
-                ]);
-                
-                $foto_tramo=FotosTrams::create([
-                    'id_fotos' => $array_foto->id,
-                    'id_trams' => $tramo->id,
-                ]);
+            $imgConditional = count($array_fotos) + $all_fotos_tramo;
+            if($imgConditional <= 5){
+                foreach($array_fotos as $array_foto){
+                    $foto=$array_foto->store('public/'. $tramo->id_usuari);
+                    $url=Storage::url($foto);
+                    $url=Str::substr($url,1);
+                    $array_foto=Fotos::create([
+                        'binari' => $url,
+                    ]);
+                    
+                    $foto_tramo=FotosTrams::create([
+                        'id_fotos' => $array_foto->id,
+                        'id_trams' => $tramo->id,
+                    ]);
+                }
             }
         }
 
@@ -114,10 +118,7 @@ class TramosController extends Controller
         $eliminarString = request('imagenes_a_eliminar');
         $imagenes_a_eliminar = array_map("intval", explode(",", $eliminarString));
 
-        $all_fotos_tramo=FotosTrams::where('id_fotos', $tramo->id);
-        // $count = count($all_fotos_tramo);
-
-        if ($imagenes_a_eliminar != ["null"]) {
+        if ($imagenes_a_eliminar != ["null"] && count($imagenes_a_eliminar) < $all_fotos_tramo) {
             foreach ($imagenes_a_eliminar as $imagen_a_eliminar){
 
                 $foto_tramo = FotosTrams::where('id_fotos', $imagen_a_eliminar);

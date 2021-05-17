@@ -1,17 +1,7 @@
 function GetId(str){
     return str.split(':')[1];
 }
-$(document).ready(function(){    
-    //boton para mostrar formulario añadir evento
-    $("#add_event").click(function() {
-        $('#esconder_form').removeAttr('hidden');
-        $("#form_add_event").removeAttr('hidden');
-    });
-    //boton para esconder el formulario de añadir evento
-    $("#esconder_form").click(function() {
-        $("#form_add_event").attr('hidden',true);
-        $('#esconder_form').attr('hidden',true);
-    });
+$(document).ready(function(){
 
     //boton para mostrar formulario editar evento
     $(".editButton").click(function() {

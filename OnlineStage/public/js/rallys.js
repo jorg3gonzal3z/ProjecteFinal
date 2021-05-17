@@ -3,22 +3,6 @@ function GetId(str){
 }
 $(document).ready(function(){
 
-    //boton para mostrar formulario añadir rally
-    $("#add_rally").click(function(){
-        $('#container_animacion').fadeIn(800);
-        $('#esconder_form').removeAttr('hidden');
-        $("#form_add_rally").removeAttr('hidden');
-
-        //boton para esconder el formulario de añadir rally
-        $("#esconder_form").click(function() {
-            $('#container_animacion').fadeOut(800, function(){
-                $("#form_add_rally").attr('hidden',true);
-                $('#esconder_form').attr('hidden',true);
-            });
-        });
-
-    });
-
     //boton para mostrar formulario editar rally
     $(".editButton").click(function() {
         $(this).attr('hidden',true);

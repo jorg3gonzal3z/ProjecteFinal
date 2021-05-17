@@ -39,7 +39,6 @@ $(document).ready(function(){
         currentEditPicArray = [];
 
         //saber cuantas fotos tiene un tramo
-        console.log($("input[name$='"+thisId+"'] img").length);
         //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
         $('*[class^="img_edit"]').unbind().click(function(){
             $(this).off();
@@ -110,6 +109,29 @@ $(document).ready(function(){
         });
     }( document, window, 0 ));
 
- 
+    $('.search-filter').on('keyup', function() {
+        var input = $('.search-filter').val();
+        var filter = input;
+
+        if (filter.length == 0) { // show all if filter is empty
+            $('a').each(function() {
+                $(this).show(); // show links
+            });
+            return;
+        } else {
+        console.log(filter); //MP
+            $('a').removeClass('collapsed');
+            $('a').each(function() {
+                $(this).hide(); // hide all links once search is begun
+            });
+
+            $('a:contains(' + filter + ')').each(function() {
+                $(this).removeClass('collapsed'); // remove bootstrap 4 collapsed class designation
+                $(this).show(); // show only matched links to search string?
+
+            });
+        }
+    });
+
 });
 

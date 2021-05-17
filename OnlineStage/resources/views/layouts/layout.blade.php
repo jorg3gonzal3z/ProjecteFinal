@@ -9,7 +9,10 @@
             @yield('header')
         </h2>
     </x-slot>
-
+    <div id="loading">
+        <!-- <img  src="{{ asset('/storage/assets/loading.gif')}}" alt="Loading..." /> -->
+        <img id="loading-image" src="{{ asset('/storage/assets/loading.svg')}}" aria-label="loading">
+    </div>  
     <div>
             <div class="bg-dark shadow-sm sm:lg">
                 @yield('content')

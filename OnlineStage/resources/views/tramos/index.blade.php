@@ -8,34 +8,34 @@
 <link rel="stylesheet" type="text/css" href="{{ url('/css/tramos.css') }}" /> 
 
 @section('content')
+        
+        @if (Auth::user())
 
-    @include('tramos.components.search')
+            <div id="containerErrorsAdd" class="m-4 bg-dark" >
+                <!-- control de errores del formulario -->
+                @if (count($errors) > 0)
+                    <div class="alert alert-danger">
+                        <p>Corrige los siguientes errores:</p>
+                        <br>
+                        <ul>
+                            @foreach ($errors->all() as $message)
+                                <li>{{ $message }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            </div>
 
-    @include('tramos.components.filter')
-    
-    @if (Auth::user())
+            @include('tramos.components.anadir_tramo')
 
-        <div id="containerErrorsAdd" class="m-4 bg-dark" >
-            <!-- control de errores del formulario -->
-            @if (count($errors) > 0)
-                <div class="alert alert-danger">
-                    <p>Corrige los siguientes errores:</p>
-                    <br>
-                    <ul>
-                        @foreach ($errors->all() as $message)
-                            <li>{{ $message }}</li>
-                        @endforeach
-                    </ul>
-                </div>
-            @endif
+        @endif
+        <div class="d-flex flex-wrap">
+            @include('tramos.components.filter')
+
+            @include('tramos.components.tramos')
         </div>
 
-        @include('tramos.components.anadir_tramo')
 
-    @endif
-
-    @include('tramos.components.tramos')
-              
 @stop
 
 <script src='https://api.mapbox.com/mapbox-gl-js/v2.1.1/mapbox-gl.js'></script>

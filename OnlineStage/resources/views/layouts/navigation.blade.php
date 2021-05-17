@@ -1,7 +1,7 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{ url('/css/hud.css') }}" />
 
-<nav x-data="{ open: false }" class="sticky-top bg-dark border-b border-red-100">
+<nav x-data="{ open: false }" class="sticky-top bg-dark border-b-2 border-red-300 ">
     <!-- Primary Navigation Menu -->
     <div class="topvar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">

@@ -15,7 +15,6 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\InscritsRallys;
 use App\Models\Cotxes;
-use Illuminate\Support\Facades\DB;
 
 class RallysController extends Controller
 {
@@ -260,7 +259,7 @@ class RallysController extends Controller
             'search' => 'nullable',
         ]);
         $query=$data['search'];
-        $rallys = DB::select("SELECT * FROM `rallys` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+        $rallys = Rallys::where('nom', 'like', '%'.$query.'%')->orderBy('nom','ASC')->paginate(10);
         $categorias = Categories::all();
         $categorias_rallys = CategoriesRallys::all();
         $fotos = Fotos::all();

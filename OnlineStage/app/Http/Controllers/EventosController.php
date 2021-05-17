@@ -9,7 +9,6 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\InscritsEvents;
-use Illuminate\Support\Facades\DB;
 
 class EventosController extends Controller
 {
@@ -150,7 +149,7 @@ class EventosController extends Controller
             'search' => 'nullable',
         ]);
         $query=$data['search'];
-        $eventos = DB::select("SELECT * FROM `events` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+        $eventos = Events::where('nom', 'like', '%'.$query.'%')->orderBy('nom','ASC')->paginate(10);
         $users=User::all();
         $auth_user=Auth::user();
         $inscritos_eventos = InscritsEvents::all();

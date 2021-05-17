@@ -11,7 +11,6 @@ use App\Models\FotosTrams;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
-use Illuminate\Support\Facades\DB;
 
 class TramosController extends Controller
 {
@@ -157,7 +156,7 @@ class TramosController extends Controller
             'search' => 'nullable',
         ]);
         $query=$data['search'];
-        $tramos = DB::select("SELECT * FROM `trams` WHERE `nom` LIKE '%$query%' ORDER BY `nom` ASC");
+        $tramos = Trams::where('nom', 'like', '%'.$query.'%')->orderBy('nom','ASC')->paginate(10);
         $superficies=Superficies::all();
         $users=User::all();
         $auth_user=Auth::user();

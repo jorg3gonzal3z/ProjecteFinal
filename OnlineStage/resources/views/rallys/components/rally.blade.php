@@ -14,3 +14,7 @@
 
 
 @endforeach
+
+<div class="d-flex justify-content-center m-5 col-12" id="pagination">
+    {{ $rallys->links() }}
+</div>

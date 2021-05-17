@@ -9,4 +9,9 @@
                 
         </div> 
     @endforeach
+    
+</div>
+
+<div class="d-flex justify-content-center m-5 col-12" id="pagination">
+    {{ $tramos->links() }}
 </div>

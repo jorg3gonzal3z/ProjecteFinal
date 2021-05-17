@@ -13,26 +13,26 @@
     @csrf
     {{ method_field('PUT') }}
 
-    <div class="d-flex">
-    <!-- fotografia del coche a editar -->
-    @foreach ($fotos_coches as $foto_coche)
-        @if ($foto_coche->id_cotxes == $coche->id)
-            @foreach ($fotos as $foto)
-                    @if($foto_coche->id_fotos == $foto->id)
-                    <div class="container_image_edit col-6 col-md-2">
-                        <img class=" image_edit" src="{{$foto->binari}}" alt="Foto coche" width="200" height="200">
-                        <div class=" remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
-                    </div>
-                    @endif
-            @endforeach
-        @endif
-    @endforeach
+    <div class="d-flex flex-wrap">
+        <!-- fotografia del coche a editar -->
+        @foreach ($fotos_coches as $foto_coche)
+            @if ($foto_coche->id_cotxes == $coche->id)
+                @foreach ($fotos as $foto)
+                        @if($foto_coche->id_fotos == $foto->id)
+                        <!-- las imagenes no se muestran todas de la misma medida juli ayuda :( -->
+                        <div class="mt-4 container_image_edit col-12 col-md-2">
+                            <img class=" image_edit" src="{{$foto->binari}}" alt="Foto coche" width="200" height="200">
+                            <div class=" remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                        </div>
+                        @endif
+                @endforeach
+            @endif
+        @endforeach
 
-    <!-- imagenes vacias si hay menos de 5 fotos del coche -->
-    @for ( $i = count($fotos_coches); $i < 6; $i ++ )
-        <img class="col-6 col-md-2 " src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" >
-    @endfor
-    
+        <!-- imagenes vacias si hay menos de 5 fotos del coche -->
+        @for ( $i = count($fotos_coches); $i < 6; $i ++ )
+            <img class="mt-4 col-12 col-md-2 " src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" >
+        @endfor
     </div>
 
     <a  id="esconder_form_edit_coche:{{$coche->id}}" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></a><br>

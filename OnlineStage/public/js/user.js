@@ -160,7 +160,7 @@ $(document).ready(function(){
         })
     });
 
-    $('#car_form').change(function(e){
+    $('#cat').change(function(e){
 
         var potencia = $('#potencia').val();
         var peso = $('#peso').val();
@@ -260,6 +260,11 @@ $(document).ready(function(){
                             console.log("categoria incorrecta")
                             controlador_cat = false
                         }
+                    }
+
+                    if (cat == "-- Selecciona una Categoria --"){
+                        console.log("categoria incorrecta")
+                        controlador_cat = false
                     }
                     
                 })

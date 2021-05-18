@@ -82,3 +82,23 @@
 .navbar-nav .nav-link {
     color: rgba(255, 255, 255, .5);
 }
+
+
+.modal-header{
+    border-bottom: rgb(255, 172, 172) 1px solid!important;
+}.modal-header h5{
+    font-size: xx-large;
+}
+.form-group.row label{
+    font-size: large;
+}
+
+.modal-content{
+    backdrop-filter: blur( 15.0px )!important;
+    background: rgba(255, 86, 86, 0.40)!important;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
+    -webkit-backdrop-filter: blur( 15.0px )!important;
+    border-radius: 10px!important;
+    border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+}
+

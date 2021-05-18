@@ -1,43 +1,80 @@
-<div class="col-md-12">
-<!-- si el user esta logueado se mostraran sus datos -->
-<h4>Datos de la Cuenta</h4><br>
-        
-<!-- formulario edicion de cuenta usuario -->
+<div class="col-12">
+    
+    <div class="mt-3 card col-12 col-mb-12 col-lg-6 offset-lg-3 mb-2">
 
-<form class="" action="{{ route('user.update_user',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data">
-    @csrf
-    {{ method_field('PUT') }}
+        <div class="card-body">
+            
+            <h4 class="card-title text-center text-white">Datos de la Cuenta</h4><hr>
+            
+            <div class="mb-4 ">
 
-    <a  id="esconder_form" style="cursor:pointer; " class="float-right pl-3" hidden ><i class="fa fa-caret-up fa-2x"></i></i></a><br><br>
+                <div class="form-group row">
+                    <label class="col-12 col-ml-3 text-white">Nombre</label>
+                    <input class="rounded col-12 col-mb-4 col-lg-4" type="text" value="{{$auth_user->name}}" disabled>
+                </div>
+                <div class="mt-3 form-group row">
+                    <label class="col-12 col-mb-3 text-white">Email</label>                    
+                    <input class="rounded col-12 col-mb-4 col-lg-4" type="email" value="{{$auth_user->email}}" disabled>                   
+                </div>
+            </div>
+            
+            <div class="d-flex justify-content-center">
+                <button class="btn btn-danger" data-toggle="modal" data-target="#modalEditUser">Editar Cuenta</button>
+            </div>
 
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Nombre</label>
-        <div class="col-sm-10">
-            <input id="name_user" type="text" name="name" value="{{$auth_user->name}}" style="border-radius:10px" disabled>
+        </div>
+    
+    </div>      
+    
+    <div class="modal fade" id="modalEditUser" tabindex="-1" role="dialog" aria-labelledby="#modalEditUser" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content bg-dark" >
+                <div class="modal-header">
+                    <h5 class="modal-title text-white" id="exampleModalCenterTitle">¡Recuerda aplicar los cambios!</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span class="text-danger" aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body p-5">
+                    <!-- formulario edicion de cuenta usuario -->
+                    <form action="{{ route('user.update_user',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data">
+                        @csrf
+                        {{ method_field('PUT') }}
+
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label text-white">Nombre</label>
+                            <div class="col-sm-10">
+                                <input class="form-control rounded" id="name_user" type="text" name="name" value="{{$auth_user->name}}"  >
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-2 col-form-label text-white">Email</label>
+                            <div class="col-sm-10">
+                                <input class="form-control rounded" id="email_user" type="email" name="email" value="{{$auth_user->email}}" >
+                            </div>
+                        </div>
+                        <div class="form-group row" id="pass_user" >
+                            <label class="col-sm-3 col-form-label text-white">Contraseña</label>
+                            <div class="col-sm-9">
+                                <input class="form-control rounded" type="password" name="pass" placeholder="12345678CR ...">
+                            </div>
+                        </div>
+                        <div class="form-group row" id="rpass_user" >
+                            <label class="col-sm-5 col-form-label text-white">Repite la Contraseña</label>
+                            <div class="col-sm-7">
+                                <input class="form-control rounded" type="password" name="rpass" placeholder="12345678CR ...">
+                            </div>
+                        </div>
+                        
+                </div>
+                <div class="modal-footer d-flex justify-content-between">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-danger" >Aplicar Cmabios</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
-    <div class="form-group row">
-        <label class="col-sm-2 col-form-label">Email</label>
-        <div class="col-sm-10">
-            <input id="email_user" type="email" name="email" value="{{$auth_user->email}}" style="border-radius:10px" disabled>
-        </div>
-    </div>
-    <!-- solo se muestra si el usuario decide editar la cuenta -->
-    <div class="form-group row" id="pass_user" hidden>
-        <label class="col-sm-2 col-form-label">Contraseña</label>
-        <div class="col-sm-10">
-            <input type="password" name="pass" style="border-radius:10px" placeholder="12345678CR ...">
-        </div>
-    </div>
-    <div class="form-group row" id="rpass_user" hidden>
-        <label class="col-sm-2 col-form-label">Repite la Contraseña</label>
-        <div class="col-sm-10">
-            <input type="password" name="rpass" style="border-radius:10px" placeholder="12345678CR ...">
-        </div>
-    </div>
-    <button id="update_cuenta" class="btn btn-danger" hidden>Update</button>
-</form>
-
-<button id="editar_cuenta" class="btn btn-danger">Editar Cuenta</button>
-
+    
 </div>
+

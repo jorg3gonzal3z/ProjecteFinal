@@ -116,9 +116,9 @@
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                        <button class="btn btn-danger" >Aplicar cambios</button>
-                        </form>
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button class="btn btn-danger" >Aplicar cambios</button>
+                    </form>
                 </div>
             </div>
         </div>

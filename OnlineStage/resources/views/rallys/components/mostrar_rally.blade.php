@@ -1,76 +1,79 @@
 <!-- mostrar rallys -->
-<table id="rally:{{$rally->id}}" class="table table-hover">
-    <tbody>
-        <tr>
-            <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">
-                <div id="controlsCarousel{{$rally->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
-                    <div class="carousel-inner">
-                    <!-- fotos del rally -->
-                    @foreach ($fotos_rallys as $foto_rally)
-                        @if ($foto_rally->id_rallys == $rally->id)
-                            @foreach ($fotos as $key => $foto)
-                                @if($foto_rally->id_fotos == $foto->id)
-                                <div class="carousel-item">
-                                    <img src="{{ $foto->binari }}" class="d-block img-fluid" alt="...">
-                                </div>
+<div id="rally:{{$rally->id}}">
+    <div class="col-md-4">
+        <div class="card mb-2">
+            <div id="controlsCarousel{{$rally->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
+                <div class="carousel-inner">
+                <!-- fotos del rally -->
+                @foreach ($fotos_rallys as $foto_rally)
+                    @if ($foto_rally->id_rallys == $rally->id)
+                        @foreach ($fotos as $key => $foto)
+                            @if($foto_rally->id_fotos == $foto->id)
+                            <div class="carousel-item">
+                                <img src="{{ $foto->binari }}" class="d-block img-fluid" alt="...">
+                            </div>
+                            @endif
+                        @endforeach
+                    @endif
+                @endforeach
+                </div>
+                <a class="carousel-control-prev" href="#controlsCarousel{{$rally->id}}" role="button" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#controlsCarousel{{$rally->id}}" role="button" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+            </div>
+        <div class="card-body">
+            <h4 class="card-title text-center">{{ $rally->nom}}</h4><hr>
+            <div class="d-flex flex-wrap">
+                <div class="col-6 col-md-6 p-0">
+                    <!-- usuario que ha organizado el rally -->
+                    @foreach ($users as $user)
+                        @if ( $rally->id_usuari == $user->id )
+                        <p>Organizador: {{ $user->name}}</p>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="col-6 col-md-6 p-0">
+                    <!-- informacion sobre la superficie del rally -->
+                    @foreach ($superficies as $superficie)
+                        @if ( $rally->id_superficie == $superficie->id )
+                            <p>Superficie: {{$superficie->tipus}}<p>
+                        @endif
+                    @endforeach
+                </div>
+                <div class="col-6 col-md-6 p-0">
+                    <p>Numero de TC: {{ $rally->numTC}}</p>
+                </div>
+                <div class="col-6 col-md-6 p-0">
+                    <p>Numero de Assistencais: {{ $rally->numAssistencies}}</p>
+                </div>
+                <div class="col-12 col-md-12 p-0">
+                    <p>Categorias: </p>
+                    <div class="d-flex flex-wrap justify-content-center">
+                    <!-- categorias que pueden correr este rally -->
+                    @foreach ($categorias_rallys as $categoria_rally)
+                        @if ( $categoria_rally->id_rallys == $rally->id )
+                            @foreach ($categorias as $categoria)
+                                @if($categoria->id == $categoria_rally->id_categories)
+                                    <div class="col-4 col-md-4 p-1 text-center"><p class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
                                 @endif
                             @endforeach
                         @endif
                     @endforeach
                     </div>
-                    <a class="carousel-control-prev" href="#controlsCarousel{{$rally->id}}" role="button" data-slide="prev">
-                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Previous</span>
-                    </a>
-                    <a class="carousel-control-next" href="#controlsCarousel{{$rally->id}}" role="button" data-slide="next">
-                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                        <span class="sr-only">Next</span>
-                    </a>
                 </div>
-            </th>
-        </tr>
-        <tr>
-            <th rowspan="2">{{ $rally->nom}}</th>
-        </tr>
-        <tr>
-        <!-- usuario que ha organizado el rally -->
-        @foreach ($users as $user)
-            @if ( $rally->id_usuari == $user->id )
-            <td>{{ $user->name}}</td>
-            @endif
-        @endforeach
-        </tr>
-        <tr>
-            <th rowspan="2" colspan="1">{{ $rally->numTC}}-{{ $rally->numAssistencies}}</th>
-        </tr>
-        <tr>
-            <th>{{ $rally->distancia}}km</th>
-        </tr>
-        <tr>
-            <!-- informacion sobre la superficie del rally -->
-            @foreach ($superficies as $superficie)
-                @if ( $rally->id_superficie == $superficie->id )
-                    <th>{{$superficie->tipus}}<th>
-                @endif
-            @endforeach
-        </tr>
-        <tr>
-            <th>{{$rally->localitzacio}}<th>    
-        </tr>
-        <tr>
-            <th>{{$rally->numPlaces}}<th>
-        </tr>
-        <tr>
-        <!-- categorias que pueden correr este rally -->
-        @foreach ($categorias_rallys as $categoria_rally)
-            @if ( $categoria_rally->id_rallys == $rally->id )
-                @foreach ($categorias as $categoria)
-                    @if($categoria->id == $categoria_rally->id_categories)
-                        <th>{{$categoria->nomCategoria}}<th> 
-                    @endif
-                @endforeach
-            @endif
-        @endforeach
-        </tr>
-    </tbody>
-</table><br>
+            </div>
+            <div class="col-12 col-md-12 text-center">
+                @include('rallys.components.participantes_rally')
+            </div><hr>
+            <div class="col-12 col-md-12 text-center">
+                @include('rallys.components.inscripcion_rally')
+            </div>
+
+        </div>
+    </div>
+</div>

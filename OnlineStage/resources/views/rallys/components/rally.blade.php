@@ -1,6 +1,6 @@
 <div class="d-flex flex-wrap">
 @foreach ($rallys as $rally)
-    <div class="col-12 col-md-6 col-lg-4"> 
+    <div class="col-12 col-md-6 col-lg-4 mt-4"> 
         @if (Auth::user())
             
             @include('rallys.components.editar_rally')

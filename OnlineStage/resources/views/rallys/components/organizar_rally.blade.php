@@ -2,7 +2,7 @@
     <div class="p-6 bg-dark border-red-500 text-center">    
         <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddRally">Organizar Rally</button>
     </div>
-
+    <hr>
     <div class="modal fade" id="modalAddRally" tabindex="-1" role="dialog" aria-labelledby="#modalAddRally" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content bg-dark" >

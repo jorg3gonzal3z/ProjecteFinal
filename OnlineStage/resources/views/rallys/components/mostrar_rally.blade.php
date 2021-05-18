@@ -41,7 +41,17 @@
                     <!-- informacion sobre la superficie del rally -->
                     @foreach ($superficies as $superficie)
                         @if ( $rally->id_superficie == $superficie->id )
-                            <p>Superficie: {{$superficie->tipus}}<p>
+                            <p>
+                            Superficie: 
+                                @if ($superficie->tipus == 'Asfalto' )
+                                    <i class="fa fa-road" aria-hidden="true"></i>
+                                @elseif ($superficie->tipus == 'Tierra' )
+                                    <i class="fa fa-tree" aria-hidden="true"></i>
+                                @elseif ($superficie->tipus == 'Nieve' )
+                                    <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                @endif
+                            {{$superficie->tipus}}
+                            <p>
                         @endif
                     @endforeach
                 </div>

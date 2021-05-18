@@ -6,22 +6,6 @@ var currentEditPicArray = [];
 var isCurrentlyEditing = false;
 
 $(document).ready(function(){
-    //boton para mostrar formulario añadir tramo
-    $("#add_tramo").click(function(){
-        $('#container_animacion').fadeIn(800);
-        $('#esconder_form').removeAttr('hidden');
-        $("#form_add_tramo").removeAttr('hidden');
-        $('#map').removeAttr('hidden');
-
-        //boton para esconder el formulario de añadir tramo
-        $("#esconder_form").click(function() {
-            $('#container_animacion').fadeOut(800, function(){
-                $("#form_add_tramo").attr('hidden',true);
-                $('#esconder_form').attr('hidden',true);
-                $('#map').attr('hidden',true);
-            });
-        });
-    });
     
     //boton para mostrar formulario editar tramo
     $(".editButton").click(function() {
@@ -86,7 +70,7 @@ $(document).ready(function(){
     
             input.addEventListener( 'change', function( e )
             {
-                if (parseInt($(this)[0].files.length)>5){
+                if (parseInt($(this)[0].files.length)>6){
                     $(this).val(undefined);
                     swal('Oops...', '¡Solo puedes añadir 5 fotos!', 'error');
 
@@ -132,6 +116,8 @@ $(document).ready(function(){
             });
         }
     });
+    
 
+  
 });
 

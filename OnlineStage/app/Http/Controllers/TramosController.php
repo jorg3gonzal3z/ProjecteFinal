@@ -97,7 +97,7 @@ class TramosController extends Controller
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
             $imgConditional = count($array_fotos) + $all_fotos_tramo;
-            if($imgConditional <= 5){
+            if($imgConditional <= 6){
                 foreach($array_fotos as $array_foto){
                     $foto=$array_foto->store('public/'. $tramo->id_usuari);
                     $url=Storage::url($foto);

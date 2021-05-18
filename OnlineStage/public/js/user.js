@@ -160,7 +160,7 @@ $(document).ready(function(){
         })
     });
 
-    $('#cat').change(function(e){
+    $('#car_form').change(function(e){
 
         var potencia = $('#potencia').val();
         var peso = $('#peso').val();

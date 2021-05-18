@@ -33,7 +33,7 @@
                     <!-- usuario que ha organizado el rally -->
                     @foreach ($users as $user)
                         @if ( $rally->id_usuari == $user->id )
-                        <p>Organizador: {{ $user->name}}</p>
+                        <p>Organizador:<span class="text-danger pl-1"> {{ $user->name}}</span></p>
                         @endif
                     @endforeach
                 </div>
@@ -44,22 +44,22 @@
                             <p>
                             Superficie: 
                                 @if ($superficie->tipus == 'Asfalto' )
-                                    <i class="fa fa-road" aria-hidden="true"></i>
+                                    <i class="fa fa-road text-danger pl-1" aria-hidden="true"></i>
                                 @elseif ($superficie->tipus == 'Tierra' )
-                                    <i class="fa fa-tree" aria-hidden="true"></i>
+                                    <i class="fa fa-tree text-danger pl-1" aria-hidden="true"></i>
                                 @elseif ($superficie->tipus == 'Nieve' )
-                                    <i class="fa fa-snowflake-o" aria-hidden="true"></i>
+                                    <i class="fa fa-snowflake-o text-danger pl-1" aria-hidden="true"></i>
                                 @endif
-                            {{$superficie->tipus}}
+                            <span class="text-danger pl-1">{{$superficie->tipus}}</span>
                             <p>
                         @endif
                     @endforeach
                 </div>
                 <div class="col-12 col-md-6 p-0">
-                    <p>Numero de TC: {{ $rally->numTC}}</p>
+                    <p>Numero de TC: <span class="text-danger pl-1">{{ $rally->numTC}}</span></p>
                 </div>
                 <div class="col-12 col-md-6 p-0">
-                    <p>Numero de Assistencais: {{ $rally->numAssistencies}}</p>
+                    <p>Numero de Assistencais: <span class="text-danger pl-1">{{ $rally->numAssistencies}}</span></p>
                 </div>
                 <div class="col-12 col-md-12 p-0">
                     <p>Categorias: </p>
@@ -69,7 +69,7 @@
                         @if ( $categoria_rally->id_rallys == $rally->id )
                             @foreach ($categorias as $categoria)
                                 @if($categoria->id == $categoria_rally->id_categories)
-                                    <div class="col-12 col-md-4 p-1 text-center"><p class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
+                                    <div class="col-12 col-md-4 p-1 text-center"><p style="box-shadow:2px 2px 5px red;"  class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
                                 @endif
                             @endforeach
                         @endif

@@ -5,7 +5,7 @@
           <div class="">
               <form action="{{ route('tramos.search') }}" method="GET">
                   @csrf
-                  <input style="width:100%;" type="text" name="search" placeholder="Palabras clave...">
+                  <input class="rounded" style="width:100%;" type="text" name="search" placeholder="Palabras clave...">
                   <button style="width:100%;" class="btn btn-danger" >Buscar</button>
               </form>
           </div>

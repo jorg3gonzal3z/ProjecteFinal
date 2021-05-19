@@ -52,7 +52,7 @@
                 @endif
 
                 <div class="ml-3">
-                    No tienes cuenta? <a href="#"><strong>Únete</strong></a>
+                    No tienes cuenta? <a href="{{ route('register') }}"><strong>Únete</strong></a>
                 </div>
 
                 <x-button class="ml-3">

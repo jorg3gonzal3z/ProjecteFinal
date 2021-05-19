@@ -26,11 +26,35 @@
                 @endif
             </div>
 
-            @include('tramos.components.anadir_tramo')
+
+            <nav>
+                <div class="nav nav-tabs" id="nav-tab" role="tablist">
+                    <a class="nav-item nav-link" id="nav-filtros-tab" data-toggle="tab" href="#nav-filtros" role="tab" aria-controls="nav-filtros" aria-selected="true">Filtrar</a>
+                    <div class="nav-item nav-link" >@include('tramos.components.anadir_tramo')</div>
+                </div>
+
+            </nav>
+            <div class="tab-content" id="nav-tabContent">
+                <div class="tab-pane fade" id="nav-filtros" role="tabpanel" aria-labelledby="nav-filtros-tab">
+                    <div class="d-flex flex-wrap">
+                        <div class="d-flex col-12  p-3">
+                            @include('tramos.components.filter')
+                            <div>
+                                @include('tramos.components.search')
+                            </div>
+                        </div>
+                        <div class="col-12 text-center p-3">
+                            <div class="text-white">
+                                Aun no has aplicado ningun filtro...
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
         @endif
+
         <div class="d-flex flex-wrap">
-            @include('tramos.components.filter')
 
             @include('tramos.components.tramos')
         </div>

@@ -1,7 +1,7 @@
 <!-- si el usuario esta logueado o es admin puede añadir tramos, este boton abre un formulario -->
-<div class="p-6 bg-dark border-red-500 text-center">    
-    <button id="add_tramo" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAfegir">Compartir Tramo</button>
-</div>
+<a id="add_tramo" type="button" class="btn btn-danger align-middle" style="font-size:larger; " data-toggle="modal" data-target="#modalAfegir">Compartir Tramo <i class="fa fa-plus"></i>
+
+</a>
 
 <div class="modal fade" id="modalAfegir" tabindex="-1" role="dialog" aria-labelledby="#modalAfegir" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
@@ -25,7 +25,7 @@
 
                         <div class="box form-group row mt-4">
                             <input type="file" name="fotos[]" id="file-newTramo" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple />
-                            <label for="file-newTramo"><i class="fa fa-upload" aria-hidden="true"></i> <span> Sube tus fotos&hellip;</span></label>
+                            <label for="file-newTramo"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tus fotos&hellip;</span></label>
                         </div>
 
                         <div class="form-group">

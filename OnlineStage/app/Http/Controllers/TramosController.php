@@ -157,7 +157,7 @@ class TramosController extends Controller
             'search' => 'nullable',
         ]);
         $query=$data['search'];
-        $tramos = Trams::where('nom', 'like', '%'.$query.'%')->orderBy('nom','ASC')->paginate(10);
+        $tramos = Trams::where('nom', 'like', '%'.$query.'%')->orderBy('nom','ASC')->paginate(10);        
         $superficies=Superficies::all();
         $users=User::all();
         $auth_user=Auth::user();

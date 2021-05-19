@@ -8,10 +8,8 @@
         @php
             $control_fotos = 0;
         @endphp
-
         @foreach ($fotos_coches as $foto_coche)
             @if ($foto_coche->id_cotxes == $coche->id)
-
                 @php
                     $control_fotos ++ ;
                 @endphp

@@ -15,12 +15,23 @@
             @endif
         @endforeach
 
-        <!-- imagenes vacias si hay menos de 5 fotos del coche -->
-        @for ( $i = count($fotos_coches); $i < 6; $i ++ )
-        <div class="container_add_image mt-4 col-12 col-sm-6 col-md-4">
-            <img class="add_image col-12 p-0" src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" width="200" height="200">
-            <div class=" add_img"><div class="plus_img"><i class="fa fa-plus"></i></div></div>
-        </div>
+        @php
+            $control_fotos = 0;
+        @endphp
+
+        @foreach ($fotos_coches as $foto_coche)
+            @if ($foto_coche->id_cotxes == $coche->id)
+                @php
+                    $control_fotos ++ ;
+                @endphp
+            @endif
+        @endforeach
+        <!-- imagenes vacias para tener siempre 6, que es el maximo -->
+        @for ( $i = $control_fotos; $i < 6; $i ++ )           
+            <div class="container_add_image mt-4 col-12 col-sm-6 col-md-4">
+                <img class="add_image col-12 p-0" src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" width="200" height="200">
+                <div class=" add_img"><div class="plus_img"><i class="fa fa-plus"></i></div></div>
+            </div>                
         @endfor
 
         </div>

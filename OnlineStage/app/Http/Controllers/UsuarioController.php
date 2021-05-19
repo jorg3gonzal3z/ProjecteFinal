@@ -181,11 +181,13 @@ class UsuarioController extends Controller
         foreach ($coches_user as $coche_user){
             $fotos_coche_user = FotosCotxes::where('id_cotxes', $coche_user->id)->get();
             foreach ($fotos_coche_user as $foto_coche_user){
-                $foto = Fotos::where('id', $foto_coche_user->id_fotos)->get();
+                $fotos = Fotos::where('id', $foto_coche_user->id_fotos)->get();
                 $foto_coche_user->delete();
-                $foto->delete();
+                foreach( $fotos as $foto){
+                    $foto->delete();
+                }    
             }
-            $coches_user->delete();
+            $coche_user->delete();
         }
         
         $eventos_user = Events::where('id_usuari', $id)->get();
@@ -207,9 +209,11 @@ class UsuarioController extends Controller
         foreach ($tramos as $tramo){
             $fotos_tramo = FotosTrams::where('id_trams', $tramo->id)->get();
             foreach ($fotos_tramo as $foto_tramo){
-                $foto = Fotos::where('id', $foto_tramo->id_fotos)->get();
+                $fotos = Fotos::where('id', $foto_tramo->id_fotos)->get();
                 $foto_tramo->delete();
-                $foto->delete();
+                foreach( $fotos as $foto){
+                    $foto->delete();
+                }  
             }
             $tramo->delete();
         }
@@ -218,13 +222,17 @@ class UsuarioController extends Controller
         foreach ($rallys as $rally){
             $fotos_rally = FotosRallys::where('id_rallys', $rally->id)->get();
             foreach ($fotos_rally as $foto_rally){
-                $foto = Fotos::where('id', $foto_rally->id_fotos)->get();
+                $fotos = Fotos::where('id', $foto_rally->id_fotos)->get();
                 $foto_rally->delete();
-                $foto->delete();
+                foreach( $fotos as $foto){
+                    $foto->delete();
+                }  
             }
             $rally->delete();
         }
 
         $user->delete();
+
+        return redirect()->route('tramos.index');
     }
 }

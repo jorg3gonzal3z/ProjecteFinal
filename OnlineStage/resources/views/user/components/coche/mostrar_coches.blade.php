@@ -5,27 +5,25 @@
     <!-- fotos del coche -->
     <div class="d-flex justify-content-center">
         <div class="row">
-        @foreach ($fotos_coches as $foto_coche)
-            @if ($foto_coche->id_cotxes == $coche->id)
-                @foreach ($fotos as $foto)
-                        @if($foto_coche->id_fotos == $foto->id)                       
-                            <img class="mt-4 col-12 col-sm-6 col-md-4"  src="{{$foto->binari}}" alt="Foto coche" width="200" height="200">                        
-                        @endif
-                @endforeach
-            @endif
-        @endforeach
-
         @php
             $control_fotos = 0;
         @endphp
 
         @foreach ($fotos_coches as $foto_coche)
             @if ($foto_coche->id_cotxes == $coche->id)
+
                 @php
                     $control_fotos ++ ;
                 @endphp
+
+                @foreach ($fotos as $foto)
+                    @if($foto_coche->id_fotos == $foto->id)                       
+                        <img class="mt-4 col-12 col-sm-6 col-md-4"  src="{{$foto->binari}}" alt="Foto coche" width="200" height="200">                        
+                    @endif
+                @endforeach
             @endif
         @endforeach
+
         <!-- imagenes vacias para tener siempre 6, que es el maximo -->
         @for ( $i = $control_fotos; $i < 6; $i ++ )           
             <div class="container_add_image mt-4 col-12 col-sm-6 col-md-4">

@@ -191,3 +191,7 @@ footer {
   left: 50%;
   z-index: 100;
 }
+
+[type='checkbox']{
+  color: #de463b;
+}

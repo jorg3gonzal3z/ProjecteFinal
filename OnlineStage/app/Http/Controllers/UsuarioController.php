@@ -186,7 +186,7 @@ class UsuarioController extends Controller
         foreach ( $inscripciones_eventos as $inscripcion_evento){
             $inscripcion_evento->delete();
         }
-        
+
         $rallys = Rallys::where('id_usuari', $id)->get();
         foreach ($rallys as $rally){
             $categorias_rally = CategoriesRallys::where('id_rallys',$rally->id)->get();
@@ -250,6 +250,5 @@ class UsuarioController extends Controller
         }else{
             return redirect()->route('tramos.index');
         }
-        
     }
 }

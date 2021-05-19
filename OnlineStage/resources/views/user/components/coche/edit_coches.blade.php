@@ -14,9 +14,15 @@
     {{ method_field('PUT') }}
 
     <div class="d-flex flex-wrap">
+        @php
+            $control_fotos = 0;
+        @endphp
         <!-- fotografia del coche a editar -->
         @foreach ($fotos_coches as $foto_coche)
             @if ($foto_coche->id_cotxes == $coche->id)
+                @php
+                    $control_fotos ++ ;
+                @endphp
                 @foreach ($fotos as $foto)
                         @if($foto_coche->id_fotos == $foto->id)
                         <!-- las imagenes no se muestran todas de la misma medida juli ayuda :( -->
@@ -30,7 +36,7 @@
         @endforeach
 
         <!-- imagenes vacias si hay menos de 5 fotos del coche -->
-        @for ( $i = count($fotos_coches); $i < 6; $i ++ )
+        @for ( $i = $control_fotos; $i < 6; $i ++ )
             <img class="mt-4 col-12 col-md-2 " src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" >
         @endfor
     </div>

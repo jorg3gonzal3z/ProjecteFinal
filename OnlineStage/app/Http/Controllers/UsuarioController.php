@@ -173,4 +173,83 @@ class UsuarioController extends Controller
         // return $categorias;
         return response()->json($categorias);
     }
+
+    public function destroyUser($id,$location){
+        $user = User::find($id);
+
+        $inscripciones_rallys = InscritsRallys::where('id_usuari', $id)->get();
+        foreach ($inscripciones_rallys as $inscripcion_rally){
+            $inscripcion_rally->delete();
+        }
+
+        $inscripciones_eventos = InscritsEvents::where('id_usuari', $id)->get();
+        foreach ( $inscripciones_eventos as $inscripcion_evento){
+            $inscripcion_evento->delete();
+        }
+        
+        $rallys = Rallys::where('id_usuari', $id)->get();
+        foreach ($rallys as $rally){
+            $categorias_rally = CategoriesRallys::where('id_rallys',$rally->id)->get();
+            foreach($categorias_rally as $categoria_rally){
+                $categoria_rally->delete();
+            }
+            $fotos_rally = FotosRallys::where('id_rallys', $rally->id)->get();
+            foreach ($fotos_rally as $foto_rally){
+                $fotos = Fotos::where('id', $foto_rally->id_fotos)->get();
+                $foto_rally->delete();
+                foreach( $fotos as $foto){
+                    $foto->delete();
+                }  
+            }
+            $rally->delete();
+        }
+
+        $eventos_user = Events::where('id_usuari', $id)->get();
+        foreach ($eventos_user as $evento_user){
+            $evento_user->delete();
+        }
+
+        $coches_user = Cotxes::where('id_usuari', $id)->get();
+        foreach ($coches_user as $coche_user){
+            $fotos_coche_user = FotosCotxes::where('id_cotxes', $coche_user->id)->get();
+            foreach ($fotos_coche_user as $foto_coche_user){
+                $fotos = Fotos::where('id', $foto_coche_user->id_fotos)->get();
+                $foto_coche_user->delete();
+                foreach( $fotos as $foto){
+                    $foto->delete();
+                }    
+            }
+            $coche_user->delete();
+        }
+
+        $tramos = Trams::where('id_usuari', $id)->get();
+        foreach ($tramos as $tramo){
+            $fotos_tramo = FotosTrams::where('id_trams', $tramo->id)->get();
+            foreach ($fotos_tramo as $foto_tramo){
+                $fotos = Fotos::where('id', $foto_tramo->id_fotos)->get();
+                $foto_tramo->delete();
+                foreach( $fotos as $foto){
+                    $foto->delete();
+                }  
+            }
+            $tramo->delete();
+        }
+
+        $user->delete();
+
+        //depenent de des d'on es cridi al metode retornara una redireccio o una altra
+        if($location == "user_view"){return redirect()->route('tramos.index');}
+        elseif($location == "admin_view"){return redirect()->route('user.control');}
+    }
+
+    public function user_control(){
+        $auth_user=Auth::user();
+        if ($auth_user->rol == "admin"){
+            $users = User::orderBy('id','ASC')->get();
+            return view("admin/control_user",compact(['users']));
+        }else{
+            return redirect()->route('tramos.index');
+        }
+        
+    }
 }

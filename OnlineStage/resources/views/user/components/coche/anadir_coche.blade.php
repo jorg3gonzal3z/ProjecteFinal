@@ -61,6 +61,7 @@
             <label class="col-sm-2 col-form-label">Categoria</label>
             <div class="col-sm-10">
                 <select id="cat" class="form-control" name="id_categoria" style="border-radius:10px">
+                    <option name="-- Selecciona una Categoria --" value="null">-- Selecciona una Categoria --</option>
                     @foreach ($categorias as $categoria)
                         <option name="{{$categoria->nomCategoria}}" value="{{$categoria->id}}">{{$categoria->nomCategoria}}</option>
                     @endforeach

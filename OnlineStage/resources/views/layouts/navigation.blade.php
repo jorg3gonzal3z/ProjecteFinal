@@ -51,7 +51,8 @@
                         
                         </x-slot>
                         <x-slot name="content">
-                            <!-- User Cars -->
+
+                            <!-- User Page -->
                             <form method="GET" action="{{ route('user.index') }}">
                                 @csrf
                                 <x-dropdown-link :href="route('user.index')">
@@ -59,8 +60,17 @@
                                 </x-dropdown-link>
                             </form>
 
+                            <!-- Admin Page -->
+                            @if (Auth::user()->rol == "admin")
+                            <form method="GET" action="{{ route('user.control') }}">
+                                @csrf
+                                <x-dropdown-link :href="route('user.control')">
+                                    {{ __('Admin Control') }}
+                                </x-dropdown-link>
+                            </form>
+                            @endif
+
                             <!-- Authentication -->
-                        
                             <form method="POST" action="{{ route('logout') }}">
                                 @csrf
 

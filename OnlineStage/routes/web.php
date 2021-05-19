@@ -33,6 +33,7 @@ Route::put('/user/update_user/{id}', [UsuarioController::class, 'update'])->midd
 Route::delete('/user/delete_car/{id}', [UsuarioController::class, 'destroy_car'])->middleware(['auth'])->name('user.destroy_car');
 Route::put('/user/update_car/{id}', [UsuarioController::class, 'update_car'])->middleware(['auth'])->name('user.update_car');
 Route::get('/user/getCat', [UsuarioController::class, 'getCat'])->middleware(['auth'])->name('user.getCat');
+Route::delete('/user/delete/{id}', [UsuarioController::class, 'destroyUser'])->middleware(['auth'])->name('user.destroy');
 /* TRAMOS */
 Route::get('/', [TramosController::class, 'index'])->name('tramos.index');//ruta publica
 Route::get('/tramos', [TramosController::class, 'index'])->name('tramos.index');//ruta publica

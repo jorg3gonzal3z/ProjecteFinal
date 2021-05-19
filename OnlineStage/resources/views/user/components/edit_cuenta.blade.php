@@ -6,20 +6,31 @@
             
             <h4 class="card-title text-center text-white">Datos de la Cuenta</h4><hr>
             
-            <div class="mb-4 ">
+                    <div class="mb-4 d-block ">
+                        <div class="d-flex justify-content-center mb-2">
+                            <div class="d-flex">
+                                <label class="col-4 text-white">Nombre</label>
+                                <input class="col-8 rounded form-control" type="text" value="{{$auth_user->name}}" disabled>
+                            </div>
+                        </div>
 
-                <div class="form-group row">
-                    <label class="col-12 col-ml-3 text-white">Nombre</label>
-                    <input class="rounded col-12 col-mb-4 col-lg-4" type="text" value="{{$auth_user->name}}" disabled>
-                </div>
-                <div class="mt-3 form-group row">
-                    <label class="col-12 col-mb-3 text-white">Email</label>                    
-                    <input class="rounded col-12 col-mb-4 col-lg-4" type="email" value="{{$auth_user->email}}" disabled>                   
-                </div>
-            </div>
-            
+                        <div class="d-flex justify-content-center">
+                            <div class="d-flex">
+                                <label class="col-4 text-white">Email</label>                    
+                                <input class="col-8 rounded form-control" type="email" value="{{$auth_user->email}}" disabled>                   
+                            </div>
+                        </div>
+
+                    </div>
+
             <div class="d-flex justify-content-center">
-                <button class="btn btn-danger" data-toggle="modal" data-target="#modalEditUser">Editar Cuenta</button>
+                <button class="btn btn-secondary" data-toggle="modal" data-target="#modalEditUser">Editar Cuenta</button>
+                <!-- eliminar user -->
+                <form class="ml-2" action="{{ route('user.destroy',['id' => $auth_user->id ]) }}" method="POST">
+                    @csrf
+                    {{ method_field('DELETE') }}
+                    <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar Cuenta</button>
+                </form>
             </div>
 
         </div>
@@ -65,12 +76,13 @@
                                 <input class="form-control rounded" type="password" name="rpass" placeholder="12345678CR ...">
                             </div>
                         </div>
-                        
+
                 </div>
+                
                 <div class="modal-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
                     <button class="btn btn-danger" >Aplicar Cmabios</button>
-                    </form>
+                    </form>   
                 </div>
             </div>
         </div>

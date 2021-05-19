@@ -173,4 +173,58 @@ class UsuarioController extends Controller
         // return $categorias;
         return response()->json($categorias);
     }
+
+    public function destroyUser($id){
+        $user = User::find($id);
+
+        $coches_user = Cotxes::where('id_usuari', $id)->get();
+        foreach ($coches_user as $coche_user){
+            $fotos_coche_user = FotosCotxes::where('id_cotxes', $coche_user->id)->get();
+            foreach ($fotos_coche_user as $foto_coche_user){
+                $foto = Fotos::where('id', $foto_coche_user->id_fotos)->get();
+                $foto_coche_user->delete();
+                $foto->delete();
+            }
+            $coches_user->delete();
+        }
+        
+        $eventos_user = Events::where('id_usuari', $id)->get();
+        foreach ($eventos_user as $evento_user){
+            $evento_user->delete();
+        }
+
+        $inscripciones_eventos = InscritsEvents::where('id_usuari', $id)->get();
+        foreach ( $inscripciones_eventos as $inscripcion_evento){
+            $inscripcion_evento->delete();
+        }
+
+        $inscripciones_rallys = InscritsRallys::where('id_usuari', $id)->get();
+        foreach ($inscripciones_rallys as $inscripcion_rally){
+            $inscripcion_rally->delete();
+        }
+
+        $tramos = Trams::where('id_usuari', $id)->get();
+        foreach ($tramos as $tramo){
+            $fotos_tramo = FotosTrams::where('id_trams', $tramo->id)->get();
+            foreach ($fotos_tramo as $foto_tramo){
+                $foto = Fotos::where('id', $foto_tramo->id_fotos)->get();
+                $foto_tramo->delete();
+                $foto->delete();
+            }
+            $tramo->delete();
+        }
+
+        $rallys = Rallys::where('id_usuari', $id)->get();
+        foreach ($rallys as $rally){
+            $fotos_rally = FotosRallys::where('id_rallys', $rally->id)->get();
+            foreach ($fotos_rally as $foto_rally){
+                $foto = Fotos::where('id', $foto_rally->id_fotos)->get();
+                $foto_rally->delete();
+                $foto->delete();
+            }
+            $rally->delete();
+        }
+
+        $user->delete();
+    }
 }

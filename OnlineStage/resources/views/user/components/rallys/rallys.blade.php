@@ -15,7 +15,7 @@
 
 @else
     <!-- si el user no ha organizado ningun rally -->
-    <div class="alert alert-danger">
+    <div class="alert alert-danger text-center">
         <p>No has añadido ningun rally</p>
     </div>
 @endif

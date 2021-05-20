@@ -8,10 +8,11 @@
             <h4 class="card-title text-center text-white">Todas mis Inscripciones <i class="fa fa-caret-down"></i> </h4>
         </a>
         
-        <div class=" collapse row justify-content-between" id="collapseInscrits">
+        <div class=" collapse " id="collapseInscrits">
 
         @if ( count($inscripciones_rallys)>0 || count($inscripciones_eventos)>0 )
                 @if (count($inscripciones_rallys)>0)
+                    <div class="row justify-content-between">
                     <!-- inscripciones rallys -->
                     <ul class="mt-2 list-group col-md-6 p-2">
                         <li class="list-group-item text-center"  style="cursor:pointer;" ><b>Inscripciones Rallys:</b></li>
@@ -36,9 +37,10 @@
                             @endforeach
                         @endforeach
                     </ul>
+                    </div>
                 @endif
         @else
-            <div class="alert alert-danger">
+            <div class="alert alert-danger text-center">
                 <p>No estas inscrito a ningun evento ni a ningun rally</p>
             </div>
         @endif

@@ -37,7 +37,7 @@
 
                     <!-- si el user no ha añadido coches -->
                     @if($have_cars == false)
-                    <div class="alert alert-danger">
+                    <div class="alert alert-danger text-center">
                         <p>No has añadido ningun coche</p>
                     </div>
                     @endif 

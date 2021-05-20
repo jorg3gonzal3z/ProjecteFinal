@@ -1,5 +1,5 @@
 <!-- editar coche -->
-<a id="edit_coche:{{$coche->id}}" class="btn float-right pl-3 editCarButton" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_coche:{{$coche->id}}" class="btn float-right pl-3 editCarButton text-white" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar coche -->
 <form id="delete_coche:{{$coche->id}}" class="float-right" action="{{ route('user.destroy_car',['id' => $coche->id]) }}" method="POST">
     @csrf

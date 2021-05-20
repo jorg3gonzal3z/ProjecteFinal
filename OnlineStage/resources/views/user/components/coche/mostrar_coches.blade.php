@@ -1,7 +1,7 @@
 <br><br>
 <div class="mt-2 col-12" id="coche:{{$coche->id}}">
     <!-- modelo del coche -->
-    <div class="text-center col-12"><h1>{{ $coche->model}}</h1></div>
+    <div class="text-center col-12 text-white"><h1>{{ $coche->model}}</h1></div>
     <!-- fotos del coche -->
     <div class="d-flex justify-content-center">
         <div class="row">
@@ -35,7 +35,7 @@
 </div>
 
 <!-- informacion sobre el coche -->
-<div id="coche_info:{{$coche->id}}"class="row mt-4 text-center">
+<div id="coche_info:{{$coche->id}}"class="row mt-4 text-center text-white">
 
     <div class="col-6 col-md-2 offset-md-1">
         <ul>

@@ -1,6 +1,6 @@
-<div class="col-md-12">
 
-<div class="mt-3 card col-12 col-mb-12 col-lg-6 offset-lg-3 mb-2">
+
+<div class="mt-3 card mb-2">
 
     <div class="card-body">
         <!-- inscripciones del usuario -->
@@ -47,4 +47,4 @@
     
 </div>
 
-</div>
+

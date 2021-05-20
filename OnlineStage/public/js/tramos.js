@@ -5,6 +5,7 @@ var currentEdit;
 var currentEditPicArray = [];
 var isCurrentlyEditing = false;
 
+var filterOn = false;
 $(document).ready(function(){
     
     //boton para mostrar formulario editar tramo
@@ -60,7 +61,7 @@ $(document).ready(function(){
             {
                 if (parseInt($(this)[0].files.length)>6){
                     $(this).val(undefined);
-                    swal('Oops...', '¡Solo puedes añadir 5 fotos!', 'error');
+                    swal('Oops...', '¡Solo puedes añadir 6 fotos!', 'error');
 
                 }
                 var fileName = '';
@@ -104,8 +105,9 @@ $(document).ready(function(){
             });
         }
     });
-    
+    $("#nav-filtros-control").click(function(){
+        $("#nav-filtros-tab").fadeToggle();
+      });
 
-  
 });
 

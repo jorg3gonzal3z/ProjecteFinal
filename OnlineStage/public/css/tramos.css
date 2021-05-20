@@ -56,10 +56,10 @@
 
 
 .modal-content{
-    backdrop-filter: blur( 15.0px )!important;
-    background: rgba(255, 86, 86, 0.40)!important;
+    backdrop-filter: blur( 20.0px )!important;
+    background: rgba(255, 86, 86, 0.50)!important;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
-    -webkit-backdrop-filter: blur( 15.0px )!important;
+    -webkit-backdrop-filter: blur( 20.0px )!important;
     border-radius: 10px!important;
     border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
 }
@@ -71,6 +71,9 @@
     min-width: 100%!important;
 }
 
-
-
-  
+label{
+    text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+.form-text{
+    font-size: 16px;
+}

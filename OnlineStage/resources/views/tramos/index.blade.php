@@ -25,12 +25,18 @@
                     </div>
                 @endif
             </div>
-
-            @include('tramos.components.anadir_tramo')
-
         @endif
+        <nav class="flex flex-wrap justify-content-between bg-gray-900">
+            <div class="p-3 col-12 col-sm-6 flex justify-content-center">
+                @include('tramos.components.search')
+            </div>
+
+            @if (Auth::user())<div class="p-3 col-12 col-sm-6 flex justify-content-center">@include('tramos.components.anadir_tramo')</div>
+            @else <div class="p-3 text-white col-12 col-sm-6 flex justify-content-center"><a class="text-danger font-weight-bold" href="{{ route('login') }}">Inicia Sesión</a> para compartir tus tramos.</div>
+            @endif
+        </nav>
+
         <div class="d-flex flex-wrap">
-            @include('tramos.components.filter')
 
             @include('tramos.components.tramos')
         </div>

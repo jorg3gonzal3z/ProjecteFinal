@@ -1,13 +1,13 @@
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" type="text/css" href="{{ url('/css/hud.css') }}" />
 
-<nav x-data="{ open: false }" class="sticky-top bg-dark border-b-2 border-red-300 ">
+<nav x-data="{ open: false }" class="sticky-top bg-dark border-b-2 border-red-300 p-3">
     <!-- Primary Navigation Menu -->
     <div class="topvar max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex-shrink-0 flex items-center">
                 <a href="{{ route('tramos.index') }}">
-                    <img src="{{ url('storage/assets/logo.png') }}" width="100" height="100">
+                    <img src="{{ url('storage/assets/logo.png') }}" width="150" height="150">
                 </a>
             </div>
             <div class="flex justify-content-between">
@@ -96,7 +96,7 @@
 
             <!-- Hamburger -->
             <div class="col-mr-2 flex items-center md:hidden">
-                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-red-400 hover:text-red-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-red-500 transition duration-150 ease-in-out">
+                <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-red-400 hover:text-red-500 hover:bg-dark-100 focus:outline-none focus:bg-dark-100 focus:text-red-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
                         <path :class="{'hidden': open, 'inline-flex': ! open }" class="inline-flex" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
                         <path :class="{'hidden': ! open, 'inline-flex': open }" class="hidden" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
@@ -136,23 +136,16 @@
 
         <!-- Responsive Settings Options -->
         @if (Auth::user())
-            <div class="pt-4 pb-1 border-t border-gray-200">
-                <div class="flex items-center px-4">
-                    <div class="flex-shrink-0">
-                        <svg class="h-10 w-10 fill-current text-red-400" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                        </svg>
-                    </div>
-                    <div class="ml-3">
-                        <div class="font-medium text-base text-red-800">{{ Auth::user()->name }}</div>
-                        <div class="font-medium text-sm text-red-500">{{ Auth::user()->email }}</div>
-                    </div>
-                </div>
-
+            <div class="pt-4 pb-1 border-t border-red-200">
                 <div class="mt-3 space-y-1">
                     <!-- User Cars -->
+                    <div class="flex justify-content-center">
+                        <span class="font-medium text-center text-red-600">¡Hola {{ Auth::user()->name }}!</span>
+                    </div>
                     <x-responsive-nav-link :href="route('user.index')">
-                            {{ __('Mi Cuenta') }}
+                        <div class="block items-center pr-4">
+                            <div class="font-medium text-sm text-red-500 ">Mi cuenta, {{ Auth::user()->email }}</div>
+                        </div>
                     </x-responsive-nav-link>
 
                     <!-- Authentication -->

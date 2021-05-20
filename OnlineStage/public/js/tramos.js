@@ -5,6 +5,7 @@ var currentEdit;
 var currentEditPicArray = [];
 var isCurrentlyEditing = false;
 
+var filterOn = false;
 $(document).ready(function(){
     
     //boton para mostrar formulario editar tramo
@@ -116,8 +117,9 @@ $(document).ready(function(){
             });
         }
     });
-    
+    $("#nav-filtros-control").click(function(){
+        $("#nav-filtros-tab").fadeToggle();
+      });
 
-  
 });
 

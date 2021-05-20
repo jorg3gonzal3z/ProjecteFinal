@@ -204,3 +204,6 @@ footer {
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
 }
+*{
+  font-size: 101%;
+}

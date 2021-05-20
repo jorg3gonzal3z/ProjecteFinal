@@ -25,34 +25,16 @@
                     </div>
                 @endif
             </div>
-
-
-            <nav>
-                <div class="nav nav-tabs" id="nav-tab" role="tablist">
-                    <a class="nav-item nav-link" id="nav-filtros-tab" data-toggle="tab" href="#nav-filtros" role="tab" aria-controls="nav-filtros" aria-selected="true">Filtrar</a>
-                    <div class="nav-item nav-link" >@include('tramos.components.anadir_tramo')</div>
-                </div>
-
-            </nav>
-            <div class="tab-content" id="nav-tabContent">
-                <div class="tab-pane fade" id="nav-filtros" role="tabpanel" aria-labelledby="nav-filtros-tab">
-                    <div class="d-flex flex-wrap">
-                        <div class="d-flex col-12  p-3">
-                            @include('tramos.components.filter')
-                            <div>
-                                @include('tramos.components.search')
-                            </div>
-                        </div>
-                        <div class="col-12 text-center p-3">
-                            <div class="text-white">
-                                Aun no has aplicado ningun filtro...
-                            </div>
-                        </div>
-                    </div>
-                </div>
+        @endif
+        <nav class="flex flex-wrap justify-content-between bg-gray-900">
+            <div class="p-3 col-12 col-sm-6 flex justify-content-center">
+                @include('tramos.components.search')
             </div>
 
-        @endif
+            @if (Auth::user())<div class="p-3 col-12 col-sm-6 flex justify-content-center">@include('tramos.components.anadir_tramo')</div>
+            @else <div class="p-3 text-white col-12 col-sm-6 flex justify-content-center"><a class="text-danger font-weight-bold" href="{{ route('login') }}">Inicia Sesión</a> para compartir tus tramos.</div>
+            @endif
+        </nav>
 
         <div class="d-flex flex-wrap">
 

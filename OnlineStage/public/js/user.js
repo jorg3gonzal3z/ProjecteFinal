@@ -210,6 +210,7 @@ $(document).ready(function(){
     });
 
     // control de categoria al editar el coche
+    
     $('.edit_car_button').change(function(e){
         var thisId_edit = $(this).attr('id');
         thisId_edit = GetId(thisId_edit);

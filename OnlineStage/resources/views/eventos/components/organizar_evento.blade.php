@@ -6,9 +6,9 @@
 
     <div class="modal fade" id="modalAddEvent" tabindex="-1" role="dialog" aria-labelledby="#modalAddEvent" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content bg-dark" >
+            <div class="modal-content" >
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalCenterTitle">¡Organizar Evento!</h5>
+                    <h5 class="modal-title text-white" id="exampleModalCenterTitle">¡Organizar Evento!</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span class="text-danger" aria-hidden="true">&times;</span>
                     </button>
@@ -18,35 +18,35 @@
                     <form id="form_add_event" action="{{ route('eventos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" >
                         @csrf
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Cartel</label>
+                            <label class="col-sm-2 col-form-label text-white">Cartel</label>
                             <div class="col-sm-10">
                                 <input type="file" name="logo">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-2 col-form-label">Nombre</label>
+                            <label class="col-sm-2 col-form-label text-white">Nombre</label>
                             <div class="col-sm-10">
                             <input type="text" class="form-control" name="nom" placeholder="Nombre del Evento ...">
                             </div>
                         </div>
                         
                         <div class="form-group row">
-                            <label class="col-sm-4 col-form-label">Tipo de Evento</label>
+                            <label class="col-sm-4 col-form-label text-white">Tipo de Evento</label>
                             <div class="col-sm-8">
                             <input type="text" class="form-control" name="tipus" placeholder="Fira del automovil ...">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-5 col-form-label">Numero de plazas</label>
+                            <label class="col-sm-5 col-form-label text-white">Numero de plazas</label>
                             <div class="col-sm-7">
                             <input type="number" class="form-control" name="numPlaces" placeholder="200 ...">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-5 col-form-label">Localizacion</label>
+                            <label class="col-sm-5 col-form-label text-white">Localizacion</label>
                             <div class="col-sm-7">
                             <input type="text" class="form-control" name="localitzacio" placeholder="El Vendrell ...">
                             </div>

@@ -34,18 +34,6 @@ $(document).ready(function(){
             console.log($("#imagenes_a_eliminar\\:"+thisId).val());
         });
     
-        //boton para esconder el formulario de editar tramo
-        $("#esconder_form_edit\\:"+ thisId).click(function() {
-            isCurrentlyEditing = false;
-
-            $(this).attr('hidden',true);
-            $('#container_edit\\:'+ thisId).fadeOut(800, function(){
-                $("#edit_tramo\\:"+ thisId).attr('hidden',false);
-                $("#form_edit_tramo\\:"+ thisId).attr('hidden',true);
-                $("#delete_tramo\\:"+ thisId).attr('hidden',false);
-                $('#tramo\\:'+ thisId).attr('hidden',false);
-            });
-        });
     });
 
     //imagenes del carrousel bug fix

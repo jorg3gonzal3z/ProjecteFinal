@@ -129,7 +129,6 @@ class TramosController extends Controller
             }
         }
         
-
         //depenent de des d'on es cridi al metode retornara una redireccio o una altra
         if($location == "tramos"){return redirect()->route('tramos.index');}
         elseif($location == "user"){return redirect()->route('user.index');}

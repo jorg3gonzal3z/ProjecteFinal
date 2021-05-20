@@ -136,6 +136,8 @@ class RallysController extends Controller
         };
 
         $array_fotos = request('fotos');
+        $all_fotos_rally=FotosRallys::where('id_rallys', $rally->id)->count();
+
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
             foreach($array_fotos as $array_foto){
@@ -150,6 +152,21 @@ class RallysController extends Controller
                     'id_fotos' => $array_foto->id,
                     'id_rallys' => $rally->id,
                 ]);
+            }
+        }
+
+        //eliminar las imagenes al editar el rally si se eliminan del formulario
+        $eliminarString = request('imagenes_a_eliminar');
+        $imagenes_a_eliminar = array_map("intval", explode(",", $eliminarString));
+
+        if ($imagenes_a_eliminar != ["null"] && count($imagenes_a_eliminar) < $all_fotos_rally) {
+            foreach ($imagenes_a_eliminar as $imagen_a_eliminar){
+
+                $foto_rally = FotosRallys::where('id_fotos', $imagen_a_eliminar);
+
+                $foto_rally->delete();
+                $foto = Fotos::where('id', $imagen_a_eliminar);
+                $foto->delete();
             }
         }
 

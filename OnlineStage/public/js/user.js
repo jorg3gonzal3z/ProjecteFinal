@@ -83,6 +83,7 @@ $(document).ready(function(){
         })
     });
 
+    // control de categoria al añadir el coche
     $('.car_form').change(function(e){
 
         var potencia = $('.potencia').val();
@@ -208,6 +209,7 @@ $(document).ready(function(){
         
     });
 
+    // control de categoria al editar el coche
     $('.edit_car_button').change(function(e){
         var thisId_edit = $(this).attr('id');
         thisId_edit = GetId(thisId_edit);

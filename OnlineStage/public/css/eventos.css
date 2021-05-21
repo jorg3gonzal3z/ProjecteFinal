@@ -97,3 +97,12 @@
 #modalAfegir .modal-dialog-centered{
     min-width: 100%!important;
 }
+
+.card{
+  backdrop-filter: blur( 15.0px )!important;
+  background: rgba(8, 8, 8, 0.568)!important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
+  -webkit-backdrop-filter: blur( 15.0px )!important;
+  border-radius: 10px!important;
+  border: 1px solid rgba(134, 134, 134, 0.18)!important;
+}

@@ -147,6 +147,7 @@ class UsuarioController extends Controller
         ]);
 
         $array_fotos = request('fotos');
+        $all_fotos_coche=FotosCotxes::where('id_cotxes', $coche->id)->count();
         
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
@@ -164,6 +165,22 @@ class UsuarioController extends Controller
                 ]);
             }
         }
+
+        //eliminar las imagenes al editar el tramo si se eliminan del formulario
+        $eliminarString = request('imagenes_a_eliminar');
+        $imagenes_a_eliminar = array_map("intval", explode(",", $eliminarString));
+
+        if ($imagenes_a_eliminar != ["null"] && count($imagenes_a_eliminar) < $all_fotos_coche) {
+            foreach ($imagenes_a_eliminar as $imagen_a_eliminar){
+
+                $foto_coche = FotosCotxes::where('id_fotos', $imagen_a_eliminar);
+
+                $foto_coche->delete();
+                $foto = Fotos::where('id', $imagen_a_eliminar);
+                $foto->delete();
+            }
+        }
+
         return redirect()->route('user.index');
 
     }
@@ -186,7 +203,7 @@ class UsuarioController extends Controller
         foreach ( $inscripciones_eventos as $inscripcion_evento){
             $inscripcion_evento->delete();
         }
-        
+
         $rallys = Rallys::where('id_usuari', $id)->get();
         foreach ($rallys as $rally){
             $categorias_rally = CategoriesRallys::where('id_rallys',$rally->id)->get();
@@ -250,6 +267,5 @@ class UsuarioController extends Controller
         }else{
             return redirect()->route('tramos.index');
         }
-        
     }
 }

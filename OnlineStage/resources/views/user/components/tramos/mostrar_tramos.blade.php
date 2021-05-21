@@ -1,4 +1,4 @@
-<table id="tramo:{{$tramo->id}}" class="table table-hover ">
+<table id="tramo:{{$tramo->id}}" class="table table-hover mt-2">
 
 <tbody>
 
@@ -30,11 +30,11 @@
             </div>
         </th>
     </tr>
-    <tr><th colspan="2">{{ $tramo->nom}}</th></tr>
-    <tr><th rowspan="2">{{ $tramo->sortida}}-{{ $tramo->final}}</th></tr>
-    <tr><th>{{ $tramo->distancia}}km</th></tr>
+    <tr><th class="text-white" colspan="2">{{ $tramo->nom}}</th></tr>
+    <tr><th class="text-white" rowspan="2">{{ $tramo->sortida}}&&{{ $tramo->final}}</th></tr>
+    <tr><th class="text-white">{{ $tramo->distancia}}km</th></tr>
     <tr>
-        <th>
+        <th class="text-white">
         <!-- informacion sobre la superficie del tramo -->
         @foreach ($superficies as $superficie)
             @if ( $tramo->id_superficie == $superficie->id )
@@ -46,4 +46,4 @@
 
 </tbody>
 
-</table><br>
+</table>

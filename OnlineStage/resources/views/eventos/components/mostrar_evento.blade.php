@@ -1,41 +1,43 @@
 <div id="evento:{{$evento->id}}" >
+<div class="card mb-2 col-12 px-0 ">
     <!-- fotografia del evento -->
-    <div class="b-game-card">
-        <div class="b-game-card__cover" style="background-image: url({{ $evento->logo }});"></div>
+    <div class="b-game-card ">
+        <div class="b-game-card__cover rounded-top" style="background-image: url({{ $evento->logo }});"></div>
     </div>
-    <!-- informacion sobre el evento -->
-    <table class="mt-3 table table-hover ">
-        <tbody>
-            <tr>
-                <th>
-                {{ $evento->nom}}
-                </th>
-            </tr>
-            <tr>
-                <th>
-                {{ $evento->tipus}}
-                </th>
-            </tr>
-            <tr>
-                <th>
-                {{ $evento->numPlaces}}
-                </th>
-            </tr>
-            <tr>
-                <th>
-                {{ $evento->localitzacio}}
-                </th>
-            </tr>
-            <!-- usuario que ha organizado el evento -->
-            <tr>
-                <th>
+
+    <div class="card-body">
+        <h4 class="card-title text-center text-white">{{ $evento->nom}}</h4><hr>
+        <div class="d-flex flex-wrap text-center">
+            <div class="col-12 col-md-12 p-0 text-white mt-2">
+                Tipo de evento:<span class="text-danger pl-1">{{ $evento->tipus}}</span>
+            </div>
+            <div class="col-12 col-md-12 p-0 text-white mt-2">
+                Numero de Plazas:<span class="text-danger pl-1">{{ $evento->numPlaces}}</span>
+            </div>
+            <div class="col-12 col-md-12 p-0 text-white mt-2">
+                Localizacion:<span class="text-danger pl-1">{{ $evento->localitzacio}}</span>
+            </div>
+            <div class="col-12 col-md-12 p-0 text-white mt-2">
+                <!-- usuario que ha organizado el evento -->
                 @foreach ($users as $user)
                     @if ( $evento->id_usuari == $user->id )
-                        {{$user->name}}<br>
+                        Organizador:<span class="text-danger pl-1">{{$user->name}}</span>
                     @endif
                 @endforeach
-                </th>
-            </tr>
-        </tbody>
-    </table>
+            </div>
+            <div class="col-12 col-md-12 p-0 mt-3">
+            @include('eventos.components.participantes_evento')
+            </div>
+            <div class="col-12 col-md-12 p-0">
+            @include('eventos.components.inscripcion_evento')
+            </div>
+            <div class="col-12 col-md-12 p-0">
+                @if (Auth::user())
+                    @include('eventos.components.editar_evento')
+                @endif
+            </div>
+        </div>
+    </div>
+        
+</div>
 </div>

@@ -1,17 +1,15 @@
 <br><br>
 <div class="mt-2 col-12" id="coche:{{$coche->id}}">
     <!-- modelo del coche -->
-    <div class="text-center col-12"><h1>{{ $coche->model}}</h1></div>
+    <div class="text-center col-12 text-white"><h1>{{ $coche->model}}</h1></div>
     <!-- fotos del coche -->
     <div class="d-flex justify-content-center">
         <div class="row">
         @php
             $control_fotos = 0;
         @endphp
-
         @foreach ($fotos_coches as $foto_coche)
             @if ($foto_coche->id_cotxes == $coche->id)
-
                 @php
                     $control_fotos ++ ;
                 @endphp
@@ -26,7 +24,7 @@
 
         <!-- imagenes vacias para tener siempre 6, que es el maximo -->
         @for ( $i = $control_fotos; $i < 6; $i ++ )           
-            <div class="container_add_image mt-4 col-12 col-sm-6 col-md-4">
+            <div data-toggle="modal" data-target="#modal{{$coche->id}}" class="container_add_image mt-4 col-12 col-sm-6 col-md-4">
                 <img class="add_image col-12 p-0" src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" width="200" height="200">
                 <div class=" add_img"><div class="plus_img"><i class="fa fa-plus"></i></div></div>
             </div>                
@@ -37,7 +35,7 @@
 </div>
 
 <!-- informacion sobre el coche -->
-<div id="coche_info:{{$coche->id}}"class="row mt-4 text-center">
+<div id="coche_info:{{$coche->id}}"class="row mt-4 text-center text-white">
 
     <div class="col-6 col-md-2 offset-md-1">
         <ul>

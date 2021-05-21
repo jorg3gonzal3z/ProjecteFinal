@@ -22,11 +22,12 @@
 
     <!-- si el user esta logeado -->
     @if (Auth::user())
-        
-        @include('user.components.edit_cuenta')
 
-        @include('user.components.inscripciones')
-        
+        <div class="d-flex flex-wrap">    
+            <div class="p-3 col-12 col-lg-6">@include('user.components.edit_cuenta')</div>
+            <div class="p-3 col-12 col-lg-6">@include('user.components.inscripciones')</div>
+        </div>
+
         @include('user.components.coche.coches')
         
         @include('user.components.tramos.tramos')

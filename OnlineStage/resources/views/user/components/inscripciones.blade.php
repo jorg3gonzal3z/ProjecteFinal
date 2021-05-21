@@ -5,7 +5,7 @@
     <div class="card-body">
         <!-- inscripciones del usuario -->
         <a data-toggle="collapse" href="#collapseInscrits" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseInscrits">
-            <h4 class="card-title text-center text-white">Todas mis Inscripciones <i class="fa fa-caret-down"></i> </h4>
+            <h4 class="card-title text-center text-white">Todas mis Inscripciones <i class="fa fa-caret-down ml-2"></i> </h4>
         </a>
         
         <div class=" collapse " id="collapseInscrits">

@@ -8,27 +8,6 @@ $(document).ready(function(){
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
 
-    //boton para mostrar formulario editar tramo
-    $(".editButton").click(function() {
-        $(this).attr('hidden',true);
-        var thisId = $(this).attr('id');
-        thisId = GetId(thisId);
-        $('#tramo\\:'+ thisId).attr('hidden',true);
-        $("#esconder_form_edit\\:" + thisId).attr('hidden',false);
-        $("#form_edit_tramo\\:"+ thisId).attr('hidden',false);
-        $("#delete_tramo\\:"+ thisId).attr('hidden',true);
-
-        //boton para esconder el formulario de editar tramo
-        $("#esconder_form_edit\\:"+ thisId).click(function() {
-            $("#edit_tramo\\:"+ thisId).attr('hidden',false);
-            $("#form_edit_tramo\\:"+ thisId).attr('hidden',true);
-            $(this).attr('hidden',true);
-            $('#tramo\\:'+ thisId).attr('hidden',false);
-            $("#delete_tramo\\:"+ thisId).attr('hidden',false);
-        });
-    });
-
-
     //boton para mostrar formulario editar evento
     $(".editButton").click(function() {
         $(this).attr('hidden',true);

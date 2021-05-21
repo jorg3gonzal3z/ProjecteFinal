@@ -2,13 +2,13 @@
     @if ($auth_user->rol == 'admin' || $auth_user->id == $evento->id_usuari)
     
     <!-- editar evento -->
-    <a id="edit_evento:{{$evento->id}}" class="float-right pr-3 editButton btn" data-toggle="modal" data-target="#modal{{$evento->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+    <a id="edit_evento:{{$evento->id}}" class="float-left pr-3 editButton btn btn-secondary" data-toggle="modal" data-target="#modal{{$evento->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
     <!-- eliminar evento -->
     <form id="delete_evento:{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'eventos' ]) }}" method="POST">
         @csrf
         {{ method_field('DELETE') }}
-        <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
-    </form><br><br>
+        <button><i class="fa fa-trash-o"></i> Eliminar</button>
+    </form>
     
     @endif
 

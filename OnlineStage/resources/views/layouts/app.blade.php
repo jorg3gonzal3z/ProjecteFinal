@@ -17,7 +17,7 @@
         <!-- Scripts -->
         <script src="{{ asset('js/app.js') }}" defer></script>
     </head>
-    <body class="font-sans antialiased bg-dark">
+    <body class="font-sans antialiased">
         <div class="min-h-screen">
             @include('layouts.navigation')
 
@@ -25,8 +25,33 @@
             <main>
                 {{ $slot }}
             </main>
-
-
         </div>
+    <style>
+        .demo_wrap img {
+            position: fixed;
+            left: 15%;
+            top: 30%;
+            width: 70%;
+            opacity: 0.6;
+            z-index: -1;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .bg-1-dark{
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: #343a40;
+            z-index: -2;
+        }
+    </style>
+    <div class="demo_wrap">
+        <img src="{{ url('storage/assets/logo.png') }}">
+    </div>
+    <div class="bg-1-dark"></div>
     </body>
+
 </html>

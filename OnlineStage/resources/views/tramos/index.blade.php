@@ -11,7 +11,7 @@
         
         @if (Auth::user())
 
-            <div id="containerErrorsAdd" class="m-4 bg-dark" >
+            <div id="containerErrorsAdd" class="m-4 " >
                 <!-- control de errores del formulario -->
                 @if (count($errors) > 0)
                     <div class="alert alert-danger">

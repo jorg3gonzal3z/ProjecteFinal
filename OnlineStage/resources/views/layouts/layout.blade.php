@@ -15,10 +15,12 @@
         <img id="loading-image" src="{{ asset('/storage/assets/loading.svg')}}" aria-label="loading">
     </div>  
     <div>
-            <div class="bg-dark shadow-sm sm:lg">
+            <div class=" shadow-sm sm:lg">
                 @yield('content')
             </div>
     </div>
+
+    <div class="cukis" style="display: none;">@include('cookie-consent::index')</div>
 
     <footer>
         <div class="wrapper">
@@ -43,7 +45,7 @@
                 <span><i class="fa fa-youtube-play" aria-hidden="true"></i></span>
             </div>
         </div>
-    </footer>
+    </footer>   
 
 
     <button style="z-index: 10;" id="back-to-top" type="button">

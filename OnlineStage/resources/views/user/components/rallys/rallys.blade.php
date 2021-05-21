@@ -12,11 +12,12 @@
 
                 @if (count($rallys)>0)
                     @foreach($rallys as $rally)
+                    <div class="col-12 col-md-6 col-lg-4 mt-4"> 
 
                         @include('user.components.rallys.edit_rally')
 
                         @include('user.components.rallys.mostrar_rallys')
-
+                    </div>
                     @endforeach
 
                 @else

@@ -1,5 +1,5 @@
 <!-- añadir coche -->
-<!-- este boton abre el formulario para añadir coches -->ç
+<!-- este boton abre el formulario para añadir coches -->
 <button type="button" data-toggle="modal" data-target="#modalAddCar" class="btn btn-danger">Añadir Coche</button>
 
 <div class="modal fade" id="modalAddCar" tabindex="-1" role="dialog" aria-labelledby="#modalAddCar" aria-hidden="true">

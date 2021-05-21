@@ -1,21 +1,33 @@
-<!-- rallys del usuario -->
-<a data-toggle="collapse" href="#collapseRallys" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseRallys">
-    <br><div class="d-flex justify-content-between"><h4>Todos mis Rallys</h4><i class="fa fa-caret-down fa-2x"></i></div>
-</a><br>
-@if (count($rallys)>0)
-    <div class="collapse" id="collapseRallys">
-        @foreach($rallys as $rally)
+<div class="col-md-12 p-0">
 
-            @include('user.components.rallys.edit_rally')
+    <div class="card col-12 col-lg-12 mb-2">
 
-            @include('user.components.rallys.mostrar_rallys')
+        <div class="card-body">
 
-        @endforeach
+            <!-- rallys del usuario -->
+            <a data-toggle="collapse" href="#collapseRallys" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseRallys">
+                <h4 class="card-title text-center text-white">Todos mis Rallys<i class="fa fa-caret-down ml-2"></i></h4>
+            </a>
+            <div class="collapse" id="collapseRallys">
+
+                @if (count($rallys)>0)
+                    @foreach($rallys as $rally)
+
+                        @include('user.components.rallys.edit_rally')
+
+                        @include('user.components.rallys.mostrar_rallys')
+
+                    @endforeach
+
+                @else
+                    <!-- si el user no ha organizado ningun rally -->
+                    <div class="alert alert-danger text-center">
+                        <p>No has añadido ningun rally</p>
+                    </div>
+                @endif
+            </div>
+        </div>
+
     </div>
 
-@else
-    <!-- si el user no ha organizado ningun rally -->
-    <div class="alert alert-danger text-center">
-        <p>No has añadido ningun rally</p>
-    </div>
-@endif
+</div>

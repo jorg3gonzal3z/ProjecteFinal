@@ -5,7 +5,7 @@
     <div class="card-body">
         <!-- tramos compartidos por el usuario -->
         <a data-toggle="collapse" href="#collapseTramos" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseTramos">
-            <h4 class="card-title text-center text-white">Tramos Compartidos <i class="fa fa-caret-down"></i></h4>
+            <h4 class="card-title text-center text-white">Tramos Compartidos <i class="fa fa-caret-down ml-2"></i></h4>
         </a>
 
         <section>

@@ -13,7 +13,7 @@
 
                 <div class="col-12 col-md-4">
                     <a class="text-center" data-toggle="collapse" href="#collapseCars" style="color:black;" role="button" aria-expanded="false" aria-controls="collapseCars">
-                        <h4 class="card-title text-center text-white">Todos mis Coches <i class="fa fa-caret-down"></i></h4>
+                        <h4 class="card-title text-center text-white">Todos mis Coches <i class="fa fa-caret-down ml-2"></i></h4>
                     </a>
                 </div>
 

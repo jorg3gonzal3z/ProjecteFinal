@@ -31,7 +31,7 @@
         </th>
     </tr>
     <tr><th class="text-white" colspan="2">{{ $tramo->nom}}</th></tr>
-    <tr><th class="text-white" rowspan="2">{{ $tramo->sortida}}-{{ $tramo->final}}</th></tr>
+    <tr><th class="text-white" rowspan="2">{{ $tramo->sortida}}&&{{ $tramo->final}}</th></tr>
     <tr><th class="text-white">{{ $tramo->distancia}}km</th></tr>
     <tr>
         <th class="text-white">

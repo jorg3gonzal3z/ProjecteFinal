@@ -12,9 +12,8 @@
                 @if (count($eventos)>0)
                 
                         @foreach ($eventos as $evento)
-                            <div class="col-6 col-md-4 col-lg-3 ">
+                            <div class="col-6 col-md-6 col-lg-4">
 
-                                @include('user.components.eventos.edit_evento')
                                 @include('user.components.eventos.mostrar_eventos')
                                 
                             </div>

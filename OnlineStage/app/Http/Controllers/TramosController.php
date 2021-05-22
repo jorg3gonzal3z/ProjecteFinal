@@ -29,12 +29,12 @@ class TramosController extends Controller
         $data = request()->validate([
             'fotos' => 'required',
             'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required',
-            'distancia' => 'required',
+            'nom' => 'required|max:40',
+            'distancia' => 'required|numeric|min:5',
             'sortida' => 'required',
             'final' => 'required',
             'adressa' => 'required',
-            'id_superficie' => 'required',
+            'id_superficie' => 'required|numeric',
         ]);
        
         $tramo=Trams::create([
@@ -74,12 +74,12 @@ class TramosController extends Controller
 
         $data = request()->validate([
             'fotos.*' => 'mimes:jpeg,jpg,png,gif',
-            'nom' => 'required',
-            'distancia' => 'required',
+            'nom' => 'required|max:40',
+            'distancia' => 'required|numeric|min:5',
             'sortida' => 'required',
             'final' => 'required',
             'adressa' => 'required',
-            'id_superficie' => 'required',
+            'id_superficie' => 'required|numeric',
         ]);
 
         $tramo->update([

@@ -11,15 +11,15 @@
         
         @if (Auth::user())
 
-            <div id="containerErrorsAdd" class="m-4 bg-dark" >
+            <div id="containerErrorsAdd" class="p-6 border-gray-200 col-12 col-md-6 offset-md-3" >
                 <!-- control de errores del formulario -->
                 @if (count($errors) > 0)
-                    <div class="alert alert-danger">
-                        <p>Corrige los siguientes errores:</p>
-                        <br>
+                    <div class="alert alert-danger text-center">
+                        <h3>Corrige los siguientes errores:</h3>
+                        <hr>
                         <ul>
                             @foreach ($errors->all() as $message)
-                                <li>{{ $message }}</li>
+                                <li>· {{ $message }}</li>
                             @endforeach
                         </ul>
                     </div>

@@ -1,5 +1,5 @@
 <!-- editar tramo -->
-<a id="edit_evento:{{$evento->id}}" class="float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modal{{$evento->id}}" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_evento:{{$evento->id}}" class=" edit-btn float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modal{{$evento->id}}" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar evento -->
 <form id="delete_evento:{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'user' ]) }}" method="POST">
     @csrf

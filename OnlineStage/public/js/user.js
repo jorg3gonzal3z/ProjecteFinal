@@ -274,5 +274,25 @@ $(document).ready(function(){
         
     });
 
+    //BOTON EDITAR COCHE BLUR FIX
+    $('.edit-btn').click(function(){
+        var thisModal = $(this).attr('id');
+        thisModal = GetId(thisModal);
 
+        var thisCard = $(this).parents(".card-container");
+        thisCard.css("backdrop-filter", "none");
+
+        
+        $("#modal"+thisModal).on("hidden.bs.modal", function () {
+            thisCard.css("backdrop-filter", "blur( 15.0px )");
+        });
+    });
+
+    //BOTON AÑADIR COCHE BLUR FIX
+    $('.add_btn').click(function(){
+        $(".car_card").css("backdrop-filter", "none");
+        $("#modalAddCar").on("hidden.bs.modal", function () {
+            $(".car_card").css("backdrop-filter", "blur( 15.0px )");
+        });
+    });
 });

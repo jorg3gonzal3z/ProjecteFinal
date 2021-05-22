@@ -18,4 +18,20 @@ $(document).ready(function(){
             $("#listadoParticipantes\\:"+ thisId).attr('hidden',false);
         });
     });
+
+    //SOLUCION BUG MODAL RARO
+    $('.edit_btn').click(function(){
+        var thisModal = $(this).attr('id');
+        thisModal = GetId(thisModal);
+
+        var thisCard = $(this).parents(".card-container");
+        thisCard.css("backdrop-filter", "none");
+
+        
+        $("#modal"+thisModal).on("hidden.bs.modal", function () {
+            thisCard.css("backdrop-filter", "blur( 15.0px )");
+
+        });
+
+    });
 });

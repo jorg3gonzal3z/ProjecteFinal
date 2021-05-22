@@ -4,8 +4,6 @@
 
 @section('content')
 
-    @include('rallys.components.search')
-
     @if (Auth::user())
 
         <!-- control de errores de los formulario -->

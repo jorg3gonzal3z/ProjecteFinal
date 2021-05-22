@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-    <div class="mt-3 card col-12 col-mb-12 col-lg-12  mb-2">
+    <div class="mt-3 card-container col-12 col-mb-12 col-lg-12 car_card mb-2">
 
         <div class="card-body">
             <!-- coches del usuario -->

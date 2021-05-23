@@ -2,6 +2,7 @@
 
     <div class="col-12 col-md-6 col-lg-4 "> 
         @include('eventos.components.mostrar_evento')
+
     </div>
     
 @endforeach

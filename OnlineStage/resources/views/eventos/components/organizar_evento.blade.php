@@ -1,8 +1,13 @@
-<!-- si el usuario esta logueado i es organizador o es admin puede añadir eventos, este boton abre un formulario -->
+<div class="d-flex flex-wrap p-6 solo-blur justify-content-between">
+        <div class="">
+            @include('eventos.components.search')
+        </div>
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
-    <div class="p-6 bg-dark border-red-500 text-center">    
-        <button id="add_event" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddEvent">Añadir Evento</button>
-    </div>
+
+        <div class="text-center">    
+            <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddEvent">Organizar Evento  <i class="fa fa-plus"></i></button>
+        </div>
+    </div>    
 
     <div class="modal fade" id="modalAddEvent" tabindex="-1" role="dialog" aria-labelledby="#modalAddEvent" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

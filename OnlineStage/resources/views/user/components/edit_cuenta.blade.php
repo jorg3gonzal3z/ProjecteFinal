@@ -24,7 +24,7 @@
                     </div>
 
             <div class="d-flex justify-content-center">
-                <button class="btn btn-secondary" data-toggle="modal" data-target="#modalEditUser">Editar Cuenta</button>
+                <button class="btn btn-secondary edit-btn-cuenta" data-toggle="modal" data-target="#modalEditUser">Editar Cuenta</button>
                 <!-- eliminar user -->
                 <form class="ml-2" action="{{ route('user.destroy',['id' => $auth_user->id, 'location' => 'user_view' ]) }}" method="POST">
                     @csrf

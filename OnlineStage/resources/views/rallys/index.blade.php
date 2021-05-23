@@ -4,8 +4,6 @@
 
 @section('content')
 
-    @include('rallys.components.search')
-
     @if (Auth::user())
 
         <!-- control de errores de los formulario -->
@@ -25,7 +23,6 @@
 
         <!-- si el usuario esta logueado i es organizador o es admin puede añadir rallys -->
     
-        
         @include('rallys.components.organizar_rally')
 
     @endif

@@ -27,6 +27,8 @@
 }
 
 
+
+
 body {
   min-height: 1000px;
   position: relative;
@@ -65,8 +67,6 @@ footer {
   text-align: center;
   display: grid;
   place-items: center;
-  background: rgb(173,30,30,1);
-  background: linear-gradient(0deg, rgba(173,30,30,1) 0%, rgba(52,58,64,1) 50%);
 }
 .wrapper {
   display: inline-flex;
@@ -206,4 +206,57 @@ footer {
 }
 *{
   font-size: 101%;
+}
+
+
+.cookie-consent {
+  border: solid 3px white;
+  border-radius: 5px;
+  background-color: #DC3545;
+  color:white;
+  padding: 10px;
+  position: fixed;
+  width: 80%;
+  left: 10%;
+  bottom: 0px;
+  z-index: 5;
+}
+
+.modal-content{
+  backdrop-filter: blur( 20.0px );
+  background: rgba(255, 86, 86, 0.50)!important;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
+  -webkit-backdrop-filter: blur( 20.0px )!important;
+  border-radius: 10px!important;
+  border: 1px solid rgba( 255, 255, 255, 0.18 )!important;
+}
+
+.solo-blur{
+  backdrop-filter: blur( 20.0px );
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
+  -webkit-backdrop-filter: blur( 20.0px )!important;
+}
+    
+
+/* PAGINACION */
+
+.page-item.active{
+  background-color:#DC3545!important;
+  color:white;
+}
+
+.page-item.active .page-link{
+  background-color:#DC3545!important;
+  color:white;
+  border: none;
+}
+
+.page-link{
+  color: #DC3545;
+}.page-link:hover{
+  color: #DC3545;
+}
+
+nav{
+  margin: auto;
 }

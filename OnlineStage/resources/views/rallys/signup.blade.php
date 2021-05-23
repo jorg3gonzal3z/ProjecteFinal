@@ -102,7 +102,6 @@ $(document).ready(function(){
             }
         });
         $.post( id_rally + '/' + coche_id, function(response) {
-            // handle your response here
             console.log(response);
             window.location.href = "{{ route('rallys.index')}}";
         })

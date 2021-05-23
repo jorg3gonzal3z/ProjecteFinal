@@ -237,3 +237,26 @@ footer {
   -webkit-backdrop-filter: blur( 20.0px )!important;
 }
     
+
+/* PAGINACION */
+
+.page-item.active{
+  background-color:#DC3545!important;
+  color:white;
+}
+
+.page-item.active .page-link{
+  background-color:#DC3545!important;
+  color:white;
+  border: none;
+}
+
+.page-link{
+  color: #DC3545;
+}.page-link:hover{
+  color: #DC3545;
+}
+
+nav{
+  margin: auto;
+}

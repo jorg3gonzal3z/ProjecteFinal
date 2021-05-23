@@ -4,8 +4,6 @@
 
 @section('content')
 
-    @include('eventos.components.search')
-
     @if (Auth::user())
 
         <!-- control de errores del formulario -->

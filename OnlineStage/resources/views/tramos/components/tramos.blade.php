@@ -14,6 +14,4 @@
     
 </div>
 
-<div class="" id="pagination">
-    {{ $tramos->links() }}
-</div>
+{{ $tramos->links() }}

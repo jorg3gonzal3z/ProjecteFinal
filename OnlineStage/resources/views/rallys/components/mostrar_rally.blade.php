@@ -1,7 +1,7 @@
 <!-- mostrar rallys -->
 <div id="rally:{{$rally->id}}" class="float-right">
 
-    <div class="card mb-2">
+    <div class="card-container mb-2">
         <div id="controlsCarousel{{$rally->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
             <div class="carousel-inner">
             <!-- fotos del rally -->

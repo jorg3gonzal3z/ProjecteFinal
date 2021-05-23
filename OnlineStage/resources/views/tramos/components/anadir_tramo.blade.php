@@ -1,5 +1,5 @@
 <!-- si el usuario esta logueado o es admin puede añadir tramos, este boton abre un formulario -->
-<a id="add_tramo" type="button" class="add_btn btn btn-danger align-middle text-white" style="font-size:larger; " data-toggle="modal" data-target="#modalAfegir">Comparte un tramo <i class="fa fa-plus"></i></a>
+<button id="add_tramo" class="add_btn btn btn-danger align-middle text-white" data-toggle="modal" data-target="#modalAfegir">Comparte un tramo <i class="fa fa-plus"></i></button>
 
 <div class="modal fade" id="modalAfegir" tabindex="-1" role="dialog" aria-labelledby="#modalAfegir" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

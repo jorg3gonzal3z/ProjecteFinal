@@ -31,7 +31,7 @@
             <div class="col-12 col-md-12 p-0">
             @include('eventos.components.inscripcion_evento')
             </div>
-            <div class="col-12 col-md-12 p-0">
+            <div class="col-12 col-md-12 p-0 d-flex flex-wrap justify-content-between">
                 @if (Auth::user())
                     @include('eventos.components.editar_evento')
                 @endif

@@ -28,17 +28,17 @@
     backface-visibility: hidden;
 }
 
-.card{
-    backdrop-filter: blur( 15.0px )!important;
+.card-container{
+    backdrop-filter: blur( 15.0px );
     background: rgba(8, 8, 8, 0.568)!important;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
-    -webkit-backdrop-filter: blur( 15.0px )!important;
+    -webkit-backdrop-filter: blur( 15.0px );
     border-radius: 10px!important;
     border: 1px solid rgba(134, 134, 134, 0.18)!important;
 }
 
 .modal-content{
-    backdrop-filter: blur( 15.0px )!important;
+    backdrop-filter: blur( 15.0px );
     background: rgba(255, 86, 86, 0.40)!important;
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
     -webkit-backdrop-filter: blur( 15.0px )!important;

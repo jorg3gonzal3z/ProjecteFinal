@@ -3,7 +3,7 @@
     <div class="d-flex flex-wrap justify-content-between">
         <div>
         <!-- eliminar rally -->
-            <form id="delete_rally:{{$rally->id}}" class="float-right" style="color:red;" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'rallys' ]) }}" method="POST">
+            <form id="delete_rally:{{$rally->id}}" class="" style="color:red;" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'rallys' ]) }}" method="POST">
                 @csrf
                 {{ method_field('DELETE') }}
                 <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
@@ -11,7 +11,7 @@
         </div>
     <!-- editar rally -->
         <div>
-            <a id="edit_rally:{{$rally->id}}" class="float-right ml-3 btn btn-secondary" style="cursor:pointer;" data-toggle="modal" data-target="#modal{{$rally->id}}" ><i class="fa fa-pencil"></i> Editar</a>
+            <a id="edit_rally:{{$rally->id}}" class="edit_btn  ml-3 btn btn-secondary" style="cursor:pointer;" data-toggle="modal" data-target="#modal{{$rally->id}}" ><i class="fa fa-pencil"></i> Editar</a>
         </div>
     </div>
 

@@ -1,7 +1,7 @@
 
 <div class="card col-12 p-0 mb-3">
   <div class="row no-gutters">
-    <div class="col-md-4">
+    <div class="col-lg-4">
         <div id="controlsCarousel{{$tramo->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
             <div class="carousel-inner">
             <!-- fotos del tramo -->
@@ -27,11 +27,11 @@
             </a>
         </div>
     </div>
-    <div class="col-md-8">
+    <div class="col-lg-8">
       <div class="card-body text-white">
         <h5 class="card-title">{{ $tramo->nom}}</h5>
         <hr>
-        <p class="card-text">Sortida-Final: <span style="color:red;">{{ $tramo->sortida}}&&{{ $tramo->final}}</span></p>
+        <p class="card-text">Salida-Final: <span style="color:red;">{{ $tramo->sortida}}&&{{ $tramo->final}}</span></p>
         <p class="card-text">Distancia: <span style="color:red;">{{ $tramo->distancia}}km</span></p>
         <p class="card-text">Superficie: <span style="color:red;">
             <!-- informacion sobre la superficie del tramo -->

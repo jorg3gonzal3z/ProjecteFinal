@@ -6,38 +6,27 @@
 @stop
 
 @section('content')
+<link rel="stylesheet" type="text/css" href="{{ url('/css/sobre_nosotros.css') }}" /> 
 
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              ...
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <script>
-      
-           $('#myModal').modal('show');
-           
-           setTimeout(function() {
-              
-              var isShown = $('#myModal').hasClass('show');
-              console.log(isShown);
-              
-           }, 1000);
-      
-      </script>
+<div>
+  <img src="{{ asset('/storage/assets/jorgejuli.jpg')}}" alt="fotojorgejuli">
+</div>
+<div class="d-flex flex-wrap justify-content-center">
+
+  <div class="text-center col-12 col-md-6 p-3">
+    <div class=" btn btn-light p-4">
+      <div class="">Juli Lechuga</div>
+      <div class="title text-danger">Desarrollador Fullstack y Empresario</div>
+    </div>
+  </div>
+  <div class="text-center col-12 col-md-6 p-3">
+    <div class=" btn btn-light p-4">
+      <div class="">Jorge Gonzalez</div>
+      <div class="title text-danger">Desarrollador Fullstack y Calle</div>
+    </div>
+  </div>
+</div>
+
 
 <script src="{{ url('/js/sobre_nosotros.js') }}"></script>
 

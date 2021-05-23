@@ -246,6 +246,7 @@ class RallysController extends Controller
     }
 
     public function signup_car($id_user,$id_rally,$id_coche){
+        
         $rally=Rallys::find($id_rally);
         $users=User::find($id_user);
         $coche=Cotxes::where('id', $id_coche);

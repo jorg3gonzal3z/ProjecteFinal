@@ -16,9 +16,9 @@
                     <!-- inscripciones rallys -->
                     <ul class="mt-2 list-group col-md-6 p-2">
                         <li class="list-group-item text-center"  style="cursor:pointer;" ><b>Inscripciones Rallys:</b></li>
-                        @foreach($inscripciones_rallys as $inscripcione_rally)
-                            @foreach($rallys as $rally)
-                                @if($rally->id == $inscripcione_rally->id_rallys)                       
+                        @foreach($inscripciones_rallys as $inscripcion_rally)
+                            @foreach($all_rallys as $rally)
+                                @if($rally->id == $inscripcion_rally->id_rallys)                       
                                     <li class="list-group-item text-center">{{$rally->nom}}</li>
                                 @endif
                             @endforeach

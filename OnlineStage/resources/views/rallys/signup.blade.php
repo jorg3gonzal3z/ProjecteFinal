@@ -62,27 +62,29 @@
                 </div>  
 
             @else
-                <div class="alert alert-danger">
-                    <p>No has añadido ningun coche que pueda correr este rally</p>
-                </div>
+                <div class="col-12">
+                    <div class="alert alert-danger text-center col-12 col-md-6 offset-md-3">
+                        <p>No has añadido ningun coche que pueda correr este rally</p>
+                    </div>
 
-                <form action="{{ route('user.index') }}" method="GET" >
-                    @csrf
-                    <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
-                </form>
+                    <form class="d-flex justify-content-center" action="{{ route('user.index') }}" method="GET" >
+                        @csrf
+                        <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
+                    </form>
+                </div>
             @endif
 
         @else
+            <div class="col-12">
+                <div class="alert alert-danger text-center col-12 col-md-6 offset-md-3">
+                    <p>No has añadido ningun coche</p>
+                </div>
 
-            <div class="alert alert-danger">
-                <p>No has añadido ningun coche</p>
+                <form class="d-flex justify-content-center" action="{{ route('user.index') }}" method="GET" >
+                    @csrf
+                    <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
+                </form>
             </div>
-
-            <form action="{{ route('user.index') }}" method="GET" >
-                @csrf
-                <button class="btn btn-danger"><i class=""></i> Añadir un Coche</button>
-            </form>
-
         @endif
 
     @endif

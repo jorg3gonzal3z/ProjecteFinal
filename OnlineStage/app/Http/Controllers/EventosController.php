@@ -30,10 +30,10 @@ class EventosController extends Controller
 
         $data = request()->validate([
             'logo' => 'required|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required',
-            'tipus' => 'required',
-            'numPlaces' => 'required',
-            'localitzacio' => 'required',
+            'nom' => 'required|max:40',
+            'tipus' => 'required|max:40',
+            'numPlaces' => 'required|numeric|min:15',
+            'localitzacio' => 'required|max:60',
         ]);
 
         $foto = $data['logo'];
@@ -60,9 +60,9 @@ class EventosController extends Controller
         $data = request()->validate([
             'old_logo' => 'required',
             'logo' => 'nullable|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required',
-            'tipus' => 'required',
-            'localitzacio' => 'required',
+            'nom' => 'required|max:40',
+            'tipus' => 'required|max:40',
+            'localitzacio' => 'required|max:60',
         ]);
         
         if(isset($data['logo'])){

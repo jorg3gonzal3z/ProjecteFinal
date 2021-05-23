@@ -46,12 +46,12 @@ class UsuarioController extends Controller
         $data = request()->validate([
             'fotos' => 'required',
             'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
-            'modelo' => 'required',
-            'potencia' => 'required|numeric',
-            'peso' => 'required|numeric',
-            'año' => 'required|numeric',
+            'modelo' => 'required|max:40',
+            'potencia' => 'required|numeric|min:10',
+            'peso' => 'required|numeric|min:200',
+            'año' => 'required|numeric|min:1886',
             'tren_motriz' => 'required',
-            'id_categoria' => 'required',
+            'id_categoria' => 'required|numeric',
         ]);
 
         $coche=Cotxes::create([
@@ -130,12 +130,12 @@ class UsuarioController extends Controller
         $coche=Cotxes::find($id);
         $data = request()->validate([
             'fotos.*' => 'mimes:jpeg,jpg,png,gif',
-            'modelo' => 'required',
-            'potencia' => 'required|numeric',
-            'peso' => 'required|numeric',
-            'año' => 'required|numeric',
+            'modelo' => 'required|max:40',
+            'potencia' => 'required|numeric|min:10',
+            'peso' => 'required|numeric|min:200',
+            'año' => 'required|numeric|min:1886',
             'tren_motriz' => 'required',
-            'id_categoria' => 'required',
+            'id_categoria' => 'required|numeric',
         ]);
         $coche->update([
             'model' => $data['modelo'],

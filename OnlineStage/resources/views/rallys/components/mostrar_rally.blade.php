@@ -69,7 +69,7 @@
                         @if ( $categoria_rally->id_rallys == $rally->id )
                             @foreach ($categorias as $categoria)
                                 @if($categoria->id == $categoria_rally->id_categories)
-                                    <div class="col-12 col-md-4 p-1 text-center"><p style="box-shadow:2px 2px 5px red;"  class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
+                                    <div class="col-12 col-md-5 p-1 text-center"><p style="box-shadow:2px 2px 5px red;"  class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
                                 @endif
                             @endforeach
                         @endif
@@ -83,6 +83,9 @@
             <div class="col-12 col-md-12 text-center">
                 @include('rallys.components.inscripcion_rally')
             </div>
+            @if (Auth::user())
+                @include('rallys.components.editar_rally')
+            @endif
         </div>
     </div>
 </div>

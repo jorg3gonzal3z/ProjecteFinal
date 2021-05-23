@@ -109,5 +109,11 @@ $(document).ready(function(){
         $("#nav-filtros-tab").fadeToggle();
       });
 
+    $('.add_btn').click(function(){
+        $(".solo-blur").css("backdrop-filter", "none");
+        $("#modalAfegir").on("hidden.bs.modal", function () {
+            $(".solo-blur").css("backdrop-filter", "blur( 15.0px )");
+        });
+    });
 });
 

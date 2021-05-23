@@ -223,7 +223,7 @@ footer {
 }
 
 .modal-content{
-  backdrop-filter: blur( 20.0px )!important;
+  backdrop-filter: blur( 20.0px );
   background: rgba(255, 86, 86, 0.50)!important;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
   -webkit-backdrop-filter: blur( 20.0px )!important;
@@ -232,7 +232,7 @@ footer {
 }
 
 .solo-blur{
-  backdrop-filter: blur( 20.0px )!important;
+  backdrop-filter: blur( 20.0px );
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37)!important;
   -webkit-backdrop-filter: blur( 20.0px )!important;
 }

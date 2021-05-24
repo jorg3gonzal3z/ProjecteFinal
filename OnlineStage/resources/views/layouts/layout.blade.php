@@ -20,7 +20,7 @@
             </div>
     </div>
 
-    <div class="cukis" style="display: none;">@include('cookie-consent::index')</div>
+    
 
 
     <footer>

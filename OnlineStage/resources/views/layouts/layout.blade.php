@@ -20,9 +20,6 @@
             </div>
     </div>
 
-    
-
-
     <footer>
         <div class="wrapper">
             <div class="icon facebook">

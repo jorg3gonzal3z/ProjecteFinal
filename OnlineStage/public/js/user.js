@@ -331,7 +331,7 @@ $(document).ready(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
 
-        var thisCard = $(this).parents(".card");
+        var thisCard = $(this).parents(".card-container");
         thisCard.css("backdrop-filter", "none");
 
         

@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-    <div class="card col-12 col-lg-12 mb-2">
+    <div class="card-container col-12 col-lg-12 mb-2">
 
         <div class="card-body">
 

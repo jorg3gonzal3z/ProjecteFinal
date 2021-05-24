@@ -1,7 +1,7 @@
 <!-- mostrar rallys -->
 <div id="rally:{{$rally->id}}" class="float-right">
 
-    <div class="card mb-2 mt-2">
+    <div class="card-container mb-2 mt-2">
         <div id="controlsCarousel{{$rally->id}}" class="carousel slide" data-interval="false" data-ride="carousel">
             <div class="carousel-inner">
             <!-- fotos del rally -->
@@ -50,10 +50,10 @@
                 <div class="col-12 col-md-6 p-0">
                     <p>Numero de TC: <span class="text-danger pl-1">{{ $rally->numTC}}</span></p>
                 </div>
-                <div class="col-12 col-md-12 p-0">
+                <div class="col-12 p-0">
                     <p>Numero de Assistencais: <span class="text-danger pl-1">{{ $rally->numAssistencies}}</span></p>
                 </div>
-                <div class="col-12 col-md-12 p-0">
+                <div class="col-12 p-0">
                     <p>Categorias: </p>
                     <div class="d-flex flex-wrap justify-content-center">
                     <!-- categorias que pueden correr este rally -->
@@ -61,13 +61,14 @@
                         @if ( $categoria_rally->id_rallys == $rally->id )
                             @foreach ($categorias as $categoria)
                                 @if($categoria->id == $categoria_rally->id_categories)
-                                    <div class="col-12 col-md-4 p-1 text-center"><p style="box-shadow:2px 2px 5px red;"  class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
+                                    <div class="col-12 col-md-4 p-1 text-center"><p style="box-shadow:2px 2px 5px red;   word-wrap: break-word; "  class="border rounded border-dark col-12">{{$categoria->nomCategoria}}<p></div>
                                 @endif
                             @endforeach
                         @endif
                     @endforeach
                     </div>
-                <div class="col-12 col-md-12 p-0 mt-3">
+                </div>
+                <div class="col-12 p-0 mt-3">
                     @include('user.components.rallys.edit_rally')
                 </div>
             </div>

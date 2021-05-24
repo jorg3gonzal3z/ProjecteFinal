@@ -14,7 +14,8 @@ class EventsSeeder extends Seeder
     public function run()
     {
         $events =[
-            ['EuroCrew', 'storage/assets/eurocrew.jpg', 'Trackday', 200, 'Chiva, Valencia', 1],
+            ['EuroCrew', 'storage/assets/eurocrew.jpg', 'Trackday', 200, 'Chiva, Valencia', 3],
+            ["Let's & Go", "storage/assets/lets&go.jpg",'Toy Race', 30, 'El Vendrell, Tarragona', 3]
         ];
         foreach($events as $event){
             \App\Models\Events::create([

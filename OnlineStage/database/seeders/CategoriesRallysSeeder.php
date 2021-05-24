@@ -14,7 +14,7 @@ class CategoriesRallysSeeder extends Seeder
     public function run()
     {
         $categories =[
-            [6,1],
+            [6,1],[2,1],[6,2],[7,2],[8,2],[6,3],[7,3],[8,3],
         ];
         foreach($categories as $categoria){
             \App\Models\CategoriesRallys::create([

@@ -6,7 +6,7 @@
         <button><i class="fa fa-trash-o"></i> Eliminar</button>
     </form>
     <!-- editar evento -->
-    <a id="edit_evento:{{$evento->id}}" class="edit_btn pr-3 btn btn-secondary" data-toggle="modal" data-target="#modal{{$evento->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+    <a id="edit_evento:{{$evento->id}}" class="edit_btn pr-3 btn btn-secondary text-white" data-toggle="modal" data-target="#modal{{$evento->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
     <!-- eliminar evento -->
 
     

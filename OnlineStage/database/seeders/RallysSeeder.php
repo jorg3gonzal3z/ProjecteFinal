@@ -14,7 +14,9 @@ class RallysSeeder extends Seeder
     public function run()
     {
         $rallys =[
-            ['RACC',40,8,3,'Catalunya/Spain',300,1,1],
+            ['RACC',40,8,3,'Catalunya,Spain',200,1,3],
+            ['Ciutat de Valls',90,12,6,'Catalunya,Spain',200,1,3],
+            ['Tierras Altas de Lorca',90,8,3,'Murcia,Spain',120,2,3],
         ];
         foreach($rallys as $rally){
             \App\Models\Rallys::create([

@@ -11,7 +11,7 @@
         </div>
     <!-- editar rally -->
         <div>
-            <a id="edit_rally:{{$rally->id}}" class="edit_btn  ml-3 btn btn-secondary" style="cursor:pointer;" data-toggle="modal" data-target="#modal{{$rally->id}}" ><i class="fa fa-pencil"></i> Editar</a>
+            <a id="edit_rally:{{$rally->id}}" class="edit_btn  ml-3 btn btn-secondary text-white" style="cursor:pointer;" data-toggle="modal" data-target="#modal{{$rally->id}}" ><i class="fa fa-pencil"></i> Editar</a>
         </div>
     </div>
 

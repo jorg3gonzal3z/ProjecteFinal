@@ -9,15 +9,16 @@
                 <h4 class="card-title text-center text-white">Todos mis Rallys<i class="fa fa-caret-down ml-2"></i></h4>
             </a>
             <div class="collapse" id="collapseRallys">
-
+                
                 @if (count($rallys)>0)
+                <div class="d-flex flex-wrap">
                     @foreach($rallys as $rally)
                     <div class="col-12 col-md-6 col-lg-4 mt-4"> 
 
                         @include('user.components.rallys.mostrar_rallys')
                     </div>
                     @endforeach
-
+                </div>
                 @else
                     <!-- si el user no ha organizado ningun rally -->
                     <div class="alert alert-danger text-center">

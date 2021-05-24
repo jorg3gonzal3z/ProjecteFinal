@@ -1,8 +1,8 @@
 <!-- listado de participantes -->
 <div class="d-flex justify-content-center p-0 m-0">
     <div id="ver_listado:{{$rally->id}}">
-        <div id="listadoParticipantes:{{$rally->id}}" class="p-6 Participantes" style="cursor:pointer;color:blue;">
-            <p>Ver listado de participantes</p>
+        <div id="listadoParticipantes:{{$rally->id}}" class="p-6 Participantes text-white" style="cursor:pointer;">
+            <p><u>Ver listado de participantes</u></p>
         </div>
         <div id="lista:{{$rally->id}}" hidden>
             <ul class="list-group">

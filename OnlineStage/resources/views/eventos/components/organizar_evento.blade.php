@@ -22,41 +22,44 @@
                     <!-- formulario para añadir eventos -->
                     <form id="form_add_event" action="{{ route('eventos.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" >
                         @csrf
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Cartel</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="logo">
-                            </div>
+
+                        <div class="box form-group row mt-4 justify-content-center">
+                            <input type="file" name="logo" id="file-newEvent" class="inputfile inputfile-1"  hidden />
+                            <label for="file-newEvent"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tu Cartel&hellip;</span></label>
+                            <span class="form-text text-white col-12 text-center">Cartel del Evento.</span>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Nombre</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nom" placeholder="Nombre del Evento ...">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label text-white">Tipo de Evento</label>
-                            <div class="col-sm-8">
-                            <input type="text" class="form-control" name="tipus" placeholder="Fira del automovil ...">
-                            </div>
-                        </div>
+                        <div class="col-12 d-flex flex-wrap">
 
-                        <div class="form-group row">
-                            <label class="col-sm-5 col-form-label text-white">Numero de plazas</label>
-                            <div class="col-sm-7">
-                            <input type="number" class="form-control" name="numPlaces" placeholder="200 ...">
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-white">Nombre *</label>
+                               
+                                <input type="text" class="form-control" name="nom" placeholder="Nombre del Evento ...">
+                                
                             </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-5 col-form-label text-white">Localizacion</label>
-                            <div class="col-sm-7">
-                            <input type="text" class="form-control" name="localitzacio" placeholder="El Vendrell ...">
+                            
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-white">Tipo de Evento *</label>
+                                
+                                <input type="text" class="form-control" name="tipus" placeholder="Fira del automovil ...">
+                               
                             </div>
-                        </div>
 
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-white">Numero de plazas *</label>
+                               
+                                <input type="number" class="form-control" name="numPlaces" placeholder="200 ...">
+                               
+                            </div>
+
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-white">Localizacion *</label>
+                               
+                                <input type="text" class="form-control" name="localitzacio" placeholder="El Vendrell ...">
+                               
+                            </div>
+
+                        </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>

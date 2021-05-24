@@ -35,7 +35,7 @@ Ay,…</p>
     <img src="{{ asset('/storage/assets/jorgejuli.jpg')}}" alt="fotojorgejuli">
   </div>
 
-  <div class="d-flex flex-wrap justify-content-center">
+  <div class="d-flex flex-wrap justify-content-center mb-3">
 
     <div class="text-center col-12 col-md-6 p-3">
       <div class=" btn btn-light p-4">

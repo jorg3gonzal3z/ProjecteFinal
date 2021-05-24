@@ -107,8 +107,6 @@ class RallysController extends Controller
             'numAssistencies' => 'required|numeric|min:2',
             'localitzacio' => 'required|max:60',
             'id_superficie' => 'required|numeric',
-            'categorias' => 'required',
-            'categorias.*' => 'required',
         ]);
 
         $rally->update([
@@ -119,21 +117,6 @@ class RallysController extends Controller
             'localitzacio' => $data['localitzacio'],
             'id_superficie' => $data['id_superficie'],
         ]);
-
-        $categorias_rally = CategoriesRallys::where('id_rallys', $id)->get();
-        foreach ($categorias_rally as $categoria_rally){
-            $categoria_rally->delete();
-        }
-
-        $array_categorias = $data['categorias'];
-        foreach($array_categorias as $array_categoria){
-            
-            $categoria_rally=CategoriesRallys::create([
-                'id_categories' => $array_categoria,
-                'id_rallys' => $rally->id,
-            ]);
-
-        };
 
         $array_fotos = request('fotos');
         $all_fotos_rally=FotosRallys::where('id_rallys', $rally->id)->count();

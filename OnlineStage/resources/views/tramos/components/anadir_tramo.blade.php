@@ -74,10 +74,6 @@
                                 </div>
                             </div>
 
-
-
-                            <button class="btn btn-danger" >Submit</button>
-                        </form>
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">

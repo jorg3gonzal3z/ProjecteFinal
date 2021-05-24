@@ -23,69 +23,57 @@
                     <form id="form_add_rally" action="{{ route('rallys.store',['id' => $auth_user->id] ) }}" method="POST" enctype="multipart/form-data" >
                         @csrf
                         
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Imagenes</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="fotos[]" multiple>
-                            </div>
+                        <div class="box form-group row mt-4 justify-content-center">
+                            <input type="file" name="fotos[]" id="file-newRally" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden />
+                            <label for="file-newRally"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tus fotos&hellip;</span></label>
+                            <span class="form-text text-white col-12 text-center">*Mínimo una foto y máximo seis.</span>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Nombre</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nom" placeholder="Nombre del Rally ...">
+                        <div class="col-12 d-flex flex-wrap">
+
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class=" text-center text-white">Nombre *</label>
+                                <input type="text" class="form-control text-center" name="nom" placeholder="Nombre del Rally ...">                               
                             </div>
-                        </div>
+                            
+                            <div class="form-group col-12 col-md-6">
+                                <label class=" text-center text-white">Distancia Total en km *</label>                             
+                                    <input type="number" class="form-control text-center" id="distancia" name="distancia" placeholder="25 Km">
+                            </div>
+
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-center text-white">Numero Tramos Cronometrados *</label>
+                                <input type="number" class="form-control text-center" id="numTC" name="numTC" placeholder="8 ...">
+                            </div>
                         
-                        <div class="form-group row">
-                            <label class="col-sm-6 col-form-label text-white">Distancia Total en km</label>
-                            <div class="col-sm-6">
-                                <input type="number" class="form-control" id="distancia" name="distancia" placeholder="25 Km">
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-center text-white">Numero de Assistencias *</label>
+                                <input type="number" class="form-control  text-center" id="numAssistencies" name="numAssistencies" placeholder="3 ...">
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-7 col-form-label text-white">Numero Tramos Cronometrados</label>
-                            <div class="col-sm-5">
-                            <input type="number" class="form-control" id="numTC" name="numTC" placeholder="8 ...">
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-center text-white">Localizacion *</label>
+                                <input type="text" class="form-control text-center" id="localitzacio" name="localitzacio" placeholder="Vilafranca ...">
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-7 col-form-label text-white">Numero de Assistencias</label>
-                            <div class="col-sm-5">
-                            <input type="number" class="form-control" id="numAssistencies" name="numAssistencies" placeholder="3 ...">
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-center text-white">Numero de Plazas *</label>
+                                <input type="number" class="form-control text-center" id="numPlaces" name="numPlaces" placeholder="150 ...">
                             </div>
-                        </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label text-white">Localizacion</label>
-                            <div class="col-sm-8">
-                            <input type="text" class="form-control" id="localitzacio" name="localitzacio" placeholder="Vilafranca ...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-7 col-form-label text-white">Numero de Plazas</label>
-                            <div class="col-sm-5">
-                            <input type="number" class="form-control" id="numPlaces" name="numPlaces" placeholder="150 ...">
-                            </div>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label text-white">Superficie</label>
-                            <div class="col-sm-8">
+                            <div class="form-group col-12 col-md-6 ">
+                                <label class="text-center text-white">Superficie *</label>         
                                 <select class="form-control" name="id_superficie" style="border-radius:10px">>
                                     @foreach ($superficies as $superficie)
                                         <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
                                     @endforeach
-                                </select>
+                                </select> 
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <label class="col-sm-12 col-form-label text-white">Categorias de coches que pueden participar</label>
-                            <div class="col-sm-12">
+                        
+                        <div class="form-group">
+                            <label class="col-12 text-center text-white">Categorias de coches que pueden participar *</label>
+                            <div class="col-12 col-md-6 offset-md-3">
                                 <select class="form-control" name="categorias[]" style="border-radius:10px" multiple>
                                     @foreach ($categorias as $categoria)
                                         <option value="{{$categoria->id}}">{{$categoria->nomCategoria}}</option>

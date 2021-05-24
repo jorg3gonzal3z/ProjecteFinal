@@ -27,39 +27,26 @@
             </div>
         </div>
     <div class="tab-pane fade " id="nav-info{{$tramo->id}}" role="tabpanel" aria-labelledby="nav-info-tab">
-            <table class="table text-danger table-hover ">
-                <tbody>
-                    <tr>
-                        <th style="width: 30%; padding: 0;"rowspan="6" colspan="2">
-                            
-                        </th>
-                    </tr>
-                    <tr>
-                        <th rowspan="2">{{ $tramo->nom}}</th>
-                    </tr>
-                    <tr>
-                    <!-- usuario que ha compartido el tramo -->
-                    @foreach ($users as $user)
-                        @if ( $tramo->id_usuari == $user->id )
-                        <td>{{ $user->name}}</td>
-                        @endif
-                    @endforeach
-                    </tr>
-                    <tr>
-                        <th rowspan="2" colspan="1" class="mostraAdressa">{{$tramo->adressa}}</th>
-                    </tr>
-                    <tr>
-                        <th>{{ $tramo->distancia}}km</th>
-                    </tr>
-                    <tr>
-                        <!-- informacion sobre la superficie del tramo -->
-                        @foreach ($superficies as $superficie)
-                            @if ( $tramo->id_superficie == $superficie->id )
-                                <th>{{$superficie->tipus}}<th>
-                            @endif
-                        @endforeach
-                    </tr>
-                </tbody>
-        </table>   
+    <div class="card col-12 p-0 mb-3">
+  <div class="row no-gutters">
+
+    <div class="col-12">
+      <div class="card-body text-white">
+        <h5 class="card-title text-center">{{ $tramo->nom}}</h5>
+        <hr>
+        <p class="card-text">Salida-Final: <span style="color:red;">{{ $tramo->adressa }}</span></p>
+        <p class="card-text">Distancia: <span style="color:red;">{{ $tramo->distancia}}km</span></p>
+        <p class="card-text">Superficie: <span style="color:red;">
+            <!-- informacion sobre la superficie del tramo -->
+            @foreach ($superficies as $superficie)
+                @if ( $tramo->id_superficie == $superficie->id )
+                {{$superficie->tipus}}
+                @endif
+            @endforeach
+        </span></p>
+      </div>
+    </div>
+  </div>
+</div>
     </div>
 </div>

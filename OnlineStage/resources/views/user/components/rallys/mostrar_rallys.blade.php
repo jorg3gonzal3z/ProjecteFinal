@@ -67,6 +67,8 @@
                         @endif
                     @endforeach
                     </div>
+                <div class="col-12 col-md-12 p-0 mt-3">
+                    @include('user.components.rallys.edit_rally')
                 </div>
             </div>
         </div>

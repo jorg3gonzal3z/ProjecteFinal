@@ -1,7 +1,7 @@
 <!-- editar rally -->
-<a id="edit_rally:{{$rally->id}}" class=" edit-btn float-right ml-3 btn btn-secondary" data-toggle="modal" data-target="#modal{{$rally->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_rally:{{$rally->id}}" class=" edit-rally-btn float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modal{{$rally->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar rally -->
-<form id="delete_rally:{{$rally->id}}" class="float-right" style="color:red;" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'user' ]) }}" method="POST">
+<form id="delete_rally:{{$rally->id}}" class="float-right" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'user' ]) }}" method="POST">
     @csrf
     {{ method_field('DELETE') }}
     <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>

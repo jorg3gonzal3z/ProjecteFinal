@@ -288,8 +288,9 @@ $(document).ready(function(){
         });
     });
 
+    
     //BOTON EDITAR TRAMO BLUR FIX
-    $('.edit-tramo_btn').click(function(){
+    $('.edit-tramo-btn').click(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
 
@@ -300,7 +301,6 @@ $(document).ready(function(){
         $("#modal"+thisModal).on("hidden.bs.modal", function () {
             thisCard.css("backdrop-filter", "blur( 15.0px )");
         });
-         console.log(thisModal);
     });
 
     //BOTON AÑADIR COCHE BLUR FIX
@@ -308,6 +308,35 @@ $(document).ready(function(){
         $(".car_card").css("backdrop-filter", "none");
         $("#modalAddCar").on("hidden.bs.modal", function () {
             $(".car_card").css("backdrop-filter", "blur( 15.0px )");
+        });
+    });
+
+
+    //BOTON EDITAR RALLY BLUR FIX
+    $('.edit-rally-btn').click(function(){
+        var thisModal = $(this).attr('id');
+        thisModal = GetId(thisModal);
+
+        var thisCard = $(this).parents(".card-container");
+        thisCard.css("backdrop-filter", "none");
+        console.log(thisCard);
+        
+        $("#modal"+thisModal).on("hidden.bs.modal", function () {
+            thisCard.css("backdrop-filter", "blur( 15.0px )");
+        });
+    });
+
+    //BOTON EDITAR evento BLUR FIX
+    $('.edit-event-btn').click(function(){
+        var thisModal = $(this).attr('id');
+        thisModal = GetId(thisModal);
+
+        var thisCard = $(this).parents(".card");
+        thisCard.css("backdrop-filter", "none");
+
+        
+        $("#modal"+thisModal).on("hidden.bs.modal", function () {
+            thisCard.css("backdrop-filter", "blur( 15.0px )");
         });
     });
 });

@@ -115,5 +115,23 @@ $(document).ready(function(){
             $(".solo-blur").css("backdrop-filter", "blur( 15.0px )");
         });
     });
+
+    //BOTON EDITAR TRAMO BLUR FIX
+    $('.editButton').click(function(){
+        var thisModal = $(this).attr('id');
+        thisModal = GetId(thisModal);
+
+        var thisCard = $(this).parents(".card");
+        thisCard.css("backdrop-filter", "none");
+
+        
+        $("#modal"+thisModal).on("hidden.bs.modal", function () {
+            thisCard.css("backdrop-filter", "blur( 15.0px )");
+        });
+            console.log(thisModal);
+    });
+
+    
+
 });
 

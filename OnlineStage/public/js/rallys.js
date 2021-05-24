@@ -77,7 +77,6 @@ $(document).ready(function(){
                 if (parseInt($(this)[0].files.length)>6){
                     $(this).val(undefined);
                     swal('Oops...', '¡Solo puedes añadir 6 fotos!', 'error');
-
                 }
                 var fileName = '';
                 if( this.files && this.files.length > 1 )

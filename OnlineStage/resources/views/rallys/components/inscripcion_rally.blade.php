@@ -1,6 +1,6 @@
 <!-- si el user esta logueado podrá incribirse al rally siempre que queden plazas... -->
 @if (Auth::user())
-
+<hr>
 @if ($rally->numPlaces >= 1)
 
     @php

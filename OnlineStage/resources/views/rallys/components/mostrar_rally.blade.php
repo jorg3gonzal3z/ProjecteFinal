@@ -79,11 +79,12 @@
             </div>
             <div class="col-12 col-md-12 text-center">
                 @include('rallys.components.participantes_rally')
-            </div><hr>
+            </div>
             <div class="col-12 col-md-12 text-center">
                 @include('rallys.components.inscripcion_rally')
             </div>
             @if (Auth::user())
+                <hr>
                 @include('rallys.components.editar_rally')
             @endif
         </div>

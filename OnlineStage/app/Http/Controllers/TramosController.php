@@ -11,6 +11,7 @@ use App\Models\FotosTrams;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class TramosController extends Controller
 {
@@ -111,6 +112,8 @@ class TramosController extends Controller
                         'id_trams' => $tramo->id,
                     ]);
                 }
+            }else{
+                Alert::error('Oops...', 'No se pueden añadir mas de 6 fotos');
             }
         }
 

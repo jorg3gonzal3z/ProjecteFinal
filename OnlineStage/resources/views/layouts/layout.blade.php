@@ -4,6 +4,7 @@
 
 <link rel="stylesheet" type="text/css" href="{{ url('/css/hud.css') }}" /> 
 <link rel="stylesheet" href="{{ url('/fontawesome4/css/font-awesome.min.css') }}">
+@include('sweetalert::alert')
 
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">

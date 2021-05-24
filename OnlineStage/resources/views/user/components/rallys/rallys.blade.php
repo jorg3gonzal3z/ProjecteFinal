@@ -9,8 +9,9 @@
                 <h4 class="card-title text-center text-white">Todos mis Rallys<i class="fa fa-caret-down ml-2"></i></h4>
             </a>
             <div class="collapse" id="collapseRallys">
-                <div class="d-flex flex-wrap">
+                
                 @if (count($rallys)>0)
+                <div class="d-flex flex-wrap">
                     @foreach($rallys as $rally)
                     <div class="col-12 col-md-6 col-lg-4 mt-4"> 
 

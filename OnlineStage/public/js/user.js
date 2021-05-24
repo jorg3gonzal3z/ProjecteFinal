@@ -8,6 +8,45 @@ $(document).ready(function(){
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
 
+    $('#v-pills-tabContent').find('>:first-child').addClass('active');
+
+    //UPLOAD FILE + 5 IMAGE RESTRINCTION
+    'use strict';
+
+    ;( function ( document, window, index )
+    {
+        var inputs = document.querySelectorAll( '.inputfile' );
+        Array.prototype.forEach.call( inputs, function( input )
+        {
+            var label	 = input.nextElementSibling,
+                labelVal = label.innerHTML;
+    
+            input.addEventListener( 'change', function( e )
+            {
+                if (parseInt($(this)[0].files.length)>6){
+                    $(this).val(undefined);
+                    swal('Oops...', '¡Solo puedes añadir 6 fotos!', 'error');
+
+                }
+                var fileName = '';
+                if( this.files && this.files.length > 1 )
+                    fileName = ( this.getAttribute( 'data-multiple-caption' ) || '' ).replace( '{count}', this.files.length );
+                else
+                    fileName = e.target.value.split( '\\' ).pop();
+    
+                if( fileName )
+                    label.querySelector( 'span' ).innerHTML = fileName;
+                else
+                    label.innerHTML = labelVal;
+            });
+    
+            // Firefox bug fix
+            input.addEventListener( 'focus', function(){ input.classList.add( 'has-focus' ); });
+            input.addEventListener( 'blur', function(){ input.classList.remove( 'has-focus' ); });
+        });
+    }( document, window, 0 ));
+    
+    
     //boton para mostrar las caracteristicas de las categorias
     $('#ver_categorias').click(function(){
         $(this).attr('hidden',true);
@@ -53,7 +92,7 @@ $(document).ready(function(){
                         }
                     }
 
-                    if (cat == "RGT"  && value.nomCategoria == value.trenMotriu){
+                    if (cat == "RGT"  && value.nomCategoria == "RGT"){
                         if (tr == "RWD" && peso > value.pesMin){
                             console.log("categoria correcta");
                             controlador_cat = true
@@ -135,7 +174,6 @@ $(document).ready(function(){
 
         if(controlador_cat == false){
             $('.error_cat').attr('hidden',false);
-            $('.error_cat').effect("shake", {times:1},900);
             $('.submit_car').prop('disabled', true);
         }else if(controlador_cat == true){
             $('.error_cat').attr('hidden',true);
@@ -181,7 +219,7 @@ $(document).ready(function(){
                         }
                     }
 
-                    if (cat_edit == "RGT"  && value.nomCategoria == value.trenMotriu){
+                    if (cat_edit == "RGT"  && value.nomCategoria == "RGT"){
                         if (tr_edit == "RWD" && peso_edit > value.pesMin){
                             console.log("categoria correcta");
                             controlador_cat_edit = true
@@ -262,7 +300,6 @@ $(document).ready(function(){
         e.preventDefault();
         if(controlador_cat_edit == false){
             $("#error_cat_edit\\:"+ thisId_edit).attr('hidden',false);
-            $("#error_cat_edit\\:"+ thisId_edit).effect("shake", {times:1},900);
             $("#error_cat_edit\\:"+ thisId_edit).prop('disabled', true);
             $("#submit_car_edit\\:"+ thisId_edit).prop('disabled', true);
         }else if(controlador_cat_edit == true){

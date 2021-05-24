@@ -57,8 +57,8 @@
                             </div>
 
                             <div class="box form-group row mt-4 justify-content-center">
-                                <input type="file" name="fotos[]" id="file-{{ $tramo->id }}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden/>
-                                <label for="file-{{ $tramo->id }}"><i class="fa fa-upload" aria-hidden="true"></i> <span> Sube tus fotos&hellip;</span></label>
+                                <input type="file" name="fotos[]" id="file_tramo-{{ $tramo->id }}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden/>
+                                <label for="file_tramo-{{ $tramo->id }}"><i class="fa fa-upload" aria-hidden="true"></i> <span> Sube tus fotos&hellip;</span></label>
                             </div>
                             <div class="form-group row text-center">
                                 <label class="col-sm-12 col-form-label">Nombre</label>

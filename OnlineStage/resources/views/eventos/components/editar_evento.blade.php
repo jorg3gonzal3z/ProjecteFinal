@@ -29,8 +29,8 @@
                         {{ method_field('PUT') }}
                         
                         <div class="box form-group row mt-4 justify-content-center">
-                            <input type="file" name="logo" id="file-{{$evento->id}}" class="inputfile inputfile-1"  data-multiple-caption="{count} fotos seleccionadas" hidden />
-                            <label for="file-{{$evento->id}}"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tu Cartel&hellip;</span></label>
+                            <input type="file" name="logo" id="file_evento-{{$evento->id}}" class="inputfile inputfile-1"  data-multiple-caption="{count} fotos seleccionadas" hidden />
+                            <label for="file_evento-{{$evento->id}}"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tu Cartel&hellip;</span></label>
                             <span class="form-text text-white col-12 text-center">Si seleccionas otro cartel sobreescribiras el actual.</span>
                         </div>
 

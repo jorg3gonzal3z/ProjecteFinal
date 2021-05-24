@@ -49,8 +49,8 @@
                         </div>
 
                         <div class="box form-group row mt-4 justify-content-center">
-                            <input type="file" name="fotos[]" id="file-editRally" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden />
-                            <label for="file-editRally"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tus fotos&hellip;</span></label>
+                            <input type="file" name="fotos[]" id="file_rally-{{$rally->id}}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden />
+                            <label for="file_rally-{{$rally->id}}"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tus fotos&hellip;</span></label>
                             <span class="form-text text-white col-12 text-center">*Mínimo una foto y máximo seis.</span>
                         </div>
 

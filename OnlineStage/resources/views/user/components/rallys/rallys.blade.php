@@ -1,6 +1,6 @@
 <div class="col-md-12">
 
-    <div class="card col-12 col-lg-12 mb-2">
+    <div class="card-container col-12 col-lg-12 mb-2">
 
         <div class="card-body">
 
@@ -14,8 +14,6 @@
                 <div class="d-flex flex-wrap">
                     @foreach($rallys as $rally)
                     <div class="col-12 col-md-6 col-lg-4 mt-4"> 
-
-                        @include('user.components.rallys.edit_rally')
 
                         @include('user.components.rallys.mostrar_rallys')
                     </div>

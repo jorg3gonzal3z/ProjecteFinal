@@ -1,5 +1,5 @@
 <div id="evento:{{$evento->id}}" >
-    <div class="card mb-2 col-12 px-0 mt-3">
+    <div class="card-container mb-2 col-12 px-0 mt-3">
 
         <!-- fotografia del evento -->
         <div class="b-game-card">

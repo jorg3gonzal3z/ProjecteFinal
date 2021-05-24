@@ -3,20 +3,11 @@ function GetId(str){
 }
 var currentEdit;
 var currentEditPicArray = [];
-var isCurrentlyEditing = false;
-
 var filterOn = false;
 $(document).ready(function(){
     
     //boton para mostrar formulario editar tramo
     $(".editButton").click(function() {
-        if(isCurrentlyEditing){
-            return {
-                error: true,
-                message: 'Nomes pots editar un tram a l\'hora noi'
-              }
-        }
-        isCurrentlyEditing = true;
         // $(this).attr('hidden',true);
         var thisId = $(this).attr('id');
         thisId = GetId(thisId);

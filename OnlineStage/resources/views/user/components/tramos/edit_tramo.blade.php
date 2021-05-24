@@ -1,5 +1,5 @@
 <!-- editar tramo -->
-<a id="edit_tramo:{{$tramo->id}}" class="edit-tramo-btn btn btn-secondary float-right ml-3" data-toggle="modal" data-target="#modal{{$tramo->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_tramo:{{$tramo->id}}" class="edit-tramo-btn btn btn-secondary float-right ml-3" data-toggle="modal" data-target="#modaltramo{{$tramo->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar tramo -->
 <form id="delete_tramo:{{$tramo->id}}" class="mb-3 float-right " action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
     @csrf
@@ -7,7 +7,7 @@
     <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
 </form>
 
-<div class="modal fade" id="modal{{$tramo->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$tramo->id}}" aria-hidden="true">
+<div class="modal fade" id="modaltramo{{$tramo->id}}" tabindex="-1" role="dialog" aria-labelledby="#modalmodaltramo{{$tramo->id}}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content " >
             <div class="modal-header">

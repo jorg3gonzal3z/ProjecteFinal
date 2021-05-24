@@ -1,6 +1,10 @@
 function GetId(str){
     return str.split(':')[1];
 }
+
+var currentEdit;
+var currentEditPicArray = [];
+
 $(document).ready(function(){
 
     //boton para mostrar listado de participantes
@@ -35,6 +39,26 @@ $(document).ready(function(){
 
         });
 
+    });
+
+    $(".edit_btn").click(function() {
+        var thisId = $(this).attr('id');
+        thisId = GetId(thisId);
+        currentEdit = thisId;
+        console.log(currentEdit);
+        currentEditPicArray = [];
+
+        //saber cuantas fotos tiene un tramo
+        //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
+        $('*[class^="img_edit"]').unbind().click(function(){
+            $(this).off();
+            $(this).fadeOut(800);
+            let id_foto = $(this).find("#foto_id").html();
+            currentEditPicArray.push(id_foto);
+            $("#imagenes_a_eliminar\\:"+thisId).val(currentEditPicArray);
+
+        });
+    
     });
 });
 

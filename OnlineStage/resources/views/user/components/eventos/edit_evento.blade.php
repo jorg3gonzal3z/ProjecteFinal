@@ -1,5 +1,5 @@
 <!-- editar tramo -->
-<a id="edit_evento:{{$evento->id}}" class=" edit-event-btn float-left pr-3 btn btn-secondary text-white" data-toggle="modal" data-target="#modal{{$evento->id}}" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_evento:{{$evento->id}}" class=" edit-event-btn float-left pr-3 btn btn-secondary text-white" data-toggle="modal" data-target="#modalevent{{$evento->id}}" style=" cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar evento -->
 <form id="delete_evento:{{$evento->id}}" class="float-right btn btn-danger" action="{{ route('eventos.destroy',['id' => $evento->id,'location' => 'user' ]) }}" method="POST">
     @csrf
@@ -7,7 +7,7 @@
     <button><i class="fa fa-trash-o"></i> Eliminar</button>
 </form>
 
-<div class="modal fade" id="modal{{$evento->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$evento->id}}" aria-hidden="true">
+<div class="modal fade" id="modalevent{{$evento->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$evento->id}}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content " >
                 <div class="modal-header">

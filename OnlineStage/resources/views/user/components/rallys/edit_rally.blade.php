@@ -1,5 +1,5 @@
 <!-- editar rally -->
-<a id="edit_rally:{{$rally->id}}" class=" edit-rally-btn float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modal{{$rally->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_rally:{{$rally->id}}" class=" edit-rally-btn float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modalrally{{$rally->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar rally -->
 <form id="delete_rally:{{$rally->id}}" class="float-right" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'user' ]) }}" method="POST">
     @csrf
@@ -7,7 +7,7 @@
     <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
 </form>
 
-<div class="modal fade" id="modal{{$rally->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$rally->id}}" aria-hidden="true">
+<div class="modal fade" id="modalrally{{$rally->id}}" tabindex="-1" role="dialog" aria-labelledby="#modalrally{{$rally->id}}" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content " >
                 <div class="modal-header">
@@ -54,35 +54,35 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-white">Distancia Total en km</label>
                             <div class="col-sm-10">
-                                <input class="form-control" id="distancia" name="distancia" value="{{$rally->distancia}}">
+                                <input class="form-control" name="distancia" value="{{$rally->distancia}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-white">Numero Tramos Cronometrados</label>
                             <div class="col-sm-10">
-                            <input type="number" class="form-control" id="numTC" name="numTC" value="{{$rally->numTC}}">
+                            <input type="number" class="form-control" name="numTC" value="{{$rally->numTC}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-white">Numero de Assistencias</label>
                             <div class="col-sm-10">
-                            <input type="number" class="form-control" id="numAssistencies" name="numAssistencies" value="{{$rally->numAssistencies}}">
+                            <input type="number" class="form-control"  name="numAssistencies" value="{{$rally->numAssistencies}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-white">Localizacion</label>
                             <div class="col-sm-10">
-                            <input type="text" class="form-control" id="localitzacio" name="localitzacio" value="{{$rally->localitzacio}}">
+                            <input type="text" class="form-control"  name="localitzacio" value="{{$rally->localitzacio}}">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label text-white">Numero de Plazas</label>
                             <div class="col-sm-10">
-                            <input type="number" class="form-control" id="numPlaces" name="numPlaces" value="{{$rally->numPlaces}}" disabled>
+                            <input type="number" class="form-control"  name="numPlaces" value="{{$rally->numPlaces}}" disabled>
                             </div>
                         </div>
 

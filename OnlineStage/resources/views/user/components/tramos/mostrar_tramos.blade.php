@@ -1,5 +1,7 @@
 
-<div class="card col-12 p-0 mb-3">
+<div class="card-container col-12 p-0 mb-3">
+@include('user.components.tramos.edit_tramo')
+
   <div class="row no-gutters">
     <div class="col-lg-4">
         <div id="controlsCarousel{{$tramo->id}}" class="carousel slide" data-interval="false" data-ride="carousel">

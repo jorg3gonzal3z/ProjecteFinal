@@ -30,16 +30,18 @@
                         @csrf
                         {{ method_field('PUT') }}
                        
-                        <div class="row">
+                        <div class="row justify-content-center">
                             <!-- fotografia del rally a editar -->
                             @foreach ($fotos_rallys as $foto_rally)
                                 @if ($foto_rally->id_rallys == $rally->id)
                                     @foreach ($fotos as $key => $foto)
                                         @if($foto_rally->id_fotos == $foto->id)
-                                        <div class="container_image_edit">
-                                            <img class="mr-5 image_edit" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
-                                            <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
-                                        </div>
+                                        <div class="img_edit:{{$foto->id}} container_image_edit col-12 col-sm-6 col-md-4 mt-2">
+                                                    <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto rally" >
+                                                    <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                                                    <div id="rally_id" hidden>{{$rally->id}}</div>
+                                                    <div id="foto_id" hidden>{{$foto->id}}</div>
+                                                </div>
                                         @endif
                                     @endforeach
                                 @endif
@@ -108,6 +110,7 @@
                                 </select>
                             </div>
                         </div>
+                        <input type="text" id="imagenes_a_eliminar:{{$rally->id}}" class="form-control" name="imagenes_a_eliminar" value="null" hidden readonly>
 
                         <div class="form-group row">
                             <label class="col-sm-12 col-form-label text-white">Categorias de coches que pueden participar</label>

@@ -105,19 +105,19 @@
                             <label class="col-12 text-white">Categorias de coches que pueden participar</label>
                             <div class="col-12">
                                 <div class="d-flex flex-wrap justify-content-center">
-                                <!-- categorias que pueden correr este rally -->
-                                @foreach ($categorias_rallys as $categoria_rally)
-                                    @if ( $categoria_rally->id_rallys == $rally->id )
-                                        @foreach ($categorias as $categoria)
-                                            @if($categoria->id == $categoria_rally->id_categories)
-                                                <div class="col-12 col-md-5 p-1 text-center"><p style="box-shadow:2px 2px 5px red;" class="border rounded border-dark col-12 bg-white">{{$categoria->nomCategoria}}<p></div>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
+                                    <!-- categorias que pueden correr este rally -->
+                                    @foreach ($categorias_rallys as $categoria_rally)
+                                        @if ( $categoria_rally->id_rallys == $rally->id )
+                                            @foreach ($categorias as $categoria)
+                                                @if($categoria->id == $categoria_rally->id_categories)
+                                                    <div class="col-12 col-md-5 p-1 text-center"><p style="box-shadow:2px 2px 5px red;" class="border rounded border-dark col-12 bg-white">{{$categoria->nomCategoria}}<p></div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
                 </div>
                 <div class="modal-footer d-flex justify-content-between">

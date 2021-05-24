@@ -31,7 +31,7 @@
       <div class="card-body text-white">
         <h5 class="card-title">{{ $tramo->nom}}</h5>
         <hr>
-        <p class="card-text">Salida-Final: <span style="color:red;">{{ $tramo->sortida}}&&{{ $tramo->final}}</span></p>
+        <p class="card-text">Salida-Final: <span style="color:red;">{{ $tramo->adressa}}</span></p>
         <p class="card-text">Distancia: <span style="color:red;">{{ $tramo->distancia}}km</span></p>
         <p class="card-text">Superficie: <span style="color:red;">
             <!-- informacion sobre la superficie del tramo -->

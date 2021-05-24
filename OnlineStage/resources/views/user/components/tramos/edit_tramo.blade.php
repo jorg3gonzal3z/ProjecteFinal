@@ -1,5 +1,5 @@
 <!-- editar tramo -->
-<a id="edit_tramo:{{$tramo->id}}" class="edit-tramo_btn btn btn-secondary float-right ml-3" data-toggle="modal" data-target="#modal{{$tramo->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_tramo:{{$tramo->id}}" class="edit-tramo_btn btn btn-secondary float-right ml-3 text-white" data-toggle="modal" data-target="#modal{{$tramo->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar tramo -->
 <form id="delete_tramo:{{$tramo->id}}" class="mb-3 float-right " action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
     @csrf

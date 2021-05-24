@@ -6,7 +6,7 @@
             
             <h4 class="card-title text-center text-white">Datos de la Cuenta</h4><hr>
             
-                    <div class="mb-4 d-block ">
+                    <div class="mb-4 d-block">
                         <div class="d-flex justify-content-center mb-2">
                             <div class="d-flex">
                                 <label class="col-4 text-white">Nombre</label>
@@ -14,7 +14,7 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-center">
+                        <div class="d-flex justify-content-center ">
                             <div class="d-flex">
                                 <label class="col-4 text-white">Email</label>                    
                                 <input class="col-8 rounded form-control" type="email" value="{{$auth_user->email}}" disabled>                   
@@ -24,7 +24,7 @@
                     </div>
 
             <div class="d-flex justify-content-center">
-                <button class="btn btn-secondary edit-btn-cuenta" data-toggle="modal" data-target="#modalEditUser">Editar Cuenta</button>
+                <button class="btn btn-secondary edit-btn-cuenta" data-toggle="modal" data-target="#modalEditUser"><i class="fa fa-pencil"></i> Editar</button>
                 <!-- eliminar user -->
                 <form class="ml-2" action="{{ route('user.destroy',['id' => $auth_user->id, 'location' => 'user_view' ]) }}" method="POST">
                     @csrf

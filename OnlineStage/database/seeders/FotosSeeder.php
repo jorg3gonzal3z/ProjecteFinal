@@ -14,13 +14,13 @@ class FotosSeeder extends Seeder
     public function run()
     {
         $fotos =[
-            ['storage/assets/villarodona.png'],
-            ['storage/assets/plademanlleu.jpg'],
+            ['storage/assets/1.jpg'],
+            ['storage/assets/2.JPG'],
             ['storage/assets/106.jpg'],
             ['storage/assets/rally.jpg'],
             ['storage/assets/5.jpg'],
             ['storage/assets/6.jpg'],
-            ['storage/assets/7.jpg'],
+            ['storage/assets/7.jpeg'],
             ['storage/assets/8.jpg'],
             ['storage/assets/9.jpg'],
             ['storage/assets/10.png'],

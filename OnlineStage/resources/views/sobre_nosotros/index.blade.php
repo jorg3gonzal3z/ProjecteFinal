@@ -104,8 +104,8 @@
                 </p>
             </div>
             <div class="modal-footer d-flex justify-content-between">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
-                </form>
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Aceptar</button>
+              </form>
             </div>
         </div>
     </div>

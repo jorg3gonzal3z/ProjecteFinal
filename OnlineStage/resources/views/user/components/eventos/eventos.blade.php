@@ -13,7 +13,8 @@
                     <div class="d-flex flex-wrap">
                         @foreach ($eventos as $evento)
                             <div class="col-6 col-md-6 col-lg-4">
-                                @include('user.components.eventos.mostrar_eventos')                                
+                                @include('user.components.eventos.mostrar_eventos')    
+                      
                             </div>
                         @endforeach
                     </div>

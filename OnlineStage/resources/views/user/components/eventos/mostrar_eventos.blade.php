@@ -18,10 +18,10 @@
                 <div class="col-12 col-md-12 p-0 text-white mt-2">
                     Localizacion:<span class="text-danger pl-1">{{ $evento->localitzacio}}</span>
                 </div>
-                
                 <div class="col-12 col-md-12 p-0 mt-3">
                     @include('user.components.eventos.edit_evento')
-                </div>
+                </div>      
+
             </div>
         </div>
     </div>

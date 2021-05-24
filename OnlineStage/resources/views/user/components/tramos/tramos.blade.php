@@ -14,8 +14,6 @@
                 
                 @foreach ($tramos as $tramo)
                 
-                    @include('user.components.tramos.edit_tramo')
-
                     @include('user.components.tramos.mostrar_tramos')
                 
                 @endforeach

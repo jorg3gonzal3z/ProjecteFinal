@@ -1,7 +1,7 @@
 <!-- si el user esta logueado y es el dueño del tramo o tiene el rol de admin podra editar, eliminar... -->
 <nav>
     <div class="nav nav-tabs" id="nav-tab{{$tramo->id}}" role="tablist">
-        <style>.nav-link{color: white;}.nav-link.active{background-color: #DC3545 !important;color: white !important;}.nav-link:hover{color:white;}</style>
+        <style>.nav-link{color: white; border: none!important;}.nav-link.active{background-color: #DC3545 !important;color: white !important;}.nav-link:hover{color:white;}</style>
         <a class="nav-item nav-link active" id="nav-home-tab{{$tramo->id}}" data-toggle="tab" href="#nav-fotos{{$tramo->id}}" role="tab" aria-controls="nav-home" aria-selected="true"><i class="fa fa-picture-o" aria-hidden="true"></i><span class="d-none d-sm-inline">  Fotos</span></a>
         <a class="nav-item nav-link" id="nav-profile-tab{{$tramo->id}}" data-toggle="tab" href="#nav-info{{$tramo->id}}" role="tab" aria-controls="nav-profile" aria-selected="false"><i class="fa fa-info-circle" aria-hidden="true"></i><span class="d-none d-sm-inline">  Info</span></a>
         @if (Auth::user())

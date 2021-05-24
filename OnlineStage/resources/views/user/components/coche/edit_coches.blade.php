@@ -1,5 +1,5 @@
 <!-- editar coche -->
-<a id="edit_coche:{{$coche->id}} " class=" edit-btn btn btn-secondary float-right ml-3 text-white" data-toggle="modal" data-target="#modal{{$coche->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_coche:{{$coche->id}} " class=" edit-btn btn btn-secondary float-right ml-3 text-white" data-toggle="modal" data-target="#modalcar{{$coche->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar coche -->
 <form id="delete_coche:{{$coche->id}}" class="float-right" action="{{ route('user.destroy_car',['id' => $coche->id]) }}" method="POST">
     @csrf
@@ -7,7 +7,7 @@
     <button class="btn btn-danger"><i class="fa fa-trash-o"></i> Eliminar</button>
 </form>
 
-<div class="modal fade" id="modal{{$coche->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$coche->id}}" aria-hidden="true">
+<div class="modal fade" id="modalcar{{$coche->id}}" tabindex="-1" role="dialog" aria-labelledby="#modal{{$coche->id}}" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered" role="document">
         <div class="modal-content " >
             <div class="modal-header">

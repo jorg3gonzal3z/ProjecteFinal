@@ -274,55 +274,36 @@ $(document).ready(function(){
         
     });
 
-    //BOTON EDITAR COCHE BLUR FIX
-    $('.edit-btn').click(function(){
-        var thisModal = $(this).attr('id');
-        thisModal = GetId(thisModal);
-
-        var thisCard = $(this).parents(".card-container");
-        thisCard.css("backdrop-filter", "none");
-
-        
-        $("#modal"+thisModal).on("hidden.bs.modal", function () {
-            thisCard.css("backdrop-filter", "blur( 15.0px )");
-        });
-    });
-
-    
-    //BOTON EDITAR TRAMO BLUR FIX
-    $('.edit-tramo-btn').click(function(){
-        var thisModal = $(this).attr('id');
-        thisModal = GetId(thisModal);
-
-        var thisCard = $(this).parents(".card-container");
-        thisCard.css("backdrop-filter", "none");
-
-        
-        $("#modal"+thisModal).on("hidden.bs.modal", function () {
-            thisCard.css("backdrop-filter", "blur( 15.0px )");
-        });
-    });
-
     //BOTON AÑADIR COCHE BLUR FIX
     $('.add_btn').click(function(){
         $(".car_card").css("backdrop-filter", "none");
         $("#modalAddCar").on("hidden.bs.modal", function () {
             $(".car_card").css("backdrop-filter", "blur( 15.0px )");
         });
+        
     });
 
+    //BOTON EDITAR TRAMO BLUR FIX
+    $('.edit-tramo-btn').click(function(){
+        var thisModal = $(this).attr('id');
+        thisModal = GetId(thisModal);
+
+        $(".card-container").css("backdrop-filter", "none");
+        
+        $("#modaltramo"+thisModal).on("hidden.bs.modal", function () {
+            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
+        });
+    });
 
     //BOTON EDITAR RALLY BLUR FIX
     $('.edit-rally-btn').click(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
 
-        var thisCard = $(this).parents(".card-container");
-        thisCard.css("backdrop-filter", "none");
-        console.log(thisCard);
+        $(".card-container").css("backdrop-filter", "none");
         
-        $("#modal"+thisModal).on("hidden.bs.modal", function () {
-            thisCard.css("backdrop-filter", "blur( 15.0px )");
+        $("#modalrally"+thisModal).on("hidden.bs.modal", function () {
+            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
         });
     });
 
@@ -331,12 +312,25 @@ $(document).ready(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
 
-        var thisCard = $(this).parents(".card-container");
-        thisCard.css("backdrop-filter", "none");
+        $(".card-container").css("backdrop-filter", "none");
 
-        
-        $("#modal"+thisModal).on("hidden.bs.modal", function () {
-            thisCard.css("backdrop-filter", "blur( 15.0px )");
+        console.log(thisModal);
+
+        $("#modalevent"+thisModal).on("hidden.bs.modal", function () {
+            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
         });
     });
+        //BOTON EDITAR COCHE BLUR FIX
+        $('.edit-btn').click(function(){
+            var thisModal = $(this).attr('id');
+            thisModal = GetId(thisModal);
+    
+            $(".card-container").css("backdrop-filter", "none");
+
+    
+            
+            $("#modalcar"+thisModal).on("hidden.bs.modal", function () {
+                $(".card-container").css("backdrop-filter", "blur(15.0 px)");
+            });
+        });
 });

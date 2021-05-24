@@ -5,6 +5,12 @@
 @section('content')
 
     @if (Auth::user())
+        <div class="d-flex flex-wrap p-6 solo-blur justify-content-between">
+            <div class="">
+                @include('eventos.components.search')
+            </div>
+            <div class="col-12 col-md-6 flex justify-content-md-end">@include('eventos.components.organizar_evento') </div>
+        </div>
 
         <!-- control de errores del formulario -->
         @if (count($errors) > 0)
@@ -21,8 +27,6 @@
         </div>
         @endif
         
-        @include('eventos.components.organizar_evento')
-
     @endif
 
 

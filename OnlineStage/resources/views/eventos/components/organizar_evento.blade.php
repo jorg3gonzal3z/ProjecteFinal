@@ -1,13 +1,10 @@
-<div class="d-flex flex-wrap p-6 solo-blur justify-content-between">
-        <div class="">
-            @include('eventos.components.search')
-        </div>
+
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
 
-        <div class="text-center">    
-            <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddEvent">Organizar Evento  <i class="fa fa-plus"></i></button>
-        </div>
-    </div>    
+    <div class="text-center">    
+        <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddEvent">Organizar Evento  <i class="fa fa-plus"></i></button>
+    </div>
+
 
     <div class="modal fade" id="modalAddEvent" tabindex="-1" role="dialog" aria-labelledby="#modalAddEvent" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

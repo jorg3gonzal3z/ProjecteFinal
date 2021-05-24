@@ -24,7 +24,7 @@
                         @csrf
 
                         <div class="box form-group row mt-4 justify-content-center">
-                            <input type="file" name="logo" id="file-newEvent" class="inputfile inputfile-1"  hidden />
+                            <input type="file" name="logo" id="file-newEvent" class="inputfile inputfile-1"  data-multiple-caption="{count} fotos seleccionadas" hidden />
                             <label for="file-newEvent"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tu Cartel&hellip;</span></label>
                             <span class="form-text text-white col-12 text-center">Cartel del Evento.</span>
                         </div>

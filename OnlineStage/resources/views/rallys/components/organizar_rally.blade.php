@@ -1,13 +1,8 @@
-    <div class="d-flex flex-wrap p-6 solo-blur justify-content-between">
-        <div class="">
-            @include('rallys.components.search')
-        </div>
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
 
-        <div class="text-center">    
-            <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddRally">Organizar Rally  <i class="fa fa-plus"></i></button>
-        </div>
-    </div>    
+    <div class="text-center">    
+        <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddRally">Organizar Rally  <i class="fa fa-plus"></i></button>
+    </div>
     <div class="modal fade" id="modalAddRally" tabindex="-1" role="dialog" aria-labelledby="#modalAddRally" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content " >

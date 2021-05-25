@@ -156,8 +156,9 @@ class EventosController extends Controller
         if($auth_user){
 
             if(count($eventos)>0){
+                $busqueda = true;
                 $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
-                return view("eventos/index",compact(['auth_user','users','eventos','inscripciones','inscritos_eventos']));
+                return view("eventos/index",compact(['busqueda','auth_user','users','eventos','inscripciones','inscritos_eventos']));
             }else{
                 $inscripciones = InscritsEvents::where('id_usuari', $auth_user->id)->get();
                 $vacio = true;
@@ -167,7 +168,8 @@ class EventosController extends Controller
         }else{
 
             if(count($eventos)>0){
-                return view("eventos/index",compact(['auth_user','users','eventos','inscritos_eventos']));
+                $busqueda = true;
+                return view("eventos/index",compact(['busqueda','auth_user','users','eventos','inscritos_eventos']));
             }else{
                 $vacio = true;
                 return view("eventos/index",compact(['vacio','auth_user','users','eventos','inscritos_eventos']));

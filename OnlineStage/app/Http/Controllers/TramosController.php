@@ -157,8 +157,8 @@ class TramosController extends Controller
         $fotos=Fotos::all();
         $fotos_tramos=FotosTrams::all();
         if(count($tramos) > 0){
-
-            return view("tramos/index",compact(['tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+            $busqueda = true;
+            return view("tramos/index",compact(['busqueda','tramos','superficies','users','auth_user','fotos','fotos_tramos']));
 
         }else{
             

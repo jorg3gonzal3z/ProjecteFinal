@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\InscritsEvents;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventosController extends Controller
 {

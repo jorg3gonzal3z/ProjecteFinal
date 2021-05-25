@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\InscritsRallys;
 use App\Models\Cotxes;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RallysController extends Controller
 {
@@ -123,18 +124,23 @@ class RallysController extends Controller
 
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
-            foreach($array_fotos as $array_foto){
-                $foto=$array_foto->store('public/' . $rally->id_usuari);
-                $url=Storage::url($foto);
-                $url=Str::substr($url,1);
-                $array_foto=Fotos::create([
-                    'binari' => $url,
-                ]);
-                
-                $foto_tramo=FotosRallys::create([
-                    'id_fotos' => $array_foto->id,
-                    'id_rallys' => $rally->id,
-                ]);
+            $imgConditional = count($array_fotos) + $all_fotos_rally;
+            if($imgConditional <= 6){
+                foreach($array_fotos as $array_foto){
+                    $foto=$array_foto->store('public/' . $rally->id_usuari);
+                    $url=Storage::url($foto);
+                    $url=Str::substr($url,1);
+                    $array_foto=Fotos::create([
+                        'binari' => $url,
+                    ]);
+                    
+                    $foto_tramo=FotosRallys::create([
+                        'id_fotos' => $array_foto->id,
+                        'id_rallys' => $rally->id,
+                    ]);
+                }
+            }else{
+                Alert::error('Oops...', 'No se pueden añadir mas de 6 fotos');
             }
         }
 

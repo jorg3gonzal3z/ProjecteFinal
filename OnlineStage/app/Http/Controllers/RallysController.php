@@ -43,25 +43,25 @@ class RallysController extends Controller
         $data = request()->validate([
             'fotos' => 'required',
             'fotos.*' => 'required|mimes:jpeg,jpg,png',
-            'nom' => 'required|max:40',
-            'distancia' => 'required|numeric|min:30',
-            'numTC' => 'required|numeric|min:3',
-            'numAssistencies' => 'required|numeric|min:2',
-            'localitzacio' => 'required|max:60',
-            'numPlaces' => 'required|numeric|min:50',
-            'id_superficie' => 'required|numeric',
+            'Nombre' => 'required|max:40',
+            'Distancia' => 'required|numeric|min:30',
+            'n-TC' => 'required|numeric|min:3',
+            'n-Assistencias' => 'required|numeric|min:2',
+            'Localizacion' => 'required|max:60',
+            'n-Plazas' => 'required|numeric|min:50',
+            'Superficie' => 'required|numeric',
             'categorias' => 'required',
             'categorias.*' => 'required',
         ]);
 
         $rally=Rallys::create([
-            'nom' => $data['nom'],
-            'distancia' => $data['distancia'],
-            'numTC' => $data['numTC'],
-            'numAssistencies' => $data['numAssistencies'],
-            'localitzacio' => $data['localitzacio'],
-            'numPlaces' => $data['numPlaces'],
-            'id_superficie' => $data['id_superficie'],
+            'nom' => $data['Nombre'],
+            'distancia' => $data['Distancia'],
+            'numTC' => $data['n-TC'],
+            'numAssistencies' => $data['n-Assistencias'],
+            'localitzacio' => $data['Localizacion'],
+            'numPlaces' => $data['n-Plazas'],
+            'id_superficie' => $data['Superficie'],
             'id_usuari' => $id,
         ]);
 
@@ -102,21 +102,21 @@ class RallysController extends Controller
 
         $data = request()->validate([
             'fotos.*' => 'required|mimes:jpeg,jpg,png',
-            'nom' => 'required|max:40',
-            'distancia' => 'required|numeric|min:30',
-            'numTC' => 'required|numeric|min:3',
-            'numAssistencies' => 'required|numeric|min:2',
-            'localitzacio' => 'required|max:60',
-            'id_superficie' => 'required|numeric',
+            'Nombre' => 'required|max:40',
+            'Distancia' => 'required|numeric|min:30',
+            'n-TC' => 'required|numeric|min:3',
+            'n-Assistencias' => 'required|numeric|min:2',
+            'Localizacion' => 'required|max:60',
+            'Superficie' => 'required|numeric',
         ]);
 
         $rally->update([
-            'nom' => $data['nom'],
-            'distancia' => $data['distancia'],
-            'numTC' => $data['numTC'],
-            'numAssistencies' => $data['numAssistencies'],
-            'localitzacio' => $data['localitzacio'],
-            'id_superficie' => $data['id_superficie'],
+            'nom' => $data['Nombre'],
+            'distancia' => $data['Distancia'],
+            'numTC' => $data['n-TC'],
+            'numAssistencies' => $data['n-Assistencias'],
+            'localitzacio' => $data['Localizacion'],
+            'id_superficie' => $data['Superficie'],
         ]);
 
         $array_fotos = request('fotos');

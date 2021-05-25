@@ -30,22 +30,22 @@
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-white">Nombre *</label>
-                                <input type="text" class="form-control" name="nom" placeholder="Nombre del Evento ...">
+                                <input type="text" class="form-control" name="Nombre" placeholder="Nombre del Evento ...">
                             </div>
                             
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-white">Tipo de Evento *</label>
-                                <input type="text" class="form-control" name="tipus" placeholder="Fira del automovil ...">
+                                <input type="text" class="form-control" name="Tipo" placeholder="Fira del automovil ...">
                             </div>
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-white">Numero de plazas *</label>
-                                <input type="number" class="form-control" name="numPlaces" placeholder="200 ...">
+                                <input type="number" class="form-control" name="n-Plazas" placeholder="200 ...">
                             </div>
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-white">Localizacion *</label>
-                                <input type="text" class="form-control" name="localitzacio" placeholder="El Vendrell ...">  
+                                <input type="text" class="form-control" name="Localizacion" placeholder="El Vendrell ...">  
                             </div>
 
                         </div>

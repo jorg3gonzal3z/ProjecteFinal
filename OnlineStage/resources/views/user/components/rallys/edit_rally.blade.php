@@ -48,37 +48,37 @@
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Nombre</label>
-                                <input type="text" class="form-control" name="nom" value="{{$rally->nom}}">
+                                <input type="text" class="form-control" name="Nombre" value="{{$rally->nom}}">
                             </div>
                             
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Distancia Total en km</label>
-                                <input class="form-control" name="distancia" value="{{$rally->distancia}}">
+                                <input class="form-control" name="Distancia" value="{{$rally->distancia}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Numero Tramos Cronometrados</label>
-                                <input type="number" class="form-control" name="numTC" value="{{$rally->numTC}}">
+                                <input type="number" class="form-control" name="n-TC" value="{{$rally->numTC}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Numero de Assistencias</label>
-                                <input type="number" class="form-control"  name="numAssistencies" value="{{$rally->numAssistencies}}">
+                                <input type="number" class="form-control"  name="n-Assistencias" value="{{$rally->numAssistencies}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Localizacion</label>
-                                <input type="text" class="form-control"  name="localitzacio" value="{{$rally->localitzacio}}">
+                                <input type="text" class="form-control"  name="Localizacion" value="{{$rally->localitzacio}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Numero de Plazas</label>
-                                <input type="number" class="form-control"  name="numPlaces" value="{{$rally->numPlaces}}" disabled>
+                                <input type="number" class="form-control"  name="n-Plazas" value="{{$rally->numPlaces}}" disabled>
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Superficie</label>
-                                <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                                <select class="form-control" name="Superficie" style="border-radius:10px">>
                                     @foreach ($superficies as $superficie)
                                         @if ($rally->id_superficie == $superficie->id)
                                             <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>

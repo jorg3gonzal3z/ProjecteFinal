@@ -28,37 +28,37 @@
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class=" text-center text-white">Nombre *</label>
-                                <input type="text" class="form-control text-center" name="nom" placeholder="Nombre del Rally ...">                               
+                                <input type="text" class="form-control text-center" name="Nombre" placeholder="Nombre del Rally ...">                               
                             </div>
                             
                             <div class="form-group col-12 col-md-6">
                                 <label class=" text-center text-white">Distancia Total en km *</label>                             
-                                    <input type="number" class="form-control text-center" id="distancia" name="distancia" placeholder="25 Km">
+                                    <input type="number" class="form-control text-center" id="distancia" name="Distancia" placeholder="25 Km">
                             </div>
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-center text-white">Numero Tramos Cronometrados *</label>
-                                <input type="number" class="form-control text-center" id="numTC" name="numTC" placeholder="8 ...">
+                                <input type="number" class="form-control text-center" id="numTC" name="n-TC" placeholder="8 ...">
                             </div>
                         
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-center text-white">Numero de Assistencias *</label>
-                                <input type="number" class="form-control  text-center" id="numAssistencies" name="numAssistencies" placeholder="3 ...">
+                                <input type="number" class="form-control  text-center" id="numAssistencies" name="n-Assistencias" placeholder="3 ...">
                             </div>
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-center text-white">Localizacion *</label>
-                                <input type="text" class="form-control text-center" id="localitzacio" name="localitzacio" placeholder="Vilafranca ...">
+                                <input type="text" class="form-control text-center" id="localitzacio" name="Localizacion" placeholder="Vilafranca ...">
                             </div>
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-center text-white">Numero de Plazas *</label>
-                                <input type="number" class="form-control text-center" id="numPlaces" name="numPlaces" placeholder="150 ...">
+                                <input type="number" class="form-control text-center" id="numPlaces" name="n-Plazas" placeholder="150 ...">
                             </div>
 
                             <div class="form-group col-12 col-md-6 ">
                                 <label class="text-center text-white">Superficie *</label>         
-                                <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                                <select class="form-control" name="Superficie" style="border-radius:10px">>
                                     @foreach ($superficies as $superficie)
                                         <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
                                     @endforeach

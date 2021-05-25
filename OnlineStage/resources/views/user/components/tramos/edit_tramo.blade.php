@@ -57,19 +57,9 @@
                             <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
                         </div>
 
-                        <div class="form-group col-12 col-md-6" hidden>
-                            <label class="text-white">Salida</label>
-                            <input type="text" class="form-control" name="sortida" value="{{$tramo->sortida}}">
-                        </div>
-
-                        <div class="form-group col-12 col-md-6" hidden>
-                            <label class="text-white">Final</label>
-                            <input type="text" class="form-control" name="final" value="{{$tramo->final}}">
-                        </div>
-
-                        <div class="form-group col-12 col-md-6">
-                            <label class="text-white">Adressa</label>
-                            <input type="text" class="form-control" name="adressa" value="{{$tramo->adressa}}">
+                        <div class="form-group col-12 col-md-6" disabled>
+                            <label class="text-white">Trayecto</label>
+                            <input style="color:#343a40!important;box-shadow:2px 2px 5px red;" class="border rounded border-dark col-12 bg-white"type="text" value="{{$tramo->adressa}}" disabled>
                         </div>
 
                         <div class="form-group col-12 col-md-6">

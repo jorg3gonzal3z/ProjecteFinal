@@ -60,44 +60,26 @@
                                 <input type="file" name="fotos[]" id="file_tramo-{{ $tramo->id }}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden/>
                                 <label for="file_tramo-{{ $tramo->id }}"><i class="fa fa-upload" aria-hidden="true"></i> <span> Sube tus fotos&hellip;</span></label>
                             </div>
-                            <div class="form-group row text-center">
-                                <label class="col-sm-12 col-form-label">Nombre</label>
-                                <div class="col-sm-12">
-                                <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
-                                </div>
-                            </div>
                             
-                            <div class="form-group row text-center">
-                                <label class="col-sm-12 col-form-label">Distancia (KM)</label>
-                                <div class="col-sm-12">
-                                <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
-                                </div>
-                            </div>
+                            <div class="col-12 d-flex flex-wrap">
 
-                            <div class="form-group row text-center " hidden>
-                                <label class="col-sm-12 col-form-label">Salida</label>
-                                <div class="col-sm-12">
-                                <input type="text" class="form-control" name="sortida" value="{{$tramo->sortida}}">
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="col-form-label">Nombre</label>
+                                    <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
                                 </div>
-                            </div>
-
-                            <div class="form-group row text-center" hidden>
-                                <label class="col-sm-12 col-form-label">Final</label>
-                                <div class="col-sm-12">
-                                <input type="text" class="form-control" name="final" value="{{$tramo->final}}">
+                                
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="col-form-label">Distancia (KM)</label>
+                                    <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
                                 </div>
-                            </div>
 
-                            <div class="form-group row text-center" >
-                                <label class="col-sm-12 col-form-label">Trayecto</label>
-                                <div class="col-sm-12">
-                                <input type="text" class="form-control" name="adressa" value="{{$tramo->adressa}}">
+                                <div class="form-group col-12 col-md-6" disabled>
+                                    <label class="text-white">Trayecto</label>
+                                    <input style="color:#343a40!important;box-shadow:2px 2px 5px red;" class="border rounded border-dark col-12 bg-white"type="text" value="{{$tramo->adressa}}" disabled>
                                 </div>
-                            </div>
 
-                            <div class="form-group row text-center">
-                                <label class="col-sm-12 col-form-label">Superficie</label>
-                                <div class="col-sm-12">
+                                <div class="form-group col-12 col-md-6">
+                                    <label class="col-form-label">Superficie</label>
                                     <select class="form-control" name="id_superficie" style="border-radius:10px">>
                                         @foreach ($superficies as $superficie)
                                             @if ($tramo->id_superficie == $superficie->id)
@@ -108,11 +90,10 @@
                                         @endforeach
                                     </select>
                                 </div>
+
+                                <input type="text" id="imagenes_a_eliminar:{{$tramo->id}}" class="form-control" name="imagenes_a_eliminar" value="null" hidden readonly>
+
                             </div>
-
-                            <input type="text" id="imagenes_a_eliminar:{{$tramo->id}}" class="form-control" name="imagenes_a_eliminar" value="null" hidden readonly>
-
-
                     </div>
                 </div>
                 <div class="modal-footer d-flex justify-content-between">

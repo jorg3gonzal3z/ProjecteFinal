@@ -76,18 +76,12 @@ class TramosController extends Controller
             'fotos.*' => 'mimes:jpeg,jpg,png,gif',
             'nom' => 'required|max:40',
             'distancia' => 'required|numeric|min:5',
-            'sortida' => 'required',
-            'final' => 'required',
-            'adressa' => 'required',
             'id_superficie' => 'required|numeric',
         ]);
 
         $tramo->update([
             'nom' => $data['nom'],
             'distancia' => $data['distancia'],
-            'sortida' => $data['sortida'],
-            'final' => $data['final'],
-            'adressa' => $data['adressa'],
             'id_superficie' => $data['id_superficie']
         ]);
         

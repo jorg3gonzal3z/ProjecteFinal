@@ -177,9 +177,9 @@ footer {
   height: 100%;
   top: 0;
   left: 0;
-  position: fixed;
-  display: block;
-  opacity: 0.5;
+  position: absolute;
+  /* display: block; */
+  opacity: 0.7;
   background-color: #333333;
   z-index: 99;
   text-align: center;
@@ -187,8 +187,8 @@ footer {
 
 #loading-image {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 25%;
+  left: 45%;
   z-index: 100;
 }
 
@@ -205,7 +205,7 @@ footer {
   transform: translateY(-50%);
 }
 *{
-  font-size: 101%;
+  font-size: 103%;
 }
 
 

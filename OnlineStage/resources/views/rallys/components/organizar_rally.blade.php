@@ -1,7 +1,7 @@
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
 
     <div class="text-center">    
-        <button id="add_rally" type="button" class="btn btn-danger add_rally" data-toggle="modal" data-target="#modalAddRally">Organizar Rally  <i class="fa fa-plus"></i></button>
+        <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddRally">Organizar Rally  <i class="fa fa-plus"></i></button>
     </div>
     <div class="modal fade" id="modalAddRally" tabindex="-1" role="dialog" aria-labelledby="#modalAddRally" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">

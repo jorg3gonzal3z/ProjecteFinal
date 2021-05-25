@@ -35,6 +35,13 @@ $(document).ready(function(){
 
     });
 
+    $('#add_event').click(function(){
+        $(".solo-blur").css("backdrop-filter", "none");
+
+        $("#modalAddEvent").on("hidden.bs.modal", function () {
+            $(".solo-blur").css("backdrop-filter", "blur(15.0px)");
+        });
+    });
     //UPLOAD FILE + 5 IMAGE RESTRINCTION
     'use strict';
 

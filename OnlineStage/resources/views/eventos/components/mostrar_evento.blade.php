@@ -1,5 +1,5 @@
 <div id="evento:{{$evento->id}}" >
-<div class="card-container mb-2 col-12 px-0 ">
+<div class="card-container mb-4 col-12 px-0 ">
     <!-- fotografia del evento -->
     <div class="b-game-card ">
         <div class="b-game-card__cover rounded-top" style="background-image: url({{ $evento->logo }});"></div>

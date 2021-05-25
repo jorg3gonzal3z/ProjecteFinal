@@ -9,7 +9,7 @@
             <div class="">
                 @include('eventos.components.search')
             </div>
-            <div class="col-12 col-md-6 flex justify-content-md-end">@include('eventos.components.organizar_evento') </div>
+            <div class="col-12 mt-2 col-md-6 flex justify-content-md-end">@include('eventos.components.organizar_evento') </div>
         </div>
 
         <!-- control de errores del formulario -->

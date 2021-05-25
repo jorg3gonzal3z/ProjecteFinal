@@ -1,5 +1,5 @@
 <!-- editar tramo -->
-<a id="edit_tramo:{{$tramo->id}}" class="edit-tramo-btn btn btn-secondary float-right ml-3" data-toggle="modal" data-target="#modaltramo{{$tramo->id}}" style="cursor:pointer;bottom:0;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_tramo:{{$tramo->id}}" class="edit-tramo-btn edit_btn_modal btn btn-secondary float-right ml-3" data-toggle="modal" data-target="#modaltramo{{$tramo->id}}" style="cursor:pointer;bottom:0;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar tramo -->
 <form id="delete_tramo:{{$tramo->id}}" class="mb-3 float-right " action="{{ route('tramos.destroy',['id' => $tramo->id,'location' => 'user' ]) }}" method="POST">
     @csrf
@@ -29,10 +29,12 @@
                         @if ($foto_tramo->id_trams == $tramo->id)
                             @foreach ($fotos as $foto)
                                     @if($foto_tramo->id_fotos == $foto->id)
-                                    <div class="container_image_edit">
-                                        <img class="mr-5 image_edit" src="{{$foto->binari}}" alt="Foto tramo" width="200" height="200">
-                                        <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
-                                    </div>
+                                    <div class="img_edit:{{$foto->id}} container_image_edit">
+                                            <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto tramo" >
+                                            <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                                            <div id="rally_id" hidden>{{$tramo->id}}</div>
+                                            <div id="foto_id" hidden>{{$foto->id}}</div>
+                                        </div>
                                     @endif
                             @endforeach
                         @endif

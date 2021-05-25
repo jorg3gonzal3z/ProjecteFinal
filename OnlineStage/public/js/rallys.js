@@ -25,20 +25,24 @@ $(document).ready(function(){
 
     //imagenes del carrousel
     $('.carousel-inner').find('>:first-child').addClass('active');
-   
+
+    $('#add_rally').click(function(){
+        $(".solo-blur").css("backdrop-filter", "none");
+
+        $("#modalAddRally").on("hidden.bs.modal", function () {
+            $(".solo-blur").css("backdrop-filter", "blur(15.0 px)");
+        });
+    });
+
     $('.edit_btn').click(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
 
-        var thisCard = $(this).parents(".card-container");
-        thisCard.css("backdrop-filter", "none");
+        $(".card-container").css("backdrop-filter", "none");
 
-        
         $("#modal"+thisModal).on("hidden.bs.modal", function () {
-            thisCard.css("backdrop-filter", "blur( 15.0px )");
-
+            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
         });
-
     });
 
     $(".edit_btn").click(function() {
@@ -58,7 +62,6 @@ $(document).ready(function(){
             $("#imagenes_a_eliminar\\:"+thisId).val(currentEditPicArray);
 
         });
-    
     });
 
     //UPLOAD FILE + 5 IMAGE RESTRINCTION

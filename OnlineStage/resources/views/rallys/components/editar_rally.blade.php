@@ -37,11 +37,11 @@
                                     @foreach ($fotos as $key => $foto)
                                         @if($foto_rally->id_fotos == $foto->id)
                                         <div class="img_edit:{{$foto->id}} container_image_edit col-12 col-sm-6 col-md-4 mt-2">
-                                                    <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto rally" >
-                                                    <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
-                                                    <div id="rally_id" hidden>{{$rally->id}}</div>
-                                                    <div id="foto_id" hidden>{{$foto->id}}</div>
-                                                </div>
+                                            <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto rally" >
+                                            <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                                            <div id="rally_id" hidden>{{$rally->id}}</div>
+                                            <div id="foto_id" hidden>{{$foto->id}}</div>
+                                        </div>
                                         @endif
                                     @endforeach
                                 @endif

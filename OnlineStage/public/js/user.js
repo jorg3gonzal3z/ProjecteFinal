@@ -2,6 +2,9 @@ function GetId(str){
     return str.split(':')[1];
 }
 
+var currentEdit;
+var currentEditPicArray = [];
+
 $(document).ready(function(){
     
     
@@ -320,54 +323,50 @@ $(document).ready(function(){
         
     });
 
-    //BOTON EDITAR TRAMO BLUR FIX
-    $('.edit-tramo-btn').click(function(){
+
+    //BOTON EDITAR COSAS BLUR FIX
+    $('.edit_btn_modal').click(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
-
-        $(".card-container").css("backdrop-filter", "none");
-        
-        $("#modaltramo"+thisModal).on("hidden.bs.modal", function () {
-            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
-        });
-    });
-
-    //BOTON EDITAR RALLY BLUR FIX
-    $('.edit-rally-btn').click(function(){
-        var thisModal = $(this).attr('id');
-        thisModal = GetId(thisModal);
-
-        $(".card-container").css("backdrop-filter", "none");
-        
-        $("#modalrally"+thisModal).on("hidden.bs.modal", function () {
-            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
-        });
-    });
-
-    //BOTON EDITAR evento BLUR FIX
-    $('.edit-event-btn').click(function(){
-        var thisModal = $(this).attr('id');
-        thisModal = GetId(thisModal);
-
-        $(".card-container").css("backdrop-filter", "none");
-
         console.log(thisModal);
+        $(".card-container").css("backdrop-filter", "none");
+
+
+        $("#modaltramo"+thisModal).on("hidden.bs.modal", function () {
+            $(".card-container").css("backdrop-filter", "blur(15.0px)");
+        });
+
+        $("#modalrally"+thisModal).on("hidden.bs.modal", function () {
+            $(".card-container").css("backdrop-filter", "blur(15.0px)");
+        });
 
         $("#modalevent"+thisModal).on("hidden.bs.modal", function () {
-            $(".card-container").css("backdrop-filter", "blur(15.0 px)");
+            $(".card-container").css("backdrop-filter", "blur(15.0px)");
+        });
+        $("#modalcar"+thisModal).on("hidden.bs.modal", function () {
+            $(".card-container").css("backdrop-filter", "blur(15.0px)");
         });
     });
-        //BOTON EDITAR COCHE BLUR FIX
-        $('.edit-btn').click(function(){
-            var thisModal = $(this).attr('id');
-            thisModal = GetId(thisModal);
-    
-            $(".card-container").css("backdrop-filter", "none");
 
-    
-            
-            $("#modalcar"+thisModal).on("hidden.bs.modal", function () {
-                $(".card-container").css("backdrop-filter", "blur(15.0 px)");
-            });
+
+    $(".edit-car-btn").click(function() {
+        var thisId = $(this).attr('id');
+        thisId = GetId(thisId);
+        currentEdit = thisId;
+        console.log(currentEdit);
+        currentEditPicArray = [];
+
+        //saber cuantas fotos tiene un tramo
+        //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
+        $('*[class^="img_edit"]').unbind().click(function(){
+            $(this).off();
+            $(this).fadeOut(800);
+            let id_foto = $(this).find("#foto_id").html();
+            currentEditPicArray.push(id_foto);
+            $("#imagenes_a_eliminar\\:"+thisId).val(currentEditPicArray);
+
         });
+    });
+
+
 });

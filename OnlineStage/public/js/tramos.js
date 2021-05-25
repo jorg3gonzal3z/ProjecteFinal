@@ -96,9 +96,6 @@ $(document).ready(function(){
             });
         }
     });
-    $("#nav-filtros-control").click(function(){
-        $("#nav-filtros-tab").fadeToggle();
-      });
 
     $('.add_btn').click(function(){
         $(".solo-blur").css("backdrop-filter", "none");

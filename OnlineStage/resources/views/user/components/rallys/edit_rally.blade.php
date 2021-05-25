@@ -1,5 +1,5 @@
 <!-- editar rally -->
-<a id="edit_rally:{{$rally->id}}" class=" edit-rally-btn float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modalrally{{$rally->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
+<a id="edit_rally:{{$rally->id}}" class=" edit-rally-btn edit_btn_modal float-left pr-3 btn btn-secondary" data-toggle="modal" data-target="#modalrally{{$rally->id}}" style="cursor:pointer;" ><i class="fa fa-pencil"></i> Editar</a>
 <!-- eliminar rally -->
 <form id="delete_rally:{{$rally->id}}" class="float-right" action="{{ route('rallys.destroy',['id' => $rally->id,'location' => 'user' ]) }}" method="POST">
     @csrf
@@ -28,9 +28,11 @@
                                 @if ($foto_rally->id_rallys == $rally->id)
                                     @foreach ($fotos as $key => $foto)
                                         @if($foto_rally->id_fotos == $foto->id)
-                                        <div class="container_image_edit">
-                                            <img class="mr-5 image_edit" src="{{$foto->binari}}" alt="Foto rally" width="200" height="200">
+                                        <div class="img_edit:{{$foto->id}} container_image_edit col-12 col-sm-6 col-md-4 mt-2">
+                                            <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto rally" >
                                             <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
+                                            <div id="rally_id" hidden>{{$rally->id}}</div>
+                                            <div id="foto_id" hidden>{{$foto->id}}</div>
                                         </div>
                                         @endif
                                     @endforeach

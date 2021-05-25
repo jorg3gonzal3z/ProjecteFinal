@@ -2,7 +2,7 @@
 @if ($auth_user->rol == 'admin' || $auth_user->rol == 'organitzador')
 
     <div class="text-center">    
-        <button id="add_rally" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddEvent">Organizar Evento  <i class="fa fa-plus"></i></button>
+        <button id="add_event" type="button" class="btn btn-danger" data-toggle="modal" data-target="#modalAddEvent">Organizar Evento  <i class="fa fa-plus"></i></button>
     </div>
 
 

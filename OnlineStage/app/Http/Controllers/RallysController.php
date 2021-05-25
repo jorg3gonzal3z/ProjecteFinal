@@ -42,7 +42,7 @@ class RallysController extends Controller
 
         $data = request()->validate([
             'fotos' => 'required',
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'required|mimes:jpeg,jpg,png',
             'nom' => 'required|max:40',
             'distancia' => 'required|numeric|min:30',
             'numTC' => 'required|numeric|min:3',
@@ -101,7 +101,7 @@ class RallysController extends Controller
         $rally=Rallys::find($id);
 
         $data = request()->validate([
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'required|mimes:jpeg,jpg,png',
             'nom' => 'required|max:40',
             'distancia' => 'required|numeric|min:30',
             'numTC' => 'required|numeric|min:3',

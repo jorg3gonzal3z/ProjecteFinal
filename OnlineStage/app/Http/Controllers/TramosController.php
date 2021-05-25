@@ -29,7 +29,7 @@ class TramosController extends Controller
        
         $data = request()->validate([
             'fotos' => 'required',
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'required|mimes:jpeg,jpg,png',
             'nom' => 'required|max:40',
             'distancia' => 'required|numeric|min:5',
             'sortida' => 'required',
@@ -74,7 +74,7 @@ class TramosController extends Controller
         $tramo = Trams::find($id);
 
         $data = request()->validate([
-            'fotos.*' => 'mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'mimes:jpeg,jpg,png',
             'nom' => 'required|max:40',
             'distancia' => 'required|numeric|min:5',
             'id_superficie' => 'required|numeric',

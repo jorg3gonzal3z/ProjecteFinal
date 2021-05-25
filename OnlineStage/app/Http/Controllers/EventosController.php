@@ -30,7 +30,7 @@ class EventosController extends Controller
     public function store($id){
 
         $data = request()->validate([
-            'logo' => 'required|mimes:jpeg,jpg,png,gif',
+            'logo' => 'required|mimes:jpeg,jpg,png',
             'nom' => 'required|max:40',
             'tipus' => 'required|max:40',
             'numPlaces' => 'required|numeric|min:15',
@@ -60,7 +60,7 @@ class EventosController extends Controller
 
         $data = request()->validate([
             'old_logo' => 'required',
-            'logo' => 'nullable|mimes:jpeg,jpg,png,gif',
+            'logo' => 'nullable|mimes:jpeg,jpg,png',
             'nom' => 'required|max:40',
             'tipus' => 'required|max:40',
             'localitzacio' => 'required|max:60',

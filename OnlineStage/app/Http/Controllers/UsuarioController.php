@@ -48,7 +48,7 @@ class UsuarioController extends Controller
     public function add_car($id){
         $data = request()->validate([
             'fotos' => 'required',
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'required|mimes:jpeg,jpg,png',
             'modelo' => 'required|max:40',
             'potencia' => 'required|numeric|min:10',
             'peso' => 'required|numeric|min:200',
@@ -132,7 +132,7 @@ class UsuarioController extends Controller
     public function update_car($id){
         $coche=Cotxes::find($id);
         $data = request()->validate([
-            'fotos.*' => 'mimes:jpeg,jpg,png,gif',
+            'fotos.*' => 'mimes:jpeg,jpg,png',
             'modelo' => 'required|max:40',
             'potencia' => 'required|numeric|min:10',
             'peso' => 'required|numeric|min:200',

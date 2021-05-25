@@ -36,7 +36,7 @@
                                 @foreach ($fotos as $foto)
                                         @if($foto_coche->id_fotos == $foto->id)
                                         <!-- las imagenes no se muestran todas de la misma medida juli ayuda :( -->
-                                        <div class="img_edit:{{$foto->id}} container_image_edit col-12 col-md-4 col-lg-3">
+                                        <div class="img_edit:{{$foto->id}} container_image_edit col-12 col-md-4 col-lg-3 mt-2">
                                             <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto coche" >
                                             <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
                                             <div id="rally_id" hidden>{{$coche->id}}</div>
@@ -49,7 +49,7 @@
 
                         <!-- imagenes vacias si hay menos de 5 fotos del coche -->
                         @for ( $i = $control_fotos; $i < 6; $i ++ )
-                            <img class="mt-4 col-12 col-md-4 col-lg-3" src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" >
+                            <img class="col-12 col-md-4 col-lg-3 mt-2" src="{{URL::asset('storage/assets/add_image.jpg')}}" alt="Foto vacia" >
                         @endfor
                     </div>
 
@@ -121,6 +121,8 @@
                             La categoria seleccionada es incorrecta
                         </div>
                     </div>
+
+                    <input type="text" id="imagenes_a_eliminar_car:{{$coche->id}}" class="form-control" name="imagenes_a_eliminar" value="null" hidden readonly>
 
             </div>
             <div class="modal-footer d-flex justify-content-between">

@@ -11,7 +11,7 @@
         <div class=" collapse " id="collapseInscrits">
 
         @if ( count($inscripciones_rallys)>0 || count($inscripciones_eventos)>0 )
-                @if (count($inscripciones_rallys)>0)
+            @if (count($inscripciones_rallys)>0)
                     <div class="row justify-content-between">
                     <!-- inscripciones rallys -->
                     <ul class="mt-2 list-group col-md-6 p-2">
@@ -24,21 +24,21 @@
                             @endforeach
                         @endforeach
                     </ul>
-                    @endif
-                    @if (count($inscripciones_eventos)>0)
+            @endif
+            @if (count($inscripciones_eventos)>0)
                     <!-- inscripciones eventos -->
                     <ul class="mt-2 list-group col-md-6 p-2">
                         <li class="list-group-item text-center"  style="cursor:pointer;" ><b>Inscripciones Eventos:</b></li>
                         @foreach($inscripciones_eventos as $inscripcion_evento)
-                            @foreach($eventos as $evento)
+                            @foreach($all_eventos as $evento)
                                 @if($evento->id == $inscripcion_evento->id_events)                       
                                     <li class="list-group-item text-center">{{$evento->nom}}</li>
                                 @endif
                             @endforeach
                         @endforeach
                     </ul>
-                    </div>
-                @endif
+                </div>
+            @endif
         @else
             <div class="alert alert-danger text-center">
                 <p>No estas inscrito a ningun evento ni a ningun rally</p>

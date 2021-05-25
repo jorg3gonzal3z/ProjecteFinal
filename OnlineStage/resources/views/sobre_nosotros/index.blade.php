@@ -49,7 +49,7 @@
                 </button>
             </div>
             <div class="modal-body p-5 text-white">
-              <h1 style="color:red;">1. Política de privacidad</h1>
+              <h1 style="color:#495057;">1. Política de privacidad</h1>
                 <p class="ml-4">{{$informacio['nom_empresa']}} informa a los usuarios del sitio web sobre su política respecto del tratamiento y
                 protección de los datos de carácter personal de los usuarios y clientes que puedan ser
                 recabados por la navegación o contratación de servicios a través de su sitio web.<br>
@@ -59,7 +59,7 @@
                 el que se aprueba el Reglamento de Desarrollo de la LOPD.<br>
                 El uso de esta web implica la aceptación de esta política de privacidad.
                 </p>
-              <h1 style="color:red;">2. Recogida, finalidad y tratamientos de datos</h1>
+              <h1 style="color:#495057;">2. Recogida, finalidad y tratamientos de datos</h1>
                 <p class="ml-4">{{$informacio['nom_empresa']}} tiene el deber de informar a los usuarios de su sitio web acerca de la recogida de
                 datos de carácter personal que pueden llevarse a cabo, bien sea mediante el envío de correo
                 electrónico o al cumplimentar los formularios incluidos en el sitio web. En este sentido, Empresa
@@ -77,14 +77,14 @@
                 tanto tenga la consideración de tratamiento de datos de carácter personal, serán incorporados en
                 los ficheros declarados ante la Agencia Española de Protección de Datos por {{$informacio['nom_empresa']}}.
                 </p>
-              <h1 style="color:red;">3. Comunicación de información a terceros</h1>
+              <h1 style="color:#495057;">3. Comunicación de información a terceros</h1>
                 <p class="ml-4">{{$informacio['nom_empresa']}} informa a los usuarios de que sus datos personales no serán 	cedidos a terceras
                 organizaciones, con la salvedad de que dicha cesión de datos este amparada en una obligación
                 legal o cuando la prestación de un servicio implique la necesidad de una relación contractual con
                 un encargado de tratamiento. En este último caso, solo se llevará a cabo la cesión de datos al
                 tercero cuando {{$informacio['nom_empresa']}} disponga del consentimiento expreso del usuario.
                 </p>
-              <h1 style="color:red;">4. Derechos de los usuarios</h1>
+              <h1 style="color:#495057;">4. Derechos de los usuarios</h1>
                 <p class="ml-4">La Ley Orgánica 15/1999, de 13 de diciembre, de Protección de Datos de Carácter Personal
                 concede a los interesados la posibilidad de ejercer una serie de derechos relacionados con el
                 tratamiento de sus datos personales.<br>

@@ -187,6 +187,8 @@ class UsuarioController extends Controller
                 $foto = Fotos::where('id', $imagen_a_eliminar);
                 $foto->delete();
             }
+        }else{
+            Alert::error('Oops...', 'No se pueden eliminar todas las fotos');
         }
 
         return redirect()->route('user.index');

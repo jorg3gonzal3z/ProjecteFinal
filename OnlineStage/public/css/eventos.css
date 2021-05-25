@@ -92,6 +92,9 @@ label{
 
 
 
+.modal-dialog-centered{
+  min-width: 75%!important;
+}
 
 .card-container{
   backdrop-filter: blur( 15.0px ); 

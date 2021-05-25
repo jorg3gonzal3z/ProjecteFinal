@@ -14,7 +14,7 @@ class CotxesSeeder extends Seeder
     public function run()
     {
         $cotxes =[
-            ['Pegeot 106 rallye',103,'FWD',890,1996,8,1],
+            ['Pegeot 106 rallye',103,'FWD',890,1995,8,1],
         ];
         foreach($cotxes as $cotxe){
             \App\Models\Cotxes::create([

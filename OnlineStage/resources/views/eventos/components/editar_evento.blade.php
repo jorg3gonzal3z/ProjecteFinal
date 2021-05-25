@@ -22,46 +22,42 @@
                     </button>
                 </div>
                 <div class="modal-body p-5">
+
                     <!-- formulario para editar eventos -->
                     <form id="form_edit_evento:{{$evento->id}}" action="{{ route('eventos.update',['id' => $evento->id,'location' => 'eventos' ] ) }}" method="POST" enctype="multipart/form-data">
                         @csrf
                         {{ method_field('PUT') }}
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Cartel</label>
-                            <div class="col-sm-10">
-                                <input type="file" name="logo">
-                            </div>
-                            <small style="color:red;" class="col-sm-12">Si seleccionas otro logo cambiaras el actual</small>
+                        
+                        <div class="box form-group row mt-4 justify-content-center">
+                            <input type="file" name="logo" id="file_evento-{{$evento->id}}" class="inputfile inputfile-1"  data-multiple-caption="{count} fotos seleccionadas" hidden />
+                            <label for="file_evento-{{$evento->id}}"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tu Cartel&hellip;</span></label>
+                            <span class="form-text text-white col-12 text-center">Si seleccionas otro cartel sobreescribiras el actual.</span>
                         </div>
 
                         <input name="old_logo" value="{{$evento->logo}}" hidden></input>
 
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Nombre</label>
-                            <div class="col-sm-10">
-                            <input type="text" class="form-control" name="nom" value="{{$evento->nom}}">
-                            </div>
-                        </div>
-                        
-                        <div class="form-group row">
-                            <label class="col-sm-4 col-form-label text-white">Tipo de Evento</label>
-                            <div class="col-sm-8">
-                            <input type="text" class="form-control" name="tipus" value="{{$evento->tipus}}">
-                            </div>
-                        </div>
+                        <div class="col-12 d-flex flex-wrap">
 
-                        <div class="form-group row">
-                            <label class="col-sm-5 col-form-label text-white">Numero de plazas</label>
-                            <div class="col-sm-7">
-                            <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}" disabled>
+                            <div class="form-group col-12 col-md-6">
+                                <label class="text-white col-12 text-left p-0">Nombre</label>
+                                <input type="text" class="form-control" name="nom" value="{{$evento->nom}}">
                             </div>
-                        </div>
+                            
+                            <div class="form-group col-12 col-md-6">
+                                <label class="text-white col-12 text-left p-0">Tipo de Evento</label>
+                                <input type="text" class="form-control" name="tipus" value="{{$evento->tipus}}">
+                            </div>
 
-                        <div class="form-group row">
-                            <label class="col-sm-5 col-form-label text-white">Localizacion</label>
-                            <div class="col-sm-7">
-                            <input type="text" class="form-control" name="localitzacio" value="{{$evento->localitzacio}}">
+                            <div class="form-group col-12 col-md-6">
+                                <label class="text-white col-12 text-left p-0">Numero de plazas</label>
+                                <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}" disabled>
                             </div>
+
+                            <div class="form-group col-12 col-md-6">
+                                <label class="text-white col-12 text-left p-0">Localizacion</label>
+                                <input type="text" class="form-control" name="localitzacio" value="{{$evento->localitzacio}}">
+                            </div>
+
                         </div>
 
                 </div>

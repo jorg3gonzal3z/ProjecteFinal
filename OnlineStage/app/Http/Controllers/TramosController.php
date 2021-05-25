@@ -77,18 +77,12 @@ class TramosController extends Controller
             'fotos.*' => 'mimes:jpeg,jpg,png,gif',
             'nom' => 'required|max:40',
             'distancia' => 'required|numeric|min:5',
-            'sortida' => 'required',
-            'final' => 'required',
-            'adressa' => 'required',
             'id_superficie' => 'required|numeric',
         ]);
 
         $tramo->update([
             'nom' => $data['nom'],
             'distancia' => $data['distancia'],
-            'sortida' => $data['sortida'],
-            'final' => $data['final'],
-            'adressa' => $data['adressa'],
             'id_superficie' => $data['id_superficie']
         ]);
         
@@ -166,8 +160,8 @@ class TramosController extends Controller
         $fotos=Fotos::all();
         $fotos_tramos=FotosTrams::all();
         if(count($tramos) > 0){
-
-            return view("tramos/index",compact(['tramos','superficies','users','auth_user','fotos','fotos_tramos']));
+            $busqueda = true;
+            return view("tramos/index",compact(['busqueda','tramos','superficies','users','auth_user','fotos','fotos_tramos']));
 
         }else{
             

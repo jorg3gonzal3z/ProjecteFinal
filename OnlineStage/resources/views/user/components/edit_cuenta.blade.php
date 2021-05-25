@@ -6,22 +6,16 @@
             
             <h4 class="card-title text-center text-white">Datos de la Cuenta</h4><hr>
             
-                    <div class="mb-4 d-block">
-                        <div class="d-flex justify-content-center mb-2">
-                            <div class="d-flex">
-                                <label class="col-4 text-white">Nombre</label>
-                                <input class="col-8 rounded form-control" type="text" value="{{$auth_user->name}}" disabled>
-                            </div>
-                        </div>
-
-                        <div class="d-flex justify-content-center ">
-                            <div class="d-flex">
-                                <label class="col-4 text-white">Email</label>                    
-                                <input class="col-8 rounded form-control" type="email" value="{{$auth_user->email}}" disabled>                   
-                            </div>
-                        </div>
-
-                    </div>
+            <div class="col-12 d-flex flex-wrap text-center">
+                <div class="form-group col-12 col-md-6">
+                    <label class="text-white ">Nombre</label>
+                    <input class="form-control rounded text-center"type="text"value="{{$auth_user->name}}"  >
+                </div>
+                <div class="form-group col-12 col-md-6">
+                    <label class="text-white">Email</label>
+                    <input class="form-control rounded text-center" type="email"value="{{$auth_user->email}}" >
+                </div>
+            </div>
 
             <div class="d-flex justify-content-center">
                 <button class="btn btn-secondary edit-btn-cuenta" data-toggle="modal" data-target="#modalEditUser"><i class="fa fa-pencil"></i> Editar</button>
@@ -52,31 +46,26 @@
                         @csrf
                         {{ method_field('PUT') }}
 
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Nombre</label>
-                            <div class="col-sm-10">
+                        <div class="col-12 d-flex flex-wrap">
+
+                            <div class="form-group col-12 col-md-6">
+                                <label class="text-white">Nombre</label>
                                 <input class="form-control rounded" id="name_user" type="text" name="name" value="{{$auth_user->name}}"  >
                             </div>
-                        </div>
-                        <div class="form-group row">
-                            <label class="col-sm-2 col-form-label text-white">Email</label>
-                            <div class="col-sm-10">
+                            <div class="form-group col-12 col-md-6">
+                                <label class="text-white">Email</label>
                                 <input class="form-control rounded" id="email_user" type="email" name="email" value="{{$auth_user->email}}" >
                             </div>
-                        </div>
-                        <div class="form-group row" id="pass_user" >
-                            <label class="col-sm-3 col-form-label text-white">Contraseña</label>
-                            <div class="col-sm-9">
+                            <div class="form-group col-12 col-md-6" id="pass_user" >
+                                <label class="text-white">Contraseña</label>
                                 <input class="form-control rounded" type="password" name="pass" placeholder="12345678CR ...">
                             </div>
-                        </div>
-                        <div class="form-group row" id="rpass_user" >
-                            <label class="col-sm-5 col-form-label text-white">Repite la Contraseña</label>
-                            <div class="col-sm-7">
+                            <div class="form-group col-12 col-md-6" id="rpass_user" >
+                                <label class="text-white">Repite la Contraseña</label>
                                 <input class="form-control rounded" type="password" name="rpass" placeholder="12345678CR ...">
                             </div>
-                        </div>
 
+                        </div>
                 </div>
                 
                 <div class="modal-footer d-flex justify-content-between">

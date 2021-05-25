@@ -273,8 +273,9 @@ class RallysController extends Controller
         if($auth_user){
 
             if (count($rallys) > 0){
+                $busqueda = true;
                 $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
-                return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
+                return view("rallys/index",compact(['busqueda','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys','inscripciones', 'coches']));
             }else{
                 $inscripciones = InscritsRallys::where('id_usuari', $auth_user->id)->get();
                 $vacio = true;
@@ -284,7 +285,8 @@ class RallysController extends Controller
         }else{
 
             if (count($rallys) > 0){
-                return view("rallys/index",compact(['rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
+                $busqueda = true;
+                return view("rallys/index",compact(['busqueda','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));
             }else{
                 $vacio = true;
                 return view("rallys/index",compact(['vacio','rallys','fotos','fotos_rallys','superficies','users','auth_user','categorias','categorias_rallys','inscritos_rallys', 'coches']));

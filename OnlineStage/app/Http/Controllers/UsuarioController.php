@@ -39,8 +39,9 @@ class UsuarioController extends Controller
         $rallys=Rallys::where('id_usuari', $auth_user->id)->orderBy('id','DESC')->get();
         $inscripciones_rallys = InscritsRallys::where('id_usuari', $auth_user->id)->get();
         $all_rallys = Rallys::all();
+        $all_eventos=Events::all();
         $inscripciones_eventos = InscritsEvents::where('id_usuari', $auth_user->id)->get();
-        return view("user/index",compact(['auth_user','all_rallys','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos','rallys','fotos_rallys','categorias_rallys','inscripciones_rallys','inscripciones_eventos']));
+        return view("user/index",compact(['auth_user','all_rallys','all_eventos','coches','categorias','fotos','fotos_coches','fotos_tramos','tramos','superficies','eventos','rallys','fotos_rallys','categorias_rallys','inscripciones_rallys','inscripciones_eventos']));
     }
 
     public function add_car($id){

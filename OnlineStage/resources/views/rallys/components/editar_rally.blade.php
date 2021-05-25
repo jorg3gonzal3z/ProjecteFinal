@@ -49,8 +49,8 @@
                         </div>
 
                         <div class="box form-group row mt-4 justify-content-center">
-                            <input type="file" name="fotos[]" id="file-{{ $rally->id }}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden />
-                            <label for="file-{{ $rally->id }}"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tus fotos&hellip;</span></label>
+                            <input type="file" name="fotos[]" id="file_rally-{{$rally->id}}" class="inputfile inputfile-1" data-multiple-caption="{count} fotos seleccionadas" multiple hidden />
+                            <label for="file_rally-{{$rally->id}}"><i class="fa fa-upload" aria-hidden="true"></i> <span class="text-white"> Sube tus fotos&hellip;</span></label>
                             <span class="form-text text-white col-12 text-center">*Mínimo una foto y máximo seis.</span>
                         </div>
 
@@ -105,19 +105,19 @@
                             <label class="col-12 text-white">Categorias de coches que pueden participar</label>
                             <div class="col-12">
                                 <div class="d-flex flex-wrap justify-content-center">
-                                <!-- categorias que pueden correr este rally -->
-                                @foreach ($categorias_rallys as $categoria_rally)
-                                    @if ( $categoria_rally->id_rallys == $rally->id )
-                                        @foreach ($categorias as $categoria)
-                                            @if($categoria->id == $categoria_rally->id_categories)
-                                                <div class="col-12 col-md-5 p-1 text-center"><p style="box-shadow:2px 2px 5px red;" class="border rounded border-dark col-12 bg-white">{{$categoria->nomCategoria}}<p></div>
-                                            @endif
-                                        @endforeach
-                                    @endif
-                                @endforeach
+                                    <!-- categorias que pueden correr este rally -->
+                                    @foreach ($categorias_rallys as $categoria_rally)
+                                        @if ( $categoria_rally->id_rallys == $rally->id )
+                                            @foreach ($categorias as $categoria)
+                                                @if($categoria->id == $categoria_rally->id_categories)
+                                                    <div class="col-12 col-md-5 p-1 text-center"><p style="box-shadow:2px 2px 5px red;" class="border rounded border-dark col-12 bg-white">{{$categoria->nomCategoria}}<p></div>
+                                                @endif
+                                            @endforeach
+                                        @endif
+                                    @endforeach
                                 </div>
                             </div>
-                    </div>
+                        </div>
 
                 </div>
                 <div class="modal-footer d-flex justify-content-between">

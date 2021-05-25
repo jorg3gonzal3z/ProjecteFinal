@@ -8,8 +8,17 @@
     </div>
 </form>
 
+@isset($busqueda)
+    <div class="">
+        <a href="{{route('tramos.index')}}" class="btn btn-secondary text white">Volver</a>
+    </div>
+@endisset
+
 @isset($vacio)
     <div class="">
         <div class="alert alert-danger">No hay ninguna coincidencia...</div>
+    </div>
+    <div class="">
+        <a href="{{route('tramos.index')}}" class="btn btn-secondary text white">Volver</a>
     </div>
 @endisset

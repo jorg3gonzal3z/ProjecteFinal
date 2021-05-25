@@ -30,21 +30,21 @@ class TramosController extends Controller
         $data = request()->validate([
             'fotos' => 'required',
             'fotos.*' => 'required|mimes:jpeg,jpg,png',
-            'nom' => 'required|max:40',
-            'distancia' => 'required|numeric|min:5',
-            'sortida' => 'required',
-            'final' => 'required',
-            'adressa' => 'required',
-            'id_superficie' => 'required|numeric',
+            'Nombre' => 'required|max:40',
+            'Distancia' => 'required|numeric|min:5',
+            'Salida' => 'required',
+            'Final' => 'required',
+            'Trayecto' => 'required',
+            'Superficie' => 'required|numeric',
         ]);
        
         $tramo=Trams::create([
-            'nom' => $data['nom'],
-            'distancia' => $data['distancia'],
-            'sortida' => $data['sortida'],
-            'final' => $data['final'],
-            'adressa' => $data['adressa'],
-            'id_superficie' => $data['id_superficie'],
+            'nom' => $data['Nombre'],
+            'distancia' => $data['Distancia'],
+            'sortida' => $data['Salida'],
+            'final' => $data['Final'],
+            'adressa' => $data['Trayecto'],
+            'id_superficie' => $data['Superficie'],
             'id_usuari' => $id,
         ]);
 
@@ -75,15 +75,15 @@ class TramosController extends Controller
 
         $data = request()->validate([
             'fotos.*' => 'mimes:jpeg,jpg,png',
-            'nom' => 'required|max:40',
-            'distancia' => 'required|numeric|min:5',
-            'id_superficie' => 'required|numeric',
+            'Nombre' => 'required|max:40',
+            'Distancia' => 'required|numeric|min:5',
+            'Superficie' => 'required|numeric',
         ]);
 
         $tramo->update([
-            'nom' => $data['nom'],
-            'distancia' => $data['distancia'],
-            'id_superficie' => $data['id_superficie']
+            'nom' => $data['Nombre'],
+            'distancia' => $data['Distancia'],
+            'id_superficie' => $data['Superficie']
         ]);
         
         $array_fotos = request('fotos');

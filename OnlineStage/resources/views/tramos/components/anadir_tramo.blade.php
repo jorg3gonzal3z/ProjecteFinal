@@ -27,13 +27,13 @@
 
                             <div class="form-group">
                                 <label class="">Nombre *</label>
-                                <input type="text" class="form-control" name="nom" placeholder="Nombre del Tramo ...">
+                                <input type="text" class="form-control" name="Nombre" placeholder="Nombre del Tramo ...">
                                 <span class="form-text text-white">Describe el tramo en unas pocas palabras.</span>
                             </div>
 
                             <div class="form-group">
                                 <label class="text-white">Superficie *</label>
-                                    <select class="form-control" name="id_superficie" style="border-radius:10px">
+                                    <select class="form-control" name="Superficie" style="border-radius:10px">
                                         @foreach ($superficies as $superficie)
                                             <option value="{{$superficie->id}}">{{$superficie->tipus}}</option>
                                         @endforeach
@@ -49,28 +49,28 @@
                             <div class="form-group" >
                                 <label class="">Distancia (Km)</label>
                                 <div class="">
-                                    <input readonly class="form-control" id="distancia" name="distancia" placeholder="Kilometros...">
+                                    <input readonly class="form-control" id="distancia" name="Distancia" placeholder="Kilometros...">
                                 </div>
                             </div>
 
                             <div class="form-group" hidden>
                                 <label class="">Salida</label>
                                 <div class="">
-                                <input readonly type="text" class="form-control" id="sortida" name="sortida" >
+                                <input readonly type="text" class="form-control" id="sortida" name="Salida" >
                                 </div>
                             </div>
 
                             <div class="form-group" hidden>
                                 <label class="col-sm-2 col-form-label">Final</label>
                                 <div class="col-sm-10">
-                                <input readonly type="text" class="form-control" id="final" name="final" placeholder="El Vendrell ...">
+                                <input readonly type="text" class="form-control" id="final" name="Final" placeholder="El Vendrell ...">
                                 </div>
                             </div>
 
                             <div class="form-group">
                                 <label class="">Trayecto</label>
                                 <div class="">
-                                <input readonly type="text" class="form-control" id="adressa" name="adressa">
+                                <input readonly type="text" class="form-control" id="adressa" name="Trayecto">
                                 </div>
                             </div>
 

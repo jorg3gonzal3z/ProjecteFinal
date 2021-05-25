@@ -42,3 +42,17 @@ img{
     z-index: 100;
     min-width: 0px;
   }
+
+
+.modal-dialog-centered{
+    min-width: 80%!important;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+@media (max-width: 576px){
+    .modal-dialog {
+        max-width: 95%!important;
+        margin: 1.75rem auto!important;
+    }
+}

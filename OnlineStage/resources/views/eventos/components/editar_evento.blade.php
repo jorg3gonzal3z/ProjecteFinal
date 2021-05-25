@@ -40,22 +40,22 @@
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white col-12 text-left p-0">Nombre</label>
-                                <input type="text" class="form-control" name="nom" value="{{$evento->nom}}">
+                                <input type="text" class="form-control" name="Nombre" value="{{$evento->nom}}">
                             </div>
                             
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white col-12 text-left p-0">Tipo de Evento</label>
-                                <input type="text" class="form-control" name="tipus" value="{{$evento->tipus}}">
+                                <input type="text" class="form-control" name="Tipo" value="{{$evento->tipus}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white col-12 text-left p-0">Numero de plazas</label>
-                                <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}" disabled>
+                                <input type="number" class="form-control" name="n-Plazas" value="{{$evento->numPlaces}}" disabled>
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white col-12 text-left p-0">Localizacion</label>
-                                <input type="text" class="form-control" name="localitzacio" value="{{$evento->localitzacio}}">
+                                <input type="text" class="form-control" name="Localizacion" value="{{$evento->localitzacio}}">
                             </div>
 
                         </div>

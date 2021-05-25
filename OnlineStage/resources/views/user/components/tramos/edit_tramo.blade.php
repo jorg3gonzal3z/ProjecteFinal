@@ -51,12 +51,12 @@
 
                         <div class="form-group col-12 col-md-6">
                             <label class="text-white">Nombre</label>
-                            <input type="text" class="form-control" name="nom" value="{{$tramo->nom}}">
+                            <input type="text" class="form-control" name="Nombre" value="{{$tramo->nom}}">
                         </div>
                         
                         <div class="form-group col-12 col-md-6">
                             <label class="text-white">Distancia km</label>
-                            <input type="number" class="form-control" name="distancia" value="{{$tramo->distancia}}">
+                            <input type="number" class="form-control" name="Distancia" value="{{$tramo->distancia}}">
                         </div>
 
                         <div class="form-group col-12 col-md-6" disabled>
@@ -66,7 +66,7 @@
 
                         <div class="form-group col-12 col-md-6">
                             <label class="text-white">Superficie</label>
-                            <select class="form-control" name="id_superficie" style="border-radius:10px">>
+                            <select class="form-control" name="Superficie" style="border-radius:10px">>
                                 @foreach ($superficies as $superficie)
                                     @if ($tramo->id_superficie == $superficie->id)
                                         <option selected value="{{$superficie->id}}">{{$superficie->tipus}}</option>

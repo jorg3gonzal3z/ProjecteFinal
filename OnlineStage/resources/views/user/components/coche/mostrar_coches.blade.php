@@ -41,7 +41,7 @@
         <ul>
             <li><label>POTENCIA</label></li>
             <li><i class="fa fa-car"></i></li>
-            <li><label>{{ $coche->potencia}}hp</label></li>
+            <li><label style="color:#DC3545;">{{ $coche->potencia}}hp</label></li>
         </ul>
     </div>
     
@@ -50,7 +50,7 @@
             <li><label>TREN MOTRIZ</label></li>
             <!-- <li><i class="fa fa-circle"></i></li> -->
             <li><i class="fa fa-wrench"></i></li>
-            <li><label>{{ $coche->trenMotriu}}</label></li>
+            <li><label style="color:#DC3545;">{{ $coche->trenMotriu}}</label></li>
         </ul>
     </div>
 
@@ -58,7 +58,7 @@
         <ul>
             <li><label>PESO</label></li>
             <li><i class="fa fa-balance-scale"></i></li>
-            <li><label>{{ $coche->pes}}</label></li>
+            <li><label style="color:#DC3545;">{{ $coche->pes}}</label></li>
         </ul>
     </div>
 
@@ -66,7 +66,7 @@
         <ul>
             <li><label>AÑO</label></li>
             <li><i class="fa fa-birthday-cake"></i></li>
-            <li><label>{{ $coche->any}}</label></li>
+            <li><label style="color:#DC3545;">{{ $coche->any}}</label></li>
         </ul>
     </div>
 
@@ -77,7 +77,7 @@
             <ul>
                 <li><label>CATEGORIA</label></li>
                 <li><i class="fa fa-tag"></i></li>
-                <li><label>{{$categoria->nomCategoria}}</label></li>
+                <li><label  style="color:#DC3545;">{{$categoria->nomCategoria}}</label></li>
             </ul>
         </div>
         @endif

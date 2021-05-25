@@ -33,22 +33,22 @@
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Nombre</label>
-                                <input type="text" class="form-control" name="nom" value="{{$evento->nom}}">
+                                <input type="text" class="form-control" name="Nombre" value="{{$evento->nom}}">
                             </div>
                             
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Tipo de Evento</label>
-                                <input type="text" class="form-control" name="tipus" value="{{$evento->tipus}}">
+                                <input type="text" class="form-control" name="Tipo" value="{{$evento->tipus}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Numero de plazas</label>
-                                <input type="number" class="form-control" name="numPlaces" value="{{$evento->numPlaces}}">
+                                <input type="number" class="form-control" name="n-Plazas" value="{{$evento->numPlaces}}">
                             </div>
 
                             <div class="form-group col-12 col-md-6">
                                 <label class="text-white">Localizacion</label>
-                                <input type="text" class="form-control" name="localitzacio" value="{{$evento->localitzacio}}">
+                                <input type="text" class="form-control" name="Localizacion" value="{{$evento->localitzacio}}">
                             </div>
 
                         </div>

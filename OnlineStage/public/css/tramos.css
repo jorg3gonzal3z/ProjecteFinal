@@ -50,14 +50,21 @@
     /* height: 100%; */
     margin: auto;
     padding: 10px;
-} */
-
-
-.modal-dialog-centered{
-    max-width: 75%!important;
 }
+
+@media (min-width: 576px){
+    .modal-dialog {
+        max-width: 75%!important;
+        margin: 1.75rem auto!important;
+    }
+}
+
 #modalAfegir .modal-dialog-centered{
     min-width: 100%!important;
+}
+
+#modalAfegir{
+    padding-left: 15px;
 }
 
 label{

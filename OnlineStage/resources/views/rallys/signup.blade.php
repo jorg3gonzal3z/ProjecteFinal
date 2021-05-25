@@ -35,7 +35,7 @@
 
                 <div class="col-12">
         
-                    <div class="mt-3 card col-12 col-mb-12 col-lg-6 offset-lg-3 mb-2">
+                    <div class="mt-3 card-container col-12 col-mb-12 col-lg-6 offset-lg-3 mb-2">
 
                         <div class="card-body">
                             <h4 class="card-title text-center text-white">Seleccoiona el coche para participar</h4>

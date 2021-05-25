@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use App\Models\InscritsRallys;
 use App\Models\Cotxes;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class RallysController extends Controller
 {
@@ -41,26 +42,26 @@ class RallysController extends Controller
 
         $data = request()->validate([
             'fotos' => 'required',
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required|max:40',
-            'distancia' => 'required|numeric|min:30',
-            'numTC' => 'required|numeric|min:3',
-            'numAssistencies' => 'required|numeric|min:2',
-            'localitzacio' => 'required|max:60',
-            'numPlaces' => 'required|numeric|min:50',
-            'id_superficie' => 'required|numeric',
+            'fotos.*' => 'required|mimes:jpeg,jpg,png',
+            'Nombre' => 'required|max:40',
+            'Distancia' => 'required|numeric|min:30',
+            'n-TC' => 'required|numeric|min:3',
+            'n-Assistencias' => 'required|numeric|min:2',
+            'Localizacion' => 'required|max:60',
+            'n-Plazas' => 'required|numeric|min:50',
+            'Superficie' => 'required|numeric',
             'categorias' => 'required',
             'categorias.*' => 'required',
         ]);
 
         $rally=Rallys::create([
-            'nom' => $data['nom'],
-            'distancia' => $data['distancia'],
-            'numTC' => $data['numTC'],
-            'numAssistencies' => $data['numAssistencies'],
-            'localitzacio' => $data['localitzacio'],
-            'numPlaces' => $data['numPlaces'],
-            'id_superficie' => $data['id_superficie'],
+            'nom' => $data['Nombre'],
+            'distancia' => $data['Distancia'],
+            'numTC' => $data['n-TC'],
+            'numAssistencies' => $data['n-Assistencias'],
+            'localitzacio' => $data['Localizacion'],
+            'numPlaces' => $data['n-Plazas'],
+            'id_superficie' => $data['Superficie'],
             'id_usuari' => $id,
         ]);
 
@@ -100,22 +101,22 @@ class RallysController extends Controller
         $rally=Rallys::find($id);
 
         $data = request()->validate([
-            'fotos.*' => 'required|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required|max:40',
-            'distancia' => 'required|numeric|min:30',
-            'numTC' => 'required|numeric|min:3',
-            'numAssistencies' => 'required|numeric|min:2',
-            'localitzacio' => 'required|max:60',
-            'id_superficie' => 'required|numeric',
+            'fotos.*' => 'required|mimes:jpeg,jpg,png',
+            'Nombre' => 'required|max:40',
+            'Distancia' => 'required|numeric|min:30',
+            'n-TC' => 'required|numeric|min:3',
+            'n-Assistencias' => 'required|numeric|min:2',
+            'Localizacion' => 'required|max:60',
+            'Superficie' => 'required|numeric',
         ]);
 
         $rally->update([
-            'nom' => $data['nom'],
-            'distancia' => $data['distancia'],
-            'numTC' => $data['numTC'],
-            'numAssistencies' => $data['numAssistencies'],
-            'localitzacio' => $data['localitzacio'],
-            'id_superficie' => $data['id_superficie'],
+            'nom' => $data['Nombre'],
+            'distancia' => $data['Distancia'],
+            'numTC' => $data['n-TC'],
+            'numAssistencies' => $data['n-Assistencias'],
+            'localitzacio' => $data['Localizacion'],
+            'id_superficie' => $data['Superficie'],
         ]);
 
         $array_fotos = request('fotos');
@@ -123,18 +124,23 @@ class RallysController extends Controller
 
         //si hi ha alguna imatge nova per afegir
         if (gettype($array_fotos) == "array"){
-            foreach($array_fotos as $array_foto){
-                $foto=$array_foto->store('public/' . $rally->id_usuari);
-                $url=Storage::url($foto);
-                $url=Str::substr($url,1);
-                $array_foto=Fotos::create([
-                    'binari' => $url,
-                ]);
-                
-                $foto_tramo=FotosRallys::create([
-                    'id_fotos' => $array_foto->id,
-                    'id_rallys' => $rally->id,
-                ]);
+            $imgConditional = count($array_fotos) + $all_fotos_rally;
+            if($imgConditional <= 6){
+                foreach($array_fotos as $array_foto){
+                    $foto=$array_foto->store('public/' . $rally->id_usuari);
+                    $url=Storage::url($foto);
+                    $url=Str::substr($url,1);
+                    $array_foto=Fotos::create([
+                        'binari' => $url,
+                    ]);
+                    
+                    $foto_tramo=FotosRallys::create([
+                        'id_fotos' => $array_foto->id,
+                        'id_rallys' => $rally->id,
+                    ]);
+                }
+            }else{
+                Alert::error('Oops...', 'No se pueden añadir mas de 6 fotos');
             }
         }
 

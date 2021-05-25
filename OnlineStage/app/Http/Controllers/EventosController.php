@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Support\Str;
 use App\Models\InscritsEvents;
+use RealRashid\SweetAlert\Facades\Alert;
 
 class EventosController extends Controller
 {
@@ -29,11 +30,11 @@ class EventosController extends Controller
     public function store($id){
 
         $data = request()->validate([
-            'logo' => 'required|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required|max:40',
-            'tipus' => 'required|max:40',
-            'numPlaces' => 'required|numeric|min:15',
-            'localitzacio' => 'required|max:60',
+            'logo' => 'required|mimes:jpeg,jpg,png',
+            'Nombre' => 'required|max:40',
+            'Tipo' => 'required|max:40',
+            'n-Plazas' => 'required|numeric|min:15',
+            'Localizacion' => 'required|max:60',
         ]);
 
         $foto = $data['logo'];
@@ -43,10 +44,10 @@ class EventosController extends Controller
 
         $evento = Events::create([
             'logo' => $url,
-            'nom' => $data['nom'],
-            'tipus' => $data['tipus'],
-            'numPlaces' => $data['numPlaces'],
-            'localitzacio' => $data['localitzacio'],
+            'nom' => $data['Nombre'],
+            'tipus' => $data['Tipo'],
+            'numPlaces' => $data['n-Plazas'],
+            'localitzacio' => $data['Localizacion'],
             'id_usuari' => $id,
         ]);
 
@@ -59,10 +60,10 @@ class EventosController extends Controller
 
         $data = request()->validate([
             'old_logo' => 'required',
-            'logo' => 'nullable|mimes:jpeg,jpg,png,gif',
-            'nom' => 'required|max:40',
-            'tipus' => 'required|max:40',
-            'localitzacio' => 'required|max:60',
+            'logo' => 'nullable|mimes:jpeg,jpg,png',
+            'Nombre' => 'required|max:40',
+            'Tipo' => 'required|max:40',
+            'Localizacion' => 'required|max:60',
         ]);
         
         if(isset($data['logo'])){
@@ -73,15 +74,15 @@ class EventosController extends Controller
 
             $evento->update([
                 'logo' => $url,
-                'nom' => $data['nom'],
-                'tipus' => $data['tipus'],
-                'localitzacio' => $data['localitzacio'],
+                'nom' => $data['Nombre'],
+                'tipus' => $data['Tipo'],
+                'localitzacio' => $data['Localizacion'],
             ]);
         }else{
             $evento->update([
-                'nom' => $data['nom'],
-                'tipus' => $data['tipus'],
-                'localitzacio' => $data['localitzacio'],
+                'nom' => $data['Nombre'],
+                'tipus' => $data['Tipo'],
+                'localitzacio' => $data['Localizacion'],
             ]);
         }
         

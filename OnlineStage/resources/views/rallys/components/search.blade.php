@@ -11,7 +11,7 @@
 </div>
 
 @isset($busqueda)
-    <div class="col-12 ">
+    <div class="col-12 mb-2">
         <a href="{{route('rallys.index')}}" class="btn btn-secondary text white">Volver</a>
     </div>
 @endisset
@@ -20,7 +20,7 @@
     <div class="col-12 mt-5">
         <div class="alert alert-danger">No hay ninguna coincidencia</div>
     </div>
-    <div class="col-12 ">
+    <div class="col-12 mb-2">
         <a href="{{route('rallys.index')}}" class="btn btn-secondary text white">Volver</a>
     </div>
 @endisset

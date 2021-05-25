@@ -14,7 +14,7 @@ class FotosTramsSeeder extends Seeder
     public function run()
     {
         $fotos =[
-            [1,1],[2,1],[5,2],[6,2],[7,3],[8,3]
+            [2,1],[1,1],[5,2],[6,2],[8,3],[7,3]
         ];
         foreach($fotos as $foto){
             \App\Models\FotosTrams::create([

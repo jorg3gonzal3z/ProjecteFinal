@@ -11,26 +11,13 @@
 <div class="card-container m-5">
   <h1 class="mt-5 card-title text-center text-white">Estamos aqui para que disfrutes de tu <span style="color:red;">PASIÓN</span></h1>
   
-  <div class="mt-3 col-12 text-white text-center">
-    <p>Me preguntan por qué yo cambié y mi trabajo
-Y solo cambiaron la' manera' de verme con tus ojo'
-En la calle no me aflojo, en la calle no me aflojo
-Lo sé y bienvenido a la calle y su clase
-Los duro' llevan Motorola, van con motora
-La chulería no les mola y no hablan de pistola'
-Palo' cotizado', dinero malo
-Luego abogado' acaba' entre cerrado'
-Hablan pero na'-na'-na'-na' y luego nadie tiene
-(Manmare hasan na'-na'-na'-na')
-Aquí se busca lana-lana, policía interviene
-Viviendo como nada-nada y facturando ciene'
-Se que esta' vece' para-para', pero porque vos quiere'
-Viviendo con lo necesario, a vece' escenario'
-Otra' con sicario', a diario
-Viviendo en mi barrio, moviendo a diario
-Hago avería' pero nunca he sido locario
-Con nadie compito, me gustan lo' delito'
-Ay,…</p>
+  <div class="mt-3 col-12 text-white text-center d-flex justify-content-center">
+    <p style="width: 70%;">Hola, bienvenido a <strong>TC1 Online Rallys</strong>, una comunidad online donde puedes compartir cualquier tramo que se te ocurra, crea tu perfil y añade tus coches para unirte a nuestros exclusivos 
+    eventos patrocinados u organiza el tuyo.<br><br>
+  
+    Esta página ha sido creada como proyecto de final de grado de DAW y esperamos seguir mejorandola para proporcionar una experiencia única para los aficionados del rally.<br><br>
+  
+    Puedes mandar tu duda, sugerencia o cualquier cosa que se te ocurra a <u class="text-danger">jlechugat@fp.insjoaquimmir.cat</u> o  <u class="text-danger">jgonzalezg@fp.insjoaquimmir.cat</u> o tirarme a md a <u class="text-danger">@juliwastaken</u> en instagram</p>
   </div>
  
   <div>

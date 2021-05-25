@@ -91,11 +91,9 @@ label{
   }
 
 
+
 .modal-dialog-centered{
-  max-width: 75%!important;
-}
-#modalAfegir .modal-dialog-centered{
-  min-width: 100%!important;
+  min-width: 75%!important;
 }
 
 .card-container{

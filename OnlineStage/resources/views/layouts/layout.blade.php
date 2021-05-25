@@ -21,8 +21,10 @@
     <footer>
         <div class="wrapper">
             <div class="icon facebook">
-                <div class="tooltip">Facebook</div>
-                <span><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                <a href="https://www.instagram.com/juliwastaken/">
+                    <div class="tooltip">Facebook</div>
+                    <span><i class="fa fa-facebook" aria-hidden="true"></i></span>
+                </a>
             </div>
             <div class="icon twitter">
                 <div class="tooltip">Twitter</div>

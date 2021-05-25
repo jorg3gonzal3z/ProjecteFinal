@@ -29,7 +29,7 @@
                         @if ($foto_tramo->id_trams == $tramo->id)
                             @foreach ($fotos as $foto)
                                     @if($foto_tramo->id_fotos == $foto->id)
-                                    <div class="img_edit:{{$foto->id}} container_image_edit">
+                                    <div class="img_edit:{{$foto->id}} container_image_edit container_image_edit col-12 col-md-4 col-lg-3 mt-2">
                                             <img class=" image_edit w-100 " src="{{$foto->binari}}" alt="Foto tramo" >
                                             <div class="remove_img"><div class="x_img"><i class="fa fa-trash"></i></div></div>
                                             <div id="rally_id" hidden>{{$tramo->id}}</div>

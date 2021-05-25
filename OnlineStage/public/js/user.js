@@ -353,6 +353,7 @@ $(document).ready(function(){
         thisId = GetId(thisId);
         currentEdit = thisId;
         currentEditPicArray = [];
+        $("#imagenes_a_eliminar_car\\:"+thisId).val(currentEditPicArray);
 
         console.log(currentEdit);
         //saber cuantas fotos tiene un tramo
@@ -374,6 +375,7 @@ $(document).ready(function(){
         thisId = GetId(thisId);
         currentEdit = thisId;
         currentEditPicArray = [];
+        $("#imagenes_a_eliminar_rally\\:"+thisId).val(currentEditPicArray);
 
         console.log(currentEdit);
         //saber cuantas fotos tiene un tramo
@@ -395,6 +397,7 @@ $(document).ready(function(){
         thisId = GetId(thisId);
         currentEdit = thisId;
         currentEditPicArray = [];
+        $("#imagenes_a_eliminar_tramo\\:"+thisId).val(currentEditPicArray);
 
         console.log(currentEdit);
         //saber cuantas fotos tiene un tramo

@@ -110,6 +110,7 @@
                             </div>
 
                         </div>
+                        <input type="text" id="imagenes_a_eliminar_rally:{{$rally->id}}" class="form-control" name="imagenes_a_eliminar" value="null" hidden readonly>
 
                 </div>
                 <div class="modal-footer d-flex justify-content-between">

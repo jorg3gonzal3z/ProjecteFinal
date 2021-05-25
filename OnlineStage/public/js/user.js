@@ -328,7 +328,6 @@ $(document).ready(function(){
     $('.edit_btn_modal').click(function(){
         var thisModal = $(this).attr('id');
         thisModal = GetId(thisModal);
-        console.log(thisModal);
         $(".card-container").css("backdrop-filter", "none");
 
 
@@ -353,9 +352,9 @@ $(document).ready(function(){
         var thisId = $(this).attr('id');
         thisId = GetId(thisId);
         currentEdit = thisId;
-        console.log(currentEdit);
         currentEditPicArray = [];
 
+        console.log(currentEdit);
         //saber cuantas fotos tiene un tramo
         //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
         $('*[class^="img_edit"]').unbind().click(function(){
@@ -363,10 +362,53 @@ $(document).ready(function(){
             $(this).fadeOut(800);
             let id_foto = $(this).find("#foto_id").html();
             currentEditPicArray.push(id_foto);
-            $("#imagenes_a_eliminar\\:"+thisId).val(currentEditPicArray);
+            $("#imagenes_a_eliminar_car\\:"+thisId).val(currentEditPicArray);
+            console.log(currentEditPicArray);
+
 
         });
     });
 
+    $(".edit-rally-btn").click(function() {
+        var thisId = $(this).attr('id');
+        thisId = GetId(thisId);
+        currentEdit = thisId;
+        currentEditPicArray = [];
+
+        console.log(currentEdit);
+        //saber cuantas fotos tiene un tramo
+        //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
+        $('*[class^="img_edit"]').unbind().click(function(){
+            $(this).off();
+            $(this).fadeOut(800);
+            let id_foto = $(this).find("#foto_id").html();
+            currentEditPicArray.push(id_foto);
+            $("#imagenes_a_eliminar_rally\\:"+thisId).val(currentEditPicArray);
+            console.log(currentEditPicArray);
+
+
+        });
+    });
+
+    $(".edit-tramo-btn").click(function() {
+        var thisId = $(this).attr('id');
+        thisId = GetId(thisId);
+        currentEdit = thisId;
+        currentEditPicArray = [];
+
+        console.log(currentEdit);
+        //saber cuantas fotos tiene un tramo
+        //se guarda el id del tramo y el id de la foto para eliminarlos posteriormente
+        $('*[class^="img_edit"]').unbind().click(function(){
+            $(this).off();
+            $(this).fadeOut(800);
+            let id_foto = $(this).find("#foto_id").html();
+            currentEditPicArray.push(id_foto);
+            $("#imagenes_a_eliminar_tramo\\:"+thisId).val(currentEditPicArray);
+            console.log(currentEditPicArray);
+
+
+        });
+    });
 
 });
